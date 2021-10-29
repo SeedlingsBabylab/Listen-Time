@@ -87,7 +87,25 @@ knitr::kable(
   kable_styling(bootstrap_options = c("striped", "hover", "condensed"), full_width = T, fixed_thead = T)
 
 ```
+Here is the silence time in hours by month.
+```{r avg-silence}
+avgs_silence <- listened_time_with_months %>% 
+  group_by(month) %>% 
+  summarise(mean_silence_time = round(mean(silence_raw_hour), 2),
+            sd_silence_time = round(sd(silence_raw_hour),2),
+            max = max(silence_raw_hour), 
+            min = min(silence_raw_hour),
+            mean_length_of_recording = round(mean(end_time_hour), 2),
+            sd_recording_length = round(sd(end_time_hour),2),
+            max_length = max(end_time_hour), 
+            min_length = min(end_time_hour),)
+knitr::kable(
+  avgs_silence,
+  caption = "Mean, maximum and minimum silence time per month in hours"
+) %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed"), full_width = T, fixed_thead = T)
 
+```
 
 Below is a short section of the format of the csv file with only the **hour variables**. This should help with quick sanity checks. Note that for months 6 and 7, total listen time is calculated by subtracting skip and silence times from the last available time stamp in a file. **These files are not listed here because they are problematic! (As in there is nothing wrong with them, they are just displayed here as an example)** 
 ```{r mutated, echo=FALSE}
@@ -105,6 +123,16 @@ Below are the histograms for each month.
 <div>
 ```{r histograms, out.width="%25"}
 ggplot(data = listened_time_with_months) + geom_histogram(mapping = aes(x = total_listen_time_hour),binwidth=.25) + facet_wrap(~ month, scales = "free") +
+  labs(x = "Total listened time in hours", y = "Number of files")
+```
+
+</div>
+</details>
+
+<details><summary>Click for month by month total recording time histograms</summary>
+<div>
+```{r histograms-length, out.width="%25"}
+ggplot(data = listened_time_with_months) + geom_histogram(mapping = aes(x = end_time_hour),binwidth=.25) + facet_wrap(~ month, scales = "free") +
   labs(x = "Total listened time in hours", y = "Number of files")
 ```
 
