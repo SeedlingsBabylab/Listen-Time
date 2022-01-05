@@ -1,23 +1,21 @@
-import pyclan as pc
-import csv
-import re
-import sys
-import signal
-import os.path
-from multiprocessing import Pool, Manager
-import pdb
-from settings import *
-from funcs import *
-from listen_time import total_listen_time
-from check_errors import sequence_missing_repetition_entry_alert
 import argparse
+import os.path
+import signal
+import sys
+from multiprocessing import Pool, Manager
+
+from check_errors import sequence_missing_repetition_entry_alert
+from funcs import cha_structure_path, pull_regions, bcolors, sequence_minimal_error_sorting, output
+from listen_time import total_listen_time
+
 
 def get_args():
     parser = argparse.ArgumentParser(description='Compute listened time for the corpus.')
-    parser.add_argument('input_file', help='Either a path file containing a path for each cha file, one path per line, OR, a single cha file.')
-    parser.add_argument('--output_path', help='Optional output directory to output the reports/csvs/etc.', default='output')
+    parser.add_argument('input_file',
+                        help='Either a path file containing a path for each cha file, one path per line, OR, a single cha file.')
+    parser.add_argument('--output_path', help='Optional output directory to output the reports/csvs/etc.',
+                        default='output')
     return parser.parse_args()
-
 
 
 def process_single_file(file, file_path=cha_structure_path):
@@ -33,7 +31,7 @@ def process_single_file(file, file_path=cha_structure_path):
     # HINT: The sequence below is what gets written to the cha_structure file.
     sequence = sequence_minimal_error_sorting(sequence)
     error_list, region_map = sequence_missing_repetition_entry_alert(sequence)
-    with open(os.path.join(file_path, os.path.basename(file)+'.txt'), 'w') as f:
+    with open(os.path.join(file_path, os.path.basename(file) + '.txt'), 'w') as f:
         f.write('\n'.join([x[0] + '   ' + str(x[1]) for x in sequence]))
         f.write('\n')
         f.write('\n')
@@ -41,9 +39,11 @@ def process_single_file(file, file_path=cha_structure_path):
         f.write('\n'.join(error_list))
 
         if error_list:
-            print(bcolors.WARNING + "Finished {0} with errors! Listen time cannot be calculated due to missing starts or ends!\nCheck the {0}.txt file for errors!".format(os.path.basename(file)) + bcolors.ENDC)
+            print(
+                bcolors.WARNING + "Finished {0} with errors! Listen time cannot be calculated due to missing starts or ends!\nCheck the {0}.txt file for errors!".format(
+                    os.path.basename(file)) + bcolors.ENDC)
             file_with_error.append((os.path.basename(file), error_list))
-        
+
         # If the file with error has a missing start or end error, we cannot correctly process it! So return!
         for item in error_list:
             if 'missing' in item:
@@ -52,7 +52,7 @@ def process_single_file(file, file_path=cha_structure_path):
         try:
             # Checking if the file is a 6 or 7 month old to set the month67 parameter of the function
             if os.path.basename(file)[3:5] in ['06', '07']:
-                listen_time = total_listen_time(cf, region_map, subregions, month67 = True)
+                listen_time = total_listen_time(cf, region_map, subregions, month67=True)
             else:
                 listen_time = total_listen_time(cf, region_map, subregions)
         except:
@@ -60,7 +60,7 @@ def process_single_file(file, file_path=cha_structure_path):
 
         f.write('\n')
         f.write('\n'.join(subregions))
-            
+
         # listen_time is dict returned by total_listen_time function in listen_time.py
         listen_time['filename'] = os.path.basename(file)
 
@@ -80,8 +80,10 @@ def process_single_file(file, file_path=cha_structure_path):
         listen_time['ranks'] = ranks
         listen_time['positions'] = positions
         listen_time_summary.append(listen_time)
-        print("Finished {}".format(os.path.basename(file)) + '\nTotal Listen Time: ' + bcolors.OKGREEN + str(listen_time['total_listen_time_hour'])+bcolors.ENDC)
+        print("Finished {}".format(os.path.basename(file)) + '\nTotal Listen Time: ' + bcolors.OKGREEN + str(
+            listen_time['total_listen_time_hour']) + bcolors.ENDC)
         print(subregions)
+
 
 if __name__ == "__main__":
     args = get_args()
@@ -138,9 +140,8 @@ if __name__ == "__main__":
             for file in files:
                 try:
                     process_single_file(file, cha_structure_path)
-                except e:
+                except Exception as e:
                     print(e)
                     continue
         # We output the findings.
     output(file_with_error, listen_time_summary, args.output_path)
-
