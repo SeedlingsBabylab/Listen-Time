@@ -27,7 +27,7 @@ def process_single_file(file, file_path=cha_structure_path):
         sequence, cf, subregions = pull_regions(file)
     except Exception as e:
         print(bcolors.FAIL + "Error opening file: {}".format(file) + bcolors.ENDC)
-        print sys.exc_info()
+        print(sys.exc_info())
         return
 
     # HINT: The sequence below is what gets written to the cha_structure file.
@@ -81,7 +81,7 @@ def process_single_file(file, file_path=cha_structure_path):
         listen_time['positions'] = positions
         listen_time_summary.append(listen_time)
         print("Finished {}".format(os.path.basename(file)) + '\nTotal Listen Time: ' + bcolors.OKGREEN + str(listen_time['total_listen_time_hour'])+bcolors.ENDC)
-        print subregions
+        print(subregions)
 
 if __name__ == "__main__":
     args = get_args()

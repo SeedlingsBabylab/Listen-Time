@@ -293,7 +293,7 @@ def total_listen_time(cf, region_map, subregions, month67 = False):
     def update_sub_pos(message, i):
         ind = sub_positions[i]
         removals[ind-1] = message
-        print removals
+        print(removals)
         del sub_positions[i]
 
             

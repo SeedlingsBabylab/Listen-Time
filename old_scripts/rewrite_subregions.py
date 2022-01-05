@@ -87,7 +87,7 @@ def process(file, top5):
                         # out.write(line)
                         lines.append(line)
                     if num_found > 1:
-                        print "PROBLEM - {}".format(ts[0])
+                        print("PROBLEM - {}".format(ts[0]))
 
                 else:
                     # out.write(line)
@@ -116,4 +116,4 @@ if __name__ == "__main__":
                 # to the original subregion picking algorithm
                 if pfx in subr_v_algo:
                     process(os.path.join(root, file), file5)
-                    print pfx
+                    print(pfx)

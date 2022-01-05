@@ -33,7 +33,7 @@ if __name__ == "__main__":
 
     results = []
     for i, x in subregs.groupby("file"):
-        print i
+        print(i)
         regions = []
         # ignore file/Subject Number (?) less than 8
         if int(i[3:]) < 8:

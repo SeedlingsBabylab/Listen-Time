@@ -74,7 +74,7 @@ def pull_regions(path):
                 sequence.append(('surplus ends', cline.offset))
         # if len(sequence)>1 and sequence[-2][1]==cline.offset:
         #     print(bcolors.WARNING + "Special case" + bcolors.ENDC)
-    print subregions
+    print(subregions)
     return sequence, cf, subregions
 
 def ms2hr(ms):

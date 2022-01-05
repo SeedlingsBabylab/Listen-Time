@@ -240,13 +240,13 @@ if __name__ == "__main__":
     regions = []
     issues = []
     for file in files:
-        print "Checking {}".format(os.path.basename(file))
+        print("Checking {}".format(os.path.basename(file)))
         issues_file, results = pull_regions(file)
         file_regions = [[os.path.basename(file), len(results), "subregion {} of {}".format(sub[0], sub[1])]+results[sub] for sub in results.keys()]
         issues_file = [[os.path.basename(file)]+iss for iss in issues_file]
         regions.extend(file_regions)
         issues.extend(issues_file)
-        print "Finished {}".format(os.path.basename(file))
+        print("Finished {}".format(os.path.basename(file)))
 
     df = pd.DataFrame(regions, columns=['file', 'subregion_count', 'current_subregion', 'skip_count', 'skip_time', 'extra_count', 'extra_time', 'makeup_count', 'makeup_time', 'silence_time'])
     df_issue = pd.DataFrame(issues, columns=['file', 'line_index', 'line', 'issue'])

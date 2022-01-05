@@ -222,25 +222,25 @@ if __name__ == "__main__":
                 extra_sum = sum_regions(b_extra, e_extra)
                 print("1")
             except Exception as e:
-                print fname
-                print e
-                print
+                print(fname)
+                print(e)
+                print()
         if b_makup:
             try:
                 makeup_sum = sum_regions(b_makup, e_makup)
                 print("2")
             except Exception as e:
-                print fname
-                print e
-                print
+                print(fname)
+                print(e)
+                print()
         if b_skip:
             try:
                 skip_sum = sum_regions(b_skip, e_skip)
                 print("3")
             except Exception as e:
-                print fname
-                print e
-                print
+                print(fname)
+                print(e)
+                print()
         if b_sil:
             try:
                 overlap_sum = sil_subr_overlap_sum(int(fname[3:5]),
@@ -250,22 +250,22 @@ if __name__ == "__main__":
 
                 print("4")
             except:
-                print
+                print()
         if b_subr:
             try:
                 subr_sum = sum_regions(b_subr, e_subr)
                 print("5")
             except Exception as e:
-                print fname
-                print e
-                print
+                print(fname)
+                print(e)
+                print()
 
         results.append((os.path.basename(file)[:5], extra_sum, makeup_sum, skip_sum, overlap_sum, subr_sum))
 
     except Exception as e:
-        print fname
-        print e
-        print
+        print(fname)
+        print(e)
+        print()
 
     # with open(r"total_listened_time.csv", 'a') as f:
     #     writer = csv.writer(f)
