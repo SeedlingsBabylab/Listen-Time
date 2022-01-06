@@ -5,7 +5,7 @@ import sys
 from multiprocessing import Pool, Manager
 
 from check_errors import sequence_missing_repetition_entry_alert
-from funcs import cha_structure_path, pull_regions, bcolors, sequence_minimal_error_sorting, output
+from funcs import default_cha_structures_folder, pull_regions, bcolors, sequence_minimal_error_sorting, output
 from listen_time import total_listen_time
 
 
@@ -18,20 +18,25 @@ def get_args():
     return parser.parse_args()
 
 
-def process_single_file(file, file_path=cha_structure_path):
-
-    print("Checking {}".format(os.path.basename(file)))
+def process_single_file(clan_file_path, output_folder=default_cha_structures_folder):
+    # Extract sequence of all starts/ends of all regions
+    print("Checking {}".format(os.path.basename(clan_file_path)))
     try:
-        sequence, cf, subregions = pull_regions(file)
+        sequence, clan_file, subregions = pull_regions(clan_file_path=clan_file_path)
     except Exception as e:
-        print(bcolors.FAIL + "Error opening file: {}".format(file) + bcolors.ENDC)
+        print(bcolors.FAIL + "Error opening file: {}".format(clan_file_path) + bcolors.ENDC)
         print(sys.exc_info())
         return
 
+    # Sort that sequence by timestamp and - in case of collisions - by region rank
     # HINT: The sequence below is what gets written to the cha_structure file.
     sequence = sequence_minimal_error_sorting(sequence)
+
+    # Check for errors
     error_list, region_map = sequence_missing_repetition_entry_alert(sequence)
-    with open(os.path.join(file_path, os.path.basename(file) + '.txt'), 'w') as f:
+
+    # Write results to a text file
+    with open(os.path.join(output_folder, os.path.basename(clan_file_path) + '.txt'), 'w') as f:
         f.write('\n'.join([x[0] + '   ' + str(x[1]) for x in sequence]))
         f.write('\n')
         f.write('\n')
@@ -41,8 +46,8 @@ def process_single_file(file, file_path=cha_structure_path):
         if error_list:
             print(
                 bcolors.WARNING + "Finished {0} with errors! Listen time cannot be calculated due to missing starts or ends!\nCheck the {0}.txt file for errors!".format(
-                    os.path.basename(file)) + bcolors.ENDC)
-            file_with_error.append((os.path.basename(file), error_list))
+                    os.path.basename(clan_file_path)) + bcolors.ENDC)
+            file_with_error.append((os.path.basename(clan_file_path), error_list))
 
         # If the file with error has a missing start or end error, we cannot correctly process it! So return!
         for item in error_list:
@@ -51,10 +56,10 @@ def process_single_file(file, file_path=cha_structure_path):
 
         try:
             # Checking if the file is a 6 or 7 month old to set the month67 parameter of the function
-            if os.path.basename(file)[3:5] in ['06', '07']:
-                listen_time = total_listen_time(cf, region_map, subregions, month67=True)
+            if os.path.basename(clan_file_path)[3:5] in ['06', '07']:
+                listen_time = total_listen_time(clan_file, region_map, subregions, month67=True)
             else:
-                listen_time = total_listen_time(cf, region_map, subregions)
+                listen_time = total_listen_time(clan_file, region_map, subregions)
         except:
             return
 
@@ -62,7 +67,7 @@ def process_single_file(file, file_path=cha_structure_path):
         f.write('\n'.join(subregions))
 
         # listen_time is dict returned by total_listen_time function in listen_time.py
-        listen_time['filename'] = os.path.basename(file)
+        listen_time['filename'] = os.path.basename(clan_file_path)
 
         # Setting the subregions of the listen_time dictionary.
         positions = []
@@ -80,7 +85,7 @@ def process_single_file(file, file_path=cha_structure_path):
         listen_time['ranks'] = ranks
         listen_time['positions'] = positions
         listen_time_summary.append(listen_time)
-        print("Finished {}".format(os.path.basename(file)) + '\nTotal Listen Time: ' + bcolors.OKGREEN + str(
+        print("Finished {}".format(os.path.basename(clan_file_path)) + '\nTotal Listen Time: ' + bcolors.OKGREEN + str(
             listen_time['total_listen_time_hour']) + bcolors.ENDC)
         print(subregions)
 
@@ -96,12 +101,12 @@ if __name__ == "__main__":
     else:
 
         path_file = args.input_file
-        files = []
+        clan_file_paths = []
         with open(path_file) as f:
             for path in f.readlines():
                 path = path.strip()
-                files.append(path)
-        print("Expected to process {} cha files".format(len(files)))
+                clan_file_paths.append(path)
+        print("Expected to process {} cha files".format(len(clan_file_paths)))
         # Create output folder if it does not exist
         try:
             output_path = sys.argv[2]
@@ -124,7 +129,7 @@ if __name__ == "__main__":
             p = Pool(6)
             signal.signal(signal.SIGINT, original_sigint_handler)
             try:
-                res = p.map(process_single_file, files)
+                res = p.map(process_single_file, clan_file_paths)
             except KeyboardInterrupt:
                 print("Caught KeyboardInterrupt, terminating workers")
                 p.terminate()
@@ -137,11 +142,12 @@ if __name__ == "__main__":
             file_with_error = []
             listen_time_summary = []
 
-            for file in files:
+            for clan_file_path in clan_file_paths:
                 try:
-                    process_single_file(file, cha_structure_path)
+                    process_single_file(clan_file_path, cha_structure_path)
                 except Exception as e:
                     print(e)
                     continue
-        # We output the findings.
+
+    # We output the findings.
     output(file_with_error, listen_time_summary, args.output_path)

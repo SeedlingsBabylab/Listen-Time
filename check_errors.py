@@ -1,6 +1,7 @@
-from settings import keyword_list
+from settings import region_types
 
-def sequence_missing_repetition_entry_alert(sequence):
+
+def sequence_missing_repetition_entry_alert(region_starts_and_ends):
     """
     Step 3:
         Basic error checking. It first builds the following map:
@@ -13,11 +14,11 @@ def sequence_missing_repetition_entry_alert(sequence):
         The checking makes sure that both the beginning and end remarks are present for each region identified.
     """
 
-    region_map = {x:{'starts':[], 'ends': []} for x in keyword_list}
+    region_map = {x:{'starts':[], 'ends': []} for x in region_types}
     error_list = []
-    for entry in sequence:
+    for entry in region_starts_and_ends:
         region_map[entry[0].split()[0]][entry[0].split()[1]].append(entry[1])
-    for item in keyword_list:
+    for item in region_types:
         if len(region_map[item]['starts']) == 0 and len(region_map[item]['ends']) == 0:
             continue
         # Checking for duplicate starts and ends. Length of set will be shorter if there are duplicates.

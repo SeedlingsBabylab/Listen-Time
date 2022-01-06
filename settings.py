@@ -1,6 +1,6 @@
 import re
 
-cha_structure_path = "output/cha_structures"
+default_cha_structures_folder = "output/cha_structures"
 
 # Precision for rounding the millisecond values. 
 PRECISION = 2
@@ -49,13 +49,19 @@ class bcolors:
     UNDERLINE = '\033[4m'
 
 # Regexes to pull subregion rank and position:
-subr_regx = re.compile(r'subregion (\d*) ?of (\d*)') # There are some cases where the numbering is missing
-rank_regx = re.compile(r'ranked (\d*) ?of (\d*)')
+subregion_regex = re.compile(r'subregion (\d*) ?of (\d*)') # There are some cases where the numbering is missing
+subregion_rank_regex = re.compile(r'ranked (\d*) ?of (\d*)')
 
 code_regx = re.compile(r'([a-zA-Z][a-z+]*)( +)(&=)([A-Za-z]{1})(_)([A-Za-z]{1})(_)([A-Z]{1}[A-Z0-9]{2})(_)?(0x[a-z0-9]{6})?', re.IGNORECASE | re.DOTALL) # Annotation regex
-subr_time_regx = re.compile(r'at (\d+)')
-keyword_list = ["subregion", "silence", "skip", "makeup", "extra", "surplus"]
-keyword_rank = {"subregion starts": 1, "silence starts": 2, "skip starts": 3, "makeup starts": 4, "extra starts": 5, "surplus starts":6, "subregion ends": 12, "silence ends": 11, "skip ends": 10, "makeup ends": 8, "extra ends": 8, "surplus ends": 7}
+subregion_time_regex = re.compile(r'at (\d+)')
+region_types = ["subregion", "silence", "skip", "makeup", "extra", "surplus"]
+keyword_rank = {"subregion starts": 1, "subregion ends": 12,
+                "silence starts":   2, "silence ends":   11,
+                "skip starts":      3, "skip ends":      10,
+                "makeup starts":    4, "makeup ends":    8,  # Zhenya: must be a mistake
+                "extra starts":     5, "extra ends":     8,
+                "surplus starts":   6, "surplus ends":   7
+                     }
 
 starts_ends = {'starts': 1, 'ends': 0}
 
