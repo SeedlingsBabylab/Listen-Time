@@ -5,6 +5,10 @@ silence ends   11552700
 subregion starts   13800000
 subregion ends   17400000
 subregion starts   18600000
+skip starts   19831700
+skip ends   21108000
+skip starts   21110970
+skip ends   22056700
 silence starts   22156400
 subregion ends   22200000
 silence ends   26154660

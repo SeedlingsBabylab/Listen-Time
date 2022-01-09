@@ -1,6 +1,6 @@
 subregion starts   2100000
-subregion starts   5700000
 subregion ends   5700000
+subregion starts   5700000
 skip starts   8651090
 subregion ends   9300000
 skip ends   9300190

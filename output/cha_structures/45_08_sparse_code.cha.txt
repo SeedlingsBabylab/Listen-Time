@@ -6,7 +6,7 @@ surplus ends   10201090
 subregion ends   11100000
 subregion starts   11100000
 skip starts   12442960
-skip ends   13420220
+skip ends   13417900
 silence starts   13420220
 subregion ends   14700000
 silence ends   20726770

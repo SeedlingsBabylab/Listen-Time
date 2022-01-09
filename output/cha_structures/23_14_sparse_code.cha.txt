@@ -4,18 +4,21 @@ subregion starts   5700000
 subregion ends   9300000
 subregion starts   9300000
 subregion ends   12900000
-extra starts   12900430
+surplus starts   13279810
+surplus ends   13546040
 silence starts   13585980
 silence ends   19032180
+surplus starts   19118590
+surplus ends   24917200
 silence starts   25068480
 silence ends   25301130
+surplus starts   25434370
+surplus ends   29379980
 subregion starts   29400000
 subregion ends   33000000
-extra starts   33000830
 silence starts   34453110
 silence ends   38441920
 subregion starts   40500000
-extra ends   40500440
 subregion ends   44100000
 subregion starts   47100000
 subregion ends   50700000
@@ -23,4 +26,9 @@ silence starts   54758000
 silence ends   57599990
 
 
-extra ends missing for start at 33000830
+
+Position: 1, Rank: 5
+Position: 2, Rank: 3
+Position: 3, Rank: 1
+Position: 4, Rank: 4
+Position: 5, Rank: 2

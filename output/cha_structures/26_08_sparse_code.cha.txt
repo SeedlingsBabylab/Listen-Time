@@ -2,9 +2,9 @@ silence starts   3879190
 subregion starts   9300000
 silence ends   11396170
 makeup starts   11396170
+makeup ends   12896130
 subregion ends   12900000
 subregion starts   12900000
-makeup ends   12902090
 skip starts   13793600
 skip ends   14473010
 subregion ends   16500000
@@ -17,11 +17,11 @@ subregion ends   34200000
 extra starts   34201110
 extra ends   34629230
 surplus starts   34700360
-surplus ends   35072410
+surplus ends   35084720
 subregion starts   36600000
 skip starts   39622620
+skip ends   40196350
 subregion ends   40200000
-skip ends   40200820
 silence starts   40294610
 silence ends   57599990
 

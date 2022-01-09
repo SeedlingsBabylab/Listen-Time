@@ -3,7 +3,9 @@ makeup starts   34120
 makeup ends   3599340
 subregion ends   3600000
 subregion starts   3900000
+skip starts   6849450
 silence starts   7243890
+skip ends   7411880
 subregion ends   7500000
 silence ends   13442480
 subregion starts   13500000

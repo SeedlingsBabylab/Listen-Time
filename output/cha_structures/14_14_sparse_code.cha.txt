@@ -1,8 +1,8 @@
 subregion starts   1500000
 subregion ends   5100000
 subregion starts   6000000
-extra starts   6498970
-extra ends   9596110
+surplus starts   6498970
+surplus ends   9596110
 subregion ends   9600000
 subregion starts   9600000
 subregion ends   13200000
