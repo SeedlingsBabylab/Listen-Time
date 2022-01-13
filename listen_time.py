@@ -18,7 +18,7 @@ def getOverlap(a, b):
 def total_listen_time(cf, region_map, subregions, month67 = False):
     # Sub positions is an array to keep track of which subregion is which after deletions. It's my hacky way of figuring out the positions of subregions after removals, so I can correctly
     # assign reasons for removal. 
-    sub_positions = range(1, 6)
+    sub_positions = list(range(1, 6))
     removals = ['' for i in range(5)]
     counts = [0 for i in range(5)]
     # '''
