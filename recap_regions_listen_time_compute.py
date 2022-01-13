@@ -56,6 +56,10 @@ def process_single_file(clan_file_path, output_folder=default_cha_structures_fol
         # Write the list of errors
         f.write('\n'.join(error_list))
 
+        # Write subregion information
+        f.write('\n')
+        f.write('\n'.join(subregions))
+
         # If the file with error has a missing start or end error, we cannot correctly process it! So return!
         for item in error_list:
             if 'missing' in item:
@@ -68,11 +72,8 @@ def process_single_file(clan_file_path, output_folder=default_cha_structures_fol
         except:
             return
 
-        f.write('\n')
-        f.write('\n'.join(subregions))
-
-        # listen_time is dict returned by total_listen_time function in listen_time.py
-        listen_time['filename'] = os.path.basename(clan_file_path)
+    # listen_time is dict returned by total_listen_time function in listen_time.py
+    listen_time['filename'] = os.path.basename(clan_file_path)
 
         # Setting the subregions of the listen_time dictionary.
         positions = []
