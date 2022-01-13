@@ -1,12 +1,12 @@
 import io
 
-import pyclan as pc
+import pyclan
 import os.path
 from settings import *
 import csv
 
 
-def _extract_subregion_info(clan_line: pc.ClanLine, clan_file_path: str):
+def _extract_subregion_info(clan_line: pyclan.ClanLine, clan_file_path: str):
     """
     Extracts subregion position, rank, offset from a comment line from a clan (cha) file. Returns "N/A" for attributes
     it couldn't extract.
@@ -32,7 +32,7 @@ def _extract_subregion_info(clan_line: pc.ClanLine, clan_file_path: str):
     return position, rank, offset
 
 
-def pull_regions(clan_file_path):
+def pull_regions(clan_file: pyclan.ClanFile):
     """
     Step 1:
         Parse file by pyclan and extract comments from the file.
@@ -46,8 +46,6 @@ def pull_regions(clan_file_path):
         subregions - list of strings of the format
     """
 
-    clan_file = pc.ClanFile(clan_file_path)
-
     # List of strings of the format 'Position: {}, Rank: {}'
     subregions = []
 
@@ -55,7 +53,7 @@ def pull_regions(clan_file_path):
     comments.sort(key=lambda x: x.offset)
 
     region_boundaries = []
-    clan_line: pc.ClanLine
+    clan_line: pyclan.ClanLine
     for clan_line in comments:
         line = clan_line.line
 
@@ -126,7 +124,7 @@ def output(file_with_error, listen_time_summary, output_path):
             writer.writerows(listen_time_summary)
 
 
-def sequence_minimal_error_sorting(region_boundaries):
+def sort_list_of_region_boundaries(region_boundaries):
     """
     Step 2:
         Sort the output, a list of tuples, from the pull_regions function.
@@ -137,7 +135,7 @@ def sequence_minimal_error_sorting(region_boundaries):
     :param region_boundaries: list of ('<kind_of_region> <starts|ends>', <timestamp>) tuples
     :return:
     """
-    region_boundaries = sorted(region_boundaries, key=lambda k: (k[1], starts_ends[k[0].split()[1]], keyword_rank[k[0]]))
+    region_boundaries = sorted(region_boundaries, key=lambda k: (k[1], starts_ends[k[0].split()[1]], region_sorting_rank[k[0]]))
     return region_boundaries
 
 

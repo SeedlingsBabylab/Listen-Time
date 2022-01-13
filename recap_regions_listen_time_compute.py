@@ -4,8 +4,10 @@ import signal
 import sys
 from multiprocessing import Pool, Manager
 
+import pyclan
+
 from check_errors import sequence_missing_repetition_entry_alert
-from funcs import default_cha_structures_folder, pull_regions, bcolors, sequence_minimal_error_sorting, output
+from funcs import default_cha_structures_folder, pull_regions, bcolors, sort_list_of_region_boundaries, output
 from listen_time import total_listen_time
 
 
@@ -19,35 +21,40 @@ def get_args():
 
 
 def process_single_file(clan_file_path, output_folder=default_cha_structures_folder):
-    # Extract sequence of all starts/ends of all regions
+
     print("Checking {}".format(os.path.basename(clan_file_path)))
+
+    # Parse the clan file
     try:
-        sequence, clan_file, subregions = pull_regions(clan_file_path=clan_file_path)
+        clan_file = pyclan.ClanFile(clan_file_path)
     except Exception as e:
         print(bcolors.FAIL + "Error opening file: {}".format(clan_file_path) + bcolors.ENDC)
         print(sys.exc_info())
         return
 
+    # Extract sequence of all starts/ends of all regions and subregion positions and ranks
+    region_boundaries, subregions = pull_regions(clan_file=clan_file)
+
     # Sort that sequence by timestamp and - in case of collisions - by region rank
-    # HINT: The sequence below is what gets written to the cha_structure file.
-    sequence = sequence_minimal_error_sorting(sequence)
+    region_boundaries = sort_list_of_region_boundaries(region_boundaries)
 
     # Check for errors
-    error_list, region_map = sequence_missing_repetition_entry_alert(sequence)
+    error_list, region_map = sequence_missing_repetition_entry_alert(region_boundaries)
+    if error_list:
+        print(
+            bcolors.WARNING + "Finished {0} with errors! Listen time cannot be calculated due to missing starts or ends!\nCheck the {0}.txt file for errors!".format(
+                os.path.basename(clan_file_path)) + bcolors.ENDC)
+        file_with_error.append((os.path.basename(clan_file_path), error_list))
 
     # Write results to a text file
     with open(os.path.join(output_folder, os.path.basename(clan_file_path) + '.txt'), 'w') as f:
-        f.write('\n'.join([x[0] + '   ' + str(x[1]) for x in sequence]))
-        f.write('\n')
-        f.write('\n')
-        f.write('\n')
-        f.write('\n'.join(error_list))
+        # Write the region boundaries
+        f.write('\n'.join([region_type_and_side + '   ' + str(timestamp)
+                           for region_type_and_side, timestamp in region_boundaries]))
+        f.write('\n' * 3)
 
-        if error_list:
-            print(
-                bcolors.WARNING + "Finished {0} with errors! Listen time cannot be calculated due to missing starts or ends!\nCheck the {0}.txt file for errors!".format(
-                    os.path.basename(clan_file_path)) + bcolors.ENDC)
-            file_with_error.append((os.path.basename(clan_file_path), error_list))
+        # Write the list of errors
+        f.write('\n'.join(error_list))
 
         # If the file with error has a missing start or end error, we cannot correctly process it! So return!
         for item in error_list:
@@ -56,10 +63,8 @@ def process_single_file(clan_file_path, output_folder=default_cha_structures_fol
 
         try:
             # Checking if the file is a 6 or 7 month old to set the month67 parameter of the function
-            if os.path.basename(clan_file_path)[3:5] in ['06', '07']:
-                listen_time = total_listen_time(clan_file, region_map, subregions, month67=True)
-            else:
-                listen_time = total_listen_time(clan_file, region_map, subregions)
+            month67 = os.path.basename(clan_file_path)[3:5] in ['06', '07']
+            listen_time = total_listen_time(clan_file, region_map, subregions, month67=month67)
         except:
             return
 
