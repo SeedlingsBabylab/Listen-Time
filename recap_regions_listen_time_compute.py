@@ -60,40 +60,39 @@ def process_single_file(clan_file_path, output_folder=default_cha_structures_fol
         f.write('\n')
         f.write('\n'.join(subregions))
 
-        # If the file with error has a missing start or end error, we cannot correctly process it! So return!
-        for item in error_list:
-            if 'missing' in item:
-                return
-
-        try:
-            # Checking if the file is a 6 or 7 month old to set the month67 parameter of the function
-            month67 = os.path.basename(clan_file_path)[3:5] in ['06', '07']
-            listen_time = total_listen_time(clan_file, region_map, subregions, month67=month67)
-        except:
+    # If the file with error has a missing start or end error, we cannot correctly process it! So return!
+    for subregion in error_list:
+        if 'missing' in subregion:
             return
+
+    try:
+        # Checking if the file is a 6 or 7 month old to set the month67 parameter of the function
+        month67 = os.path.basename(clan_file_path)[3:5] in ['06', '07']
+        listen_time = total_listen_time(clan_file, region_map, subregions, month67=month67)
+    except:
+        return
 
     # listen_time is dict returned by total_listen_time function in listen_time.py
     listen_time['filename'] = os.path.basename(clan_file_path)
 
-        # Setting the subregions of the listen_time dictionary.
-        positions = []
-        ranks = []
-        for item in subregions:
-            t = item.split(',')
-            p = t[0]
-            r = t[1]
-            pos = p.split()[1]
-            rank = r.split()[1]
-            positions.append(pos)
-            ranks.append(rank)
+    # Setting the subregions of the listen_time dictionary.
+    positions = []
+    ranks = []
+    for subregion in subregions:
+        # subregion is a string like 'Position: 4, Rank: 4'
+        position_string, rank_string = subregion.split(',')
+        position = position_string.split()[1]
+        rank = rank_string.split()[1]
+        positions.append(position)
+        ranks.append(rank)
 
-        listen_time['subregions'] = subregions
-        listen_time['ranks'] = ranks
-        listen_time['positions'] = positions
-        listen_time_summary.append(listen_time)
-        print("Finished {}".format(os.path.basename(clan_file_path)) + '\nTotal Listen Time: ' + bcolors.OKGREEN + str(
-            listen_time['total_listen_time_hour']) + bcolors.ENDC)
-        print(subregions)
+    listen_time['subregions'] = subregions
+    listen_time['ranks'] = ranks
+    listen_time['positions'] = positions
+    listen_time_summary.append(listen_time)
+    print("Finished {}".format(os.path.basename(clan_file_path)) + '\nTotal Listen Time: ' + bcolors.OKGREEN + str(
+        listen_time['total_listen_time_hour']) + bcolors.ENDC)
+    print(subregions)
 
 
 if __name__ == "__main__":
