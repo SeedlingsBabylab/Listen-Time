@@ -6,9 +6,9 @@ subregion starts   13800000
 subregion ends   17400000
 subregion starts   17700000
 skip starts   19695860
+skip ends   20875140
 silence starts   20877130
 subregion ends   21300000
-skip ends   21366200
 silence ends   33388700
 subregion starts   36300000
 makeup starts   36301050

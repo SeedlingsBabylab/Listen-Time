@@ -1,6 +1,8 @@
 subregion starts   10
 silence starts   476050
 subregion ends   3600000
+extra starts   3602460
+extra ends   4298970
 extra starts   4299770
 silence ends   4359730
 extra ends   4499490

@@ -1,6 +1,0 @@
-23_14_sparse_code.cha
-				extra ends missing for start at 33000830
-
-43_09_sparse_code.cha
-				makeup ends missing for start at 20400470
-
