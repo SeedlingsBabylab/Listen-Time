@@ -57,7 +57,7 @@ if __name__ == '__main__':
             with open(os.path.join(sys.argv[1], f)) as cha_struct:
                 f_dict = {r: {'starts': [], 'ends': []} for r in region_types}
                 # traverse the cha structure file line by line
-                print f
+                print(f)
                 #print f_dict
                 for line in cha_struct:
                     process_line(line, f_dict)
@@ -65,7 +65,7 @@ if __name__ == '__main__':
                 writer.writerows(flatten(f_dict, f))
                 
                 #print f_dict
-                print '\n\n\n'
+                print('\n\n\n')
 
                 
 

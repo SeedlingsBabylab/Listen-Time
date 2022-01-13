@@ -25,7 +25,7 @@ if __name__ == "__main__":
     for root, dirs, files in os.walk(start):
         for file in files:
             if file.endswith(".cha"):
-                print file
+                print(file)
 
                 # full = ""
                 lines = []

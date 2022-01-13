@@ -32,7 +32,7 @@ def close(ts, other, window=1000):
 problems = []
 for i, f in coms.groupby('fprefix'):
     if i == "03_08":
-        print
+        print()
     for j, r in f.iterrows():
         algo_regs = algo.query("file == \"{}\"".format(i))
         if not region_exists(r, algo_regs):

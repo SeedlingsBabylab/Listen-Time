@@ -51,7 +51,7 @@ if __name__ == "__main__":
         try:
             process_file(file)
         except:
-            print os.path.basename(file)
+            print(os.path.basename(file))
 
     df = pd.DataFrame(regions, columns=['file', 'reg_num', 'onset', 'offset'])
     df.to_csv("subregions.csv", index=False)

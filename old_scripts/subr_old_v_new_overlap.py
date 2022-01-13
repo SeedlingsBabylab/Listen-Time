@@ -39,7 +39,7 @@ if __name__ == "__main__":
 
     results = []
     for f, r in algo5.groupby("file"):
-        print f
+        print(f)
         sub = subrg.query("file == \"{}\"".format(f))
         if sub.shape[0] > 0:
             results.extend(compare(r, sub))
@@ -68,13 +68,13 @@ if __name__ == "__main__":
     #
     for i, g in df.groupby("file"):
         if g.shape[0] != 5:
-            print "i: {}   g: {}".format(i, g.shape[0])
+            print("i: {}   g: {}".format(i, g.shape[0]))
 
 
-    print "missing 1-5 in rank correct: "
+    print("missing 1-5 in rank correct: ")
     for i, g in df.groupby("file"):
         if any(x not in g.rank_correct.values for x in [1, 2, 3, 4, 5]):
-            print i
+            print(i)
 
     new_df = pd.DataFrame(columns=list(df.columns) + ['file_contains_diff', 'region_onset_diff', "region_offset_diff", "onset_diff_minutes", "offset_diff_minutes"])
 
@@ -105,5 +105,5 @@ if __name__ == "__main__":
     final_df.to_csv("algo_vs_current_subregion_overlap.csv", index=False)
 
 
-    print
+    print()
 

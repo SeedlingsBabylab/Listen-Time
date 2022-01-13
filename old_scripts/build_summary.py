@@ -183,9 +183,9 @@ if __name__ == "__main__":
         b_skip, e_skip, b_subr, e_subr, b_sil, \
         e_sil, summary  = pull_regions(file, month)
     except Exception as e:
-        print fname
-        print e
-        print
+        print(fname)
+        print(e)
+        print()
 
     sumpath = "/".join(file.split("/")[:-1])
     print(sumpath)

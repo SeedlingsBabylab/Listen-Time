@@ -17,6 +17,6 @@ df.to_csv("all_cha_top5_ms.csv", index=False)
 
 
 # df =
-print
+print()
 
 
