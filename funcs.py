@@ -60,7 +60,7 @@ def pull_regions(clan_file: pyclan.ClanFile):
         # Pulling subregion information from the line. 
 
         if 'subregion' in line:
-            sub_pos, sub_rank, offset = _extract_subregion_info(clan_line=clan_line, clan_file_path=clan_file_path)
+            sub_pos, sub_rank, offset = _extract_subregion_info(clan_line=clan_line, clan_file_path=clan_file.clan_path)
             if 'starts' in line:
                 region_boundaries.append(('subregion starts', offset))
             # Only adding after ends in order to not add the position and rank info twice to the subregions list. 
