@@ -58,7 +58,7 @@ region_types = ["subregion", "silence", "skip", "makeup", "extra", "surplus"]
 keyword_rank = {"subregion starts": 1, "subregion ends": 12,
                 "silence starts":   2, "silence ends":   11,
                 "skip starts":      3, "skip ends":      10,
-                "makeup starts":    4, "makeup ends":    8,  # Zhenya: must be a mistake
+                "makeup starts":    4, "makeup ends":    9,
                 "extra starts":     5, "extra ends":     8,
                 "surplus starts":   6, "surplus ends":   7
                      }
