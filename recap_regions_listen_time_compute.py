@@ -1,4 +1,6 @@
 import argparse
+import csv
+import io
 import os.path
 import signal
 import sys
@@ -7,8 +9,9 @@ from multiprocessing import Pool, Manager
 import pyclan
 
 from check_errors import sequence_missing_repetition_entry_alert
-from funcs import default_cha_structures_folder, pull_regions, bcolors, sort_list_of_region_boundaries, output
+from funcs import pull_regions, bcolors, sort_list_of_region_boundaries
 from listen_time import total_listen_time
+from settings import FIELD_NAMES, default_cha_structures_folder
 
 
 def get_args():

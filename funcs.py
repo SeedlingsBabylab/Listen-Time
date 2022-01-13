@@ -103,27 +103,6 @@ def ms2hr(ms):
     return round(ms / 3600000.0, PRECISION)
 
 
-def output(file_with_error, listen_time_summary, output_path):
-    with open(os.path.join(output_path, 'Error_Summary.txt'), 'w') as f:
-        for entry in file_with_error:
-            f.write(entry[0]+'\n')
-            for error in entry[1]:
-                f.write('\t\t\t\t'+error+'\n')
-            f.write('\n')
-
-    # Writing to the total listen time summary file
-    with open(os.path.join(output_path, 'Total_Listen_Time_Summary.csv'), 'wb') as binary_file:
-        # I am not sure why binary mode was used above but it won't work with Python 3 csv module which wants to write
-        # strings, not bytes. Just in case it was necessary to write to a binary file, we'll just wrap the binary file
-        # an a virtual text file object.
-        with io.TextIOWrapper(binary_file, encoding='utf-8', newline='') as virtual_text_file:
-            writer = csv.DictWriter(virtual_text_file, fieldnames=FIELD_NAMES)
-            writer.writeheader()
-            listen_time_summary = list(listen_time_summary)
-            listen_time_summary.sort(key = lambda k: k['filename'])
-            writer.writerows(listen_time_summary)
-
-
 def sort_list_of_region_boundaries(region_boundaries):
     """
     Step 2:
