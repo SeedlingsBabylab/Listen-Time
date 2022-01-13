@@ -20,6 +20,7 @@ def get_args():
                         help='Either a path file containing a path for each cha file, one path per line, OR, a single cha file.')
     parser.add_argument('--output_path', help='Optional output directory to output the reports/csvs/etc.',
                         default='output')
+    parser.add_argument("--fast", action="store_true", help='Parallelize processing using up to 6 corse')
     return parser.parse_args()
 
 
@@ -63,6 +64,8 @@ def process_single_file(clan_file_path, output_folder=default_cha_structures_fol
         f.write('\n')
         f.write('\n'.join(subregions))
 
+    # Calculate listen time
+
     # If the file with error has a missing start or end error, we cannot correctly process it! So return!
     for subregion in error_list:
         if 'missing' in subregion:
@@ -98,6 +101,27 @@ def process_single_file(clan_file_path, output_folder=default_cha_structures_fol
     print(subregions)
 
 
+def output_aggregated_results(file_with_error, listen_time_summary, output_path):
+    with open(os.path.join(output_path, 'Error_Summary.txt'), 'w') as f:
+        for entry in file_with_error:
+            f.write(entry[0]+'\n')
+            for error in entry[1]:
+                f.write('\t\t\t\t'+error+'\n')
+            f.write('\n')
+
+    # Writing to the total listen time summary file
+    with open(os.path.join(output_path, 'Total_Listen_Time_Summary.csv'), 'wb') as binary_file:
+        # I am not sure why binary mode was used above but it won't work with Python 3 csv module which wants to write
+        # strings, not bytes. Just in case it was necessary to write to a binary file, we'll just wrap the binary file
+        # an a virtual text file object.
+        with io.TextIOWrapper(binary_file, encoding='utf-8', newline='') as virtual_text_file:
+            writer = csv.DictWriter(virtual_text_file, fieldnames=FIELD_NAMES)
+            writer.writeheader()
+            listen_time_summary = list(listen_time_summary)
+            listen_time_summary.sort(key=lambda k: k['filename'])
+            writer.writerows(listen_time_summary)
+
+
 if __name__ == "__main__":
     args = get_args()
 
@@ -120,12 +144,15 @@ if __name__ == "__main__":
             output_path = sys.argv[2]
             if output_path.startswith('--'):
                 output_path = 'output'
-        except:
+        except IndexError:
             output_path = 'output'
+
         if not os.path.isdir(output_path):
             os.mkdir(output_path)
+
         if not os.path.isdir(os.path.join(output_path, 'cha_structures')):
             os.mkdir(os.path.join(output_path, 'cha_structures'))
+
         cha_structure_path = os.path.join(output_path, 'cha_structures')
 
         if '--fast' in sys.argv:
@@ -158,4 +185,4 @@ if __name__ == "__main__":
                     continue
 
     # We output the findings.
-    output(file_with_error, listen_time_summary, args.output_path)
+    output_aggregated_results(file_with_error, listen_time_summary, args.output_path)

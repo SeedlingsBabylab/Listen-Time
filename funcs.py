@@ -1,9 +1,5 @@
-import io
-
 import pyclan
-import os.path
-from settings import *
-import csv
+from settings import subregion_regex, subregion_rank_regex, bcolors, subregion_time_regex, PRECISION, starts_ends, region_sorting_rank
 
 
 def _extract_subregion_info(clan_line: pyclan.ClanLine, clan_file_path: str):
@@ -39,7 +35,7 @@ def pull_regions(clan_file: pyclan.ClanFile):
         Go through each comment, if it marks the beginning or ending of the regions,
         mark it down to a list of tuples that looks like:
         [(subregion starts, timestamp),  (silence starts, timestamp), (silence ends, timestamp)....]
-    :param clan_file_path: path to the clan (cha) file as a string
+    :param clan_file: pyclan.ClanFile objet representing a parsed clan file
     :return: (region_boundaries, clan_file, subregions)
         region_boundaries - list of tuples described above
         clan_file - pc.ClanFile object that parsed the input clan file
@@ -96,7 +92,7 @@ def pull_regions(clan_file: pyclan.ClanFile):
         #     print(bcolors.WARNING + "Special case" + bcolors.ENDC)
 
     print(subregions)
-    return region_boundaries, clan_file, subregions
+    return region_boundaries, subregions
 
 
 def ms2hr(ms):
