@@ -1,5 +1,14 @@
 import pyclan
-from settings import subregion_regex, subregion_rank_regex, bcolors, subregion_time_regex, PRECISION, starts_ends, region_sorting_rank
+from settings import subregion_regex, subregion_rank_regex, bcolors, subregion_time_regex, PRECISION
+
+
+REGION_SORTING_RANK = {"subregion starts": 1, "subregion ends": 12,
+                       "silence starts": 2, "silence ends": 11,
+                       "skip starts": 3, "skip ends": 10,
+                       "makeup starts": 4, "makeup ends": 9,
+                       "extra starts": 5, "extra ends": 8,
+                       "surplus starts": 6, "surplus ends": 7
+                       }
 
 
 def _extract_subregion_info(clan_line: pyclan.ClanLine, clan_file_path: str):
@@ -103,14 +112,21 @@ def sort_list_of_region_boundaries(region_boundaries):
     """
     Step 2:
         Sort the output, a list of tuples, from the pull_regions function.
-        The sorting has two keys, primary key is the timestamp, ascending
-        secondary sorting key is rank specified in keyword rank.
-        The purpose of the secondary key is to ensure that when two entries
-        have the same timestamp, certain sorting order is still maintained.
+        The sorting has three keys:
+        - timestamp,
+        - whether it is a start or an end (ends should come before starts),
+        - rank of a region: e.g., subregion stars before skip starts but skip ends before subregion ends.
+        The purpose of the third key is to ensure that when two entries have the same timestamp, certain sorting order
+        is still maintained.
+
     :param region_boundaries: list of ('<kind_of_region> <starts|ends>', <timestamp>) tuples
     :return:
     """
-    region_boundaries = sorted(region_boundaries, key=lambda k: (k[1], starts_ends[k[0].split()[1]], region_sorting_rank[k[0]]))
+    def _sorting_key(region_boundary):
+        timestamp = int(region_boundary[1])
+        starts_ends = region_boundary[0].split()[1]
+        region_rank = REGION_SORTING_RANK[region_boundary[0]]
+        return timestamp, 0 if starts_ends == 'ends' else 1, region_rank
+
+    region_boundaries = sorted(region_boundaries, key=_sorting_key)
     return region_boundaries
-
-

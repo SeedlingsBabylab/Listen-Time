@@ -56,14 +56,3 @@ subregion_rank_regex = re.compile(r'ranked (\d*) ?of (\d*)')
 code_regx = re.compile(r'([a-zA-Z][a-z+]*)( +)(&=)([A-Za-z]{1})(_)([A-Za-z]{1})(_)([A-Z]{1}[A-Z0-9]{2})(_)?(0x[a-z0-9]{6})?', re.IGNORECASE | re.DOTALL) # Annotation regex
 subregion_time_regex = re.compile(r'at (\d+)')
 region_types = ["subregion", "silence", "skip", "makeup", "extra", "surplus"]
-region_sorting_rank = {"subregion starts": 1, "subregion ends": 12,
-                       "silence starts": 2, "silence ends": 11,
-                       "skip starts": 3, "skip ends": 10,
-                       "makeup starts": 4, "makeup ends": 9,
-                       "extra starts": 5, "extra ends": 8,
-                       "surplus starts": 6, "surplus ends": 7
-                       }
-
-starts_ends = {'starts': 1, 'ends': 0}
-
-
