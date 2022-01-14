@@ -70,7 +70,7 @@ def process_single_clan_file(path, output_folder="output/cha_structures"):
     try:
         # Checking if the file is a 6 or 7 month old to set the month67 parameter of the function
         month67 = os.path.basename(path)[3:5] in ['06', '07']
-        listen_time = total_listen_time(clan_file, region_map, subregions, month67=month67)
+        listen_time = total_listen_time(clan_file, region_map, month67=month67)
     except Exception as e:
         return file_with_error_, listen_time
 
