@@ -4,7 +4,8 @@ import io
 import os.path
 import signal
 import sys
-from multiprocessing import Pool, Manager
+from multiprocessing import Pool, cpu_count
+from pathlib import Path
 
 import pyclan
 
@@ -14,27 +15,18 @@ from listen_time import total_listen_time
 from settings import FIELD_NAMES, default_cha_structures_folder
 
 
-def get_args():
-    parser = argparse.ArgumentParser(description='Compute listened time for the corpus.')
-    parser.add_argument('input_file',
-                        help='Either a path file containing a path for each cha file, one path per line, OR, a single cha file.')
-    parser.add_argument('--output_path', help='Optional output directory to output the reports/csvs/etc.',
-                        default='output')
-    parser.add_argument("--fast", action="store_true", help='Parallelize processing using up to 6 corse')
-    return parser.parse_args()
+def process_single_clan_file(path, output_folder=default_cha_structures_folder):
+    file_with_error_, listen_time = None, None
 
-
-def process_single_file(clan_file_path, output_folder=default_cha_structures_folder):
-
-    print("Checking {}".format(os.path.basename(clan_file_path)))
+    print("Checking {}".format(os.path.basename(path)))
 
     # Parse the clan file
     try:
-        clan_file = pyclan.ClanFile(clan_file_path)
+        clan_file = pyclan.ClanFile(path)
     except Exception as e:
-        print(bcolors.FAIL + "Error opening file: {}".format(clan_file_path) + bcolors.ENDC)
+        print(bcolors.FAIL + "Error opening file: {}".format(path) + bcolors.ENDC)
         print(sys.exc_info())
-        return
+        return file_with_error_, listen_time
 
     # Extract sequence of all starts/ends of all regions and subregion positions and ranks
     region_boundaries, subregions = pull_regions(clan_file=clan_file)
@@ -47,11 +39,11 @@ def process_single_file(clan_file_path, output_folder=default_cha_structures_fol
     if error_list:
         print(
             bcolors.WARNING + "Finished {0} with errors! Listen time cannot be calculated due to missing starts or ends!\nCheck the {0}.txt file for errors!".format(
-                os.path.basename(clan_file_path)) + bcolors.ENDC)
-        file_with_error.append((os.path.basename(clan_file_path), error_list))
+                os.path.basename(path)) + bcolors.ENDC)
+        file_with_error_ = (os.path.basename(path), error_list)
 
     # Write results to a text file
-    with open(os.path.join(output_folder, os.path.basename(clan_file_path) + '.txt'), 'w') as f:
+    with open(os.path.join(output_folder, os.path.basename(path) + '.txt'), 'w') as f:
         # Write the region boundaries
         f.write('\n'.join([region_type_and_side + '   ' + str(timestamp)
                            for region_type_and_side, timestamp in region_boundaries]))
@@ -69,17 +61,17 @@ def process_single_file(clan_file_path, output_folder=default_cha_structures_fol
     # If the file with error has a missing start or end error, we cannot correctly process it! So return!
     for subregion in error_list:
         if 'missing' in subregion:
-            return
+            return file_with_error_, listen_time
 
     try:
         # Checking if the file is a 6 or 7 month old to set the month67 parameter of the function
-        month67 = os.path.basename(clan_file_path)[3:5] in ['06', '07']
+        month67 = os.path.basename(path)[3:5] in ['06', '07']
         listen_time = total_listen_time(clan_file, region_map, subregions, month67=month67)
-    except:
-        return
+    except Exception as e:
+        return file_with_error_, listen_time
 
     # listen_time is dict returned by total_listen_time function in listen_time.py
-    listen_time['filename'] = os.path.basename(clan_file_path)
+    listen_time['filename'] = os.path.basename(path)
 
     # Setting the subregions of the listen_time dictionary.
     positions = []
@@ -95,10 +87,11 @@ def process_single_file(clan_file_path, output_folder=default_cha_structures_fol
     listen_time['subregions'] = subregions
     listen_time['ranks'] = ranks
     listen_time['positions'] = positions
-    listen_time_summary.append(listen_time)
-    print("Finished {}".format(os.path.basename(clan_file_path)) + '\nTotal Listen Time: ' + bcolors.OKGREEN + str(
+    print("Finished {}".format(os.path.basename(path)) + '\nTotal Listen Time: ' + bcolors.OKGREEN + str(
         listen_time['total_listen_time_hour']) + bcolors.ENDC)
     print(subregions)
+    
+    return file_with_error_, listen_time
 
 
 def output_aggregated_results(file_with_error, listen_time_summary, output_path):
@@ -122,16 +115,27 @@ def output_aggregated_results(file_with_error, listen_time_summary, output_path)
             writer.writerows(listen_time_summary)
 
 
+def get_args():
+    parser = argparse.ArgumentParser(description='Compute listened time for the corpus.')
+    parser.add_argument('input_file',
+                        help='Either a path file containing a path for each cha file, one path per line, OR, a single cha file.')
+    parser.add_argument('--output_folder', help='Optional output directory to output the reports/csvs/etc.',
+                        default='output')
+    parser.add_argument("--fast", action="store_true", help='Parallelize processing using all available corse')
+    return parser.parse_args()
+
+
 if __name__ == "__main__":
     args = get_args()
 
+    # Get the list of all input files, either supplied directly as a single path or as a path to a txt file with paths
     if os.path.splitext(args.input_file)[-1] == '.cha':
-        listen_time_summary = []
-        file_with_error = []
-        process_single_file(args.input_file)
-
+        batch = False
+        clan_file_paths = [args.input_file]
+        # Override the --fast option if there is just one file to process
+        args.fast = False
     else:
-
+        batch = True
         path_file = args.input_file
         clan_file_paths = []
         with open(path_file) as f:
@@ -139,50 +143,45 @@ if __name__ == "__main__":
                 path = path.strip()
                 clan_file_paths.append(path)
         print("Expected to process {} cha files".format(len(clan_file_paths)))
-        # Create output folder if it does not exist
+
+    # Create output folders if they do not exist
+    output_path = Path(args.output_folder)
+    cha_structures_path = output_path / 'cha_structures'
+    cha_structures_path.mkdir(exist_ok=True, parents=True)
+
+    # Run in parallel, if --fast was specified
+    if args.fast:
+        # The lines
+        original_sigint_handler = signal.signal(signal.SIGINT, signal.SIG_IGN)
+        pool = Pool(processes=cpu_count())
+        signal.signal(signal.SIGINT, original_sigint_handler)
+
         try:
-            output_path = sys.argv[2]
-            if output_path.startswith('--'):
-                output_path = 'output'
-        except IndexError:
-            output_path = 'output'
-
-        if not os.path.isdir(output_path):
-            os.mkdir(output_path)
-
-        if not os.path.isdir(os.path.join(output_path, 'cha_structures')):
-            os.mkdir(os.path.join(output_path, 'cha_structures'))
-
-        cha_structure_path = os.path.join(output_path, 'cha_structures')
-
-        if '--fast' in sys.argv:
-            global manager
-            manager = Manager()
-            file_with_error = manager.list()
-            listen_time_summary = manager.list()
-            original_sigint_handler = signal.signal(signal.SIGINT, signal.SIG_IGN)
-            p = Pool(6)
-            signal.signal(signal.SIGINT, original_sigint_handler)
-            try:
-                res = p.map(process_single_file, clan_file_paths)
-            except KeyboardInterrupt:
-                print("Caught KeyboardInterrupt, terminating workers")
-                p.terminate()
-            else:
-                print("Normal termination")
-                p.close()
-            p.join()
-
+            cha_processing_results = pool.map(process_single_clan_file, clan_file_paths)
+        except KeyboardInterrupt:
+            print("Caught KeyboardInterrupt, terminating workers")
+            pool.terminate()
         else:
-            file_with_error = []
-            listen_time_summary = []
+            print("Normal termination")
+            pool.close()
+        pool.join()
 
-            for clan_file_path in clan_file_paths:
-                try:
-                    process_single_file(clan_file_path, cha_structure_path)
-                except Exception as e:
-                    print(e)
-                    continue
+    # Run in serial if --fast was not specified
+    else:
+        cha_processing_results = list()
+        for clan_file_path in clan_file_paths:
+            try:
+                result = process_single_clan_file(clan_file_path, cha_structures_path)
+            except Exception as e:
+                print(e)
+                continue
+            else:
+                cha_processing_results.append(result)
 
-    # We output the findings.
-    output_aggregated_results(file_with_error, listen_time_summary, args.output_path)
+    if batch:
+        file_with_error, listen_time_summary = zip(*cha_processing_results)
+        # Remove Nones
+        file_with_error = [f for f in file_with_error if f is not None]
+        listen_time_summary = [lts for lts in listen_time_summary if lts is not None]
+
+        output_aggregated_results(file_with_error, listen_time_summary, args.output_folder)
