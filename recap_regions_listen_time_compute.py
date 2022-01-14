@@ -10,7 +10,7 @@ from pathlib import Path
 import pyclan
 
 from check_errors import sequence_missing_repetition_entry_alert
-from funcs import pull_regions, BColors, sort_list_of_region_boundaries
+from funcs import pull_regions, BColors, sort_list_of_region_boundaries, ms2hr
 from listen_time import total_listen_time
 from settings import FIELD_NAMES
 
@@ -92,7 +92,7 @@ def process_single_clan_file(path, output_folder="output/cha_structures"):
     listen_time['ranks'] = ranks
     listen_time['positions'] = positions
     print("Finished {}".format(os.path.basename(path)) + '\nTotal Listen Time: ' + BColors.OKGREEN + str(
-        listen_time['total_listen_time_hour']) + BColors.ENDC)
+        ms2hr(listen_time['total_listen_time'])) + BColors.ENDC)
     print(subregions)
     
     return file_with_error_, listen_time

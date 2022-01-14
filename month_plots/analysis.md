@@ -74,7 +74,41 @@ files as comment lines. Here are brief definitions of different regions:
 Let’s see what we’ve got in listened_time
 
 ``` r
-listened_time <- read_csv("../output/Total_Listen_Time_Summary.csv")
+listened_time <- read_csv(
+  "../output/Total_Listen_Time_Summary.csv",
+  col_types = cols(
+    filename = col_character(),
+    subregion_time = col_double(),
+    skip_time = col_double(),
+    num_makeup_region = col_double(),
+    num_subregion_with_annot = col_double(),
+    total_listen_time = col_double(),
+    num_extra_region = col_double(),
+    silence_time = col_double(),
+    num_surplus_region = col_double(),
+    surplus_time = col_double(),
+    makeup_time = col_double(),
+    extra_time = col_double(),
+    skip_silence_overlap_hour = col_double(),
+    end_time = col_double(),
+    silence_raw_hour = col_double(),
+    subregion_raw_hour = col_double(),
+    num_raw_subregion = col_double(),
+    subregions = col_character(),
+    positions = col_character(),
+    ranks = col_character(),
+    counts = col_character(),
+    removals = col_character()
+  )) %>%
+  # All *_time columns are in milliseconds, add their hour counterparts
+  mutate(across(.cols = ends_with('_time'), ~ .x / (60 * 60 * 1000), .names = '{.col}_hour')) %>%
+  # Some of the "_hour" columns were already in the csv, round all of them to 2 decimal places.
+  mutate(across(.cols = ends_with('_hour'), ~ round(.x, 2))) %>%
+  # Enforce order for consistency with the older Python code
+  relocate(extra_time_hour,makeup_time_hour,surplus_time_hour,silence_time_hour,
+           subregion_time_hour,skip_time_hour,end_time_hour,total_listen_time_hour,
+           silence_raw_hour,subregion_raw_hour, .after = last_col())
+
 listened_time_with_months <- listened_time %>% 
   separate(filename, into = c("subj","month"), sep = "_", extra="drop",remove=F)
 skim(listened_time_with_months)
@@ -114,7 +148,7 @@ Number of rows
 Number of columns
 </td>
 <td style="text-align:left;">
-31
+32
 </td>
 </tr>
 <tr>
@@ -144,7 +178,7 @@ character
 numeric
 </td>
 <td style="text-align:left;">
-23
+24
 </td>
 </tr>
 <tr>
@@ -469,7 +503,7 @@ subregion_time
 0.00
 </td>
 <td style="text-align:right;">
-1.080e+07
+10800000.00
 </td>
 <td style="text-align:right;">
 10800000.00
@@ -504,7 +538,7 @@ skip_time
 0.00
 </td>
 <td style="text-align:right;">
-0.000e+00
+0.00
 </td>
 <td style="text-align:right;">
 0.00
@@ -539,7 +573,7 @@ num_makeup_region
 0.00
 </td>
 <td style="text-align:right;">
-0.000e+00
+0.00
 </td>
 <td style="text-align:right;">
 0.00
@@ -574,7 +608,7 @@ num_subregion_with_annot
 0.00
 </td>
 <td style="text-align:right;">
-3.000e+00
+3.00
 </td>
 <td style="text-align:right;">
 3.00
@@ -609,7 +643,7 @@ total_listen_time
 9710580.00
 </td>
 <td style="text-align:right;">
-1.080e+07
+10800000.00
 </td>
 <td style="text-align:right;">
 14376419.00
@@ -644,7 +678,7 @@ num_extra_region
 0.00
 </td>
 <td style="text-align:right;">
-0.000e+00
+0.00
 </td>
 <td style="text-align:right;">
 0.00
@@ -679,7 +713,7 @@ silence_time
 0.00
 </td>
 <td style="text-align:right;">
-0.000e+00
+0.00
 </td>
 <td style="text-align:right;">
 0.00
@@ -714,7 +748,7 @@ num_surplus_region
 0.00
 </td>
 <td style="text-align:right;">
-0.000e+00
+0.00
 </td>
 <td style="text-align:right;">
 0.00
@@ -749,7 +783,7 @@ surplus_time
 0.00
 </td>
 <td style="text-align:right;">
-0.000e+00
+0.00
 </td>
 <td style="text-align:right;">
 0.00
@@ -784,7 +818,7 @@ makeup_time
 0.00
 </td>
 <td style="text-align:right;">
-0.000e+00
+0.00
 </td>
 <td style="text-align:right;">
 0.00
@@ -819,7 +853,7 @@ extra_time
 0.00
 </td>
 <td style="text-align:right;">
-0.000e+00
+0.00
 </td>
 <td style="text-align:right;">
 0.00
@@ -832,6 +866,111 @@ extra_time
 </td>
 <td style="text-align:left;">
 ▇▁▁▁▁
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+skip_silence_overlap_hour
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0.07
+</td>
+<td style="text-align:right;">
+0.59
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:right;">
+6.71
+</td>
+<td style="text-align:left;">
+▇▁▁▁▁
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+end_time
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+50416007.70
+</td>
+<td style="text-align:right;">
+8624756.72
+</td>
+<td style="text-align:right;">
+19200000.00
+</td>
+<td style="text-align:right;">
+43529485.00
+</td>
+<td style="text-align:right;">
+57599990.00
+</td>
+<td style="text-align:right;">
+57599990.00
+</td>
+<td style="text-align:right;">
+58200000.00
+</td>
+<td style="text-align:left;">
+▁▁▂▃▇
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+num_raw_subregion
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+4.16
+</td>
+<td style="text-align:right;">
+1.87
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:right;">
+5.00
+</td>
+<td style="text-align:right;">
+5.00
+</td>
+<td style="text-align:right;">
+5.00
+</td>
+<td style="text-align:right;">
+5.00
+</td>
+<td style="text-align:left;">
+▂▁▁▁▇
 </td>
 </tr>
 <tr>
@@ -854,7 +993,7 @@ extra_time_hour
 0.00
 </td>
 <td style="text-align:right;">
-0.000e+00
+0.00
 </td>
 <td style="text-align:right;">
 0.00
@@ -889,7 +1028,7 @@ makeup_time_hour
 0.00
 </td>
 <td style="text-align:right;">
-0.000e+00
+0.00
 </td>
 <td style="text-align:right;">
 0.00
@@ -924,7 +1063,7 @@ surplus_time_hour
 0.00
 </td>
 <td style="text-align:right;">
-0.000e+00
+0.00
 </td>
 <td style="text-align:right;">
 0.00
@@ -959,7 +1098,7 @@ silence_time_hour
 0.00
 </td>
 <td style="text-align:right;">
-0.000e+00
+0.00
 </td>
 <td style="text-align:right;">
 0.00
@@ -994,7 +1133,7 @@ subregion_time_hour
 0.00
 </td>
 <td style="text-align:right;">
-3.000e+00
+3.00
 </td>
 <td style="text-align:right;">
 3.00
@@ -1029,7 +1168,7 @@ skip_time_hour
 0.00
 </td>
 <td style="text-align:right;">
-0.000e+00
+0.00
 </td>
 <td style="text-align:right;">
 0.00
@@ -1039,41 +1178,6 @@ skip_time_hour
 </td>
 <td style="text-align:right;">
 9.40
-</td>
-<td style="text-align:left;">
-▇▁▁▁▁
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-skip_silence_overlap_hour
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0.07
-</td>
-<td style="text-align:right;">
-0.59
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-0.000e+00
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-6.71
 </td>
 <td style="text-align:left;">
 ▇▁▁▁▁
@@ -1099,7 +1203,7 @@ end_time_hour
 5.33
 </td>
 <td style="text-align:right;">
-1.209e+01
+12.09
 </td>
 <td style="text-align:right;">
 16.00
@@ -1134,7 +1238,7 @@ total_listen_time_hour
 2.70
 </td>
 <td style="text-align:right;">
-3.000e+00
+3.00
 </td>
 <td style="text-align:right;">
 3.99
@@ -1169,7 +1273,7 @@ silence_raw_hour
 0.00
 </td>
 <td style="text-align:right;">
-2.120e+00
+2.12
 </td>
 <td style="text-align:right;">
 3.90
@@ -1204,42 +1308,7 @@ subregion_raw_hour
 0.00
 </td>
 <td style="text-align:right;">
-5.000e+00
-</td>
-<td style="text-align:right;">
 5.00
-</td>
-<td style="text-align:right;">
-5.00
-</td>
-<td style="text-align:right;">
-5.00
-</td>
-<td style="text-align:left;">
-▂▁▁▁▇
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-num_raw_subregion
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-4.16
-</td>
-<td style="text-align:right;">
-1.87
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-5.000e+00
 </td>
 <td style="text-align:right;">
 5.00
@@ -1929,6 +1998,9 @@ Table 4: A tibble of listened time csv file
 filename
 </th>
 <th style="text-align:right;">
+skip_silence_overlap_hour
+</th>
+<th style="text-align:right;">
 extra_time_hour
 </th>
 <th style="text-align:right;">
@@ -1945,9 +2017,6 @@ subregion_time_hour
 </th>
 <th style="text-align:right;">
 skip_time_hour
-</th>
-<th style="text-align:right;">
-skip_silence_overlap_hour
 </th>
 <th style="text-align:right;">
 end_time_hour
@@ -1969,6 +2038,9 @@ subregion_raw_hour
 01_06_sparse_code.cha
 </td>
 <td style="text-align:right;">
+4.83
+</td>
+<td style="text-align:right;">
 0.00
 </td>
 <td style="text-align:right;">
@@ -1985,9 +2057,6 @@ subregion_raw_hour
 </td>
 <td style="text-align:right;">
 6.59
-</td>
-<td style="text-align:right;">
-4.83
 </td>
 <td style="text-align:right;">
 16
@@ -2010,6 +2079,9 @@ subregion_raw_hour
 0.00
 </td>
 <td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:right;">
 0
 </td>
 <td style="text-align:right;">
@@ -2023,9 +2095,6 @@ subregion_raw_hour
 </td>
 <td style="text-align:right;">
 0.20
-</td>
-<td style="text-align:right;">
-0.00
 </td>
 <td style="text-align:right;">
 16
@@ -2045,6 +2114,9 @@ subregion_raw_hour
 01_08_sparse_code.cha
 </td>
 <td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:right;">
 0.08
 </td>
 <td style="text-align:right;">
@@ -2058,9 +2130,6 @@ subregion_raw_hour
 </td>
 <td style="text-align:right;">
 2
-</td>
-<td style="text-align:right;">
-0.00
 </td>
 <td style="text-align:right;">
 0.00
@@ -2086,6 +2155,9 @@ subregion_raw_hour
 0.00
 </td>
 <td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:right;">
 0
 </td>
 <td style="text-align:right;">
@@ -2096,9 +2168,6 @@ subregion_raw_hour
 </td>
 <td style="text-align:right;">
 4
-</td>
-<td style="text-align:right;">
-0.00
 </td>
 <td style="text-align:right;">
 0.00
@@ -2124,6 +2193,9 @@ subregion_raw_hour
 0.00
 </td>
 <td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:right;">
 0
 </td>
 <td style="text-align:right;">
@@ -2134,9 +2206,6 @@ subregion_raw_hour
 </td>
 <td style="text-align:right;">
 4
-</td>
-<td style="text-align:right;">
-0.00
 </td>
 <td style="text-align:right;">
 0.00
