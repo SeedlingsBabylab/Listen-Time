@@ -48,11 +48,7 @@ class bcolors:
     BOLD = '\033[1m'
     UNDERLINE = '\033[4m'
 
-# Regexes to pull subregion rank and position:
-subregion_regex = re.compile(r'subregion (\d*) ?of (\d*)')
-# There are some cases where the numbering is missing
-subregion_rank_regex = re.compile(r'ranked (\d*) ?of (\d*)')
 
 code_regx = re.compile(r'([a-zA-Z][a-z+]*)( +)(&=)([A-Za-z]{1})(_)([A-Za-z]{1})(_)([A-Z]{1}[A-Z0-9]{2})(_)?(0x[a-z0-9]{6})?', re.IGNORECASE | re.DOTALL) # Annotation regex
-subregion_time_regex = re.compile(r'at (\d+)')
+
 region_types = ["subregion", "silence", "skip", "makeup", "extra", "surplus"]

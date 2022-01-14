@@ -1,5 +1,7 @@
+import re
+
 import pyclan
-from settings import subregion_regex, subregion_rank_regex, bcolors, subregion_time_regex, PRECISION
+from settings import bcolors, PRECISION
 
 
 REGION_SORTING_RANK = {"subregion starts": 1, "subregion ends": 12,
@@ -9,6 +11,13 @@ REGION_SORTING_RANK = {"subregion starts": 1, "subregion ends": 12,
                        "extra starts": 5, "extra ends": 8,
                        "surplus starts": 6, "surplus ends": 7
                        }
+
+# Regexes to pull subregion rank, position, and time
+SUBREGION_REGEX = re.compile(r'subregion (\d*) ?of (\d*)')
+# There are some cases where the numbering is missing
+# (Zhenya: I guess that explains the *, but shouldn't we throw an error in that case?)
+SUBREGION_RANK_REGEX = re.compile(r'ranked (\d*) ?of (\d*)')
+SUBREGION_TIME_REGEX = re.compile(r'at (\d+)')
 
 
 def _extract_subregion_info(clan_line: pyclan.ClanLine, clan_file_path: str):
@@ -22,13 +31,13 @@ def _extract_subregion_info(clan_line: pyclan.ClanLine, clan_file_path: str):
     position = "N/A"
     rank = "N/A"
     try:
-        position = subregion_regex.search(line).group(1)
-        rank = subregion_rank_regex.search(line).group(1)
+        position = SUBREGION_REGEX.search(line).group(1)
+        rank = SUBREGION_RANK_REGEX.search(line).group(1)
     except AttributeError:
         print(bcolors.FAIL + 'Subregion time does not exist/is not correct' + bcolors.ENDC)
         print(bcolors.FAIL + clan_file_path + bcolors.ENDC)
 
-    offset = subregion_time_regex.findall(line)
+    offset = SUBREGION_TIME_REGEX.findall(line)
     try:
         offset = int(offset[0])
     except:
