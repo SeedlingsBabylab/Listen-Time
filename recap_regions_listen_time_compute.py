@@ -16,6 +16,10 @@ from settings import FIELD_NAMES, default_cha_structures_folder
 
 
 def process_single_clan_file(path, output_folder=default_cha_structures_folder):
+    output_path = Path(output_folder) / (Path(path).name + '.txt')
+    # Delete the old file
+    output_path.unlink(missing_ok=True)
+
     file_with_error_, listen_time = None, None
 
     print("Checking {}".format(os.path.basename(path)))
@@ -43,7 +47,7 @@ def process_single_clan_file(path, output_folder=default_cha_structures_folder):
         file_with_error_ = (os.path.basename(path), error_list)
 
     # Write results to a text file
-    with open(os.path.join(output_folder, os.path.basename(path) + '.txt'), 'w') as f:
+    with open(output_path, 'w') as f:
         # Write the region boundaries
         f.write('\n'.join([region_type_and_side + '   ' + str(timestamp)
                            for region_type_and_side, timestamp in region_boundaries]))
@@ -145,9 +149,9 @@ if __name__ == "__main__":
         print("Expected to process {} cha files".format(len(clan_file_paths)))
 
     # Create output folders if they do not exist
-    output_path = Path(args.output_folder)
-    cha_structures_path = output_path / 'cha_structures'
-    cha_structures_path.mkdir(exist_ok=True, parents=True)
+    output_folder = Path(args.output_folder)
+    cha_structures_folder = output_folder / 'cha_structures'
+    cha_structures_folder.mkdir(exist_ok=True, parents=True)
 
     # Run in parallel, if --fast was specified
     if args.fast:
@@ -171,7 +175,7 @@ if __name__ == "__main__":
         cha_processing_results = list()
         for clan_file_path in clan_file_paths:
             try:
-                result = process_single_clan_file(clan_file_path, cha_structures_path)
+                result = process_single_clan_file(clan_file_path, cha_structures_folder)
             except Exception as e:
                 print(e)
                 continue
