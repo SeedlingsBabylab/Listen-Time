@@ -1,8 +1,11 @@
 ---
 title: "Listened time analysis by month"
 author: "Sarp Uner"
-date: "`r format(Sys.time())`"
-output: html_document
+date: "`r if (knitr::is_html_output(excludes = 'markdown')) {format(Sys.time())}`"
+output: 
+  bookdown::github_document2: default
+  html_document: default
+always_allow_html: yes
 ---
 <style>
   .bigTable {
