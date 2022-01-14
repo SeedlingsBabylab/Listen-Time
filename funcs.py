@@ -1,7 +1,7 @@
 import re
 
 import pyclan
-from settings import bcolors, PRECISION
+from settings import BColors, PRECISION
 
 
 REGION_SORTING_RANK = {"subregion starts": 1, "subregion ends": 12,
@@ -34,14 +34,14 @@ def _extract_subregion_info(clan_line: pyclan.ClanLine, clan_file_path: str):
         position = SUBREGION_REGEX.search(line).group(1)
         rank = SUBREGION_RANK_REGEX.search(line).group(1)
     except AttributeError:
-        print(bcolors.FAIL + 'Subregion time does not exist/is not correct' + bcolors.ENDC)
-        print(bcolors.FAIL + clan_file_path + bcolors.ENDC)
+        print(BColors.FAIL + 'Subregion time does not exist/is not correct' + BColors.ENDC)
+        print(BColors.FAIL + clan_file_path + BColors.ENDC)
 
     offset = SUBREGION_TIME_REGEX.findall(line)
     try:
         offset = int(offset[0])
     except:
-        print(bcolors.FAIL + 'Unable to grab time' + bcolors.ENDC)
+        print(BColors.FAIL + 'Unable to grab time' + BColors.ENDC)
 
     return position, rank, offset
 

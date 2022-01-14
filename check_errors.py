@@ -1,4 +1,4 @@
-from settings import region_types
+from settings import REGION_TYPES
 
 
 def sequence_missing_repetition_entry_alert(region_starts_and_ends):
@@ -14,11 +14,11 @@ def sequence_missing_repetition_entry_alert(region_starts_and_ends):
         The checking makes sure that both the beginning and end remarks are present for each region identified.
     """
 
-    region_map = {x:{'starts':[], 'ends': []} for x in region_types}
+    region_map = {x:{'starts':[], 'ends': []} for x in REGION_TYPES}
     error_list = []
     for entry in region_starts_and_ends:
         region_map[entry[0].split()[0]][entry[0].split()[1]].append(entry[1])
-    for item in region_types:
+    for item in REGION_TYPES:
         if len(region_map[item]['starts']) == 0 and len(region_map[item]['ends']) == 0:
             continue
         # Checking for duplicate starts and ends. Length of set will be shorter if there are duplicates.

@@ -1,8 +1,4 @@
-import re
-
-default_cha_structures_folder = "output/cha_structures"
-
-# Precision for rounding the millisecond values. 
+# Precision for rounding the millisecond values.
 PRECISION = 2
 
 # These are the header fields for the summary csv output. 
@@ -38,7 +34,11 @@ FIELD_NAMES = [
     'removals'
      ]
 
-class bcolors:
+
+class BColors:
+    """
+    Container for holding ANSI colors for colored console output
+    """
     HEADER = '\033[95m'
     OKBLUE = '\033[94m'
     OKGREEN = '\033[92m'
@@ -49,6 +49,4 @@ class bcolors:
     UNDERLINE = '\033[4m'
 
 
-code_regx = re.compile(r'([a-zA-Z][a-z+]*)( +)(&=)([A-Za-z]{1})(_)([A-Za-z]{1})(_)([A-Z]{1}[A-Z0-9]{2})(_)?(0x[a-z0-9]{6})?', re.IGNORECASE | re.DOTALL) # Annotation regex
-
-region_types = ["subregion", "silence", "skip", "makeup", "extra", "surplus"]
+REGION_TYPES = ("subregion", "silence", "skip", "makeup", "extra", "surplus")

@@ -1,35 +1,63 @@
+import re
+
+import pyclan
+
 from funcs import ms2hr
-from settings import *
+
+
+ANNOTATION_REGEX = re.compile(
+    r'([a-zA-Z][a-z+]*)( +)(&=)([A-Za-z]{1})(_)([A-Za-z]{1})(_)([A-Z]{1}[A-Z0-9]{2})(_)?(0x[a-z0-9]{6})?',
+    re.IGNORECASE | re.DOTALL)
 
 
 def find_nested_skip(skip_regions, subregion_start, subregion_end):
+    """
+
+    :param skip_regions: a list of d
+    :param subregion_start:
+    :param subregion_end:
+    :return: index of the first skip that is fully nested in the subregion
+    """
     for i, item in enumerate(skip_regions):
         if item['starts'] >= subregion_start and item['ends'] <= subregion_end:
             return i
 
-def getOverlap(a, b):
-    return max(0, min(a[1], b[1]) - max(a[0], b[0]))
+
+def get_overlap(a, b):
+    """
+    Returns the length of the overlap between intervals a and b
+    :param a: pair of numbers, order not tested
+    :param b: pair of numbers, order not tested
+    :return: single number - length of the overlap
+    """
+    x1, x2 = a
+    y1, y2 = b
+    return max(0, min(x2, y2) - max(x1, y1))
 
 
-# '''
-# Step 4:
-#     Compute the total listen time. Several transformations or filterings are done before computing the total listen time.
-# '''
-def total_listen_time(cf, region_map, subregions, month67=False):
-    # Sub positions is an array to keep track of which subregion is which after deletions. It's my hacky way of figuring out the positions of subregions after removals, so I can correctly
-    # assign reasons for removal. 
+def total_listen_time(clan_file: pyclan.ClanFile, region_map, subregions, month67=False):
+    """
+    Step 4:
+        Compute the total listen time. Several transformations or filterings are done before computing the total listen
+        time.
+    """
+    # Sub positions is an array to keep track of which subregion is which after deletions.
+    # It's my hacky way of figuring out the positions of subregions after removals, so I can correctly assign reasons
+    # for removal.
     sub_positions = list(range(1, 6))
     removals = ['' for i in range(5)]
     counts = [0 for i in range(5)]
+
     # '''
-    # Subruotine 1:
+    # Subroutine 1:
     #     Remove all the regions that are completely nested within the skip regions.
-    #     If a region is partially overlap with a skip region, remove only the overlapping portion by adjusting the boundary of the region.
+    #     If a region is partially overlap with a skip region, remove only the overlapping portion by adjusting the
+    #     boundary of the region.
     # '''
     def remove_regions_nested_in_skip():
         skip_start_times = region_map['skip']['starts']
         skip_end_times = region_map['skip']['ends']
-        assert(len(skip_start_times)==len(skip_end_times))
+        assert(len(skip_start_times) == len(skip_end_times))
         for region_type in ['makeup', 'silence', 'subregion', 'extra']:
             region_start_times = region_map[region_type]['starts']
             region_end_times = region_map[region_type]['ends']
@@ -102,9 +130,9 @@ def total_listen_time(cf, region_map, subregions, month67=False):
 
         for i in range(len(subregion_start_times)-1, -1, -1):
             remove = True
-            lines = cf.get_within_time(begin=subregion_start_times[i], end=subregion_end_times[i]).line_map
+            lines = clan_file.get_within_time(begin=subregion_start_times[i], end=subregion_end_times[i]).line_map
             for line in lines:
-                annot = code_regx.findall(line.line)
+                annot = ANNOTATION_REGEX.findall(line.line)
                 if annot:
                     remove = False
                     break
@@ -196,7 +224,7 @@ def total_listen_time(cf, region_map, subregions, month67=False):
                 # If surplus start or end is inside the subregion (e.g. there is any kind of overlap)
                 sub = subregion_start_times[i], subregion_end_times[i]
                 surp = surplus_start_times[j], surplus_end_times[j]
-                if getOverlap(sub, surp):
+                if get_overlap(sub, surp):
                     remove = True
                     break
             if remove:
@@ -281,11 +309,11 @@ def total_listen_time(cf, region_map, subregions, month67=False):
         subregion_start_times = region_map['subregion']['starts']
         subregion_end_times = region_map['subregion']['ends']
         for i in range(len(subregion_start_times)-1, -1, -1):
-            lines = cf.get_within_time(begin=subregion_start_times[i], end=subregion_end_times[i]).line_map
+            lines = clan_file.get_within_time(begin=subregion_start_times[i], end=subregion_end_times[i]).line_map
             # Hacky way to count the number of annotations in the subregion.
             count = 0
             for line in lines:
-                annot = code_regx.findall(line.line)
+                annot = ANNOTATION_REGEX.findall(line.line)
                 if annot:
                     count += 1
             counts[i] = count
@@ -364,13 +392,13 @@ def total_listen_time(cf, region_map, subregions, month67=False):
 
     # Otherwise, we assume that the entire file was listened to, so we do not touch anything. 
     else:
-        total_time = cf.line_map[-1].offset - (skip_time + silence_time - skip_silence_time)
-        print('{} - ({} + {} - {}) == {}'.format(cf.line_map[-1].offset, skip_time, silence_time, skip_silence_time, total_time))
-        print(cf.line_map[-1].offset - (skip_time + silence_time - skip_silence_time) == total_time)
+        total_time = clan_file.line_map[-1].offset - (skip_time + silence_time - skip_silence_time)
+        print('{} - ({} + {} - {}) == {}'.format(clan_file.line_map[-1].offset, skip_time, silence_time, skip_silence_time, total_time))
+        print(clan_file.line_map[-1].offset - (skip_time + silence_time - skip_silence_time) == total_time)
         
     result['total_listen_time'] = total_time
 
-    result['end_time_hour'] = ms2hr(cf.line_map[-1].offset)
+    result['end_time_hour'] = ms2hr(clan_file.line_map[-1].offset)
 
     result['total_listen_time_hour'] = ms2hr(total_time)
     return result
