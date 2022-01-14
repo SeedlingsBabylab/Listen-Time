@@ -1,5 +1,6 @@
 import re
 from functools import partial
+from copy import deepcopy
 
 import pyclan
 
@@ -36,12 +37,14 @@ def get_overlap(a, b):
     return max(0, min(x2, y2) - max(x1, y1))
 
 
-def total_listen_time(clan_file: pyclan.ClanFile, region_map, month67=False):
+def process_region_map(region_map, clan_file: pyclan.ClanFile):
     """
-    Step 4:
-        Compute the total listen time. Several transformations or filterings are done before computing the total listen
-        time.
+    Removes/modifies regions based on their overlap with other regions
+    :param region_map: a dict of dicts with 'starts' and 'ends' lists
+    :param clan_file: pased clan/cha file
+    :return: modified region map, list of annotation counts in each subregion, list of removal reasons for each subregion
     """
+    region_map = deepcopy(region_map)
     # Sub positions is an array to keep track of which subregion is which after deletions.
     # It's my hacky way of figuring out the positions of subregions after removals, so I can correctly assign reasons
     # for removal.
@@ -152,7 +155,7 @@ def total_listen_time(clan_file: pyclan.ClanFile, region_map, month67=False):
 
     # '''
     # Subroutine 4:
-    #     Remove subregions that are completely nested in silent or surplus regions. Partial nesting does not count. 
+    #     Remove subregions that are completely nested in silent or surplus regions. Partial nesting does not count.
     # '''
     def remove_subregions_nested_in_silence_regions():
         silence_start_times = region_map['silence']['starts']
@@ -182,7 +185,7 @@ def total_listen_time(clan_file: pyclan.ClanFile, region_map, month67=False):
     # '''
     # Subroutine 5:
     #     If a silent region partially overlaps with a subregion, remove the NON-OVERLAPPING portion of that silent region (since we don't subtract that part in our calculation.
-    #     Otherwise, if the silent region does not overlap with the subregion at all, completely remove it! 
+    #     Otherwise, if the silent region does not overlap with the subregion at all, completely remove it!
     # '''
     def remove_silence_regions_outside_subregions():
         silence_start_times = region_map['silence']['starts']
@@ -195,7 +198,7 @@ def total_listen_time(clan_file: pyclan.ClanFile, region_map, month67=False):
             for j in range(len(subregion_start_times)):
                 # If the silent region i start time is between start and end of subregion j
                 if silence_start_times[i]>=subregion_start_times[j] and silence_start_times[i]<=subregion_end_times[j]:
-                    # If there is not a complete nesting of the silent region within the subregion! 
+                    # If there is not a complete nesting of the silent region within the subregion!
                     if silence_end_times[i]>subregion_end_times[j]:
                         silence_end_times.append(silence_end_times[i])
                         silence_start_times.append(subregion_end_times[j]+1)
@@ -236,12 +239,48 @@ def total_listen_time(clan_file: pyclan.ClanFile, region_map, month67=False):
                 update_sub_pos('Subregion removed for overlapping with surplus', i)
                 #del subregions[i]
 
-    def skip_silence_overlap_time():
-        ''' This is only used for month 6 and 7.
-            The total time where skip and silence regions overlap are computed so as to be subtracted from silence time computed later.
-        '''
-    # Only used for month 6 and 7
+    def count_sr_annotations():
+        subregion_start_times = region_map['subregion']['starts']
+        subregion_end_times = region_map['subregion']['ends']
+        for i in range(len(subregion_start_times)-1, -1, -1):
+            lines = clan_file.get_within_time(begin=subregion_start_times[i], end=subregion_end_times[i]).line_map
+            # Hacky way to count the number of annotations in the subregion.
+            count = 0
+            for line in lines:
+                annot = ANNOTATION_REGEX.findall(line.line)
+                if annot:
+                    count += 1
+            counts[i] = count
 
+    def update_sub_pos(message, i):
+        ind = sub_positions[i]
+        removals[ind-1] = message
+        print(removals)
+        del sub_positions[i]
+
+    count_sr_annotations()
+    remove_subregions_with_surplus()
+    remove_regions_nested_in_skip()
+    remove_subregions_with_nested_makeup()
+    remove_subregions_without_annotations()
+    remove_subregions_nested_in_silence_regions()
+    remove_silence_regions_outside_subregions()
+
+    return region_map, counts, removals
+
+
+def total_listen_time(clan_file: pyclan.ClanFile, region_map, month67=False):
+    """
+    Step 4:
+        Compute the total listen time. Several transformations or filterings are done before computing the total listen
+        time.
+    """
+
+    def skip_silence_overlap_time():
+        """ This is only used for month 6 and 7.
+            The total time where skip and silence regions overlap are computed so as to be subtracted from silence time
+            computed later.
+        """
         skip_start_times = region_map['skip']['starts']
         skip_end_times = region_map['skip']['ends']
         silence_start_times = region_map['silence']['starts']
@@ -273,25 +312,6 @@ def total_listen_time(clan_file: pyclan.ClanFile, region_map, month67=False):
     makeup_region_time = partial(_region_total_time_and_count, 'makeup')
     surplus_region_time = partial(_region_total_time_and_count, 'surplus')
 
-    def count_sr_annotations():
-        subregion_start_times = region_map['subregion']['starts']
-        subregion_end_times = region_map['subregion']['ends']
-        for i in range(len(subregion_start_times)-1, -1, -1):
-            lines = clan_file.get_within_time(begin=subregion_start_times[i], end=subregion_end_times[i]).line_map
-            # Hacky way to count the number of annotations in the subregion.
-            count = 0
-            for line in lines:
-                annot = ANNOTATION_REGEX.findall(line.line)
-                if annot:
-                    count += 1
-            counts[i] = count
-
-    def update_sub_pos(message, i):
-        ind = sub_positions[i]
-        removals[ind-1] = message
-        print(removals)
-        del sub_positions[i]
-
     result = {}
 
     # Here we add the raw totals for skip and subregion to the result dictionary. By raw, we mean that the preprocessing
@@ -302,21 +322,12 @@ def total_listen_time(clan_file: pyclan.ClanFile, region_map, month67=False):
     result['num_raw_subregion'], result['subregion_raw_hour'] = snum, ms2hr(shour)
 
     if not month67:
-        # Preprocessing
-        count_sr_annotations()
-        remove_subregions_with_surplus()
-        remove_regions_nested_in_skip()
-        remove_subregions_with_nested_makeup()
-        remove_subregions_without_annotations()
-        remove_subregions_nested_in_silence_regions()
-        remove_silence_regions_outside_subregions()
-        skip_silence_time = skip_silence_overlap_time()
-        result['skip_silence_overlap_hour'] = ms2hr(skip_silence_time)
-                      
+        region_map, counts, removals = process_region_map(region_map=region_map, clan_file=clan_file)
     else:
-        # Preprocessing
-        skip_silence_time = skip_silence_overlap_time()
-        result['skip_silence_overlap_hour'] = ms2hr(skip_silence_time)
+        counts, removals = [0] * 5, [''] * 5
+
+    skip_silence_time = skip_silence_overlap_time()
+    result['skip_silence_overlap_hour'] = ms2hr(skip_silence_time)
         
     subregion_time, num_subregion_with_annot = annotated_subregion_time()
     result['subregion_time'] = subregion_time
