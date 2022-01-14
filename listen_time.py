@@ -35,7 +35,7 @@ def get_overlap(a, b):
     return max(0, min(x2, y2) - max(x1, y1))
 
 
-def total_listen_time(clan_file: pyclan.ClanFile, region_map, subregions, month67=False):
+def total_listen_time(clan_file: pyclan.ClanFile, region_map, month67=False):
     """
     Step 4:
         Compute the total listen time. Several transformations or filterings are done before computing the total listen
@@ -324,11 +324,10 @@ def total_listen_time(clan_file: pyclan.ClanFile, region_map, subregions, month6
         print(removals)
         del sub_positions[i]
 
-            
     result = {}
 
-
-    # Here we add the raw totals for skip and subregion to the result dictionary. By raw, we mean that the preprocessing steps below are not done. These items are for diagnostic purposes. 
+    # Here we add the raw totals for skip and subregion to the result dictionary. By raw, we mean that the preprocessing
+    # steps below are not done. These items are for diagnostic purposes.
 
     result['silence_raw_hour'] = ms2hr(silence_region_time())
     shour, snum = annotated_subregion_time()
@@ -349,8 +348,6 @@ def total_listen_time(clan_file: pyclan.ClanFile, region_map, subregions, month6
     else:
         # Preprocessing
         skip_silence_time = skip_silence_overlap_time()
-        skip_time = skip_region_time()
-        silence_time = silence_region_time()
         result['skip_silence_overlap_hour'] = ms2hr(skip_silence_time)
         
     subregion_time, num_subregion_with_annot = annotated_subregion_time()
