@@ -1,9 +1,10 @@
 import re
+from functools import partial
 
 import pyclan
 
 from funcs import ms2hr
-
+from settings import REGION_TYPES
 
 ANNOTATION_REGEX = re.compile(
     r'([a-zA-Z][a-z+]*)( +)(&=)([A-Za-z]{1})(_)([A-Za-z]{1})(_)([A-Z]{1}[A-Z0-9]{2})(_)?(0x[a-z0-9]{6})?',
@@ -254,56 +255,23 @@ def total_listen_time(clan_file: pyclan.ClanFile, region_map, month67=False):
                     overlap_time += skip_end_times[i] - max(silence_start_times[j], skip_start_times[i])
         return overlap_time
 
-    def annotated_subregion_time():
-        start_times = region_map['subregion']['starts']
-        end_times = region_map['subregion']['ends']
-        total_time = 0
-        num_subregion_with_annot = 0
-        for i in range(len(start_times)):
-            num_subregion_with_annot += 1
-            total_time += end_times[i] - start_times[i] # +1?
-        return total_time, num_subregion_with_annot
-
-    # I have those functions all separated in case we need to make modifications to the way we compute listen time for each region
-    def skip_region_time():
-        start_times = region_map['skip']['starts']
-        end_times = region_map['skip']['ends']
-        total_time = 0
-        for i in range(len(start_times)):
-            total_time += end_times[i] - start_times[i]
-        return total_time
-
-    def silence_region_time():
-        start_times = region_map['silence']['starts']
-        end_times = region_map['silence']['ends']
-        total_time = 0
-        for i in range(len(start_times)):
-            total_time += end_times[i] - start_times[i]
-        return total_time
-
-    def extra_region_time():
-        start_times = region_map['extra']['starts']
-        end_times = region_map['extra']['ends']
+    def _region_total_time_and_count(region_type):
+        assert region_type in REGION_TYPES
+        start_times = region_map[region_type]['starts']
+        end_times = region_map[region_type]['ends']
         total_time = 0
         for i in range(len(start_times)):
             total_time += end_times[i] - start_times[i]
         return total_time, len(start_times)
 
-    def makeup_region_time():
-        start_times = region_map['makeup']['starts']
-        end_times = region_map['makeup']['ends']
-        total_time = 0
-        for i in range(len(start_times)):
-            total_time += end_times[i] - start_times[i]
-        return total_time, len(start_times)
-
-    def surplus_region_time():
-        start_times = region_map['surplus']['starts']
-        end_times = region_map['surplus']['ends']
-        total_time = 0
-        for i in range(len(start_times)):
-            total_time += end_times[i] - start_times[i]
-        return total_time, len(start_times)
+    # I have those functions all separated in case we need to make modifications to the way we compute listen time for
+    # each region
+    annotated_subregion_time = partial(_region_total_time_and_count, 'subregion')
+    skip_region_time = partial(_region_total_time_and_count, 'skip')
+    silence_region_time = partial(_region_total_time_and_count, 'silence')
+    extra_region_time = partial(_region_total_time_and_count, 'extra')
+    makeup_region_time = partial(_region_total_time_and_count, 'makeup')
+    surplus_region_time = partial(_region_total_time_and_count, 'surplus')
 
     def count_sr_annotations():
         subregion_start_times = region_map['subregion']['starts']
@@ -329,7 +297,7 @@ def total_listen_time(clan_file: pyclan.ClanFile, region_map, month67=False):
     # Here we add the raw totals for skip and subregion to the result dictionary. By raw, we mean that the preprocessing
     # steps below are not done. These items are for diagnostic purposes.
 
-    result['silence_raw_hour'] = ms2hr(silence_region_time())
+    result['silence_raw_hour'] = ms2hr(silence_region_time()[0])
     shour, snum = annotated_subregion_time()
     result['num_raw_subregion'], result['subregion_raw_hour'] = snum, ms2hr(shour)
 
@@ -354,10 +322,10 @@ def total_listen_time(clan_file: pyclan.ClanFile, region_map, month67=False):
     result['subregion_time'] = subregion_time
     result['num_subregion_with_annot'] = num_subregion_with_annot
 
-    skip_time = skip_region_time()
+    skip_time, _ = skip_region_time()
     result['skip_time'] = skip_time
 
-    silence_time = silence_region_time()
+    silence_time, _ = silence_region_time()
     result['silence_time'] = silence_time
 
     extra_time, num_extra_region = extra_region_time()
@@ -379,7 +347,8 @@ def total_listen_time(clan_file: pyclan.ClanFile, region_map, month67=False):
 
     # If the file is not a 6 or 7 month file, we add/subtract regions to get total time.
     if not month67:
-        total_time = subregion_time + extra_time + makeup_time + surplus_time - (skip_time + silence_time - skip_silence_time)
+        total_time = (subregion_time + extra_time + makeup_time + surplus_time
+                      - (skip_time + silence_time - skip_silence_time))
 
     # Otherwise, we assume that the entire file was listened to, so we do not touch anything. 
     else:
