@@ -44,7 +44,7 @@ def total_listen_time(cf, region_map, subregions, month67=False):
                         del region_start_times[j]
                         if region_type == 'subregion':
                             #del subregions[j]
-                            updte_sub_pos('Subregion removed for being nested in skip!', i)
+                            update_sub_pos('Subregion removed for being nested in skip!', i)
                             print('')
                     elif skip_start_times[i]<=region_start_times[j] and skip_end_times[i]<=region_end_times[j] and skip_end_times[i] >= region_start_times[j]:
                         skip_start_times[i] = region_start_times[j]
