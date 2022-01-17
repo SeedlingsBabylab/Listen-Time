@@ -14876,7 +14876,7 @@ Subregion removed for having a nested makeup or surplus region
 3
 </td>
 <td style="text-align:left;">
-22
+19
 </td>
 <td style="text-align:left;">
 NA
@@ -46340,7 +46340,7 @@ NA
 4
 </td>
 <td style="text-align:left;">
-75
+74
 </td>
 <td style="text-align:left;">
 NA
