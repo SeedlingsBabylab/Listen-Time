@@ -42,7 +42,7 @@ def process_region_map(region_map, clan_file: pyclan.ClanFile):
     Removes/modifies regions based on their overlap with other regions
     :param region_map: a dict of dicts with 'starts' and 'ends' lists
     :param clan_file: pased clan/cha file
-    :return: modified region map, list of annotation counts in each subregion, list of removal reasons for each subregion
+    :return: modified region map, list of removal reasons for each subregion
     """
     region_map = deepcopy(region_map)
     # Sub positions is an array to keep track of which subregion is which after deletions.
@@ -50,7 +50,6 @@ def process_region_map(region_map, clan_file: pyclan.ClanFile):
     # for removal.
     sub_positions = list(range(1, 6))
     removals = ['' for i in range(5)]
-    counts = [0 for i in range(5)]
 
     # '''
     # Subroutine 1:
@@ -239,26 +238,12 @@ def process_region_map(region_map, clan_file: pyclan.ClanFile):
                 update_sub_pos('Subregion removed for overlapping with surplus', i)
                 #del subregions[i]
 
-    def count_sr_annotations():
-        subregion_start_times = region_map['subregion']['starts']
-        subregion_end_times = region_map['subregion']['ends']
-        for i in range(len(subregion_start_times)-1, -1, -1):
-            lines = clan_file.get_within_time(begin=subregion_start_times[i], end=subregion_end_times[i]).line_map
-            # Hacky way to count the number of annotations in the subregion.
-            count = 0
-            for line in lines:
-                annot = ANNOTATION_REGEX.findall(line.line)
-                if annot:
-                    count += 1
-            counts[i] = count
-
     def update_sub_pos(message, i):
         ind = sub_positions[i]
         removals[ind-1] = message
         print(removals)
         del sub_positions[i]
 
-    count_sr_annotations()
     remove_subregions_overlapping_with_surplus()
     remove_regions_except_surplus_nested_in_skip_and_adjust_if_partially_overlap()
     remove_subregions_with_nested_makeup_or_surplus()
@@ -266,7 +251,25 @@ def process_region_map(region_map, clan_file: pyclan.ClanFile):
     remove_subregions_nested_in_silence_regions()
     remove_silence_regions_outside_subregions()
 
-    return region_map, counts, removals
+    return region_map, removals
+
+
+def count_annotations_within_subregion(region_map, clan_file):
+
+    counts = [0 for i in range(5)]
+    subregion_start_times = region_map['subregion']['starts']
+    subregion_end_times = region_map['subregion']['ends']
+    for i in range(len(subregion_start_times) - 1, -1, -1):
+        lines = clan_file.get_within_time(begin=subregion_start_times[i], end=subregion_end_times[i]).line_map
+        # Hacky way to count the number of annotations in the subregion.
+        count = 0
+        for line in lines:
+            annot = ANNOTATION_REGEX.findall(line.line)
+            if annot:
+                count += 1
+        counts[i] = count
+
+    return counts
 
 
 def total_listen_time(clan_file: pyclan.ClanFile, region_map, month67=False):
@@ -321,10 +324,12 @@ def total_listen_time(clan_file: pyclan.ClanFile, region_map, month67=False):
     shour, snum = annotated_subregion_time()
     result['num_raw_subregion'], result['subregion_raw_hour'] = snum, ms2hr(shour)
 
+    result['annotation_counts_raw'] = count_annotations_within_subregion(region_map=region_map, clan_file=clan_file)
+
     if not month67:
-        region_map, counts, removals = process_region_map(region_map=region_map, clan_file=clan_file)
+        region_map, removals = process_region_map(region_map=region_map, clan_file=clan_file)
     else:
-        counts, removals = [0] * 5, [''] * 5
+        removals = [''] * 5
 
     skip_silence_time = skip_silence_overlap_time()
     result['skip_silence_overlap_hour'] = ms2hr(skip_silence_time)
@@ -351,7 +356,6 @@ def total_listen_time(clan_file: pyclan.ClanFile, region_map, month67=False):
     result['surplus_time'] = surplus_time
     result['num_surplus_region'] = num_surplus_region
 
-    result['counts'] = counts
     result['removals'] = removals
 
     print(['{}: {}'.format(k, v) for k, v in result.items() if k.endswith('hour')])

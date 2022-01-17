@@ -97,7 +97,7 @@ listened_time <- read_csv(
     subregions = col_character(),
     positions = col_character(),
     ranks = col_character(),
-    counts = col_character(),
+    annotation_counts_raw = col_character(),
     removals = col_character()
   )) %>%
   # All *_time columns are in milliseconds, add their hour counterparts
@@ -389,7 +389,7 @@ ranks
 </tr>
 <tr>
 <td style="text-align:left;">
-counts
+annotation_counts_raw
 </td>
 <td style="text-align:right;">
 0
@@ -4046,14 +4046,14 @@ provide an overview
 eight2thirteen <- 
   listened_time_with_months %>% 
   filter(month %in% c("08","09","10","11","12","13") & (total_listen_time_hour>4.25 | total_listen_time_hour<3.75 | num_raw_subregion<5)) %>%
-  select(filename, month, ends_with("hour"),  -skip_silence_overlap_hour, contains("raw")) %>% 
+  select(filename, month, ends_with("hour"),  -skip_silence_overlap_hour, contains("raw"), -annotation_counts_raw) %>% 
   arrange(total_listen_time_hour)
 
 write_csv(eight2thirteen, 'eight2thirteen_problems')
 
 listened_time_with_months %>% 
    filter(month %in% c("08","09","10","11","12","13") & num_raw_subregion<5) %>% 
-  select(filename, month, ends_with("hour"),  -skip_silence_overlap_hour, contains("raw")) %>% 
+  select(filename, month, ends_with("hour"),  -skip_silence_overlap_hour, contains("raw"), -annotation_counts_raw) %>% 
   arrange(total_listen_time_hour) %>%
   knitr::kable() %>%
   kable_styling(bootstrap_options = c("striped", "hover", "condensed", "bordered"), full_width = F, fixed_thead = T)
@@ -5136,13 +5136,13 @@ provide an overview
 fourteen2seventeen <-
   listened_time_with_months %>% 
   filter(month %in% c("14","15","16","17") & (total_listen_time_hour>3.25 | total_listen_time_hour<2.75)) %>%
-  select(filename, month, ends_with("hour"),  -skip_silence_overlap_hour, contains("raw")) %>% 
+  select(filename, month, ends_with("hour"),  -skip_silence_overlap_hour, contains("raw"), -annotation_counts_raw) %>% 
   arrange(total_listen_time_hour)
 
 write_csv(fourteen2seventeen, 'fourteen2seventeen_problems')
 listened_time_with_months %>% 
    filter(month %in% c("14","15","16","17") & num_raw_subregion<5) %>% 
-  select(filename, month, ends_with("hour"),  -skip_silence_overlap_hour, contains("raw")) %>% 
+  select(filename, month, ends_with("hour"),  -skip_silence_overlap_hour, contains("raw"), -annotation_counts_raw) %>% 
   arrange(total_listen_time_hour) %>%
   knitr::kable() %>%
   kable_styling(bootstrap_options = c("striped", "hover", "condensed", "bordered"), full_width = F, fixed_thead = T)
@@ -6243,7 +6243,7 @@ time summary).
 
 ``` r
 mini_listened_time_data <- listened_time_with_months %>% 
-  dplyr::select(filename, subj, month, subregions, positions, ranks, counts, removals)
+  dplyr::select(filename, subj, month, subregions, positions, ranks, annotation_counts_raw, removals)
 
 ranks_fixed <- mini_listened_time_data %>% 
   separate(ranks,  into= c("r1","r2","r3","r4","r5"), sep = "', '", remove = F) %>% 
@@ -6272,7 +6272,7 @@ positions_long <- positions_fixed %>%
   mutate(slot = str_extract(slot, "\\d"))
 
 counts_fixed <- mini_listened_time_data %>%
-  separate(counts, into= c("c1","c2","c3","c4","c5"), sep = ",", remove = F) %>%
+  separate(annotation_counts_raw, into= c("c1","c2","c3","c4","c5"), sep = ",", remove = F) %>%
   mutate( c1 = str_extract(c1, "\\d+"),
           c2 = str_extract(c2, "\\d+"),
           c3 = str_extract(c3, "\\d+"),
