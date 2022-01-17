@@ -94,7 +94,7 @@ def process_region_map(region_map, clan_file: pyclan.ClanFile):
     #     Remove all the subregions that has a makeup region or surplus region inside. This is because only the makeup/surplus region listen time
     #     needs to be summed.
     # '''
-    def remove_subregions_with_nested_makeup():
+    def remove_subregions_with_nested_makeup_or_surplus():
         subregion_start_times = region_map['subregion']['starts']
         subregion_end_times = region_map['subregion']['ends']
         makeup_start_times = region_map['makeup']['starts']
@@ -261,7 +261,7 @@ def process_region_map(region_map, clan_file: pyclan.ClanFile):
     count_sr_annotations()
     remove_subregions_with_surplus()
     remove_regions_nested_in_skip()
-    remove_subregions_with_nested_makeup()
+    remove_subregions_with_nested_makeup_or_surplus()
     remove_subregions_without_annotations()
     remove_subregions_nested_in_silence_regions()
     remove_silence_regions_outside_subregions()
