@@ -58,7 +58,7 @@ def process_region_map(region_map, clan_file: pyclan.ClanFile):
     #     If a region is partially overlap with a skip region, remove only the overlapping portion by adjusting the
     #     boundary of the region.
     # '''
-    def remove_regions_nested_in_skip():
+    def remove_regions_except_surplus_nested_in_skip_and_adjust_if_partially_overlap():
         skip_start_times = region_map['skip']['starts']
         skip_end_times = region_map['skip']['ends']
         assert(len(skip_start_times) == len(skip_end_times))
@@ -217,7 +217,7 @@ def process_region_map(region_map, clan_file: pyclan.ClanFile):
                 del silence_end_times[i]
             i -= 1
 
-    def remove_subregions_with_surplus():
+    def remove_subregions_overlapping_with_surplus():
         subregion_start_times = region_map['subregion']['starts']
         subregion_end_times = region_map['subregion']['ends']
         surplus_start_times = region_map['surplus']['starts']
@@ -259,8 +259,8 @@ def process_region_map(region_map, clan_file: pyclan.ClanFile):
         del sub_positions[i]
 
     count_sr_annotations()
-    remove_subregions_with_surplus()
-    remove_regions_nested_in_skip()
+    remove_subregions_overlapping_with_surplus()
+    remove_regions_except_surplus_nested_in_skip_and_adjust_if_partially_overlap()
     remove_subregions_with_nested_makeup_or_surplus()
     remove_subregions_without_annotations()
     remove_subregions_nested_in_silence_regions()
