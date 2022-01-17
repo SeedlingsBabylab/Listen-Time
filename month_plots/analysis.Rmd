@@ -1,8 +1,11 @@
 ---
 title: "Listened time analysis by month"
 author: "Sarp Uner"
-date: "`r format(Sys.time())`"
-output: html_document
+date: "`r if (knitr::is_html_output(excludes = 'markdown')) {format(Sys.time())}`"
+output: 
+  bookdown::github_document2: default
+  html_document: default
+always_allow_html: yes
 ---
 <style>
   .bigTable {
@@ -63,7 +66,41 @@ Let's see what we've got in listened_time
 
 ```{r read, message=FALSE}
 
-listened_time <- read_csv("../output/Total_Listen_Time_Summary.csv")
+listened_time <- read_csv(
+  "../output/Total_Listen_Time_Summary.csv",
+  col_types = cols(
+    filename = col_character(),
+    subregion_time = col_double(),
+    skip_time = col_double(),
+    num_makeup_region = col_double(),
+    num_subregion_with_annot = col_double(),
+    total_listen_time = col_double(),
+    num_extra_region = col_double(),
+    silence_time = col_double(),
+    num_surplus_region = col_double(),
+    surplus_time = col_double(),
+    makeup_time = col_double(),
+    extra_time = col_double(),
+    skip_silence_overlap_hour = col_double(),
+    end_time = col_double(),
+    silence_raw_hour = col_double(),
+    subregion_raw_hour = col_double(),
+    num_raw_subregion = col_double(),
+    subregions = col_character(),
+    positions = col_character(),
+    ranks = col_character(),
+    counts = col_character(),
+    removals = col_character()
+  )) %>%
+  # All *_time columns are in milliseconds, add their hour counterparts
+  mutate(across(.cols = ends_with('_time'), ~ .x / (60 * 60 * 1000), .names = '{.col}_hour')) %>%
+  # Some of the "_hour" columns were already in the csv, round all of them to 2 decimal places.
+  mutate(across(.cols = ends_with('_hour'), ~ round(.x, 2))) %>%
+  # Enforce order for consistency with the older Python code
+  relocate(extra_time_hour,makeup_time_hour,surplus_time_hour,silence_time_hour,
+           subregion_time_hour,skip_time_hour,end_time_hour,total_listen_time_hour,
+           silence_raw_hour,subregion_raw_hour, .after = last_col())
+
 listened_time_with_months <- listened_time %>% 
   separate(filename, into = c("subj","month"), sep = "_", extra="drop",remove=F)
 skim(listened_time_with_months)

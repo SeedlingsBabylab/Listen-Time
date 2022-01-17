@@ -10,12 +10,12 @@ from pathlib import Path
 import pyclan
 
 from check_errors import sequence_missing_repetition_entry_alert
-from funcs import pull_regions, bcolors, sort_list_of_region_boundaries
+from funcs import pull_regions, BColors, sort_list_of_region_boundaries, ms2hr
 from listen_time import total_listen_time
-from settings import FIELD_NAMES, default_cha_structures_folder
+from settings import FIELD_NAMES
 
 
-def process_single_clan_file(path, output_folder=default_cha_structures_folder):
+def process_single_clan_file(path, output_folder="output/cha_structures"):
     output_path = Path(output_folder) / (Path(path).name + '.txt')
     # Delete the old file
     output_path.unlink(missing_ok=True)
@@ -28,7 +28,7 @@ def process_single_clan_file(path, output_folder=default_cha_structures_folder):
     try:
         clan_file = pyclan.ClanFile(path)
     except Exception as e:
-        print(bcolors.FAIL + "Error opening file: {}".format(path) + bcolors.ENDC)
+        print(BColors.FAIL + "Error opening file: {}".format(path) + BColors.ENDC)
         print(sys.exc_info())
         return file_with_error_, listen_time
 
@@ -42,8 +42,8 @@ def process_single_clan_file(path, output_folder=default_cha_structures_folder):
     error_list, region_map = sequence_missing_repetition_entry_alert(region_boundaries)
     if error_list:
         print(
-            bcolors.WARNING + "Finished {0} with errors! Listen time cannot be calculated due to missing starts or ends!\nCheck the {0}.txt file for errors!".format(
-                os.path.basename(path)) + bcolors.ENDC)
+            BColors.WARNING + "Finished {0} with errors! Listen time cannot be calculated due to missing starts or ends!\nCheck the {0}.txt file for errors!".format(
+                os.path.basename(path)) + BColors.ENDC)
         file_with_error_ = (os.path.basename(path), error_list)
 
     # Write results to a text file
@@ -70,7 +70,7 @@ def process_single_clan_file(path, output_folder=default_cha_structures_folder):
     try:
         # Checking if the file is a 6 or 7 month old to set the month67 parameter of the function
         month67 = os.path.basename(path)[3:5] in ['06', '07']
-        listen_time = total_listen_time(clan_file, region_map, subregions, month67=month67)
+        listen_time = total_listen_time(clan_file, region_map, month67=month67)
     except Exception as e:
         return file_with_error_, listen_time
 
@@ -91,8 +91,8 @@ def process_single_clan_file(path, output_folder=default_cha_structures_folder):
     listen_time['subregions'] = subregions
     listen_time['ranks'] = ranks
     listen_time['positions'] = positions
-    print("Finished {}".format(os.path.basename(path)) + '\nTotal Listen Time: ' + bcolors.OKGREEN + str(
-        listen_time['total_listen_time_hour']) + bcolors.ENDC)
+    print("Finished {}".format(os.path.basename(path)) + '\nTotal Listen Time: ' + BColors.OKGREEN + str(
+        ms2hr(listen_time['total_listen_time'])) + BColors.ENDC)
     print(subregions)
     
     return file_with_error_, listen_time
