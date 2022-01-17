@@ -78,9 +78,9 @@ def process_region_map(region_map, clan_file: pyclan.ClanFile):
                             #del subregions[j]
                             update_sub_pos('Subregion removed for being nested in skip!', i)
                             print('')
-                    elif skip_start_times[i]<=region_start_times[j] and skip_end_times[i]<=region_end_times[j] and skip_end_times[i] >= region_start_times[j]:
+                    elif skip_start_times[i] <= region_start_times[j] <= skip_end_times[i] and skip_end_times[i] <= region_end_times[j]:
                         skip_start_times[i] = region_start_times[j]
-                    elif skip_start_times[i]>=region_start_times[j] and skip_end_times[i]>=region_end_times[j] and skip_start_times[i] <= region_end_times[j]:
+                    elif region_start_times[j] <= skip_start_times[i] <= region_end_times[j] and skip_end_times[i] >= region_end_times[j]:
                         skip_end_times[i] = region_end_times[j]
     '''
         TODO:
