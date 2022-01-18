@@ -368,6 +368,6 @@ def total_listen_time(clan_file: pyclan.ClanFile, region_map, month67=False):
 
     result['end_time'] = clan_file.line_map[-1].offset
 
-    return result
+    return result, region_map
 
 

@@ -1,0 +1,5 @@
+region_type,starts,ends
+subregion,2700000,6300000
+silence,6229910,6300000
+subregion,14400000,18000000
+subregion,29100000,32700000
