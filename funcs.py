@@ -1,5 +1,6 @@
 import re
 
+import pandas as pd
 import pyclan
 from settings import BColors, PRECISION
 
@@ -139,3 +140,17 @@ def sort_list_of_region_boundaries(region_boundaries):
 
     region_boundaries = sorted(region_boundaries, key=_sorting_key)
     return region_boundaries
+
+
+def region_map_to_df(region_map):
+    """
+    Converts a region map (see listen_time.py) to a pandas dataframe.
+    :param region_map: a dict with region types as keys and dicts with two lists: starts and ends - as values
+    :return: a dataframe with three columns: region_type, starts, ends
+    """
+    region_types, sub_dfs = zip(*[(region_type, pd.DataFrame.from_dict(starts_and_ends))
+                                  for region_type, starts_and_ends in region_map.items()])
+    df = pd.concat(sub_dfs, keys=region_types, names=['region_type', 'index']).reset_index().drop(columns='index')
+    df[['starts', 'ends']] = df[['starts', 'ends']].astype(int)
+    df = df.sort_values(by=['starts', 'ends'], ascending=[True, False])
+    return df

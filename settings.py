@@ -23,7 +23,7 @@ FIELD_NAMES = [
     'subregions',
     'positions',
     'ranks',
-    'counts',
+    'annotation_counts_raw',
     'removals'
      ]
 

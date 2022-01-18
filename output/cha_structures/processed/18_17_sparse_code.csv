@@ -1,0 +1,4 @@
+region_type,starts,ends
+subregion,1000,3600000
+subregion,5700000,9300000
+subregion,9900000,13500000

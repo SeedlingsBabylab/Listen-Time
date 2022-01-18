@@ -10,7 +10,7 @@ from pathlib import Path
 import pyclan
 
 from check_errors import sequence_missing_repetition_entry_alert
-from funcs import pull_regions, BColors, sort_list_of_region_boundaries, ms2hr
+from funcs import pull_regions, BColors, sort_list_of_region_boundaries, ms2hr, region_map_to_df
 from listen_time import total_listen_time
 from settings import FIELD_NAMES
 
@@ -70,9 +70,14 @@ def process_single_clan_file(path, output_folder="output/cha_structures"):
     try:
         # Checking if the file is a 6 or 7 month old to set the month67 parameter of the function
         month67 = os.path.basename(path)[3:5] in ['06', '07']
-        listen_time = total_listen_time(clan_file, region_map, month67=month67)
+        listen_time, processed_region_map = total_listen_time(clan_file, region_map, month67=month67)
     except Exception as e:
         return file_with_error_, listen_time
+
+    # Save processed region map for debugging
+    processed_region_map_path = Path(output_folder) / 'processed' / Path(path).with_suffix('.csv').name
+    processed_region_map_path.parent.mkdir(exist_ok=True, parents=True)
+    region_map_to_df(processed_region_map).to_csv(processed_region_map_path, index=False)
 
     # listen_time is dict returned by total_listen_time function in listen_time.py
     listen_time['filename'] = os.path.basename(path)

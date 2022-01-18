@@ -1,0 +1,6 @@
+region_type,starts,ends
+subregion,1000,3600000
+subregion,4200000,7800000
+subregion,31800000,35400000
+skip,31839560,32438020
+makeup,35401500,36002020
