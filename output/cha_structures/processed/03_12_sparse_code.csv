@@ -1,5 +1,5 @@
 region_type,starts,ends
-subregion,4800000,8400000
+subregion,4800000,5433460
 skip,5433460,8400000
 subregion,15900000,19500000
 subregion,25800000,29400000

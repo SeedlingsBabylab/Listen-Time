@@ -54,8 +54,8 @@ def process_region_map(region_map, clan_file: pyclan.ClanFile):
     # '''
     # Subroutine 1:
     #     Remove all the regions that are completely nested within the skip regions.
-    #     If a region is partially overlap with a skip region, remove only the overlapping portion by adjusting the
-    #     boundary of the region.
+    #     If a region is partially overlapping with a skip region, remove only the overlapping portion by adjusting the
+    #     boundary of the region, not skip.
     # '''
     def remove_regions_except_surplus_nested_in_skip_and_adjust_if_partially_overlap():
         skip_start_times = region_map['skip']['starts']
@@ -74,13 +74,12 @@ def process_region_map(region_map, clan_file: pyclan.ClanFile):
                         del region_end_times[j]
                         del region_start_times[j]
                         if region_type == 'subregion':
-                            #del subregions[j]
                             update_sub_pos('Subregion removed for being nested in skip!', i)
                             print('')
-                    elif skip_start_times[i] <= region_start_times[j] <= skip_end_times[i] and skip_end_times[i] <= region_end_times[j]:
-                        skip_start_times[i] = region_start_times[j]
-                    elif region_start_times[j] <= skip_start_times[i] <= region_end_times[j] and skip_end_times[i] >= region_end_times[j]:
-                        skip_end_times[i] = region_end_times[j]
+                    elif skip_start_times[i] <= region_start_times[j] <= skip_end_times[i] <= region_end_times[j]:
+                        region_start_times[j] = skip_end_times[i]
+                    elif region_start_times[j] <= skip_start_times[i] <= region_end_times[j]  <= skip_end_times[i]:
+                        region_end_times[j] = skip_start_times[i]
     '''
         TODO:
         Assumption: if a subregion has nested makeup region, that means there should not be any other annotations outside the nested makeup region
