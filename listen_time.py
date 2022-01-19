@@ -179,29 +179,37 @@ def process_region_map(region_map, clan_file: pyclan.ClanFile):
     #     If a silent region partially overlaps with a subregion, remove the NON-OVERLAPPING portion of that silent region (since we don't subtract that part in our calculation.
     #     Otherwise, if the silent region does not overlap with the subregion at all, completely remove it!
     # '''
-    def remove_parts_outside_subregions(region_type):
+    def remove_parts_outside_good_regions(region_type):
         region_start_times = region_map[region_type]['starts']
         region_end_times = region_map[region_type]['ends']
-        subregion_start_times = region_map['subregion']['starts']
-        subregion_end_times = region_map['subregion']['ends']
+        # Surplus is not one of the good region types in this context because we won't count it toward the total time in
+        # the end, so we don't need to keep the silence that overlap with the surpluses.
+        good_region_types = ['subregion', 'makeup', 'extra']
+        # The good regions will not be modified so we can just copy their boundaries
+        good_region_start_times = [start
+                                   for good_region_type in good_region_types
+                                   for start in region_map[good_region_type]['starts']]
+        good_region_end_times = [end
+                                 for good_region_type in good_region_types
+                                 for end in region_map[good_region_type]['ends']]
         i = len(region_start_times) - 1
-        while i>=0:
+        while i >= 0:
             remove = True
-            for j in range(len(subregion_start_times)):
+            for j in range(len(good_region_start_times)):
                 # If the silent region i start time is between start and end of subregion j
-                if region_start_times[i]>=subregion_start_times[j] and region_start_times[i]<=subregion_end_times[j]:
+                if good_region_start_times[j] <= region_start_times[i] <= good_region_end_times[j]:
                     # If there is not a complete nesting of the silent region within the subregion!
-                    if region_end_times[i]>subregion_end_times[j]:
+                    if region_end_times[i] > good_region_end_times[j]:
                         region_end_times.append(region_end_times[i])
-                        region_start_times.append(subregion_end_times[j]+1)
-                        region_end_times[i] = subregion_end_times[j]
+                        region_start_times.append(good_region_end_times[j]+1)
+                        region_end_times[i] = good_region_end_times[j]
                         i += 2
                         region_start_times.sort()
                         region_end_times.sort()
                     remove = False
                     break
-                if region_end_times[i]>=subregion_start_times[j] and region_end_times[i]<=subregion_end_times[j]:
-                    region_start_times[i] = max(subregion_start_times[j], region_start_times[i])
+                if good_region_start_times[j] <= region_end_times[i] <= good_region_end_times[j]:
+                    region_start_times[i] = max(good_region_start_times[j], region_start_times[i])
                     remove = False
                     break
             if remove:
@@ -242,8 +250,8 @@ def process_region_map(region_map, clan_file: pyclan.ClanFile):
     remove_subregions_with_nested_makeup_or_surplus()
     remove_subregions_without_annotations()
     remove_subregions_nested_in_silence_regions()
-    remove_parts_outside_subregions('silence')
-    remove_parts_outside_subregions('skip')
+    remove_parts_outside_good_regions('silence')
+    remove_parts_outside_good_regions('skip')
 
 
     return region_map, removals

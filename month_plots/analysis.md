@@ -529,10 +529,10 @@ skip_time
 1
 </td>
 <td style="text-align:right;">
-1226440.34
+1231094.27
 </td>
 <td style="text-align:right;">
-3786895.91
+3790263.73
 </td>
 <td style="text-align:right;">
 0.00
@@ -634,10 +634,10 @@ total_listen_time
 1
 </td>
 <td style="text-align:right;">
-16299565.95
+16293672.19
 </td>
 <td style="text-align:right;">
-8040553.17
+8041873.94
 </td>
 <td style="text-align:right;">
 9710580.00
@@ -646,10 +646,10 @@ total_listen_time
 10800000.00
 </td>
 <td style="text-align:right;">
-14375210.00
+14356695.00
 </td>
 <td style="text-align:right;">
-14480850.00
+14440070.00
 </td>
 <td style="text-align:right;">
 48007730.00
@@ -704,10 +704,10 @@ silence_time
 1
 </td>
 <td style="text-align:right;">
-2671553.15
+2672792.98
 </td>
 <td style="text-align:right;">
-6469896.93
+6469485.96
 </td>
 <td style="text-align:right;">
 0.00
@@ -1244,7 +1244,7 @@ total_listen_time_hour
 3.99
 </td>
 <td style="text-align:right;">
-4.02
+4.01
 </td>
 <td style="text-align:right;">
 13.34
@@ -1425,7 +1425,7 @@ min
 09
 </td>
 <td style="text-align:right;">
-4.05
+4.04
 </td>
 <td style="text-align:right;">
 0.32
@@ -1442,7 +1442,7 @@ min
 10
 </td>
 <td style="text-align:right;">
-4.12
+4.11
 </td>
 <td style="text-align:right;">
 0.72
@@ -1459,16 +1459,16 @@ min
 11
 </td>
 <td style="text-align:right;">
-3.96
+3.95
 </td>
 <td style="text-align:right;">
-0.08
+0.09
 </td>
 <td style="text-align:right;">
 4.14
 </td>
 <td style="text-align:right;">
-3.66
+3.64
 </td>
 </tr>
 <tr>
@@ -4518,7 +4518,7 @@ num_raw_subregion
 0.00
 </td>
 <td style="text-align:right;">
-0.87
+0.88
 </td>
 <td style="text-align:right;">
 4
@@ -4530,7 +4530,7 @@ num_raw_subregion
 16.00
 </td>
 <td style="text-align:right;">
-3.66
+3.64
 </td>
 <td style="text-align:right;">
 12.48
