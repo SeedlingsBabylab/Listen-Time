@@ -62,5 +62,5 @@ ignore/
 
 # Vim and other tilde files
 *~
-/env/
-/env2/
+
+/.venv/
