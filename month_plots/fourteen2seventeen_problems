@@ -1,9 +1,5 @@
 filename,month,extra_time_hour,makeup_time_hour,surplus_time_hour,silence_time_hour,subregion_time_hour,skip_time_hour,end_time_hour,total_listen_time_hour,silence_raw_hour,subregion_raw_hour,num_raw_subregion
-26_14_sparse_code.cha,14,0,0,0,0.3,3,0,16,2.7,7.19,5,5
-30_15_sparse_code.cha,15,0,0,0,0.26,3,0,16,2.74,7.16,5,5
-18_15_sparse_code.cha,15,0,0,0.5,0,3,0,11.54,3.5,0.54,5,5
-37_17_sparse_code.cha,17,0,0,0,0.22,4,0,16,3.78,7.46,5,5
-14_14_sparse_code.cha,14,0,0,0.86,0,3,0,16,3.86,6.66,5,5
-41_17_sparse_code.cha,17,0,1,0,0,3,0,16,4,5.12,5,5
-42_17_sparse_code.cha,17,0,1,0,0,3,0,16,4,5.34,5,5
-23_14_sparse_code.cha,14,0,0,2.78,0,3,0,16,5.78,4.74,5,5
+26_14_sparse_code.cha,14,0,0,0,7.19,2.7,0,16,2.7,7.19,5,5
+30_15_sparse_code.cha,15,0,0,0,7.16,2.74,0,16,2.74,7.16,5,5
+37_17_sparse_code.cha,17,0,0,0,7.46,3.78,0,16,3.78,7.46,5,5
+23_17_sparse_code.cha,17,1.17,0.22,0,5.81,2.78,0.22,16,4.17,6.03,5,5

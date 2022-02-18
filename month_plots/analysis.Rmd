@@ -86,11 +86,9 @@ listened_time <- read_csv(
     silence_raw_hour = col_double(),
     subregion_raw_hour = col_double(),
     num_raw_subregion = col_double(),
-    subregions = col_character(),
     positions = col_character(),
     ranks = col_character(),
-    annotation_counts_raw = col_character(),
-    removals = col_character()
+    annotation_counts_raw = col_character()
   )) %>%
   # All *_time columns are in milliseconds, add their hour counterparts
   mutate(across(.cols = ends_with('_time'), ~ .x / (60 * 60 * 1000), .names = '{.col}_hour')) %>%
@@ -365,11 +363,11 @@ bind_rows(eight2thirteen, fourteen2seventeen) %>%
 ## Positions and Ranks of subregions
 
 Below, we calculate a table of subregion positions and ranks for each file.
-I.e., we gather the subregion positions, ranks and number of annotations in each subregion for each file in all files  There is also information in the last column about the reasons for removing the subregion (NA means the subregion is not removed from the final listened time summary). 
+I.e., we gather the subregion positions, ranks and number of annotations in each subregion for each file in all files  
 
 ```{r make sr rank and positions long, message=FALSE, warning= FALSE}
 mini_listened_time_data <- listened_time_with_months %>% 
-  dplyr::select(filename, subj, month, subregions, positions, ranks, annotation_counts_raw, removals)
+  dplyr::select(filename, subj, month, positions, ranks, annotation_counts_raw)
 
 ranks_fixed <- mini_listened_time_data %>% 
   separate(ranks,  into= c("r1","r2","r3","r4","r5"), sep = "', '", remove = F) %>% 
@@ -411,28 +409,9 @@ counts_long <- counts_fixed %>%
   pivot_longer(cols = c1:c5, names_to = 'slot', values_to = 'counts') %>%
   mutate(slot = str_extract(slot, '\\d'))
 
-removals_fixed <- mini_listened_time_data %>%
-  separate(removals, into= c('re1', 're2', 're3', 're4', 're5'), sep = "', '", remove = FALSE) %>%
-  mutate(
-    re1 = str_extract(re1, "[A-Za-z\\s]+"),
-    re2 = str_extract(re2, "[A-Za-z\\s]+"),
-    re3 = str_extract(re3, "[A-Za-z\\s]+"),
-    re4 = str_extract(re4, "[A-Za-z\\s]+"),
-    re5 = str_extract(re5, "[A-Za-z\\s]+")
-  )
-
-removals_long <- removals_fixed %>%
-  select(filename, subj, month, re1:re5) %>%
-  pivot_longer(cols = re1:re5, names_to = 'slot', values_to = 'removals') %>%
-  mutate(slot = str_extract(slot, '\\d'))
-  
-
-  
 voila <- positions_long %>%
   left_join(ranks_long) %>%
-  left_join(counts_long) %>%
-  left_join(removals_long)
-
+  left_join(counts_long)
 ```
 
 Let's first skim the result:
@@ -483,10 +462,10 @@ There should be 44 (kids) * 10 (months 8-17) *5 (subregions) - (7 (i missing fil
 ```{r subregions extra counts}
   
 final %>% 
-  filter(month %in% c("08","09","10","11","12","13") & rank=="5" & counts != "0" & is.na(removals))
+  filter(month %in% c("08","09","10","11","12","13") & rank=="5" & counts != "0")
 
 final %>% 
-  filter(month %in% c("14","15","16","17") & (rank=="5"| rank=="4")  & counts != "0" & is.na(removals))
+  filter(month %in% c("14","15","16","17") & (rank=="5"| rank=="4")  & counts != "0")
 
 ```
 
@@ -522,7 +501,7 @@ Below is a summary of annotation counts inside subregions by position. Months 6 
 <div>
 ```{r subregion counts, message= F, warning= F}
 counts_by_region <- 
-  read_csv('../output/counts_by_region.csv') %>%
+  read_csv('../old_scripts/pre-Zhenya/output/counts_by_region.csv') %>%
   separate(filename, into = c("subj","month"), sep = "_", extra="drop",remove=F) %>%
   filter(!(month %in% c("06", "07"))) %>%
   mutate(inside = total - outside)
@@ -540,7 +519,7 @@ Below, we read in the timeline data:
 <details><summary>Timeline summary for the entire corpus</summary>
 <div>
 ```{r timeline, message = F}
-timeline <- read_csv('../output/timeline_data.csv')
+timeline <- read_csv('../old_scripts/pre-Zhenya/output/timeline_data.csv')
 
 timeline %>%
 knitr::kable(caption = 'Timeline summary for the entire corpus') %>%
