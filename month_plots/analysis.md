@@ -650,28 +650,28 @@ subregion_time
 1
 </td>
 <td style="text-align:right;">
-10293043.29
+10283941.24
 </td>
 <td style="text-align:right;">
-4899960.50
+4893690.32
 </td>
 <td style="text-align:right;">
 0.00
 </td>
 <td style="text-align:right;">
-10650285.00
+10634500.00
 </td>
 <td style="text-align:right;">
 10800000.00
 </td>
 <td style="text-align:right;">
-14038865.00
+14034535.00
 </td>
 <td style="text-align:right;">
-16799410.00
+14400000.00
 </td>
 <td style="text-align:left;">
-▃▁▁▇▆
+▃▁▁▆▇
 </td>
 </tr>
 <tr>
@@ -685,7 +685,7 @@ num_subregion_with_annot
 1
 </td>
 <td style="text-align:right;">
-3.00
+2.99
 </td>
 <td style="text-align:right;">
 1.42
@@ -860,10 +860,10 @@ total_listen_time
 1
 </td>
 <td style="text-align:right;">
-16184368.21
+16175266.16
 </td>
 <td style="text-align:right;">
-7986210.68
+7987124.30
 </td>
 <td style="text-align:right;">
 7500240.00
@@ -872,10 +872,10 @@ total_listen_time
 10800000.00
 </td>
 <td style="text-align:right;">
-14353790.00
+14351180.00
 </td>
 <td style="text-align:right;">
-14407915.00
+14407515.00
 </td>
 <td style="text-align:right;">
 47273710.00
@@ -1088,10 +1088,10 @@ subregion_time_hour
 3.90
 </td>
 <td style="text-align:right;">
-4.67
+4.00
 </td>
 <td style="text-align:left;">
-▃▁▁▇▆
+▃▁▁▆▇
 </td>
 </tr>
 <tr>
@@ -1175,7 +1175,7 @@ total_listen_time_hour
 1
 </td>
 <td style="text-align:right;">
-4.50
+4.49
 </td>
 <td style="text-align:right;">
 2.22
@@ -1422,13 +1422,13 @@ min
 12
 </td>
 <td style="text-align:right;">
-4.01
+3.99
 </td>
 <td style="text-align:right;">
-0.14
+0.07
 </td>
 <td style="text-align:right;">
-4.83
+4.23
 </td>
 <td style="text-align:right;">
 3.86
@@ -1439,13 +1439,13 @@ min
 13
 </td>
 <td style="text-align:right;">
-3.95
+3.94
 </td>
 <td style="text-align:right;">
-0.19
+0.18
 </td>
 <td style="text-align:right;">
-4.28
+4.10
 </td>
 <td style="text-align:right;">
 3.07
@@ -2235,9 +2235,8 @@ hours (unlikely for infants this age to be awake that much) or \<8 hours
 (should double check for any errors in the file since that’s \<50% of
 full recording capacity). Note the silence_raw_hour variable here will
 be the same as the silence_time_hour variable. That is, for months 6 and
-7, silent and skip regions are **not modified**, hence we do not include
-their raw versions (instead we calculate their overlap, which is not
-done for the rest of the months).
+7, silent and skip regions **are modified**: any overlap is counted as
+*skip* and is removed from the corresponding *silence* region.
 
 <details>
 <summary>
@@ -4355,7 +4354,7 @@ num_raw_subregion
 Out of 263 (interactively calculated) recordings at 8-13 months, (one
 recording, 22_09 was never collected):
 
-3 (interactively calculated) are \>4.25 & 9 (interactively calculated)
+1 (interactively calculated) are \>4.25 & 9 (interactively calculated)
 are \<3.75 hours of listened time.
 
 Just one had \< 5 subregions (`45_10` which was only 5.33 hours long).
@@ -4861,88 +4860,6 @@ num_raw_subregion
 </td>
 <td style="text-align:right;">
 6.71
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-5
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-22_13_sparse_code.cha
-</td>
-<td style="text-align:left;">
-13
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-1.00
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-2.54
-</td>
-<td style="text-align:right;">
-3.28
-</td>
-<td style="text-align:right;">
-1.22
-</td>
-<td style="text-align:right;">
-11.32
-</td>
-<td style="text-align:right;">
-4.28
-</td>
-<td style="text-align:right;">
-2.54
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-5
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-08_12_sparse_code.cha
-</td>
-<td style="text-align:left;">
-12
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-0.17
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-6.70
-</td>
-<td style="text-align:right;">
-4.67
-</td>
-<td style="text-align:right;">
-0.17
-</td>
-<td style="text-align:right;">
-16.00
-</td>
-<td style="text-align:right;">
-4.83
-</td>
-<td style="text-align:right;">
-6.70
 </td>
 <td style="text-align:right;">
 5
@@ -45417,7 +45334,7 @@ NA
 5
 </td>
 <td style="text-align:left;">
-93
+101
 </td>
 </tr>
 <tr>

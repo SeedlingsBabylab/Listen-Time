@@ -3,8 +3,8 @@ title: "Listened time analysis by month"
 author: "Sarp Uner"
 date: "`r if (knitr::is_html_output(excludes = 'markdown')) {format(Sys.time())}`"
 output: 
-  bookdown::github_document2: default
   html_document: default
+  bookdown::github_document2: default
 always_allow_html: yes
 ---
 <style>
@@ -178,6 +178,7 @@ ggplot(data = listened_time_with_months) + geom_histogram(mapping = aes(x = end_
 Please find below additional analysis and listings of possibly problematics files.
 
 ## Month 6 and 7
+
 As a reminder: in month 6 and 7 'silence finder' process demarcated silences, and skips were marked to denote
 time that someone in the future probably needn't listen to at all (e.g. long car rides with a radio playing)
 [in months 8-17 skips carried a different meaning, see below].
@@ -188,7 +189,7 @@ Calculation formula for these months is as follows:
 
 $$total\_listen\_time\_hour = end\_time\_hour - (skip\_time\_hour + silence\_time\_hour - skip\_silence\_overlap\_hour)$$
 According to this calculation, the files below are listed as **potentially problematic** since their total listen time is either >12 hours (unlikely for infants this age to be awake that much) or <8 hours (should double check for any errors in the file since that's <50% of full recording capacity).  Note the silence_raw_hour variable here will be the same as the silence_time_hour variable. 
-That is, for months 6 and 7, silent and skip regions are **not modified**, hence we do not include their raw versions (instead we calculate their overlap, which is not done for the rest of the months). 
+That is, for months 6 and 7, silent and skip regions **are modified**: any overlap is counted as *skip* and is removed from the corresponding *silence* region. 
 
 <details><summary>Click for months 6-7 problematic files</summary>
 <div>
@@ -220,7 +221,7 @@ knitr::kable(sixseven_summary) %>%
 As we can see above, n = `r count(sixseven_summary %>% filter(total_listen_time_hour>12))` (calculated interactively) files have >12 hours, and n = `r count(sixseven_summary %>% filter(total_listen_time_hour<8))` (calculated interactively) have <8 hours.
 
 
-Alternatively,  we can assume that all skip time was technically **listened** to in the sense that it was part of the file and human coders checked manually that silences were really silent. 
+Alternatively, we can assume that all skip time was technically **listened** to in the sense that it was part of the file and human coders checked manually that silences were really silent. 
 So, we can either assume:
 
 - The overlap between skip and silence was listened to (it is considered skip, **column case1**)

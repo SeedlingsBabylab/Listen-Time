@@ -10,5 +10,3 @@ filename,month,extra_time_hour,makeup_time_hour,surplus_time_hour,silence_time_h
 30_11_sparse_code.cha,11,0.14,0.2,0.22,6.48,3.4,0.19,16,3.74,6.48,5,5
 45_10_sparse_code.cha,10,0,0,0,0,4,0,5.33,4,0,4,4
 15_09_sparse_code.cha,09,0,1,0,6.67,3.26,0.65,16,4.26,6.71,5,5
-22_13_sparse_code.cha,13,0,1,0,2.54,3.28,1.22,11.32,4.28,2.54,5,5
-08_12_sparse_code.cha,12,0,0.17,0,6.7,4.67,0.17,16,4.83,6.7,5,5
