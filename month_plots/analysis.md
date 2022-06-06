@@ -475,7 +475,7 @@ num_extra_region
 1
 </td>
 <td style="text-align:right;">
-0.07
+0.08
 </td>
 <td style="text-align:right;">
 0.44
@@ -545,13 +545,10 @@ makeup_time
 1
 </td>
 <td style="text-align:right;">
-380877.69
+381746.72
 </td>
 <td style="text-align:right;">
-768599.43
-</td>
-<td style="text-align:right;">
-0.00
+762985.16
 </td>
 <td style="text-align:right;">
 0.00
@@ -560,7 +557,10 @@ makeup_time
 0.00
 </td>
 <td style="text-align:right;">
-467645.00
+0.00
+</td>
+<td style="text-align:right;">
+478865.00
 </td>
 <td style="text-align:right;">
 3601840.00
@@ -580,10 +580,10 @@ extra_time
 1
 </td>
 <td style="text-align:right;">
-59935.05
+63198.48
 </td>
 <td style="text-align:right;">
-406163.78
+419053.78
 </td>
 <td style="text-align:right;">
 0.00
@@ -615,10 +615,10 @@ surplus_time
 1
 </td>
 <td style="text-align:right;">
-157821.59
+155791.29
 </td>
 <td style="text-align:right;">
-1059892.47
+1054950.98
 </td>
 <td style="text-align:right;">
 0.00
@@ -650,22 +650,22 @@ subregion_time
 1
 </td>
 <td style="text-align:right;">
-10283941.24
+10299874.09
 </td>
 <td style="text-align:right;">
-4893690.32
+4896678.01
 </td>
 <td style="text-align:right;">
 0.00
 </td>
 <td style="text-align:right;">
-10634500.00
+10650285.00
 </td>
 <td style="text-align:right;">
 10800000.00
 </td>
 <td style="text-align:right;">
-14034535.00
+14051740.00
 </td>
 <td style="text-align:right;">
 14400000.00
@@ -755,13 +755,10 @@ skip_time
 1
 </td>
 <td style="text-align:right;">
-1294410.19
+1291844.19
 </td>
 <td style="text-align:right;">
-3849058.21
-</td>
-<td style="text-align:right;">
-0.00
+3849405.65
 </td>
 <td style="text-align:right;">
 0.00
@@ -770,7 +767,10 @@ skip_time
 0.00
 </td>
 <td style="text-align:right;">
-842570.00
+0.00
+</td>
+<td style="text-align:right;">
+812325.00
 </td>
 <td style="text-align:right;">
 33309710.00
@@ -790,10 +790,10 @@ silence_time
 1
 </td>
 <td style="text-align:right;">
-15203270.14
+15201445.64
 </td>
 <td style="text-align:right;">
-9340747.39
+9333997.01
 </td>
 <td style="text-align:right;">
 0.00
@@ -808,7 +808,7 @@ silence_time
 22180490.00
 </td>
 <td style="text-align:right;">
-44172050.00
+43051650.00
 </td>
 <td style="text-align:left;">
 ▇▇▆▃▁
@@ -860,22 +860,22 @@ total_listen_time
 1
 </td>
 <td style="text-align:right;">
-16175266.16
+16195331.47
 </td>
 <td style="text-align:right;">
-7987124.30
+7976107.56
 </td>
 <td style="text-align:right;">
-7500240.00
+9710580.00
 </td>
 <td style="text-align:right;">
 10800000.00
 </td>
 <td style="text-align:right;">
-14351180.00
+14353790.00
 </td>
 <td style="text-align:right;">
-14407515.00
+14407740.00
 </td>
 <td style="text-align:right;">
 47273710.00
@@ -933,7 +933,7 @@ extra_time_hour
 0.02
 </td>
 <td style="text-align:right;">
-0.11
+0.12
 </td>
 <td style="text-align:right;">
 0.00
@@ -1053,7 +1053,7 @@ silence_time_hour
 6.16
 </td>
 <td style="text-align:right;">
-12.27
+11.96
 </td>
 <td style="text-align:left;">
 ▇▇▆▃▁
@@ -1085,7 +1085,7 @@ subregion_time_hour
 3.00
 </td>
 <td style="text-align:right;">
-3.90
+3.91
 </td>
 <td style="text-align:right;">
 4.00
@@ -1120,7 +1120,7 @@ skip_time_hour
 0.00
 </td>
 <td style="text-align:right;">
-0.23
+0.22
 </td>
 <td style="text-align:right;">
 9.25
@@ -1175,13 +1175,13 @@ total_listen_time_hour
 1
 </td>
 <td style="text-align:right;">
-4.49
+4.50
 </td>
 <td style="text-align:right;">
 2.22
 </td>
 <td style="text-align:right;">
-2.08
+2.70
 </td>
 <td style="text-align:right;">
 3.00
@@ -1354,16 +1354,16 @@ min
 08
 </td>
 <td style="text-align:right;">
-3.93
+3.98
 </td>
 <td style="text-align:right;">
-0.30
+0.09
 </td>
 <td style="text-align:right;">
 4.20
 </td>
 <td style="text-align:right;">
-2.08
+3.73
 </td>
 </tr>
 <tr>
@@ -1374,13 +1374,13 @@ min
 3.98
 </td>
 <td style="text-align:right;">
-0.10
+0.08
 </td>
 <td style="text-align:right;">
-4.26
+4.19
 </td>
 <td style="text-align:right;">
-3.58
+3.75
 </td>
 </tr>
 <tr>
@@ -1405,16 +1405,16 @@ min
 11
 </td>
 <td style="text-align:right;">
-3.95
+3.97
 </td>
 <td style="text-align:right;">
-0.09
+0.06
 </td>
 <td style="text-align:right;">
 4.14
 </td>
 <td style="text-align:right;">
-3.66
+3.81
 </td>
 </tr>
 <tr>
@@ -1442,7 +1442,7 @@ min
 3.94
 </td>
 <td style="text-align:right;">
-0.18
+0.17
 </td>
 <td style="text-align:right;">
 4.10
@@ -2075,7 +2075,7 @@ subregion_raw_hour
 5.03
 </td>
 <td style="text-align:right;">
-2
+4
 </td>
 <td style="text-align:right;">
 0.00
@@ -2084,7 +2084,7 @@ subregion_raw_hour
 16
 </td>
 <td style="text-align:right;">
-2.08
+4.08
 </td>
 <td style="text-align:right;">
 5.03
@@ -4354,7 +4354,7 @@ num_raw_subregion
 Out of 263 (interactively calculated) recordings at 8-13 months, (one
 recording, 22_09 was never collected):
 
-1 (interactively calculated) are \>4.25 & 9 (interactively calculated)
+0 (interactively calculated) are \>4.25 & 4 (interactively calculated)
 are \<3.75 hours of listened time.
 
 Just one had \< 5 subregions (`45_10` which was only 5.33 hours long).
@@ -4417,47 +4417,6 @@ num_raw_subregion
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:left;">
-01_08_sparse_code.cha
-</td>
-<td style="text-align:left;">
-08
-</td>
-<td style="text-align:right;">
-0.08
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-2.69
-</td>
-<td style="text-align:right;">
-5.03
-</td>
-<td style="text-align:right;">
-2.00
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-16.00
-</td>
-<td style="text-align:right;">
-2.08
-</td>
-<td style="text-align:right;">
-5.03
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-5
-</td>
-</tr>
 <tr>
 <td style="text-align:left;">
 39_13_sparse_code.cha
@@ -4542,170 +4501,6 @@ num_raw_subregion
 </tr>
 <tr>
 <td style="text-align:left;">
-11_09_sparse_code.cha
-</td>
-<td style="text-align:left;">
-09
-</td>
-<td style="text-align:right;">
-0.39
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-1.00
-</td>
-<td style="text-align:right;">
-1.89
-</td>
-<td style="text-align:right;">
-3.19
-</td>
-<td style="text-align:right;">
-0.62
-</td>
-<td style="text-align:right;">
-12.12
-</td>
-<td style="text-align:right;">
-3.58
-</td>
-<td style="text-align:right;">
-1.98
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-5
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-32_13_sparse_code.cha
-</td>
-<td style="text-align:left;">
-13
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-0.99
-</td>
-<td style="text-align:right;">
-0.42
-</td>
-<td style="text-align:right;">
-3.61
-</td>
-<td style="text-align:right;">
-2.59
-</td>
-<td style="text-align:right;">
-1.16
-</td>
-<td style="text-align:right;">
-16.00
-</td>
-<td style="text-align:right;">
-3.58
-</td>
-<td style="text-align:right;">
-3.61
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-5
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-40_11_sparse_code.cha
-</td>
-<td style="text-align:left;">
-11
-</td>
-<td style="text-align:right;">
-0.52
-</td>
-<td style="text-align:right;">
-0.01
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-12.27
-</td>
-<td style="text-align:right;">
-3.13
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-16.00
-</td>
-<td style="text-align:right;">
-3.66
-</td>
-<td style="text-align:right;">
-12.48
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-5
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-13_11_sparse_code.cha
-</td>
-<td style="text-align:left;">
-11
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-0.10
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-2.96
-</td>
-<td style="text-align:right;">
-3.63
-</td>
-<td style="text-align:right;">
-0.33
-</td>
-<td style="text-align:right;">
-12.34
-</td>
-<td style="text-align:right;">
-3.73
-</td>
-<td style="text-align:right;">
-2.96
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-5
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
 17_08_sparse_code.cha
 </td>
 <td style="text-align:left;">
@@ -4747,28 +4542,28 @@ num_raw_subregion
 </tr>
 <tr>
 <td style="text-align:left;">
-30_11_sparse_code.cha
+32_13_sparse_code.cha
 </td>
 <td style="text-align:left;">
-11
+13
 </td>
 <td style="text-align:right;">
-0.14
+0.17
 </td>
 <td style="text-align:right;">
-0.20
+0.99
 </td>
 <td style="text-align:right;">
-0.22
+0.26
 </td>
 <td style="text-align:right;">
-6.48
+3.61
 </td>
 <td style="text-align:right;">
-3.40
+2.59
 </td>
 <td style="text-align:right;">
-0.19
+1.16
 </td>
 <td style="text-align:right;">
 16.00
@@ -4777,7 +4572,7 @@ num_raw_subregion
 3.74
 </td>
 <td style="text-align:right;">
-6.48
+3.61
 </td>
 <td style="text-align:right;">
 5
@@ -4825,47 +4620,6 @@ num_raw_subregion
 </td>
 <td style="text-align:right;">
 4
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-15_09_sparse_code.cha
-</td>
-<td style="text-align:left;">
-09
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-1.00
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-6.67
-</td>
-<td style="text-align:right;">
-3.26
-</td>
-<td style="text-align:right;">
-0.65
-</td>
-<td style="text-align:right;">
-16.00
-</td>
-<td style="text-align:right;">
-4.26
-</td>
-<td style="text-align:right;">
-6.71
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-5
 </td>
 </tr>
 </tbody>
@@ -5285,113 +5039,25 @@ num_raw_subregion
 <tbody>
 <tr>
 <td style="text-align:left;">
-01_08_sparse_code.cha
-</td>
-<td style="text-align:right;">
-2.08
-</td>
-<td style="text-align:right;">
--0.61
-</td>
-<td style="text-align:left;">
-08
-</td>
-<td style="text-align:right;">
-0.08
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-2.69
-</td>
-<td style="text-align:right;">
-5.03
-</td>
-<td style="text-align:right;">
-2.00
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-16.00
-</td>
-<td style="text-align:right;">
-5.03
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-5
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-11_09_sparse_code.cha
-</td>
-<td style="text-align:right;">
-3.58
-</td>
-<td style="text-align:right;">
-2.58
-</td>
-<td style="text-align:left;">
-09
-</td>
-<td style="text-align:right;">
-0.39
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-1.00
-</td>
-<td style="text-align:right;">
-1.89
-</td>
-<td style="text-align:right;">
-3.19
-</td>
-<td style="text-align:right;">
-0.62
-</td>
-<td style="text-align:right;">
-12.12
-</td>
-<td style="text-align:right;">
-1.98
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-5
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
 32_13_sparse_code.cha
 </td>
 <td style="text-align:right;">
-3.58
+3.74
 </td>
 <td style="text-align:right;">
-3.16
+3.48
 </td>
 <td style="text-align:left;">
 13
 </td>
 <td style="text-align:right;">
-0.00
+0.17
 </td>
 <td style="text-align:right;">
 0.99
 </td>
 <td style="text-align:right;">
-0.42
+0.26
 </td>
 <td style="text-align:right;">
 3.61
@@ -5403,54 +5069,10 @@ num_raw_subregion
 1.16
 </td>
 <td style="text-align:right;">
-16.00
+16
 </td>
 <td style="text-align:right;">
 3.61
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-5
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-30_11_sparse_code.cha
-</td>
-<td style="text-align:right;">
-3.74
-</td>
-<td style="text-align:right;">
-3.52
-</td>
-<td style="text-align:left;">
-11
-</td>
-<td style="text-align:right;">
-0.14
-</td>
-<td style="text-align:right;">
-0.20
-</td>
-<td style="text-align:right;">
-0.22
-</td>
-<td style="text-align:right;">
-6.48
-</td>
-<td style="text-align:right;">
-3.40
-</td>
-<td style="text-align:right;">
-0.19
-</td>
-<td style="text-align:right;">
-16.00
-</td>
-<td style="text-align:right;">
-6.48
 </td>
 <td style="text-align:right;">
 5
