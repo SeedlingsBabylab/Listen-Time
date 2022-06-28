@@ -513,7 +513,7 @@ num_surplus_region
 0.07
 </td>
 <td style="text-align:right;">
-0.38
+0.39
 </td>
 <td style="text-align:right;">
 0.00
@@ -545,13 +545,10 @@ makeup_time
 1
 </td>
 <td style="text-align:right;">
-381746.72
+385766.39
 </td>
 <td style="text-align:right;">
-762985.16
-</td>
-<td style="text-align:right;">
-0.00
+763635.82
 </td>
 <td style="text-align:right;">
 0.00
@@ -560,7 +557,10 @@ makeup_time
 0.00
 </td>
 <td style="text-align:right;">
-478865.00
+0.00
+</td>
+<td style="text-align:right;">
+522570.00
 </td>
 <td style="text-align:right;">
 3601840.00
@@ -580,10 +580,10 @@ extra_time
 1
 </td>
 <td style="text-align:right;">
-63198.48
+57567.38
 </td>
 <td style="text-align:right;">
-419053.78
+381564.72
 </td>
 <td style="text-align:right;">
 0.00
@@ -615,10 +615,10 @@ surplus_time
 1
 </td>
 <td style="text-align:right;">
-155791.29
+147417.72
 </td>
 <td style="text-align:right;">
-1054950.98
+979350.30
 </td>
 <td style="text-align:right;">
 0.00
@@ -650,10 +650,10 @@ subregion_time
 1
 </td>
 <td style="text-align:right;">
-10299874.09
+10295582.84
 </td>
 <td style="text-align:right;">
-4896678.01
+4894464.12
 </td>
 <td style="text-align:right;">
 0.00
@@ -755,10 +755,10 @@ skip_time
 1
 </td>
 <td style="text-align:right;">
-1291844.19
+1260010.74
 </td>
 <td style="text-align:right;">
-3849405.65
+3801222.01
 </td>
 <td style="text-align:right;">
 0.00
@@ -773,7 +773,7 @@ skip_time
 812325.00
 </td>
 <td style="text-align:right;">
-33309710.00
+33834120.00
 </td>
 <td style="text-align:left;">
 ▇▁▁▁▁
@@ -790,22 +790,22 @@ silence_time
 1
 </td>
 <td style="text-align:right;">
-15201445.64
+14873976.41
 </td>
 <td style="text-align:right;">
-9333997.01
+9178172.93
 </td>
 <td style="text-align:right;">
 0.00
 </td>
 <td style="text-align:right;">
-7388360.00
+7292745.00
 </td>
 <td style="text-align:right;">
-13861030.00
+13399370.00
 </td>
 <td style="text-align:right;">
-22180490.00
+21945190.00
 </td>
 <td style="text-align:right;">
 43051650.00
@@ -860,13 +860,13 @@ total_listen_time
 1
 </td>
 <td style="text-align:right;">
-16195331.47
+16316484.39
 </td>
 <td style="text-align:right;">
-7976107.56
+8183128.52
 </td>
 <td style="text-align:right;">
-9710580.00
+10104930.00
 </td>
 <td style="text-align:right;">
 10800000.00
@@ -878,7 +878,7 @@ total_listen_time
 14407740.00
 </td>
 <td style="text-align:right;">
-47273710.00
+48007730.00
 </td>
 <td style="text-align:left;">
 ▇▁▁▁▁
@@ -933,7 +933,7 @@ extra_time_hour
 0.02
 </td>
 <td style="text-align:right;">
-0.12
+0.11
 </td>
 <td style="text-align:right;">
 0.00
@@ -980,7 +980,7 @@ makeup_time_hour
 0.00
 </td>
 <td style="text-align:right;">
-0.13
+0.15
 </td>
 <td style="text-align:right;">
 1.00
@@ -1003,7 +1003,7 @@ surplus_time_hour
 0.04
 </td>
 <td style="text-align:right;">
-0.29
+0.27
 </td>
 <td style="text-align:right;">
 0.00
@@ -1035,22 +1035,22 @@ silence_time_hour
 1
 </td>
 <td style="text-align:right;">
-4.22
+4.13
 </td>
 <td style="text-align:right;">
-2.59
+2.55
 </td>
 <td style="text-align:right;">
 0.00
 </td>
 <td style="text-align:right;">
-2.05
+2.02
 </td>
 <td style="text-align:right;">
-3.85
+3.72
 </td>
 <td style="text-align:right;">
-6.16
+6.10
 </td>
 <td style="text-align:right;">
 11.96
@@ -1105,10 +1105,10 @@ skip_time_hour
 1
 </td>
 <td style="text-align:right;">
-0.36
+0.35
 </td>
 <td style="text-align:right;">
-1.07
+1.06
 </td>
 <td style="text-align:right;">
 0.00
@@ -1123,7 +1123,7 @@ skip_time_hour
 0.22
 </td>
 <td style="text-align:right;">
-9.25
+9.40
 </td>
 <td style="text-align:left;">
 ▇▁▁▁▁
@@ -1175,13 +1175,13 @@ total_listen_time_hour
 1
 </td>
 <td style="text-align:right;">
-4.50
+4.53
 </td>
 <td style="text-align:right;">
-2.22
+2.27
 </td>
 <td style="text-align:right;">
-2.70
+2.81
 </td>
 <td style="text-align:right;">
 3.00
@@ -1193,7 +1193,7 @@ total_listen_time_hour
 4.00
 </td>
 <td style="text-align:right;">
-13.13
+13.34
 </td>
 <td style="text-align:left;">
 ▇▁▁▁▁
@@ -1210,28 +1210,28 @@ silence_raw_hour
 1
 </td>
 <td style="text-align:right;">
-4.34
+4.25
 </td>
 <td style="text-align:right;">
-2.57
+2.52
 </td>
 <td style="text-align:right;">
 0.00
 </td>
 <td style="text-align:right;">
-2.16
+2.12
 </td>
 <td style="text-align:right;">
-3.95
+3.90
 </td>
 <td style="text-align:right;">
-6.34
+6.15
 </td>
 <td style="text-align:right;">
 12.48
 </td>
 <td style="text-align:left;">
-▇▇▇▃▁
+▇▇▆▃▁
 </td>
 </tr>
 <tr>
@@ -1320,16 +1320,16 @@ min
 06
 </td>
 <td style="text-align:right;">
-8.85
+9.08
 </td>
 <td style="text-align:right;">
-1.91
+1.72
 </td>
 <td style="text-align:right;">
 13.13
 </td>
 <td style="text-align:right;">
-4.58
+4.72
 </td>
 </tr>
 <tr>
@@ -1337,13 +1337,13 @@ min
 07
 </td>
 <td style="text-align:right;">
-9.29
+9.48
 </td>
 <td style="text-align:right;">
-1.61
+1.55
 </td>
 <td style="text-align:right;">
-12.88
+13.34
 </td>
 <td style="text-align:right;">
 6.42
@@ -1357,13 +1357,13 @@ min
 3.98
 </td>
 <td style="text-align:right;">
-0.09
+0.08
 </td>
 <td style="text-align:right;">
-4.20
+4.19
 </td>
 <td style="text-align:right;">
-3.73
+3.77
 </td>
 </tr>
 <tr>
@@ -1439,7 +1439,7 @@ min
 13
 </td>
 <td style="text-align:right;">
-3.94
+3.95
 </td>
 <td style="text-align:right;">
 0.17
@@ -1456,16 +1456,16 @@ min
 14
 </td>
 <td style="text-align:right;">
-2.98
+2.99
 </td>
 <td style="text-align:right;">
-0.05
+0.03
 </td>
 <td style="text-align:right;">
 3.01
 </td>
 <td style="text-align:right;">
-2.70
+2.87
 </td>
 </tr>
 <tr>
@@ -1473,16 +1473,16 @@ min
 15
 </td>
 <td style="text-align:right;">
-2.98
+2.99
 </td>
 <td style="text-align:right;">
-0.05
+0.03
 </td>
 <td style="text-align:right;">
-3.00
+3.04
 </td>
 <td style="text-align:right;">
-2.74
+2.82
 </td>
 </tr>
 <tr>
@@ -1507,13 +1507,13 @@ min
 17
 </td>
 <td style="text-align:right;">
-3.04
+3.00
 </td>
 <td style="text-align:right;">
-0.21
+0.02
 </td>
 <td style="text-align:right;">
-4.17
+3.00
 </td>
 <td style="text-align:right;">
 2.91
@@ -1583,13 +1583,13 @@ min_length
 06
 </td>
 <td style="text-align:right;">
-4.39
+4.19
 </td>
 <td style="text-align:right;">
-2.58
+2.38
 </td>
 <td style="text-align:right;">
-10.27
+8.38
 </td>
 <td style="text-align:right;">
 0.50
@@ -1612,10 +1612,10 @@ min_length
 07
 </td>
 <td style="text-align:right;">
-4.23
+4.11
 </td>
 <td style="text-align:right;">
-2.23
+2.26
 </td>
 <td style="text-align:right;">
 9.58
@@ -1641,13 +1641,13 @@ min_length
 08
 </td>
 <td style="text-align:right;">
-4.12
+4.02
 </td>
 <td style="text-align:right;">
-2.60
+2.51
 </td>
 <td style="text-align:right;">
-9.61
+8.53
 </td>
 <td style="text-align:right;">
 0.00
@@ -1670,10 +1670,10 @@ min_length
 09
 </td>
 <td style="text-align:right;">
-4.46
+4.42
 </td>
 <td style="text-align:right;">
-2.45
+2.42
 </td>
 <td style="text-align:right;">
 10.18
@@ -1699,13 +1699,13 @@ min_length
 10
 </td>
 <td style="text-align:right;">
-4.33
+4.26
 </td>
 <td style="text-align:right;">
-2.77
+2.69
 </td>
 <td style="text-align:right;">
-10.17
+10.11
 </td>
 <td style="text-align:right;">
 0.00
@@ -1728,10 +1728,10 @@ min_length
 11
 </td>
 <td style="text-align:right;">
-4.23
+4.08
 </td>
 <td style="text-align:right;">
-2.68
+2.62
 </td>
 <td style="text-align:right;">
 12.48
@@ -1757,13 +1757,13 @@ min_length
 12
 </td>
 <td style="text-align:right;">
-4.47
+4.41
 </td>
 <td style="text-align:right;">
-2.42
+2.43
 </td>
 <td style="text-align:right;">
-9.26
+9.04
 </td>
 <td style="text-align:right;">
 0.95
@@ -1786,13 +1786,13 @@ min_length
 13
 </td>
 <td style="text-align:right;">
-4.28
+4.12
 </td>
 <td style="text-align:right;">
-2.66
+2.51
 </td>
 <td style="text-align:right;">
-10.73
+9.86
 </td>
 <td style="text-align:right;">
 0.01
@@ -1844,10 +1844,10 @@ min_length
 15
 </td>
 <td style="text-align:right;">
-4.47
+4.37
 </td>
 <td style="text-align:right;">
-2.64
+2.72
 </td>
 <td style="text-align:right;">
 10.90
@@ -1873,10 +1873,10 @@ min_length
 16
 </td>
 <td style="text-align:right;">
-4.31
+4.26
 </td>
 <td style="text-align:right;">
-2.65
+2.62
 </td>
 <td style="text-align:right;">
 11.13
@@ -1902,10 +1902,10 @@ min_length
 17
 </td>
 <td style="text-align:right;">
-4.34
+4.30
 </td>
 <td style="text-align:right;">
-2.58
+2.60
 </td>
 <td style="text-align:right;">
 9.69
@@ -2069,7 +2069,7 @@ subregion_raw_hour
 0
 </td>
 <td style="text-align:right;">
-2.69
+1.69
 </td>
 <td style="text-align:right;">
 5.03
@@ -2259,8 +2259,8 @@ sixseven_summary <-
   listened_time_with_months %>%
   select(headers) %>%
   filter(month %in% c("06","07") & (total_listen_time_hour>12 | total_listen_time_hour<8)) %>%
-  mutate(calculation_of_listen_time_hour = sprintf("= %s - (%s + %s - %s)", end_time_hour, skip_time_hour, silence_time_hour, skip_silence_overlap_hour)) %>% 
-  arrange(total_listen_time_hour)
+  mutate(calculation_of_listen_time_hour = sprintf("= %s - (%s + %s - %s)", end_time_hour, skip_time_hour, silence_time_hour, skip_silence_overlap_hour)) %>%
+  arrange(filename)
 
 write_csv(sixseven_summary, 'sixseven_problems')
 
@@ -2300,39 +2300,39 @@ calculation_of_listen_time_hour
 <tbody>
 <tr>
 <td style="text-align:left;">
-13_06_sparse_code.cha
+04_06_sparse_code.cha
 </td>
 <td style="text-align:left;">
 06
 </td>
 <td style="text-align:right;">
-2.95
+2.90
 </td>
 <td style="text-align:right;">
-4.00
+1.15
 </td>
 <td style="text-align:right;">
 0
 </td>
 <td style="text-align:right;">
-11.53
+11.86
 </td>
 <td style="text-align:right;">
-4.58
+7.80
 </td>
 <td style="text-align:left;">
-= 11.53 - (4 + 2.95 - 0)
+= 11.86 - (1.15 + 2.9 - 0)
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-26_06_sparse_code.cha
+06_07_sparse_code.cha
 </td>
 <td style="text-align:left;">
-06
+07
 </td>
 <td style="text-align:right;">
-10.27
+9.17
 </td>
 <td style="text-align:right;">
 0.00
@@ -2344,47 +2344,21 @@ calculation_of_listen_time_hour
 16.00
 </td>
 <td style="text-align:right;">
-5.73
+6.83
 </td>
 <td style="text-align:left;">
-= 16 - (0 + 10.27 - 0)
+= 16 - (0 + 9.17 - 0)
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-31_06_sparse_code.cha
+07_06_sparse_code.cha
 </td>
 <td style="text-align:left;">
 06
 </td>
 <td style="text-align:right;">
-9.11
-</td>
-<td style="text-align:right;">
-0.97
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-16.00
-</td>
-<td style="text-align:right;">
-5.92
-</td>
-<td style="text-align:left;">
-= 16 - (0.97 + 9.11 - 0)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-28_06_sparse_code.cha
-</td>
-<td style="text-align:left;">
-06
-</td>
-<td style="text-align:right;">
-5.74
+8.38
 </td>
 <td style="text-align:right;">
 0.00
@@ -2393,13 +2367,13 @@ calculation_of_listen_time_hour
 0
 </td>
 <td style="text-align:right;">
-12.09
+16.00
 </td>
 <td style="text-align:right;">
-6.35
+7.62
 </td>
 <td style="text-align:left;">
-= 12.09 - (0 + 5.74 - 0)
+= 16 - (0 + 8.38 - 0)
 </td>
 </tr>
 <tr>
@@ -2413,7 +2387,7 @@ calculation_of_listen_time_hour
 2.78
 </td>
 <td style="text-align:right;">
-6.86
+6.68
 </td>
 <td style="text-align:right;">
 0
@@ -2422,21 +2396,21 @@ calculation_of_listen_time_hour
 16.00
 </td>
 <td style="text-align:right;">
-6.36
+6.54
 </td>
 <td style="text-align:left;">
-= 16 - (6.86 + 2.78 - 0)
+= 16 - (6.68 + 2.78 - 0)
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-26_07_sparse_code.cha
+08_07_sparse_code.cha
 </td>
 <td style="text-align:left;">
 07
 </td>
 <td style="text-align:right;">
-9.58
+3.62
 </td>
 <td style="text-align:right;">
 0.00
@@ -2448,10 +2422,114 @@ calculation_of_listen_time_hour
 16.00
 </td>
 <td style="text-align:right;">
-6.42
+12.38
 </td>
 <td style="text-align:left;">
-= 16 - (0 + 9.58 - 0)
+= 16 - (0 + 3.62 - 0)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+13_06_sparse_code.cha
+</td>
+<td style="text-align:left;">
+06
+</td>
+<td style="text-align:right;">
+2.95
+</td>
+<td style="text-align:right;">
+3.86
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+11.53
+</td>
+<td style="text-align:right;">
+4.72
+</td>
+<td style="text-align:left;">
+= 11.53 - (3.86 + 2.95 - 0)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+13_07_sparse_code.cha
+</td>
+<td style="text-align:left;">
+07
+</td>
+<td style="text-align:right;">
+4.16
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+12.01
+</td>
+<td style="text-align:right;">
+7.85
+</td>
+<td style="text-align:left;">
+= 12.01 - (0 + 4.16 - 0)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+14_06_sparse_code.cha
+</td>
+<td style="text-align:left;">
+06
+</td>
+<td style="text-align:right;">
+2.87
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+16.00
+</td>
+<td style="text-align:right;">
+13.13
+</td>
+<td style="text-align:left;">
+= 16 - (0 + 2.87 - 0)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+14_07_sparse_code.cha
+</td>
+<td style="text-align:left;">
+07
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:right;">
+9.40
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+16.00
+</td>
+<td style="text-align:right;">
+6.60
+</td>
+<td style="text-align:left;">
+= 16 - (9.4 + 0 - 0)
 </td>
 </tr>
 <tr>
@@ -2508,80 +2586,28 @@ calculation_of_listen_time_hour
 </tr>
 <tr>
 <td style="text-align:left;">
-14_07_sparse_code.cha
+19_07_sparse_code.cha
 </td>
 <td style="text-align:left;">
 07
 </td>
 <td style="text-align:right;">
-0.00
+1.03
 </td>
 <td style="text-align:right;">
-9.25
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-16.00
-</td>
-<td style="text-align:right;">
-6.75
-</td>
-<td style="text-align:left;">
-= 16 - (9.25 + 0 - 0)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-06_07_sparse_code.cha
-</td>
-<td style="text-align:left;">
-07
-</td>
-<td style="text-align:right;">
-9.17
-</td>
-<td style="text-align:right;">
-0.00
+2.31
 </td>
 <td style="text-align:right;">
 0
 </td>
 <td style="text-align:right;">
-16.00
+10.93
 </td>
 <td style="text-align:right;">
-6.83
+7.60
 </td>
 <td style="text-align:left;">
-= 16 - (0 + 9.17 - 0)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-44_06_sparse_code.cha
-</td>
-<td style="text-align:left;">
-06
-</td>
-<td style="text-align:right;">
-8.21
-</td>
-<td style="text-align:right;">
-0.84
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-16.00
-</td>
-<td style="text-align:right;">
-6.96
-</td>
-<td style="text-align:left;">
-= 16 - (0.84 + 8.21 - 0)
+= 10.93 - (2.31 + 1.03 - 0)
 </td>
 </tr>
 <tr>
@@ -2595,7 +2621,7 @@ calculation_of_listen_time_hour
 0.00
 </td>
 <td style="text-align:right;">
-7.19
+6.98
 </td>
 <td style="text-align:right;">
 0
@@ -2604,140 +2630,10 @@ calculation_of_listen_time_hour
 14.24
 </td>
 <td style="text-align:right;">
-7.05
+7.26
 </td>
 <td style="text-align:left;">
-= 14.24 - (7.19 + 0 - 0)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-43_06_sparse_code.cha
-</td>
-<td style="text-align:left;">
-06
-</td>
-<td style="text-align:right;">
-0.54
-</td>
-<td style="text-align:right;">
-3.02
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-10.67
-</td>
-<td style="text-align:right;">
-7.11
-</td>
-<td style="text-align:left;">
-= 10.67 - (3.02 + 0.54 - 0)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-45_07_sparse_code.cha
-</td>
-<td style="text-align:left;">
-07
-</td>
-<td style="text-align:right;">
-2.69
-</td>
-<td style="text-align:right;">
-0.74
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-10.58
-</td>
-<td style="text-align:right;">
-7.15
-</td>
-<td style="text-align:left;">
-= 10.58 - (0.74 + 2.69 - 0)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-31_07_sparse_code.cha
-</td>
-<td style="text-align:left;">
-07
-</td>
-<td style="text-align:right;">
-6.38
-</td>
-<td style="text-align:right;">
-2.40
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-16.00
-</td>
-<td style="text-align:right;">
-7.22
-</td>
-<td style="text-align:left;">
-= 16 - (2.4 + 6.38 - 0)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-19_07_sparse_code.cha
-</td>
-<td style="text-align:left;">
-07
-</td>
-<td style="text-align:right;">
-1.03
-</td>
-<td style="text-align:right;">
-2.59
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-10.93
-</td>
-<td style="text-align:right;">
-7.32
-</td>
-<td style="text-align:left;">
-= 10.93 - (2.59 + 1.03 - 0)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-45_06_sparse_code.cha
-</td>
-<td style="text-align:left;">
-06
-</td>
-<td style="text-align:right;">
-4.98
-</td>
-<td style="text-align:right;">
-0.33
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-12.72
-</td>
-<td style="text-align:right;">
-7.41
-</td>
-<td style="text-align:left;">
-= 12.72 - (0.33 + 4.98 - 0)
+= 14.24 - (6.98 + 0 - 0)
 </td>
 </tr>
 <tr>
@@ -2751,7 +2647,7 @@ calculation_of_listen_time_hour
 2.31
 </td>
 <td style="text-align:right;">
-1.72
+1.80
 </td>
 <td style="text-align:right;">
 0
@@ -2760,88 +2656,10 @@ calculation_of_listen_time_hour
 11.56
 </td>
 <td style="text-align:right;">
-7.53
+7.45
 </td>
 <td style="text-align:left;">
-= 11.56 - (1.72 + 2.31 - 0)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-35_07_sparse_code.cha
-</td>
-<td style="text-align:left;">
-07
-</td>
-<td style="text-align:right;">
-3.76
-</td>
-<td style="text-align:right;">
-0.42
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-11.79
-</td>
-<td style="text-align:right;">
-7.60
-</td>
-<td style="text-align:left;">
-= 11.79 - (0.42 + 3.76 - 0)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-07_06_sparse_code.cha
-</td>
-<td style="text-align:left;">
-06
-</td>
-<td style="text-align:right;">
-8.38
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-16.00
-</td>
-<td style="text-align:right;">
-7.62
-</td>
-<td style="text-align:left;">
-= 16 - (0 + 8.38 - 0)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-38_07_sparse_code.cha
-</td>
-<td style="text-align:left;">
-07
-</td>
-<td style="text-align:right;">
-4.94
-</td>
-<td style="text-align:right;">
-0.27
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-12.91
-</td>
-<td style="text-align:right;">
-7.70
-</td>
-<td style="text-align:left;">
-= 12.91 - (0.27 + 4.94 - 0)
+= 11.56 - (1.8 + 2.31 - 0)
 </td>
 </tr>
 <tr>
@@ -2872,39 +2690,13 @@ calculation_of_listen_time_hour
 </tr>
 <tr>
 <td style="text-align:left;">
-04_06_sparse_code.cha
+26_06_sparse_code.cha
 </td>
 <td style="text-align:left;">
 06
 </td>
 <td style="text-align:right;">
-2.90
-</td>
-<td style="text-align:right;">
-1.15
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-11.86
-</td>
-<td style="text-align:right;">
-7.80
-</td>
-<td style="text-align:left;">
-= 11.86 - (1.15 + 2.9 - 0)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-13_07_sparse_code.cha
-</td>
-<td style="text-align:left;">
-07
-</td>
-<td style="text-align:right;">
-4.20
+8.20
 </td>
 <td style="text-align:right;">
 0.00
@@ -2913,27 +2705,27 @@ calculation_of_listen_time_hour
 0
 </td>
 <td style="text-align:right;">
-12.01
+16.00
 </td>
 <td style="text-align:right;">
-7.81
+7.80
 </td>
 <td style="text-align:left;">
-= 12.01 - (0 + 4.2 - 0)
+= 16 - (0 + 8.2 - 0)
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-37_06_sparse_code.cha
+26_07_sparse_code.cha
 </td>
 <td style="text-align:left;">
-06
+07
 </td>
 <td style="text-align:right;">
-7.79
+9.58
 </td>
 <td style="text-align:right;">
-0.37
+0.00
 </td>
 <td style="text-align:right;">
 0
@@ -2942,36 +2734,36 @@ calculation_of_listen_time_hour
 16.00
 </td>
 <td style="text-align:right;">
-7.84
+6.42
 </td>
 <td style="text-align:left;">
-= 16 - (0.37 + 7.79 - 0)
+= 16 - (0 + 9.58 - 0)
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-35_06_sparse_code.cha
+28_06_sparse_code.cha
 </td>
 <td style="text-align:left;">
 06
 </td>
 <td style="text-align:right;">
-3.45
+4.38
 </td>
 <td style="text-align:right;">
-0.40
+0.00
 </td>
 <td style="text-align:right;">
 0
 </td>
 <td style="text-align:right;">
-11.79
+12.09
 </td>
 <td style="text-align:right;">
-7.94
+7.71
 </td>
 <td style="text-align:left;">
-= 11.79 - (0.4 + 3.45 - 0)
+= 12.09 - (0 + 4.38 - 0)
 </td>
 </tr>
 <tr>
@@ -3028,39 +2820,13 @@ calculation_of_listen_time_hour
 </tr>
 <tr>
 <td style="text-align:left;">
-08_07_sparse_code.cha
-</td>
-<td style="text-align:left;">
-07
-</td>
-<td style="text-align:right;">
-3.62
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-16.00
-</td>
-<td style="text-align:right;">
-12.38
-</td>
-<td style="text-align:left;">
-= 16 - (0 + 3.62 - 0)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
 32_07_sparse_code.cha
 </td>
 <td style="text-align:left;">
 07
 </td>
 <td style="text-align:right;">
-2.95
+2.50
 </td>
 <td style="text-align:right;">
 0.17
@@ -3072,24 +2838,50 @@ calculation_of_listen_time_hour
 16.00
 </td>
 <td style="text-align:right;">
-12.88
+13.34
 </td>
 <td style="text-align:left;">
-= 16 - (0.17 + 2.95 - 0)
+= 16 - (0.17 + 2.5 - 0)
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-14_06_sparse_code.cha
+35_06_sparse_code.cha
 </td>
 <td style="text-align:left;">
 06
 </td>
 <td style="text-align:right;">
-2.87
+3.45
 </td>
 <td style="text-align:right;">
-0.00
+0.40
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+11.79
+</td>
+<td style="text-align:right;">
+7.94
+</td>
+<td style="text-align:left;">
+= 11.79 - (0.4 + 3.45 - 0)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+37_06_sparse_code.cha
+</td>
+<td style="text-align:left;">
+06
+</td>
+<td style="text-align:right;">
+7.79
+</td>
+<td style="text-align:right;">
+0.37
 </td>
 <td style="text-align:right;">
 0
@@ -3098,10 +2890,88 @@ calculation_of_listen_time_hour
 16.00
 </td>
 <td style="text-align:right;">
-13.13
+7.84
 </td>
 <td style="text-align:left;">
-= 16 - (0 + 2.87 - 0)
+= 16 - (0.37 + 7.79 - 0)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+43_06_sparse_code.cha
+</td>
+<td style="text-align:left;">
+06
+</td>
+<td style="text-align:right;">
+0.54
+</td>
+<td style="text-align:right;">
+2.87
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+10.67
+</td>
+<td style="text-align:right;">
+7.26
+</td>
+<td style="text-align:left;">
+= 10.67 - (2.87 + 0.54 - 0)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+44_06_sparse_code.cha
+</td>
+<td style="text-align:left;">
+06
+</td>
+<td style="text-align:right;">
+7.76
+</td>
+<td style="text-align:right;">
+0.84
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+16.00
+</td>
+<td style="text-align:right;">
+7.40
+</td>
+<td style="text-align:left;">
+= 16 - (0.84 + 7.76 - 0)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+45_07_sparse_code.cha
+</td>
+<td style="text-align:left;">
+07
+</td>
+<td style="text-align:right;">
+2.69
+</td>
+<td style="text-align:right;">
+0.45
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+10.58
+</td>
+<td style="text-align:right;">
+7.44
+</td>
+<td style="text-align:left;">
+= 10.58 - (0.45 + 2.69 - 0)
 </td>
 </tr>
 </tbody>
@@ -3112,7 +2982,7 @@ calculation_of_listen_time_hour
 </details>
 
 As we can see above, n = 5 (calculated interactively) files have \>12
-hours, and n = 26 (calculated interactively) have \<8 hours.
+hours, and n = 21 (calculated interactively) have \<8 hours.
 
 Alternatively, we can assume that all skip time was technically
 **listened** to in the sense that it was part of the file and human
@@ -3180,122 +3050,6 @@ case2
 <tbody>
 <tr>
 <td style="text-align:left;">
-26_06_sparse_code.cha
-</td>
-<td style="text-align:left;">
-06
-</td>
-<td style="text-align:right;">
-10.27
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-16.00
-</td>
-<td style="text-align:right;">
-5.73
-</td>
-<td style="text-align:right;">
-5.73
-</td>
-<td style="text-align:right;">
-5.73
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-31_06_sparse_code.cha
-</td>
-<td style="text-align:left;">
-06
-</td>
-<td style="text-align:right;">
-9.11
-</td>
-<td style="text-align:right;">
-0.97
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-16.00
-</td>
-<td style="text-align:right;">
-5.92
-</td>
-<td style="text-align:right;">
-6.89
-</td>
-<td style="text-align:right;">
-6.89
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-28_06_sparse_code.cha
-</td>
-<td style="text-align:left;">
-06
-</td>
-<td style="text-align:right;">
-5.74
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-12.09
-</td>
-<td style="text-align:right;">
-6.35
-</td>
-<td style="text-align:right;">
-6.35
-</td>
-<td style="text-align:right;">
-6.35
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-08_06_sparse_code.cha
-</td>
-<td style="text-align:left;">
-06
-</td>
-<td style="text-align:right;">
-2.78
-</td>
-<td style="text-align:right;">
-6.86
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-16.00
-</td>
-<td style="text-align:right;">
-6.36
-</td>
-<td style="text-align:right;">
-13.22
-</td>
-<td style="text-align:right;">
-13.22
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
 26_07_sparse_code.cha
 </td>
 <td style="text-align:left;">
@@ -3325,6 +3079,35 @@ case2
 </tr>
 <tr>
 <td style="text-align:left;">
+08_06_sparse_code.cha
+</td>
+<td style="text-align:left;">
+06
+</td>
+<td style="text-align:right;">
+2.78
+</td>
+<td style="text-align:right;">
+6.68
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+16.00
+</td>
+<td style="text-align:right;">
+6.54
+</td>
+<td style="text-align:right;">
+13.22
+</td>
+<td style="text-align:right;">
+13.22
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
 14_07_sparse_code.cha
 </td>
 <td style="text-align:left;">
@@ -3334,7 +3117,7 @@ case2
 0.00
 </td>
 <td style="text-align:right;">
-9.25
+9.40
 </td>
 <td style="text-align:right;">
 0
@@ -3343,7 +3126,7 @@ case2
 16.00
 </td>
 <td style="text-align:right;">
-6.75
+6.60
 </td>
 <td style="text-align:right;">
 16.00
@@ -3383,35 +3166,6 @@ case2
 </tr>
 <tr>
 <td style="text-align:left;">
-44_06_sparse_code.cha
-</td>
-<td style="text-align:left;">
-06
-</td>
-<td style="text-align:right;">
-8.21
-</td>
-<td style="text-align:right;">
-0.84
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-16.00
-</td>
-<td style="text-align:right;">
-6.96
-</td>
-<td style="text-align:right;">
-7.79
-</td>
-<td style="text-align:right;">
-7.79
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
 21_06_sparse_code.cha
 </td>
 <td style="text-align:left;">
@@ -3421,7 +3175,7 @@ case2
 0.00
 </td>
 <td style="text-align:right;">
-7.19
+6.98
 </td>
 <td style="text-align:right;">
 0
@@ -3430,7 +3184,7 @@ case2
 14.24
 </td>
 <td style="text-align:right;">
-7.05
+7.26
 </td>
 <td style="text-align:right;">
 14.24
@@ -3450,7 +3204,7 @@ case2
 2.69
 </td>
 <td style="text-align:right;">
-0.74
+0.45
 </td>
 <td style="text-align:right;">
 0
@@ -3459,42 +3213,13 @@ case2
 10.58
 </td>
 <td style="text-align:right;">
-7.15
+7.44
 </td>
 <td style="text-align:right;">
 7.89
 </td>
 <td style="text-align:right;">
 7.89
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-45_06_sparse_code.cha
-</td>
-<td style="text-align:left;">
-06
-</td>
-<td style="text-align:right;">
-4.98
-</td>
-<td style="text-align:right;">
-0.33
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-12.72
-</td>
-<td style="text-align:right;">
-7.41
-</td>
-<td style="text-align:right;">
-7.74
-</td>
-<td style="text-align:right;">
-7.74
 </td>
 </tr>
 <tr>
@@ -3528,31 +3253,31 @@ case2
 </tr>
 <tr>
 <td style="text-align:left;">
-38_07_sparse_code.cha
+28_06_sparse_code.cha
 </td>
 <td style="text-align:left;">
-07
+06
 </td>
 <td style="text-align:right;">
-4.94
+4.38
 </td>
 <td style="text-align:right;">
-0.27
+0.00
 </td>
 <td style="text-align:right;">
 0
 </td>
 <td style="text-align:right;">
-12.91
+12.09
 </td>
 <td style="text-align:right;">
-7.70
+7.71
 </td>
 <td style="text-align:right;">
-7.97
+7.71
 </td>
 <td style="text-align:right;">
-7.97
+7.71
 </td>
 </tr>
 <tr>
@@ -3586,13 +3311,42 @@ case2
 </tr>
 <tr>
 <td style="text-align:left;">
+26_06_sparse_code.cha
+</td>
+<td style="text-align:left;">
+06
+</td>
+<td style="text-align:right;">
+8.20
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+16.00
+</td>
+<td style="text-align:right;">
+7.80
+</td>
+<td style="text-align:right;">
+7.80
+</td>
+<td style="text-align:right;">
+7.80
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
 13_07_sparse_code.cha
 </td>
 <td style="text-align:left;">
 07
 </td>
 <td style="text-align:right;">
-4.20
+4.16
 </td>
 <td style="text-align:right;">
 0.00
@@ -3604,13 +3358,13 @@ case2
 12.01
 </td>
 <td style="text-align:right;">
-7.81
+7.85
 </td>
 <td style="text-align:right;">
-7.81
+7.85
 </td>
 <td style="text-align:right;">
-7.81
+7.85
 </td>
 </tr>
 <tr>
@@ -3640,35 +3394,6 @@ case2
 </td>
 <td style="text-align:right;">
 15.48
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-34_06_sparse_code.cha
-</td>
-<td style="text-align:left;">
-06
-</td>
-<td style="text-align:right;">
-2.72
-</td>
-<td style="text-align:right;">
-5.06
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-16.00
-</td>
-<td style="text-align:right;">
-8.22
-</td>
-<td style="text-align:right;">
-13.28
-</td>
-<td style="text-align:right;">
-13.28
 </td>
 </tr>
 <tr>
@@ -3711,7 +3436,7 @@ case2
 3.78
 </td>
 <td style="text-align:right;">
-3.86
+3.77
 </td>
 <td style="text-align:right;">
 0
@@ -3720,7 +3445,7 @@ case2
 16.00
 </td>
 <td style="text-align:right;">
-8.36
+8.45
 </td>
 <td style="text-align:right;">
 12.22
@@ -3769,7 +3494,7 @@ case2
 3.56
 </td>
 <td style="text-align:right;">
-3.60
+3.54
 </td>
 <td style="text-align:right;">
 0
@@ -3778,7 +3503,7 @@ case2
 16.00
 </td>
 <td style="text-align:right;">
-8.84
+8.89
 </td>
 <td style="text-align:right;">
 12.44
@@ -3814,6 +3539,64 @@ case2
 </td>
 <td style="text-align:right;">
 16.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+34_07_sparse_code.cha
+</td>
+<td style="text-align:left;">
+07
+</td>
+<td style="text-align:right;">
+3.98
+</td>
+<td style="text-align:right;">
+2.57
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+16.00
+</td>
+<td style="text-align:right;">
+9.44
+</td>
+<td style="text-align:right;">
+12.02
+</td>
+<td style="text-align:right;">
+12.02
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+34_06_sparse_code.cha
+</td>
+<td style="text-align:left;">
+06
+</td>
+<td style="text-align:right;">
+1.41
+</td>
+<td style="text-align:right;">
+5.06
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+16.00
+</td>
+<td style="text-align:right;">
+9.53
+</td>
+<td style="text-align:right;">
+14.59
+</td>
+<td style="text-align:right;">
+14.59
 </td>
 </tr>
 <tr>
@@ -3905,35 +3688,6 @@ case2
 </tr>
 <tr>
 <td style="text-align:left;">
-30_07_sparse_code.cha
-</td>
-<td style="text-align:left;">
-07
-</td>
-<td style="text-align:right;">
-3.36
-</td>
-<td style="text-align:right;">
-1.50
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-16.00
-</td>
-<td style="text-align:right;">
-11.13
-</td>
-<td style="text-align:right;">
-12.64
-</td>
-<td style="text-align:right;">
-12.64
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
 41_07_sparse_code.cha
 </td>
 <td style="text-align:left;">
@@ -3959,6 +3713,35 @@ case2
 </td>
 <td style="text-align:right;">
 13.93
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+30_07_sparse_code.cha
+</td>
+<td style="text-align:left;">
+07
+</td>
+<td style="text-align:right;">
+3.27
+</td>
+<td style="text-align:right;">
+1.50
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+16.00
+</td>
+<td style="text-align:right;">
+11.22
+</td>
+<td style="text-align:right;">
+12.73
+</td>
+<td style="text-align:right;">
+12.73
 </td>
 </tr>
 <tr>
@@ -4030,7 +3813,7 @@ case2
 0.00
 </td>
 <td style="text-align:right;">
-4.64
+4.59
 </td>
 <td style="text-align:right;">
 0
@@ -4039,7 +3822,7 @@ case2
 16.00
 </td>
 <td style="text-align:right;">
-11.36
+11.41
 </td>
 <td style="text-align:right;">
 16.00
@@ -4137,35 +3920,6 @@ case2
 </tr>
 <tr>
 <td style="text-align:left;">
-32_07_sparse_code.cha
-</td>
-<td style="text-align:left;">
-07
-</td>
-<td style="text-align:right;">
-2.95
-</td>
-<td style="text-align:right;">
-0.17
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-16.00
-</td>
-<td style="text-align:right;">
-12.88
-</td>
-<td style="text-align:right;">
-13.05
-</td>
-<td style="text-align:right;">
-13.05
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
 14_06_sparse_code.cha
 </td>
 <td style="text-align:left;">
@@ -4193,10 +3947,39 @@ case2
 13.13
 </td>
 </tr>
+<tr>
+<td style="text-align:left;">
+32_07_sparse_code.cha
+</td>
+<td style="text-align:left;">
+07
+</td>
+<td style="text-align:right;">
+2.50
+</td>
+<td style="text-align:right;">
+0.17
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+16.00
+</td>
+<td style="text-align:right;">
+13.34
+</td>
+<td style="text-align:right;">
+13.50
+</td>
+<td style="text-align:right;">
+13.50
+</td>
+</tr>
 </tbody>
 </table>
 
-As seen in the table, above, 35 (interactively calculated) files are
+As seen in the table, above, 32 (interactively calculated) files are
 worth double checking for one of these cases.
 
 ## 0.5 Month 8-17: Subregions and other types of regions.
@@ -4250,7 +4033,7 @@ eight2thirteen <-
   listened_time_with_months %>% 
   filter(month %in% c("08","09","10","11","12","13") & (total_listen_time_hour>4.25 | total_listen_time_hour<3.75 | num_raw_subregion<5)) %>%
   select(filename, month, ends_with("hour"),  -skip_silence_overlap_hour, contains("raw"), -annotation_counts_raw) %>% 
-  arrange(total_listen_time_hour)
+  arrange(filename)
 
 write_csv(eight2thirteen, 'eight2thirteen_problems')
 
@@ -4354,7 +4137,7 @@ num_raw_subregion
 Out of 263 (interactively calculated) recordings at 8-13 months, (one
 recording, 22_09 was never collected):
 
-0 (interactively calculated) are \>4.25 & 4 (interactively calculated)
+0 (interactively calculated) are \>4.25 & 2 (interactively calculated)
 are \<3.75 hours of listened time.
 
 Just one had \< 5 subregions (`45_10` which was only 5.33 hours long).
@@ -4419,60 +4202,19 @@ num_raw_subregion
 <tbody>
 <tr>
 <td style="text-align:left;">
-39_13_sparse_code.cha
-</td>
-<td style="text-align:left;">
-13
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-0.01
-</td>
-<td style="text-align:right;">
-3.07
-</td>
-<td style="text-align:right;">
-1.87
-</td>
-<td style="text-align:right;">
-6.74
-</td>
-<td style="text-align:right;">
-3.07
-</td>
-<td style="text-align:right;">
-0.01
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-5
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
 34_13_sparse_code.cha
 </td>
 <td style="text-align:left;">
 13
 </td>
 <td style="text-align:right;">
-0.00
+0
 </td>
 <td style="text-align:right;">
-0.00
+0
 </td>
 <td style="text-align:right;">
-0.00
+0
 </td>
 <td style="text-align:right;">
 3.14
@@ -4501,78 +4243,37 @@ num_raw_subregion
 </tr>
 <tr>
 <td style="text-align:left;">
-17_08_sparse_code.cha
-</td>
-<td style="text-align:left;">
-08
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-0.22
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-7.62
-</td>
-<td style="text-align:right;">
-3.51
-</td>
-<td style="text-align:right;">
-0.45
-</td>
-<td style="text-align:right;">
-16.00
-</td>
-<td style="text-align:right;">
-3.73
-</td>
-<td style="text-align:right;">
-7.62
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-5
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-32_13_sparse_code.cha
+39_13_sparse_code.cha
 </td>
 <td style="text-align:left;">
 13
 </td>
 <td style="text-align:right;">
-0.17
+0
 </td>
 <td style="text-align:right;">
-0.99
+0
 </td>
 <td style="text-align:right;">
-0.26
+0
 </td>
 <td style="text-align:right;">
-3.61
+0.01
 </td>
 <td style="text-align:right;">
-2.59
+3.07
 </td>
 <td style="text-align:right;">
-1.16
+1.87
 </td>
 <td style="text-align:right;">
-16.00
+6.74
 </td>
 <td style="text-align:right;">
-3.74
+3.07
 </td>
 <td style="text-align:right;">
-3.61
+0.01
 </td>
 <td style="text-align:right;">
 5
@@ -4589,13 +4290,13 @@ num_raw_subregion
 10
 </td>
 <td style="text-align:right;">
-0.00
+0
 </td>
 <td style="text-align:right;">
-0.00
+0
 </td>
 <td style="text-align:right;">
-0.00
+0
 </td>
 <td style="text-align:right;">
 0.00
@@ -4643,7 +4344,7 @@ fourteen2seventeen <-
   listened_time_with_months %>% 
   filter(month %in% c("14","15","16","17") & (total_listen_time_hour>3.25 | total_listen_time_hour<2.75)) %>%
   select(filename, month, ends_with("hour"),  -skip_silence_overlap_hour, contains("raw"), -annotation_counts_raw) %>% 
-  arrange(total_listen_time_hour)
+  arrange(filename)
 
 write_csv(fourteen2seventeen, 'fourteen2seventeen_problems')
 listened_time_with_months %>% 
@@ -4796,175 +4497,13 @@ num_raw_subregion
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left;">
-26_14_sparse_code.cha
-</td>
-<td style="text-align:left;">
-14
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-7.19
-</td>
-<td style="text-align:right;">
-2.70
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-16
-</td>
-<td style="text-align:right;">
-2.70
-</td>
-<td style="text-align:right;">
-7.19
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-5
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-30_15_sparse_code.cha
-</td>
-<td style="text-align:left;">
-15
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-7.16
-</td>
-<td style="text-align:right;">
-2.74
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-16
-</td>
-<td style="text-align:right;">
-2.74
-</td>
-<td style="text-align:right;">
-7.16
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-5
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-37_17_sparse_code.cha
-</td>
-<td style="text-align:left;">
-17
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-7.46
-</td>
-<td style="text-align:right;">
-3.78
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-16
-</td>
-<td style="text-align:right;">
-3.78
-</td>
-<td style="text-align:right;">
-7.46
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-5
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-23_17_sparse_code.cha
-</td>
-<td style="text-align:left;">
-17
-</td>
-<td style="text-align:right;">
-1.17
-</td>
-<td style="text-align:right;">
-0.22
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-5.81
-</td>
-<td style="text-align:right;">
-2.78
-</td>
-<td style="text-align:right;">
-0.22
-</td>
-<td style="text-align:right;">
-16
-</td>
-<td style="text-align:right;">
-4.17
-</td>
-<td style="text-align:right;">
-6.03
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-5
-</td>
 </tr>
 </tbody>
 </table>
 
 Out of 176 (interactively calculated) recordings at 14-17 months:
 
-2 (interactively calculated) are \>3.25 & 2 (interactively calculated)
+0 (interactively calculated) are \>3.25 & 0 (interactively calculated)
 are \<2.75 hours of listened time.
 
 Just one had \< 5 subregions (`21_14` which was only 5.58 hours long)
@@ -5038,48 +4577,6 @@ num_raw_subregion
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left;">
-32_13_sparse_code.cha
-</td>
-<td style="text-align:right;">
-3.74
-</td>
-<td style="text-align:right;">
-3.48
-</td>
-<td style="text-align:left;">
-13
-</td>
-<td style="text-align:right;">
-0.17
-</td>
-<td style="text-align:right;">
-0.99
-</td>
-<td style="text-align:right;">
-0.26
-</td>
-<td style="text-align:right;">
-3.61
-</td>
-<td style="text-align:right;">
-2.59
-</td>
-<td style="text-align:right;">
-1.16
-</td>
-<td style="text-align:right;">
-16
-</td>
-<td style="text-align:right;">
-3.61
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-5
-</td>
 </tr>
 </tbody>
 </table>
@@ -5493,7 +4990,7 @@ final %>%
   filter(month %in% c("14","15","16","17") & (rank=="5"| rank=="4")  & counts != "0")
 ```
 
-    ## # A tibble: 34 × 6
+    ## # A tibble: 36 × 6
     ##    filename              subj  month position rank  counts
     ##    <chr>                 <chr> <chr> <chr>    <chr> <chr> 
     ##  1 03_14_sparse_code.cha 03    14    3        4     7     
@@ -5506,7 +5003,7 @@ final %>%
     ##  8 10_17_sparse_code.cha 10    17    1        4     56    
     ##  9 11_17_sparse_code.cha 11    17    4        4     52    
     ## 10 12_17_sparse_code.cha 12    17    2        4     3     
-    ## # … with 24 more rows
+    ## # … with 26 more rows
 
 ### 0.6.2 Which files have subregions that have don’t have counts in them but should?
 
@@ -29176,7 +28673,7 @@ NA
 4
 </td>
 <td style="text-align:left;">
-0
+22
 </td>
 </tr>
 <tr>
@@ -33236,7 +32733,7 @@ NA
 4
 </td>
 <td style="text-align:left;">
-0
+36
 </td>
 </tr>
 <tr>
