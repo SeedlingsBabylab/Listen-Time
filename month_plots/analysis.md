@@ -94,11 +94,9 @@ listened_time <- read_csv(
     silence_raw_hour = col_double(),
     subregion_raw_hour = col_double(),
     num_raw_subregion = col_double(),
-    subregions = col_character(),
     positions = col_character(),
     ranks = col_character(),
-    annotation_counts_raw = col_character(),
-    removals = col_character()
+    annotation_counts_raw = col_character()
   )) %>%
   # All *_time columns are in milliseconds, add their hour counterparts
   mutate(across(.cols = ends_with('_time'), ~ .x / (60 * 60 * 1000), .names = '{.col}_hour')) %>%
@@ -148,7 +146,7 @@ Number of rows
 Number of columns
 </td>
 <td style="text-align:left;">
-32
+30
 </td>
 </tr>
 <tr>
@@ -170,7 +168,7 @@ Column type frequency:
 character
 </td>
 <td style="text-align:left;">
-8
+6
 </td>
 </tr>
 <tr>
@@ -311,32 +309,6 @@ month
 </tr>
 <tr>
 <td style="text-align:left;">
-subregions
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-120
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-123
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
 positions
 </td>
 <td style="text-align:right;">
@@ -398,7 +370,7 @@ annotation_counts_raw
 1
 </td>
 <td style="text-align:right;">
-15
+2
 </td>
 <td style="text-align:right;">
 24
@@ -408,32 +380,6 @@ annotation_counts_raw
 </td>
 <td style="text-align:right;">
 440
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-removals
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-20
-</td>
-<td style="text-align:right;">
-158
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-44
 </td>
 <td style="text-align:right;">
 0
@@ -485,76 +431,6 @@ hist
 <tbody>
 <tr>
 <td style="text-align:left;">
-subregion_time
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-10745311.01
-</td>
-<td style="text-align:right;">
-5090854.25
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-10800000.00
-</td>
-<td style="text-align:right;">
-10800000.00
-</td>
-<td style="text-align:right;">
-14400000.00
-</td>
-<td style="text-align:right;">
-17999990.00
-</td>
-<td style="text-align:left;">
-▃▁▁▆▇
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-skip_time
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-1231094.27
-</td>
-<td style="text-align:right;">
-3790263.73
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-792185.00
-</td>
-<td style="text-align:right;">
-33834120.00
-</td>
-<td style="text-align:left;">
-▇▁▁▁▁
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
 num_makeup_region
 </td>
 <td style="text-align:right;">
@@ -590,76 +466,6 @@ num_makeup_region
 </tr>
 <tr>
 <td style="text-align:left;">
-num_subregion_with_annot
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-2.98
-</td>
-<td style="text-align:right;">
-1.41
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-3.00
-</td>
-<td style="text-align:right;">
-3.00
-</td>
-<td style="text-align:right;">
-4.00
-</td>
-<td style="text-align:right;">
-5.00
-</td>
-<td style="text-align:left;">
-▃▁▆▇▁
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-total_listen_time
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-16293672.19
-</td>
-<td style="text-align:right;">
-8041873.94
-</td>
-<td style="text-align:right;">
-9710580.00
-</td>
-<td style="text-align:right;">
-10800000.00
-</td>
-<td style="text-align:right;">
-14356695.00
-</td>
-<td style="text-align:right;">
-14440070.00
-</td>
-<td style="text-align:right;">
-48007730.00
-</td>
-<td style="text-align:left;">
-▇▁▁▁▁
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
 num_extra_region
 </td>
 <td style="text-align:right;">
@@ -669,7 +475,7 @@ num_extra_region
 1
 </td>
 <td style="text-align:right;">
-0.07
+0.08
 </td>
 <td style="text-align:right;">
 0.44
@@ -695,41 +501,6 @@ num_extra_region
 </tr>
 <tr>
 <td style="text-align:left;">
-silence_time
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-2672792.98
-</td>
-<td style="text-align:right;">
-6469485.96
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-714585.00
-</td>
-<td style="text-align:right;">
-34481370.00
-</td>
-<td style="text-align:left;">
-▇▁▁▁▁
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
 num_surplus_region
 </td>
 <td style="text-align:right;">
@@ -742,7 +513,7 @@ num_surplus_region
 0.07
 </td>
 <td style="text-align:right;">
-0.38
+0.39
 </td>
 <td style="text-align:right;">
 0.00
@@ -765,6 +536,76 @@ num_surplus_region
 </tr>
 <tr>
 <td style="text-align:left;">
+makeup_time
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+385766.39
+</td>
+<td style="text-align:right;">
+763635.82
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:right;">
+522570.00
+</td>
+<td style="text-align:right;">
+3601840.00
+</td>
+<td style="text-align:left;">
+▇▁▁▁▁
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+extra_time
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+57567.38
+</td>
+<td style="text-align:right;">
+381564.72
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:right;">
+5100000.00
+</td>
+<td style="text-align:left;">
+▇▁▁▁▁
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
 surplus_time
 </td>
 <td style="text-align:right;">
@@ -774,10 +615,10 @@ surplus_time
 1
 </td>
 <td style="text-align:right;">
-144127.06
+147417.72
 </td>
 <td style="text-align:right;">
-978842.55
+979350.30
 </td>
 <td style="text-align:right;">
 0.00
@@ -800,7 +641,7 @@ surplus_time
 </tr>
 <tr>
 <td style="text-align:left;">
-makeup_time
+subregion_time
 </td>
 <td style="text-align:right;">
 0
@@ -809,33 +650,33 @@ makeup_time
 1
 </td>
 <td style="text-align:right;">
-387500.85
+10295582.84
 </td>
 <td style="text-align:right;">
-785275.49
-</td>
-<td style="text-align:right;">
-0.00
+4894464.12
 </td>
 <td style="text-align:right;">
 0.00
 </td>
 <td style="text-align:right;">
-0.00
+10650285.00
 </td>
 <td style="text-align:right;">
-467645.00
+10800000.00
 </td>
 <td style="text-align:right;">
-3601840.00
+14051740.00
+</td>
+<td style="text-align:right;">
+14400000.00
 </td>
 <td style="text-align:left;">
-▇▁▁▁▁
+▃▁▁▆▇
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-extra_time
+num_subregion_with_annot
 </td>
 <td style="text-align:right;">
 0
@@ -844,28 +685,28 @@ extra_time
 1
 </td>
 <td style="text-align:right;">
-51731.29
+2.99
 </td>
 <td style="text-align:right;">
-363313.06
-</td>
-<td style="text-align:right;">
-0.00
+1.42
 </td>
 <td style="text-align:right;">
 0.00
 </td>
 <td style="text-align:right;">
-0.00
+3.00
 </td>
 <td style="text-align:right;">
-0.00
+3.00
 </td>
 <td style="text-align:right;">
-5101780.00
+4.00
+</td>
+<td style="text-align:right;">
+5.00
 </td>
 <td style="text-align:left;">
-▇▁▁▁▁
+▃▁▆▇▁
 </td>
 </tr>
 <tr>
@@ -879,12 +720,6 @@ skip_silence_overlap_hour
 1
 </td>
 <td style="text-align:right;">
-0.07
-</td>
-<td style="text-align:right;">
-0.59
-</td>
-<td style="text-align:right;">
 0.00
 </td>
 <td style="text-align:right;">
@@ -897,10 +732,86 @@ skip_silence_overlap_hour
 0.00
 </td>
 <td style="text-align:right;">
-6.71
+0.00
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:left;">
+▁▁▇▁▁
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+skip_time
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1260010.74
+</td>
+<td style="text-align:right;">
+3801222.01
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:right;">
+812325.00
+</td>
+<td style="text-align:right;">
+33834120.00
 </td>
 <td style="text-align:left;">
 ▇▁▁▁▁
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+silence_time
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+14873976.41
+</td>
+<td style="text-align:right;">
+9178172.93
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:right;">
+7292745.00
+</td>
+<td style="text-align:right;">
+13399370.00
+</td>
+<td style="text-align:right;">
+21945190.00
+</td>
+<td style="text-align:right;">
+43051650.00
+</td>
+<td style="text-align:left;">
+▇▇▆▃▁
 </td>
 </tr>
 <tr>
@@ -936,6 +847,41 @@ end_time
 </td>
 <td style="text-align:left;">
 ▁▁▂▃▇
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+total_listen_time
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+16316484.39
+</td>
+<td style="text-align:right;">
+8183128.52
+</td>
+<td style="text-align:right;">
+10104930.00
+</td>
+<td style="text-align:right;">
+10800000.00
+</td>
+<td style="text-align:right;">
+14353790.00
+</td>
+<td style="text-align:right;">
+14407740.00
+</td>
+<td style="text-align:right;">
+48007730.00
+</td>
+<td style="text-align:left;">
+▇▁▁▁▁
 </td>
 </tr>
 <tr>
@@ -984,10 +930,10 @@ extra_time_hour
 1
 </td>
 <td style="text-align:right;">
-0.01
+0.02
 </td>
 <td style="text-align:right;">
-0.10
+0.11
 </td>
 <td style="text-align:right;">
 0.00
@@ -1022,7 +968,7 @@ makeup_time_hour
 0.11
 </td>
 <td style="text-align:right;">
-0.22
+0.21
 </td>
 <td style="text-align:right;">
 0.00
@@ -1034,7 +980,7 @@ makeup_time_hour
 0.00
 </td>
 <td style="text-align:right;">
-0.13
+0.15
 </td>
 <td style="text-align:right;">
 1.00
@@ -1089,28 +1035,28 @@ silence_time_hour
 1
 </td>
 <td style="text-align:right;">
-0.74
+4.13
 </td>
 <td style="text-align:right;">
-1.80
-</td>
-<td style="text-align:right;">
-0.00
+2.55
 </td>
 <td style="text-align:right;">
 0.00
 </td>
 <td style="text-align:right;">
-0.00
+2.02
 </td>
 <td style="text-align:right;">
-0.20
+3.72
 </td>
 <td style="text-align:right;">
-9.58
+6.10
+</td>
+<td style="text-align:right;">
+11.96
 </td>
 <td style="text-align:left;">
-▇▁▁▁▁
+▇▇▆▃▁
 </td>
 </tr>
 <tr>
@@ -1124,28 +1070,28 @@ subregion_time_hour
 1
 </td>
 <td style="text-align:right;">
-2.98
+2.86
 </td>
 <td style="text-align:right;">
-1.41
+1.36
 </td>
 <td style="text-align:right;">
 0.00
 </td>
 <td style="text-align:right;">
-3.00
+2.96
 </td>
 <td style="text-align:right;">
 3.00
+</td>
+<td style="text-align:right;">
+3.91
 </td>
 <td style="text-align:right;">
 4.00
 </td>
-<td style="text-align:right;">
-5.00
-</td>
 <td style="text-align:left;">
-▃▁▆▇▁
+▃▁▁▆▇
 </td>
 </tr>
 <tr>
@@ -1159,10 +1105,10 @@ skip_time_hour
 1
 </td>
 <td style="text-align:right;">
-0.34
+0.35
 </td>
 <td style="text-align:right;">
-1.05
+1.06
 </td>
 <td style="text-align:right;">
 0.00
@@ -1232,10 +1178,10 @@ total_listen_time_hour
 4.53
 </td>
 <td style="text-align:right;">
-2.23
+2.27
 </td>
 <td style="text-align:right;">
-2.70
+2.81
 </td>
 <td style="text-align:right;">
 3.00
@@ -1244,7 +1190,7 @@ total_listen_time_hour
 3.99
 </td>
 <td style="text-align:right;">
-4.01
+4.00
 </td>
 <td style="text-align:right;">
 13.34
@@ -1374,16 +1320,16 @@ min
 06
 </td>
 <td style="text-align:right;">
-8.74
+9.08
 </td>
 <td style="text-align:right;">
-2.04
+1.72
 </td>
 <td style="text-align:right;">
 13.13
 </td>
 <td style="text-align:right;">
-4.65
+4.72
 </td>
 </tr>
 <tr>
@@ -1391,16 +1337,16 @@ min
 07
 </td>
 <td style="text-align:right;">
-9.37
+9.48
 </td>
 <td style="text-align:right;">
-1.65
+1.55
 </td>
 <td style="text-align:right;">
 13.34
 </td>
 <td style="text-align:right;">
-5.87
+6.42
 </td>
 </tr>
 <tr>
@@ -1408,16 +1354,16 @@ min
 08
 </td>
 <td style="text-align:right;">
-4.02
+3.98
 </td>
 <td style="text-align:right;">
-0.35
+0.08
 </td>
 <td style="text-align:right;">
-5.38
+4.19
 </td>
 <td style="text-align:right;">
-3.02
+3.77
 </td>
 </tr>
 <tr>
@@ -1425,16 +1371,16 @@ min
 09
 </td>
 <td style="text-align:right;">
-4.04
+3.98
 </td>
 <td style="text-align:right;">
-0.32
+0.08
 </td>
 <td style="text-align:right;">
-5.22
+4.19
 </td>
 <td style="text-align:right;">
-3.00
+3.75
 </td>
 </tr>
 <tr>
@@ -1442,16 +1388,16 @@ min
 10
 </td>
 <td style="text-align:right;">
-4.11
+3.98
 </td>
 <td style="text-align:right;">
-0.72
+0.06
 </td>
 <td style="text-align:right;">
-7.53
+4.23
 </td>
 <td style="text-align:right;">
-2.93
+3.78
 </td>
 </tr>
 <tr>
@@ -1459,16 +1405,16 @@ min
 11
 </td>
 <td style="text-align:right;">
-3.95
+3.97
 </td>
 <td style="text-align:right;">
-0.09
+0.06
 </td>
 <td style="text-align:right;">
 4.14
 </td>
 <td style="text-align:right;">
-3.64
+3.81
 </td>
 </tr>
 <tr>
@@ -1479,13 +1425,13 @@ min
 3.99
 </td>
 <td style="text-align:right;">
-0.13
+0.07
 </td>
 <td style="text-align:right;">
-4.56
+4.23
 </td>
 <td style="text-align:right;">
-3.51
+3.86
 </td>
 </tr>
 <tr>
@@ -1493,16 +1439,16 @@ min
 13
 </td>
 <td style="text-align:right;">
-3.96
+3.95
 </td>
 <td style="text-align:right;">
-0.24
+0.17
 </td>
 <td style="text-align:right;">
-4.78
+4.10
 </td>
 <td style="text-align:right;">
-3.00
+3.07
 </td>
 </tr>
 <tr>
@@ -1510,16 +1456,16 @@ min
 14
 </td>
 <td style="text-align:right;">
-3.07
+2.99
 </td>
 <td style="text-align:right;">
-0.44
+0.03
 </td>
 <td style="text-align:right;">
-5.78
+3.01
 </td>
 <td style="text-align:right;">
-2.70
+2.87
 </td>
 </tr>
 <tr>
@@ -1530,13 +1476,13 @@ min
 2.99
 </td>
 <td style="text-align:right;">
-0.09
+0.03
 </td>
 <td style="text-align:right;">
-3.50
+3.04
 </td>
 <td style="text-align:right;">
-2.74
+2.82
 </td>
 </tr>
 <tr>
@@ -1561,13 +1507,13 @@ min
 17
 </td>
 <td style="text-align:right;">
-3.06
+3.00
 </td>
 <td style="text-align:right;">
-0.24
+0.02
 </td>
 <td style="text-align:right;">
-4.00
+3.00
 </td>
 <td style="text-align:right;">
 2.91
@@ -2038,7 +1984,7 @@ subregion_raw_hour
 01_06_sparse_code.cha
 </td>
 <td style="text-align:right;">
-4.83
+0
 </td>
 <td style="text-align:right;">
 0.00
@@ -2050,7 +1996,7 @@ subregion_raw_hour
 0.00
 </td>
 <td style="text-align:right;">
-5.86
+0.00
 </td>
 <td style="text-align:right;">
 0
@@ -2062,7 +2008,7 @@ subregion_raw_hour
 16
 </td>
 <td style="text-align:right;">
-8.38
+9.41
 </td>
 <td style="text-align:right;">
 5.86
@@ -2076,7 +2022,7 @@ subregion_raw_hour
 01_07_sparse_code.cha
 </td>
 <td style="text-align:right;">
-0.00
+0
 </td>
 <td style="text-align:right;">
 0.00
@@ -2114,7 +2060,7 @@ subregion_raw_hour
 01_08_sparse_code.cha
 </td>
 <td style="text-align:right;">
-0.00
+0
 </td>
 <td style="text-align:right;">
 0.08
@@ -2126,10 +2072,10 @@ subregion_raw_hour
 1.69
 </td>
 <td style="text-align:right;">
-0.00
+5.03
 </td>
 <td style="text-align:right;">
-2
+4
 </td>
 <td style="text-align:right;">
 0.00
@@ -2138,7 +2084,7 @@ subregion_raw_hour
 16
 </td>
 <td style="text-align:right;">
-3.78
+4.08
 </td>
 <td style="text-align:right;">
 5.03
@@ -2152,7 +2098,7 @@ subregion_raw_hour
 01_09_sparse_code.cha
 </td>
 <td style="text-align:right;">
-0.00
+0
 </td>
 <td style="text-align:right;">
 0.00
@@ -2164,7 +2110,7 @@ subregion_raw_hour
 0.72
 </td>
 <td style="text-align:right;">
-0.00
+1.53
 </td>
 <td style="text-align:right;">
 4
@@ -2176,7 +2122,7 @@ subregion_raw_hour
 16
 </td>
 <td style="text-align:right;">
-4.72
+4.00
 </td>
 <td style="text-align:right;">
 1.53
@@ -2190,7 +2136,7 @@ subregion_raw_hour
 01_10_sparse_code.cha
 </td>
 <td style="text-align:right;">
-0.00
+0
 </td>
 <td style="text-align:right;">
 0.00
@@ -2202,7 +2148,7 @@ subregion_raw_hour
 0.24
 </td>
 <td style="text-align:right;">
-0.00
+3.58
 </td>
 <td style="text-align:right;">
 4
@@ -2214,7 +2160,7 @@ subregion_raw_hour
 16
 </td>
 <td style="text-align:right;">
-4.24
+4.00
 </td>
 <td style="text-align:right;">
 3.58
@@ -2289,9 +2235,8 @@ hours (unlikely for infants this age to be awake that much) or \<8 hours
 (should double check for any errors in the file since that’s \<50% of
 full recording capacity). Note the silence_raw_hour variable here will
 be the same as the silence_time_hour variable. That is, for months 6 and
-7, silent and skip regions are **not modified**, hence we do not include
-their raw versions (instead we calculate their overlap, which is not
-done for the rest of the months).
+7, silent and skip regions **are modified**: any overlap is counted as
+*skip* and is removed from the corresponding *silence* region.
 
 <details>
 <summary>
@@ -2314,8 +2259,8 @@ sixseven_summary <-
   listened_time_with_months %>%
   select(headers) %>%
   filter(month %in% c("06","07") & (total_listen_time_hour>12 | total_listen_time_hour<8)) %>%
-  mutate(calculation_of_listen_time_hour = sprintf("= %s - (%s + %s - %s)", end_time_hour, skip_time_hour, silence_time_hour, skip_silence_overlap_hour)) %>% 
-  arrange(total_listen_time_hour)
+  mutate(calculation_of_listen_time_hour = sprintf("= %s - (%s + %s - %s)", end_time_hour, skip_time_hour, silence_time_hour, skip_silence_overlap_hour)) %>%
+  arrange(filename)
 
 write_csv(sixseven_summary, 'sixseven_problems')
 
@@ -2355,236 +2300,28 @@ calculation_of_listen_time_hour
 <tbody>
 <tr>
 <td style="text-align:left;">
-08_06_sparse_code.cha
+04_06_sparse_code.cha
 </td>
 <td style="text-align:left;">
 06
 </td>
 <td style="text-align:right;">
-4.67
+2.90
 </td>
 <td style="text-align:right;">
-6.68
+1.15
 </td>
 <td style="text-align:right;">
-0.00
+0
 </td>
 <td style="text-align:right;">
-16.00
+11.86
 </td>
 <td style="text-align:right;">
-4.65
+7.80
 </td>
 <td style="text-align:left;">
-= 16 - (6.68 + 4.67 - 0)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-13_06_sparse_code.cha
-</td>
-<td style="text-align:left;">
-06
-</td>
-<td style="text-align:right;">
-2.95
-</td>
-<td style="text-align:right;">
-3.86
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-11.53
-</td>
-<td style="text-align:right;">
-4.72
-</td>
-<td style="text-align:left;">
-= 11.53 - (3.86 + 2.95 - 0)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-21_06_sparse_code.cha
-</td>
-<td style="text-align:left;">
-06
-</td>
-<td style="text-align:right;">
-2.54
-</td>
-<td style="text-align:right;">
-6.98
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-14.24
-</td>
-<td style="text-align:right;">
-4.72
-</td>
-<td style="text-align:left;">
-= 14.24 - (6.98 + 2.54 - 0)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-19_06_sparse_code.cha
-</td>
-<td style="text-align:left;">
-06
-</td>
-<td style="text-align:right;">
-3.55
-</td>
-<td style="text-align:right;">
-5.17
-</td>
-<td style="text-align:right;">
-1.93
-</td>
-<td style="text-align:right;">
-11.91
-</td>
-<td style="text-align:right;">
-5.12
-</td>
-<td style="text-align:left;">
-= 11.91 - (5.17 + 3.55 - 1.93)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-17_06_sparse_code.cha
-</td>
-<td style="text-align:left;">
-06
-</td>
-<td style="text-align:right;">
-7.32
-</td>
-<td style="text-align:right;">
-3.12
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-16.00
-</td>
-<td style="text-align:right;">
-5.57
-</td>
-<td style="text-align:left;">
-= 16 - (3.12 + 7.32 - 0)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-03_07_sparse_code.cha
-</td>
-<td style="text-align:left;">
-07
-</td>
-<td style="text-align:right;">
-6.99
-</td>
-<td style="text-align:right;">
-6.70
-</td>
-<td style="text-align:right;">
-3.55
-</td>
-<td style="text-align:right;">
-16.00
-</td>
-<td style="text-align:right;">
-5.87
-</td>
-<td style="text-align:left;">
-= 16 - (6.7 + 6.99 - 3.55)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-14_07_sparse_code.cha
-</td>
-<td style="text-align:left;">
-07
-</td>
-<td style="text-align:right;">
-6.62
-</td>
-<td style="text-align:right;">
-9.40
-</td>
-<td style="text-align:right;">
-6.30
-</td>
-<td style="text-align:right;">
-16.00
-</td>
-<td style="text-align:right;">
-6.28
-</td>
-<td style="text-align:left;">
-= 16 - (9.4 + 6.62 - 6.3)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-26_07_sparse_code.cha
-</td>
-<td style="text-align:left;">
-07
-</td>
-<td style="text-align:right;">
-9.58
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-16.00
-</td>
-<td style="text-align:right;">
-6.42
-</td>
-<td style="text-align:left;">
-= 16 - (0 + 9.58 - 0)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-27_06_sparse_code.cha
-</td>
-<td style="text-align:left;">
-06
-</td>
-<td style="text-align:right;">
-5.99
-</td>
-<td style="text-align:right;">
-3.54
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-16.00
-</td>
-<td style="text-align:right;">
-6.47
-</td>
-<td style="text-align:left;">
-= 16 - (3.54 + 5.99 - 0)
+= 11.86 - (1.15 + 2.9 - 0)
 </td>
 </tr>
 <tr>
@@ -2601,7 +2338,7 @@ calculation_of_listen_time_hour
 0.00
 </td>
 <td style="text-align:right;">
-0.00
+0
 </td>
 <td style="text-align:right;">
 16.00
@@ -2611,188 +2348,6 @@ calculation_of_listen_time_hour
 </td>
 <td style="text-align:left;">
 = 16 - (0 + 9.17 - 0)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-04_06_sparse_code.cha
-</td>
-<td style="text-align:left;">
-06
-</td>
-<td style="text-align:right;">
-3.49
-</td>
-<td style="text-align:right;">
-1.15
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-11.86
-</td>
-<td style="text-align:right;">
-7.22
-</td>
-<td style="text-align:left;">
-= 11.86 - (1.15 + 3.49 - 0)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-43_06_sparse_code.cha
-</td>
-<td style="text-align:left;">
-06
-</td>
-<td style="text-align:right;">
-0.54
-</td>
-<td style="text-align:right;">
-2.87
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-10.67
-</td>
-<td style="text-align:right;">
-7.26
-</td>
-<td style="text-align:left;">
-= 10.67 - (2.87 + 0.54 - 0)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-44_06_sparse_code.cha
-</td>
-<td style="text-align:left;">
-06
-</td>
-<td style="text-align:right;">
-7.76
-</td>
-<td style="text-align:right;">
-0.84
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-16.00
-</td>
-<td style="text-align:right;">
-7.40
-</td>
-<td style="text-align:left;">
-= 16 - (0.84 + 7.76 - 0)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-45_07_sparse_code.cha
-</td>
-<td style="text-align:left;">
-07
-</td>
-<td style="text-align:right;">
-2.69
-</td>
-<td style="text-align:right;">
-0.45
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-10.58
-</td>
-<td style="text-align:right;">
-7.44
-</td>
-<td style="text-align:left;">
-= 10.58 - (0.45 + 2.69 - 0)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-21_07_sparse_code.cha
-</td>
-<td style="text-align:left;">
-07
-</td>
-<td style="text-align:right;">
-2.31
-</td>
-<td style="text-align:right;">
-1.80
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-11.56
-</td>
-<td style="text-align:right;">
-7.45
-</td>
-<td style="text-align:left;">
-= 11.56 - (1.8 + 2.31 - 0)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-31_06_sparse_code.cha
-</td>
-<td style="text-align:left;">
-06
-</td>
-<td style="text-align:right;">
-7.51
-</td>
-<td style="text-align:right;">
-0.97
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-16.00
-</td>
-<td style="text-align:right;">
-7.52
-</td>
-<td style="text-align:left;">
-= 16 - (0.97 + 7.51 - 0)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-19_07_sparse_code.cha
-</td>
-<td style="text-align:left;">
-07
-</td>
-<td style="text-align:right;">
-1.03
-</td>
-<td style="text-align:right;">
-2.31
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-10.93
-</td>
-<td style="text-align:right;">
-7.60
-</td>
-<td style="text-align:left;">
-= 10.93 - (2.31 + 1.03 - 0)
 </td>
 </tr>
 <tr>
@@ -2809,7 +2364,7 @@ calculation_of_listen_time_hour
 0.00
 </td>
 <td style="text-align:right;">
-0.00
+0
 </td>
 <td style="text-align:right;">
 16.00
@@ -2823,28 +2378,288 @@ calculation_of_listen_time_hour
 </tr>
 <tr>
 <td style="text-align:left;">
-28_06_sparse_code.cha
+08_06_sparse_code.cha
 </td>
 <td style="text-align:left;">
 06
 </td>
 <td style="text-align:right;">
-4.38
+2.78
 </td>
 <td style="text-align:right;">
-0.00
+6.68
 </td>
 <td style="text-align:right;">
-0.00
+0
 </td>
 <td style="text-align:right;">
-12.09
+16.00
 </td>
 <td style="text-align:right;">
-7.71
+6.54
 </td>
 <td style="text-align:left;">
-= 12.09 - (0 + 4.38 - 0)
+= 16 - (6.68 + 2.78 - 0)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+08_07_sparse_code.cha
+</td>
+<td style="text-align:left;">
+07
+</td>
+<td style="text-align:right;">
+3.62
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+16.00
+</td>
+<td style="text-align:right;">
+12.38
+</td>
+<td style="text-align:left;">
+= 16 - (0 + 3.62 - 0)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+13_06_sparse_code.cha
+</td>
+<td style="text-align:left;">
+06
+</td>
+<td style="text-align:right;">
+2.95
+</td>
+<td style="text-align:right;">
+3.86
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+11.53
+</td>
+<td style="text-align:right;">
+4.72
+</td>
+<td style="text-align:left;">
+= 11.53 - (3.86 + 2.95 - 0)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+13_07_sparse_code.cha
+</td>
+<td style="text-align:left;">
+07
+</td>
+<td style="text-align:right;">
+4.16
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+12.01
+</td>
+<td style="text-align:right;">
+7.85
+</td>
+<td style="text-align:left;">
+= 12.01 - (0 + 4.16 - 0)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+14_06_sparse_code.cha
+</td>
+<td style="text-align:left;">
+06
+</td>
+<td style="text-align:right;">
+2.87
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+16.00
+</td>
+<td style="text-align:right;">
+13.13
+</td>
+<td style="text-align:left;">
+= 16 - (0 + 2.87 - 0)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+14_07_sparse_code.cha
+</td>
+<td style="text-align:left;">
+07
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:right;">
+9.40
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+16.00
+</td>
+<td style="text-align:right;">
+6.60
+</td>
+<td style="text-align:left;">
+= 16 - (9.4 + 0 - 0)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+17_06_sparse_code.cha
+</td>
+<td style="text-align:left;">
+06
+</td>
+<td style="text-align:right;">
+6.15
+</td>
+<td style="text-align:right;">
+3.12
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+16.00
+</td>
+<td style="text-align:right;">
+6.73
+</td>
+<td style="text-align:left;">
+= 16 - (3.12 + 6.15 - 0)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+19_06_sparse_code.cha
+</td>
+<td style="text-align:left;">
+06
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:right;">
+5.17
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+11.91
+</td>
+<td style="text-align:right;">
+6.74
+</td>
+<td style="text-align:left;">
+= 11.91 - (5.17 + 0 - 0)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+19_07_sparse_code.cha
+</td>
+<td style="text-align:left;">
+07
+</td>
+<td style="text-align:right;">
+1.03
+</td>
+<td style="text-align:right;">
+2.31
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+10.93
+</td>
+<td style="text-align:right;">
+7.60
+</td>
+<td style="text-align:left;">
+= 10.93 - (2.31 + 1.03 - 0)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+21_06_sparse_code.cha
+</td>
+<td style="text-align:left;">
+06
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:right;">
+6.98
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+14.24
+</td>
+<td style="text-align:right;">
+7.26
+</td>
+<td style="text-align:left;">
+= 14.24 - (6.98 + 0 - 0)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+21_07_sparse_code.cha
+</td>
+<td style="text-align:left;">
+07
+</td>
+<td style="text-align:right;">
+2.31
+</td>
+<td style="text-align:right;">
+1.80
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+11.56
+</td>
+<td style="text-align:right;">
+7.45
+</td>
+<td style="text-align:left;">
+= 11.56 - (1.8 + 2.31 - 0)
 </td>
 </tr>
 <tr>
@@ -2861,7 +2676,7 @@ calculation_of_listen_time_hour
 0.00
 </td>
 <td style="text-align:right;">
-0.00
+0
 </td>
 <td style="text-align:right;">
 11.50
@@ -2887,7 +2702,7 @@ calculation_of_listen_time_hour
 0.00
 </td>
 <td style="text-align:right;">
-0.00
+0
 </td>
 <td style="text-align:right;">
 16.00
@@ -2901,106 +2716,54 @@ calculation_of_listen_time_hour
 </tr>
 <tr>
 <td style="text-align:left;">
-03_06_sparse_code.cha
-</td>
-<td style="text-align:left;">
-06
-</td>
-<td style="text-align:right;">
-7.09
-</td>
-<td style="text-align:right;">
-7.69
-</td>
-<td style="text-align:right;">
-6.59
-</td>
-<td style="text-align:right;">
-16.00
-</td>
-<td style="text-align:right;">
-7.81
-</td>
-<td style="text-align:left;">
-= 16 - (7.69 + 7.09 - 6.59)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-37_06_sparse_code.cha
-</td>
-<td style="text-align:left;">
-06
-</td>
-<td style="text-align:right;">
-7.79
-</td>
-<td style="text-align:right;">
-0.37
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-16.00
-</td>
-<td style="text-align:right;">
-7.84
-</td>
-<td style="text-align:left;">
-= 16 - (0.37 + 7.79 - 0)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-13_07_sparse_code.cha
+26_07_sparse_code.cha
 </td>
 <td style="text-align:left;">
 07
 </td>
 <td style="text-align:right;">
-4.16
+9.58
 </td>
 <td style="text-align:right;">
 0.00
 </td>
 <td style="text-align:right;">
-0.00
+0
 </td>
 <td style="text-align:right;">
-12.01
+16.00
 </td>
 <td style="text-align:right;">
-7.85
+6.42
 </td>
 <td style="text-align:left;">
-= 12.01 - (0 + 4.16 - 0)
+= 16 - (0 + 9.58 - 0)
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-35_06_sparse_code.cha
+28_06_sparse_code.cha
 </td>
 <td style="text-align:left;">
 06
 </td>
 <td style="text-align:right;">
-3.45
-</td>
-<td style="text-align:right;">
-0.40
+4.38
 </td>
 <td style="text-align:right;">
 0.00
 </td>
 <td style="text-align:right;">
-11.79
+0
 </td>
 <td style="text-align:right;">
-7.94
+12.09
+</td>
+<td style="text-align:right;">
+7.71
 </td>
 <td style="text-align:left;">
-= 11.79 - (0.4 + 3.45 - 0)
+= 12.09 - (0 + 4.38 - 0)
 </td>
 </tr>
 <tr>
@@ -3017,7 +2780,7 @@ calculation_of_listen_time_hour
 0.00
 </td>
 <td style="text-align:right;">
-0.00
+0
 </td>
 <td style="text-align:right;">
 14.08
@@ -3043,7 +2806,7 @@ calculation_of_listen_time_hour
 0.04
 </td>
 <td style="text-align:right;">
-0.00
+0
 </td>
 <td style="text-align:right;">
 16.00
@@ -3053,58 +2816,6 @@ calculation_of_listen_time_hour
 </td>
 <td style="text-align:left;">
 = 16 - (0.04 + 3.65 - 0)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-08_07_sparse_code.cha
-</td>
-<td style="text-align:left;">
-07
-</td>
-<td style="text-align:right;">
-3.62
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-16.00
-</td>
-<td style="text-align:right;">
-12.38
-</td>
-<td style="text-align:left;">
-= 16 - (0 + 3.62 - 0)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-14_06_sparse_code.cha
-</td>
-<td style="text-align:left;">
-06
-</td>
-<td style="text-align:right;">
-2.87
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-16.00
-</td>
-<td style="text-align:right;">
-13.13
-</td>
-<td style="text-align:left;">
-= 16 - (0 + 2.87 - 0)
 </td>
 </tr>
 <tr>
@@ -3121,7 +2832,7 @@ calculation_of_listen_time_hour
 0.17
 </td>
 <td style="text-align:right;">
-0.00
+0
 </td>
 <td style="text-align:right;">
 16.00
@@ -3133,6 +2844,136 @@ calculation_of_listen_time_hour
 = 16 - (0.17 + 2.5 - 0)
 </td>
 </tr>
+<tr>
+<td style="text-align:left;">
+35_06_sparse_code.cha
+</td>
+<td style="text-align:left;">
+06
+</td>
+<td style="text-align:right;">
+3.45
+</td>
+<td style="text-align:right;">
+0.40
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+11.79
+</td>
+<td style="text-align:right;">
+7.94
+</td>
+<td style="text-align:left;">
+= 11.79 - (0.4 + 3.45 - 0)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+37_06_sparse_code.cha
+</td>
+<td style="text-align:left;">
+06
+</td>
+<td style="text-align:right;">
+7.79
+</td>
+<td style="text-align:right;">
+0.37
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+16.00
+</td>
+<td style="text-align:right;">
+7.84
+</td>
+<td style="text-align:left;">
+= 16 - (0.37 + 7.79 - 0)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+43_06_sparse_code.cha
+</td>
+<td style="text-align:left;">
+06
+</td>
+<td style="text-align:right;">
+0.54
+</td>
+<td style="text-align:right;">
+2.87
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+10.67
+</td>
+<td style="text-align:right;">
+7.26
+</td>
+<td style="text-align:left;">
+= 10.67 - (2.87 + 0.54 - 0)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+44_06_sparse_code.cha
+</td>
+<td style="text-align:left;">
+06
+</td>
+<td style="text-align:right;">
+7.76
+</td>
+<td style="text-align:right;">
+0.84
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+16.00
+</td>
+<td style="text-align:right;">
+7.40
+</td>
+<td style="text-align:left;">
+= 16 - (0.84 + 7.76 - 0)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+45_07_sparse_code.cha
+</td>
+<td style="text-align:left;">
+07
+</td>
+<td style="text-align:right;">
+2.69
+</td>
+<td style="text-align:right;">
+0.45
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+10.58
+</td>
+<td style="text-align:right;">
+7.44
+</td>
+<td style="text-align:left;">
+= 10.58 - (0.45 + 2.69 - 0)
+</td>
+</tr>
 </tbody>
 </table>
 
@@ -3141,7 +2982,7 @@ calculation_of_listen_time_hour
 </details>
 
 As we can see above, n = 5 (calculated interactively) files have \>12
-hours, and n = 25 (calculated interactively) have \<8 hours.
+hours, and n = 21 (calculated interactively) have \<8 hours.
 
 Alternatively, we can assume that all skip time was technically
 **listened** to in the sense that it was part of the file and human
@@ -3209,64 +3050,6 @@ case2
 <tbody>
 <tr>
 <td style="text-align:left;">
-03_07_sparse_code.cha
-</td>
-<td style="text-align:left;">
-07
-</td>
-<td style="text-align:right;">
-6.99
-</td>
-<td style="text-align:right;">
-6.70
-</td>
-<td style="text-align:right;">
-3.55
-</td>
-<td style="text-align:right;">
-16.00
-</td>
-<td style="text-align:right;">
-5.87
-</td>
-<td style="text-align:right;">
-12.56
-</td>
-<td style="text-align:right;">
-9.01
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-14_07_sparse_code.cha
-</td>
-<td style="text-align:left;">
-07
-</td>
-<td style="text-align:right;">
-6.62
-</td>
-<td style="text-align:right;">
-9.40
-</td>
-<td style="text-align:right;">
-6.30
-</td>
-<td style="text-align:right;">
-16.00
-</td>
-<td style="text-align:right;">
-6.28
-</td>
-<td style="text-align:right;">
-15.68
-</td>
-<td style="text-align:right;">
-9.38
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
 26_07_sparse_code.cha
 </td>
 <td style="text-align:left;">
@@ -3279,7 +3062,7 @@ case2
 0.00
 </td>
 <td style="text-align:right;">
-0.00
+0
 </td>
 <td style="text-align:right;">
 16.00
@@ -3292,6 +3075,64 @@ case2
 </td>
 <td style="text-align:right;">
 6.42
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+08_06_sparse_code.cha
+</td>
+<td style="text-align:left;">
+06
+</td>
+<td style="text-align:right;">
+2.78
+</td>
+<td style="text-align:right;">
+6.68
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+16.00
+</td>
+<td style="text-align:right;">
+6.54
+</td>
+<td style="text-align:right;">
+13.22
+</td>
+<td style="text-align:right;">
+13.22
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+14_07_sparse_code.cha
+</td>
+<td style="text-align:left;">
+07
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:right;">
+9.40
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+16.00
+</td>
+<td style="text-align:right;">
+6.60
+</td>
+<td style="text-align:right;">
+16.00
+</td>
+<td style="text-align:right;">
+16.00
 </td>
 </tr>
 <tr>
@@ -3308,7 +3149,7 @@ case2
 0.00
 </td>
 <td style="text-align:right;">
-0.00
+0
 </td>
 <td style="text-align:right;">
 16.00
@@ -3325,6 +3166,35 @@ case2
 </tr>
 <tr>
 <td style="text-align:left;">
+21_06_sparse_code.cha
+</td>
+<td style="text-align:left;">
+06
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:right;">
+6.98
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+14.24
+</td>
+<td style="text-align:right;">
+7.26
+</td>
+<td style="text-align:right;">
+14.24
+</td>
+<td style="text-align:right;">
+14.24
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
 45_07_sparse_code.cha
 </td>
 <td style="text-align:left;">
@@ -3337,7 +3207,7 @@ case2
 0.45
 </td>
 <td style="text-align:right;">
-0.00
+0
 </td>
 <td style="text-align:right;">
 10.58
@@ -3366,7 +3236,7 @@ case2
 0.00
 </td>
 <td style="text-align:right;">
-0.00
+0
 </td>
 <td style="text-align:right;">
 16.00
@@ -3395,7 +3265,7 @@ case2
 0.00
 </td>
 <td style="text-align:right;">
-0.00
+0
 </td>
 <td style="text-align:right;">
 12.09
@@ -3424,7 +3294,7 @@ case2
 0.00
 </td>
 <td style="text-align:right;">
-0.00
+0
 </td>
 <td style="text-align:right;">
 11.50
@@ -3453,7 +3323,7 @@ case2
 0.00
 </td>
 <td style="text-align:right;">
-0.00
+0
 </td>
 <td style="text-align:right;">
 16.00
@@ -3466,35 +3336,6 @@ case2
 </td>
 <td style="text-align:right;">
 7.80
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-03_06_sparse_code.cha
-</td>
-<td style="text-align:left;">
-06
-</td>
-<td style="text-align:right;">
-7.09
-</td>
-<td style="text-align:right;">
-7.69
-</td>
-<td style="text-align:right;">
-6.59
-</td>
-<td style="text-align:right;">
-16.00
-</td>
-<td style="text-align:right;">
-7.81
-</td>
-<td style="text-align:right;">
-15.50
-</td>
-<td style="text-align:right;">
-8.91
 </td>
 </tr>
 <tr>
@@ -3511,7 +3352,7 @@ case2
 0.00
 </td>
 <td style="text-align:right;">
-0.00
+0
 </td>
 <td style="text-align:right;">
 12.01
@@ -3534,13 +3375,13 @@ case2
 06
 </td>
 <td style="text-align:right;">
-7.23
+0.52
 </td>
 <td style="text-align:right;">
 7.46
 </td>
 <td style="text-align:right;">
-6.71
+0
 </td>
 <td style="text-align:right;">
 16.00
@@ -3552,36 +3393,36 @@ case2
 15.48
 </td>
 <td style="text-align:right;">
-8.77
+15.48
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-01_06_sparse_code.cha
+03_06_sparse_code.cha
 </td>
 <td style="text-align:left;">
 06
 </td>
 <td style="text-align:right;">
-5.86
+0.00
 </td>
 <td style="text-align:right;">
-6.59
+7.69
 </td>
 <td style="text-align:right;">
-4.83
+0
 </td>
 <td style="text-align:right;">
 16.00
 </td>
 <td style="text-align:right;">
-8.38
+8.31
 </td>
 <td style="text-align:right;">
-14.97
+16.00
 </td>
 <td style="text-align:right;">
-10.14
+16.00
 </td>
 </tr>
 <tr>
@@ -3598,7 +3439,7 @@ case2
 3.77
 </td>
 <td style="text-align:right;">
-0.00
+0
 </td>
 <td style="text-align:right;">
 16.00
@@ -3615,31 +3456,147 @@ case2
 </tr>
 <tr>
 <td style="text-align:left;">
+03_07_sparse_code.cha
+</td>
+<td style="text-align:left;">
+07
+</td>
+<td style="text-align:right;">
+0.54
+</td>
+<td style="text-align:right;">
+6.70
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+16.00
+</td>
+<td style="text-align:right;">
+8.76
+</td>
+<td style="text-align:right;">
+15.46
+</td>
+<td style="text-align:right;">
+15.46
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+27_06_sparse_code.cha
+</td>
+<td style="text-align:left;">
+06
+</td>
+<td style="text-align:right;">
+3.56
+</td>
+<td style="text-align:right;">
+3.54
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+16.00
+</td>
+<td style="text-align:right;">
+8.89
+</td>
+<td style="text-align:right;">
+12.44
+</td>
+<td style="text-align:right;">
+12.44
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+01_06_sparse_code.cha
+</td>
+<td style="text-align:left;">
+06
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:right;">
+6.59
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+16.00
+</td>
+<td style="text-align:right;">
+9.41
+</td>
+<td style="text-align:right;">
+16.00
+</td>
+<td style="text-align:right;">
+16.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+34_07_sparse_code.cha
+</td>
+<td style="text-align:left;">
+07
+</td>
+<td style="text-align:right;">
+3.98
+</td>
+<td style="text-align:right;">
+2.57
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+16.00
+</td>
+<td style="text-align:right;">
+9.44
+</td>
+<td style="text-align:right;">
+12.02
+</td>
+<td style="text-align:right;">
+12.02
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
 34_06_sparse_code.cha
 </td>
 <td style="text-align:left;">
 06
 </td>
 <td style="text-align:right;">
-1.93
+1.41
 </td>
 <td style="text-align:right;">
 5.06
 </td>
 <td style="text-align:right;">
-0.00
+0
 </td>
 <td style="text-align:right;">
 16.00
 </td>
 <td style="text-align:right;">
-9.01
+9.53
 </td>
 <td style="text-align:right;">
-14.07
+14.59
 </td>
 <td style="text-align:right;">
-14.07
+14.59
 </td>
 </tr>
 <tr>
@@ -3650,13 +3607,13 @@ case2
 07
 </td>
 <td style="text-align:right;">
-5.97
+2.50
 </td>
 <td style="text-align:right;">
 3.87
 </td>
 <td style="text-align:right;">
-3.47
+0
 </td>
 <td style="text-align:right;">
 16.00
@@ -3668,7 +3625,7 @@ case2
 13.50
 </td>
 <td style="text-align:right;">
-10.03
+13.50
 </td>
 </tr>
 <tr>
@@ -3679,13 +3636,13 @@ case2
 06
 </td>
 <td style="text-align:right;">
-2.22
+0.00
 </td>
 <td style="text-align:right;">
 3.66
 </td>
 <td style="text-align:right;">
-2.21
+0
 </td>
 <td style="text-align:right;">
 13.34
@@ -3694,10 +3651,39 @@ case2
 9.68
 </td>
 <td style="text-align:right;">
-13.33
+13.34
 </td>
 <td style="text-align:right;">
-11.12
+13.34
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+10_07_sparse_code.cha
+</td>
+<td style="text-align:left;">
+07
+</td>
+<td style="text-align:right;">
+0.44
+</td>
+<td style="text-align:right;">
+2.28
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+12.89
+</td>
+<td style="text-align:right;">
+10.17
+</td>
+<td style="text-align:right;">
+12.45
+</td>
+<td style="text-align:right;">
+12.45
 </td>
 </tr>
 <tr>
@@ -3714,7 +3700,7 @@ case2
 2.80
 </td>
 <td style="text-align:right;">
-0.00
+0
 </td>
 <td style="text-align:right;">
 16.00
@@ -3743,7 +3729,7 @@ case2
 1.50
 </td>
 <td style="text-align:right;">
-0.00
+0
 </td>
 <td style="text-align:right;">
 16.00
@@ -3772,7 +3758,7 @@ case2
 0.80
 </td>
 <td style="text-align:right;">
-0.00
+0
 </td>
 <td style="text-align:right;">
 16.00
@@ -3801,7 +3787,7 @@ case2
 1.33
 </td>
 <td style="text-align:right;">
-0.00
+0
 </td>
 <td style="text-align:right;">
 13.16
@@ -3830,7 +3816,7 @@ case2
 4.59
 </td>
 <td style="text-align:right;">
-0.00
+0
 </td>
 <td style="text-align:right;">
 16.00
@@ -3859,7 +3845,7 @@ case2
 0.00
 </td>
 <td style="text-align:right;">
-0.00
+0
 </td>
 <td style="text-align:right;">
 14.08
@@ -3888,7 +3874,7 @@ case2
 0.04
 </td>
 <td style="text-align:right;">
-0.00
+0
 </td>
 <td style="text-align:right;">
 16.00
@@ -3917,7 +3903,7 @@ case2
 0.00
 </td>
 <td style="text-align:right;">
-0.00
+0
 </td>
 <td style="text-align:right;">
 16.00
@@ -3946,7 +3932,7 @@ case2
 0.00
 </td>
 <td style="text-align:right;">
-0.00
+0
 </td>
 <td style="text-align:right;">
 16.00
@@ -3975,7 +3961,7 @@ case2
 0.17
 </td>
 <td style="text-align:right;">
-0.00
+0
 </td>
 <td style="text-align:right;">
 16.00
@@ -3993,7 +3979,7 @@ case2
 </tbody>
 </table>
 
-As seen in the table, above, 27 (interactively calculated) files are
+As seen in the table, above, 32 (interactively calculated) files are
 worth double checking for one of these cases.
 
 ## 0.5 Month 8-17: Subregions and other types of regions.
@@ -4047,7 +4033,7 @@ eight2thirteen <-
   listened_time_with_months %>% 
   filter(month %in% c("08","09","10","11","12","13") & (total_listen_time_hour>4.25 | total_listen_time_hour<3.75 | num_raw_subregion<5)) %>%
   select(filename, month, ends_with("hour"),  -skip_silence_overlap_hour, contains("raw"), -annotation_counts_raw) %>% 
-  arrange(total_listen_time_hour)
+  arrange(filename)
 
 write_csv(eight2thirteen, 'eight2thirteen_problems')
 
@@ -4151,7 +4137,7 @@ num_raw_subregion
 Out of 263 (interactively calculated) recordings at 8-13 months, (one
 recording, 22_09 was never collected):
 
-12 (interactively calculated) are \>4.25 & 10 (interactively calculated)
+0 (interactively calculated) are \>4.25 & 2 (interactively calculated)
 are \<3.75 hours of listened time.
 
 Just one had \< 5 subregions (`45_10` which was only 5.33 hours long).
@@ -4216,107 +4202,25 @@ num_raw_subregion
 <tbody>
 <tr>
 <td style="text-align:left;">
-34_10_sparse_code.cha
-</td>
-<td style="text-align:left;">
-10
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-0.07
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-16.00
-</td>
-<td style="text-align:right;">
-2.93
-</td>
-<td style="text-align:right;">
-9.53
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-5
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-25_10_sparse_code.cha
-</td>
-<td style="text-align:left;">
-10
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-12.80
-</td>
-<td style="text-align:right;">
-3.00
-</td>
-<td style="text-align:right;">
-1.30
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-5
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
 34_13_sparse_code.cha
 </td>
 <td style="text-align:left;">
 13
 </td>
 <td style="text-align:right;">
-0.00
+0
 </td>
 <td style="text-align:right;">
-0.00
+0
 </td>
 <td style="text-align:right;">
-0.00
+0
 </td>
 <td style="text-align:right;">
-0.00
+3.14
 </td>
 <td style="text-align:right;">
-3
+3.39
 </td>
 <td style="text-align:right;">
 0.00
@@ -4325,92 +4229,10 @@ num_raw_subregion
 7.36
 </td>
 <td style="text-align:right;">
-3.00
+3.39
 </td>
 <td style="text-align:right;">
 3.14
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-5
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-38_09_sparse_code.cha
-</td>
-<td style="text-align:left;">
-09
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-13.57
-</td>
-<td style="text-align:right;">
-3.00
-</td>
-<td style="text-align:right;">
-2.92
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-5
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-25_08_sparse_code.cha
-</td>
-<td style="text-align:left;">
-08
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-0.26
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-0.24
-</td>
-<td style="text-align:right;">
-6.67
-</td>
-<td style="text-align:right;">
-3.02
-</td>
-<td style="text-align:right;">
-0.00
 </td>
 <td style="text-align:right;">
 5
@@ -4427,22 +4249,22 @@ num_raw_subregion
 13
 </td>
 <td style="text-align:right;">
-0.00
+0
 </td>
 <td style="text-align:right;">
-0.00
+0
 </td>
 <td style="text-align:right;">
-0.00
+0
 </td>
 <td style="text-align:right;">
-0.00
+0.01
 </td>
 <td style="text-align:right;">
-4
+3.07
 </td>
 <td style="text-align:right;">
-0.93
+1.87
 </td>
 <td style="text-align:right;">
 6.74
@@ -4462,189 +4284,25 @@ num_raw_subregion
 </tr>
 <tr>
 <td style="text-align:left;">
-08_12_sparse_code.cha
-</td>
-<td style="text-align:left;">
-12
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-0.17
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-0.66
-</td>
-<td style="text-align:right;">
-16.00
-</td>
-<td style="text-align:right;">
-3.51
-</td>
-<td style="text-align:right;">
-6.70
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-5
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-40_11_sparse_code.cha
-</td>
-<td style="text-align:left;">
-11
-</td>
-<td style="text-align:right;">
-0.52
-</td>
-<td style="text-align:right;">
-0.01
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-0.88
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-16.00
-</td>
-<td style="text-align:right;">
-3.64
-</td>
-<td style="text-align:right;">
-12.48
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-5
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-13_11_sparse_code.cha
-</td>
-<td style="text-align:left;">
-11
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-0.10
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-0.04
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-0.33
-</td>
-<td style="text-align:right;">
-12.34
-</td>
-<td style="text-align:right;">
-3.73
-</td>
-<td style="text-align:right;">
-2.96
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-5
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-17_08_sparse_code.cha
-</td>
-<td style="text-align:left;">
-08
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-0.22
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-0.04
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-0.45
-</td>
-<td style="text-align:right;">
-16.00
-</td>
-<td style="text-align:right;">
-3.73
-</td>
-<td style="text-align:right;">
-7.62
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-5
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
 45_10_sparse_code.cha
 </td>
 <td style="text-align:left;">
 10
 </td>
 <td style="text-align:right;">
-0.00
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
 </td>
 <td style="text-align:right;">
 0.00
 </td>
 <td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-4
+4.00
 </td>
 <td style="text-align:right;">
 0.00
@@ -4663,498 +4321,6 @@ num_raw_subregion
 </td>
 <td style="text-align:right;">
 4
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-04_08_sparse_code.cha
-</td>
-<td style="text-align:left;">
-08
-</td>
-<td style="text-align:right;">
-0.16
-</td>
-<td style="text-align:right;">
-0.43
-</td>
-<td style="text-align:right;">
-0.30
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-0.43
-</td>
-<td style="text-align:right;">
-13.37
-</td>
-<td style="text-align:right;">
-4.47
-</td>
-<td style="text-align:right;">
-1.75
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-5
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-09_12_sparse_code.cha
-</td>
-<td style="text-align:left;">
-12
-</td>
-<td style="text-align:right;">
-1.00
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-0.42
-</td>
-<td style="text-align:right;">
-0.69
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-0.17
-</td>
-<td style="text-align:right;">
-16.00
-</td>
-<td style="text-align:right;">
-4.56
-</td>
-<td style="text-align:right;">
-6.40
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-5
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-11_09_sparse_code.cha
-</td>
-<td style="text-align:left;">
-09
-</td>
-<td style="text-align:right;">
-0.39
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-1.00
-</td>
-<td style="text-align:right;">
-0.28
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-0.59
-</td>
-<td style="text-align:right;">
-12.12
-</td>
-<td style="text-align:right;">
-4.58
-</td>
-<td style="text-align:right;">
-1.98
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-5
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-01_09_sparse_code.cha
-</td>
-<td style="text-align:left;">
-09
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-0.72
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-16.00
-</td>
-<td style="text-align:right;">
-4.72
-</td>
-<td style="text-align:right;">
-1.53
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-5
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-04_10_sparse_code.cha
-</td>
-<td style="text-align:left;">
-10
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-0.22
-</td>
-<td style="text-align:right;">
-0.74
-</td>
-<td style="text-align:right;">
-0.21
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-12.92
-</td>
-<td style="text-align:right;">
-4.75
-</td>
-<td style="text-align:right;">
-2.70
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-5
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-22_13_sparse_code.cha
-</td>
-<td style="text-align:left;">
-13
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-1.00
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-0.22
-</td>
-<td style="text-align:right;">
-11.32
-</td>
-<td style="text-align:right;">
-4.78
-</td>
-<td style="text-align:right;">
-2.54
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-5
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-04_09_sparse_code.cha
-</td>
-<td style="text-align:left;">
-09
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-0.14
-</td>
-<td style="text-align:right;">
-0.73
-</td>
-<td style="text-align:right;">
-0.04
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-10.71
-</td>
-<td style="text-align:right;">
-4.83
-</td>
-<td style="text-align:right;">
-2.60
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-5
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-02_09_sparse_code.cha
-</td>
-<td style="text-align:left;">
-09
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-1.22
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-16.00
-</td>
-<td style="text-align:right;">
-5.22
-</td>
-<td style="text-align:right;">
-6.96
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-5
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-02_08_sparse_code.cha
-</td>
-<td style="text-align:left;">
-08
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-1.30
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-16.00
-</td>
-<td style="text-align:right;">
-5.30
-</td>
-<td style="text-align:right;">
-5.61
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-5
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-07_08_sparse_code.cha
-</td>
-<td style="text-align:left;">
-08
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-0.33
-</td>
-<td style="text-align:right;">
-1.37
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-0.32
-</td>
-<td style="text-align:right;">
-14.44
-</td>
-<td style="text-align:right;">
-5.38
-</td>
-<td style="text-align:right;">
-2.69
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-5
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-08_10_sparse_code.cha
-</td>
-<td style="text-align:left;">
-10
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-2.73
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-16.00
-</td>
-<td style="text-align:right;">
-6.73
-</td>
-<td style="text-align:right;">
-1.19
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-5
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-20_10_sparse_code.cha
-</td>
-<td style="text-align:left;">
-10
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-0.17
-</td>
-<td style="text-align:right;">
-3.53
-</td>
-<td style="text-align:right;">
-0.17
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-16.00
-</td>
-<td style="text-align:right;">
-7.53
-</td>
-<td style="text-align:right;">
-8.03
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-5
 </td>
 </tr>
 </tbody>
@@ -5178,7 +4344,7 @@ fourteen2seventeen <-
   listened_time_with_months %>% 
   filter(month %in% c("14","15","16","17") & (total_listen_time_hour>3.25 | total_listen_time_hour<2.75)) %>%
   select(filename, month, ends_with("hour"),  -skip_silence_overlap_hour, contains("raw"), -annotation_counts_raw) %>% 
-  arrange(total_listen_time_hour)
+  arrange(filename)
 
 write_csv(fourteen2seventeen, 'fourteen2seventeen_problems')
 listened_time_with_months %>% 
@@ -5254,7 +4420,7 @@ num_raw_subregion
 0
 </td>
 <td style="text-align:right;">
-3
+2.82
 </td>
 <td style="text-align:right;">
 0.18
@@ -5331,339 +4497,13 @@ num_raw_subregion
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left;">
-26_14_sparse_code.cha
-</td>
-<td style="text-align:left;">
-14
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-0.30
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-16.00
-</td>
-<td style="text-align:right;">
-2.70
-</td>
-<td style="text-align:right;">
-7.19
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-5
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-30_15_sparse_code.cha
-</td>
-<td style="text-align:left;">
-15
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-0.26
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-16.00
-</td>
-<td style="text-align:right;">
-2.74
-</td>
-<td style="text-align:right;">
-7.16
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-5
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-18_15_sparse_code.cha
-</td>
-<td style="text-align:left;">
-15
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0.50
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-11.54
-</td>
-<td style="text-align:right;">
-3.50
-</td>
-<td style="text-align:right;">
-0.54
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-5
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-37_17_sparse_code.cha
-</td>
-<td style="text-align:left;">
-17
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-0.22
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-16.00
-</td>
-<td style="text-align:right;">
-3.78
-</td>
-<td style="text-align:right;">
-7.46
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-5
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-14_14_sparse_code.cha
-</td>
-<td style="text-align:left;">
-14
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0.86
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-16.00
-</td>
-<td style="text-align:right;">
-3.86
-</td>
-<td style="text-align:right;">
-6.66
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-5
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-41_17_sparse_code.cha
-</td>
-<td style="text-align:left;">
-17
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-16.00
-</td>
-<td style="text-align:right;">
-4.00
-</td>
-<td style="text-align:right;">
-5.12
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-5
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-42_17_sparse_code.cha
-</td>
-<td style="text-align:left;">
-17
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-16.00
-</td>
-<td style="text-align:right;">
-4.00
-</td>
-<td style="text-align:right;">
-5.34
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-5
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-23_14_sparse_code.cha
-</td>
-<td style="text-align:left;">
-14
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-2.78
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-16.00
-</td>
-<td style="text-align:right;">
-5.78
-</td>
-<td style="text-align:right;">
-4.74
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-5
-</td>
 </tr>
 </tbody>
 </table>
 
 Out of 176 (interactively calculated) recordings at 14-17 months:
 
-6 (interactively calculated) are \>3.25 & 2 (interactively calculated)
+0 (interactively calculated) are \>3.25 & 0 (interactively calculated)
 are \<2.75 hours of listened time.
 
 Just one had \< 5 subregions (`21_14` which was only 5.58 hours long)
@@ -5737,620 +4577,6 @@ num_raw_subregion
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left;">
-04_08_sparse_code.cha
-</td>
-<td style="text-align:right;">
-4.47
-</td>
-<td style="text-align:right;">
-4.17
-</td>
-<td style="text-align:left;">
-08
-</td>
-<td style="text-align:right;">
-0.16
-</td>
-<td style="text-align:right;">
-0.43
-</td>
-<td style="text-align:right;">
-0.30
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-0.43
-</td>
-<td style="text-align:right;">
-13.37
-</td>
-<td style="text-align:right;">
-1.75
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-5
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-09_12_sparse_code.cha
-</td>
-<td style="text-align:right;">
-4.56
-</td>
-<td style="text-align:right;">
-4.14
-</td>
-<td style="text-align:left;">
-12
-</td>
-<td style="text-align:right;">
-1.00
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-0.42
-</td>
-<td style="text-align:right;">
-0.69
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-0.17
-</td>
-<td style="text-align:right;">
-16.00
-</td>
-<td style="text-align:right;">
-6.40
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-5
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-11_09_sparse_code.cha
-</td>
-<td style="text-align:right;">
-4.58
-</td>
-<td style="text-align:right;">
-3.58
-</td>
-<td style="text-align:left;">
-09
-</td>
-<td style="text-align:right;">
-0.39
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-1.00
-</td>
-<td style="text-align:right;">
-0.28
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-0.59
-</td>
-<td style="text-align:right;">
-12.12
-</td>
-<td style="text-align:right;">
-1.98
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-5
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-01_09_sparse_code.cha
-</td>
-<td style="text-align:right;">
-4.72
-</td>
-<td style="text-align:right;">
-4.00
-</td>
-<td style="text-align:left;">
-09
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-0.72
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-16.00
-</td>
-<td style="text-align:right;">
-1.53
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-5
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-04_10_sparse_code.cha
-</td>
-<td style="text-align:right;">
-4.75
-</td>
-<td style="text-align:right;">
-4.01
-</td>
-<td style="text-align:left;">
-10
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-0.22
-</td>
-<td style="text-align:right;">
-0.74
-</td>
-<td style="text-align:right;">
-0.21
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-12.92
-</td>
-<td style="text-align:right;">
-2.70
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-5
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-04_09_sparse_code.cha
-</td>
-<td style="text-align:right;">
-4.83
-</td>
-<td style="text-align:right;">
-4.10
-</td>
-<td style="text-align:left;">
-09
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-0.14
-</td>
-<td style="text-align:right;">
-0.73
-</td>
-<td style="text-align:right;">
-0.04
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-10.71
-</td>
-<td style="text-align:right;">
-2.60
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-5
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-02_09_sparse_code.cha
-</td>
-<td style="text-align:right;">
-5.22
-</td>
-<td style="text-align:right;">
-4.00
-</td>
-<td style="text-align:left;">
-09
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-1.22
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-16.00
-</td>
-<td style="text-align:right;">
-6.96
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-5
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-02_08_sparse_code.cha
-</td>
-<td style="text-align:right;">
-5.30
-</td>
-<td style="text-align:right;">
-4.00
-</td>
-<td style="text-align:left;">
-08
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-1.30
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-16.00
-</td>
-<td style="text-align:right;">
-5.61
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-5
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-07_08_sparse_code.cha
-</td>
-<td style="text-align:right;">
-5.38
-</td>
-<td style="text-align:right;">
-4.01
-</td>
-<td style="text-align:left;">
-08
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-0.33
-</td>
-<td style="text-align:right;">
-1.37
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-0.32
-</td>
-<td style="text-align:right;">
-14.44
-</td>
-<td style="text-align:right;">
-2.69
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-5
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-08_10_sparse_code.cha
-</td>
-<td style="text-align:right;">
-6.73
-</td>
-<td style="text-align:right;">
-4.00
-</td>
-<td style="text-align:left;">
-10
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-2.73
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-16.00
-</td>
-<td style="text-align:right;">
-1.19
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-5
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-20_10_sparse_code.cha
-</td>
-<td style="text-align:right;">
-7.53
-</td>
-<td style="text-align:right;">
-4.00
-</td>
-<td style="text-align:left;">
-10
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-0.17
-</td>
-<td style="text-align:right;">
-3.53
-</td>
-<td style="text-align:right;">
-0.17
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-16.00
-</td>
-<td style="text-align:right;">
-8.03
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-5
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-18_15_sparse_code.cha
-</td>
-<td style="text-align:right;">
-3.50
-</td>
-<td style="text-align:right;">
-3.00
-</td>
-<td style="text-align:left;">
-15
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-0.50
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-11.54
-</td>
-<td style="text-align:right;">
-0.54
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-5
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-14_14_sparse_code.cha
-</td>
-<td style="text-align:right;">
-3.86
-</td>
-<td style="text-align:right;">
-3.00
-</td>
-<td style="text-align:left;">
-14
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-0.86
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-16.00
-</td>
-<td style="text-align:right;">
-6.66
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-5
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-23_14_sparse_code.cha
-</td>
-<td style="text-align:right;">
-5.78
-</td>
-<td style="text-align:right;">
-3.00
-</td>
-<td style="text-align:left;">
-14
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-2.78
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-0.00
-</td>
-<td style="text-align:right;">
-16.00
-</td>
-<td style="text-align:right;">
-4.74
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-5
-</td>
 </tr>
 </tbody>
 </table>
@@ -6359,14 +4585,11 @@ num_raw_subregion
 
 Below, we calculate a table of subregion positions and ranks for each
 file. I.e., we gather the subregion positions, ranks and number of
-annotations in each subregion for each file in all files There is also
-information in the last column about the reasons for removing the
-subregion (NA means the subregion is not removed from the final listened
-time summary).
+annotations in each subregion for each file in all files
 
 ``` r
 mini_listened_time_data <- listened_time_with_months %>% 
-  dplyr::select(filename, subj, month, subregions, positions, ranks, annotation_counts_raw, removals)
+  dplyr::select(filename, subj, month, positions, ranks, annotation_counts_raw)
 
 ranks_fixed <- mini_listened_time_data %>% 
   separate(ranks,  into= c("r1","r2","r3","r4","r5"), sep = "', '", remove = F) %>% 
@@ -6408,27 +4631,9 @@ counts_long <- counts_fixed %>%
   pivot_longer(cols = c1:c5, names_to = 'slot', values_to = 'counts') %>%
   mutate(slot = str_extract(slot, '\\d'))
 
-removals_fixed <- mini_listened_time_data %>%
-  separate(removals, into= c('re1', 're2', 're3', 're4', 're5'), sep = "', '", remove = FALSE) %>%
-  mutate(
-    re1 = str_extract(re1, "[A-Za-z\\s]+"),
-    re2 = str_extract(re2, "[A-Za-z\\s]+"),
-    re3 = str_extract(re3, "[A-Za-z\\s]+"),
-    re4 = str_extract(re4, "[A-Za-z\\s]+"),
-    re5 = str_extract(re5, "[A-Za-z\\s]+")
-  )
-
-removals_long <- removals_fixed %>%
-  select(filename, subj, month, re1:re5) %>%
-  pivot_longer(cols = re1:re5, names_to = 'slot', values_to = 'removals') %>%
-  mutate(slot = str_extract(slot, '\\d'))
-  
-
-  
 voila <- positions_long %>%
   left_join(ranks_long) %>%
-  left_join(counts_long) %>%
-  left_join(removals_long)
+  left_join(counts_long)
 ```
 
 Let’s first skim the result:
@@ -6477,7 +4682,7 @@ Number of rows
 Number of columns
 </td>
 <td style="text-align:left;">
-7
+6
 </td>
 </tr>
 <tr>
@@ -6499,7 +4704,7 @@ Column type frequency:
 character
 </td>
 <td style="text-align:left;">
-7
+6
 </td>
 </tr>
 <tr>
@@ -6560,7 +4765,7 @@ filename
 0
 </td>
 <td style="text-align:right;">
-1.00
+1
 </td>
 <td style="text-align:right;">
 21
@@ -6586,7 +4791,7 @@ subj
 0
 </td>
 <td style="text-align:right;">
-1.00
+1
 </td>
 <td style="text-align:right;">
 2
@@ -6612,7 +4817,7 @@ month
 0
 </td>
 <td style="text-align:right;">
-1.00
+1
 </td>
 <td style="text-align:right;">
 2
@@ -6638,7 +4843,7 @@ position
 2
 </td>
 <td style="text-align:right;">
-1.00
+1
 </td>
 <td style="text-align:right;">
 1
@@ -6664,7 +4869,7 @@ rank
 2
 </td>
 <td style="text-align:right;">
-1.00
+1
 </td>
 <td style="text-align:right;">
 1
@@ -6687,10 +4892,10 @@ rank
 counts
 </td>
 <td style="text-align:right;">
-0
+2
 </td>
 <td style="text-align:right;">
-1.00
+1
 </td>
 <td style="text-align:right;">
 1
@@ -6703,32 +4908,6 @@ counts
 </td>
 <td style="text-align:right;">
 267
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-removals
-</td>
-<td style="text-align:right;">
-1575
-</td>
-<td style="text-align:right;">
-0.28
-</td>
-<td style="text-align:right;">
-46
-</td>
-<td style="text-align:right;">
-62
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-3
 </td>
 <td style="text-align:right;">
 0
@@ -6788,29 +4967,43 @@ subregions)) subregions total, i.e. 44*10\*5 - 7 = 2193. And there are :
 
 ``` r
 final %>% 
-  filter(month %in% c("08","09","10","11","12","13") & rank=="5" & counts != "0" & is.na(removals))
+  filter(month %in% c("08","09","10","11","12","13") & rank=="5" & counts != "0")
 ```
 
-    ## # A tibble: 3 × 7
-    ##   filename              subj  month position rank  counts removals
-    ##   <chr>                 <chr> <chr> <chr>    <chr> <chr>  <chr>   
-    ## 1 20_12_sparse_code.cha 20    12    4        5     27     <NA>    
-    ## 2 22_13_sparse_code.cha 22    13    4        5     28     <NA>    
-    ## 3 25_12_sparse_code.cha 25    12    5        5     9      <NA>
+    ## # A tibble: 124 × 6
+    ##    filename              subj  month position rank  counts
+    ##    <chr>                 <chr> <chr> <chr>    <chr> <chr> 
+    ##  1 01_08_sparse_code.cha 01    08    2        5     58    
+    ##  2 01_10_sparse_code.cha 01    10    2        5     27    
+    ##  3 01_13_sparse_code.cha 01    13    1        5     3     
+    ##  4 02_08_sparse_code.cha 02    08    5        5     67    
+    ##  5 02_10_sparse_code.cha 02    10    5        5     89    
+    ##  6 02_11_sparse_code.cha 02    11    2        5     36    
+    ##  7 02_12_sparse_code.cha 02    12    4        5     2     
+    ##  8 02_13_sparse_code.cha 02    13    5        5     3     
+    ##  9 03_08_sparse_code.cha 03    08    5        5     29    
+    ## 10 03_09_sparse_code.cha 03    09    5        5     26    
+    ## # … with 114 more rows
 
 ``` r
 final %>% 
-  filter(month %in% c("14","15","16","17") & (rank=="5"| rank=="4")  & counts != "0" & is.na(removals))
+  filter(month %in% c("14","15","16","17") & (rank=="5"| rank=="4")  & counts != "0")
 ```
 
-    ## # A tibble: 5 × 7
-    ##   filename              subj  month position rank  counts removals
-    ##   <chr>                 <chr> <chr> <chr>    <chr> <chr>  <chr>   
-    ## 1 07_15_sparse_code.cha 07    15    1        4     184    <NA>    
-    ## 2 22_16_sparse_code.cha 22    16    2        4     67     <NA>    
-    ## 3 37_17_sparse_code.cha 37    17    2        5     37     <NA>    
-    ## 4 41_17_sparse_code.cha 41    17    1        4     273    <NA>    
-    ## 5 42_17_sparse_code.cha 42    17    4        4     162    <NA>
+    ## # A tibble: 36 × 6
+    ##    filename              subj  month position rank  counts
+    ##    <chr>                 <chr> <chr> <chr>    <chr> <chr> 
+    ##  1 03_14_sparse_code.cha 03    14    3        4     7     
+    ##  2 04_14_sparse_code.cha 04    14    3        5     2     
+    ##  3 07_15_sparse_code.cha 07    15    1        4     184   
+    ##  4 07_16_sparse_code.cha 07    16    4        5     20    
+    ##  5 09_15_sparse_code.cha 09    15    4        4     65    
+    ##  6 09_16_sparse_code.cha 09    16    3        4     26    
+    ##  7 09_17_sparse_code.cha 09    17    5        4     21    
+    ##  8 10_17_sparse_code.cha 10    17    1        4     56    
+    ##  9 11_17_sparse_code.cha 11    17    4        4     52    
+    ## 10 12_17_sparse_code.cha 12    17    2        4     3     
+    ## # … with 26 more rows
 
 ### 0.6.2 Which files have subregions that have don’t have counts in them but should?
 
@@ -6819,31 +5012,31 @@ final %>%
   filter(month %in% c("08","09","10","11","12","13") & rank!="5" & counts == "0")
 ```
 
-    ## # A tibble: 9 × 7
-    ##   filename              subj  month position rank  counts removals              
-    ##   <chr>                 <chr> <chr> <chr>    <chr> <chr>  <chr>                 
-    ## 1 20_12_sparse_code.cha 20    12    3        3     0      Subregion removed for…
-    ## 2 21_11_sparse_code.cha 21    11    4        1     0      Subregion removed for…
-    ## 3 22_13_sparse_code.cha 22    13    3        1     0      Subregion removed for…
-    ## 4 25_08_sparse_code.cha 25    08    5        2     0      Subregion removed for…
-    ## 5 25_10_sparse_code.cha 25    10    5        4     0      Subregion removed for…
-    ## 6 34_09_sparse_code.cha 34    09    1        4     0      Subregion removed for…
-    ## 7 34_10_sparse_code.cha 34    10    3        3     0      Subregion removed for…
-    ## 8 34_13_sparse_code.cha 34    13    3        4     0      Subregion removed for…
-    ## 9 38_09_sparse_code.cha 38    09    5        3     0      Subregion removed for…
+    ## # A tibble: 9 × 6
+    ##   filename              subj  month position rank  counts
+    ##   <chr>                 <chr> <chr> <chr>    <chr> <chr> 
+    ## 1 20_12_sparse_code.cha 20    12    3        3     0     
+    ## 2 21_11_sparse_code.cha 21    11    4        1     0     
+    ## 3 22_13_sparse_code.cha 22    13    3        1     0     
+    ## 4 25_08_sparse_code.cha 25    08    5        2     0     
+    ## 5 25_10_sparse_code.cha 25    10    5        4     0     
+    ## 6 34_09_sparse_code.cha 34    09    1        4     0     
+    ## 7 34_10_sparse_code.cha 34    10    3        3     0     
+    ## 8 34_13_sparse_code.cha 34    13    3        4     0     
+    ## 9 38_09_sparse_code.cha 38    09    5        3     0
 
 ``` r
 final %>% 
   filter(month %in% c("14","15","16","17") & (rank!="5"&  rank!="4")  & counts == "0")
 ```
 
-    ## # A tibble: 4 × 7
-    ##   filename              subj  month position rank  counts removals              
-    ##   <chr>                 <chr> <chr> <chr>    <chr> <chr>  <chr>                 
-    ## 1 07_15_sparse_code.cha 07    15    2        1     0      Subregion removed for…
-    ## 2 22_16_sparse_code.cha 22    16    3        1     0      Subregion removed for…
-    ## 3 41_17_sparse_code.cha 41    17    5        2     0      Subregion removed for…
-    ## 4 42_17_sparse_code.cha 42    17    5        3     0      Subregion removed for…
+    ## # A tibble: 4 × 6
+    ##   filename              subj  month position rank  counts
+    ##   <chr>                 <chr> <chr> <chr>    <chr> <chr> 
+    ## 1 07_15_sparse_code.cha 07    15    2        1     0     
+    ## 2 22_16_sparse_code.cha 22    16    3        1     0     
+    ## 3 41_17_sparse_code.cha 41    17    5        2     0     
+    ## 4 42_17_sparse_code.cha 42    17    5        3     0
 
 <details>
 <summary>
@@ -6880,9 +5073,6 @@ rank
 <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
 counts
 </th>
-<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
-removals
-</th>
 </tr>
 </thead>
 <tbody>
@@ -6905,9 +5095,6 @@ removals
 <td style="text-align:left;">
 137
 </td>
-<td style="text-align:left;">
-Subregion removed for overlapping with surplus
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -6927,9 +5114,6 @@ Subregion removed for overlapping with surplus
 </td>
 <td style="text-align:left;">
 58
-</td>
-<td style="text-align:left;">
-Subregion removed for overlapping with surplus
 </td>
 </tr>
 <tr>
@@ -6951,9 +5135,6 @@ Subregion removed for overlapping with surplus
 <td style="text-align:left;">
 37
 </td>
-<td style="text-align:left;">
-Subregion removed for overlapping with surplus
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -6973,9 +5154,6 @@ Subregion removed for overlapping with surplus
 </td>
 <td style="text-align:left;">
 65
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -6997,9 +5175,6 @@ NA
 <td style="text-align:left;">
 51
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -7019,9 +5194,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -7043,9 +5215,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 67
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -7065,9 +5234,6 @@ NA
 </td>
 <td style="text-align:left;">
 182
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -7089,9 +5255,6 @@ NA
 <td style="text-align:left;">
 61
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -7111,9 +5274,6 @@ NA
 </td>
 <td style="text-align:left;">
 38
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -7135,9 +5295,6 @@ NA
 <td style="text-align:left;">
 226
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -7158,9 +5315,6 @@ NA
 <td style="text-align:left;">
 27
 </td>
-<td style="text-align:left;">
-Subregion removed for overlapping with surplus
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -7180,9 +5334,6 @@ Subregion removed for overlapping with surplus
 </td>
 <td style="text-align:left;">
 132
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -7204,9 +5355,6 @@ NA
 <td style="text-align:left;">
 280
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -7226,9 +5374,6 @@ NA
 </td>
 <td style="text-align:left;">
 89
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -7250,9 +5395,6 @@ NA
 <td style="text-align:left;">
 227
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -7272,9 +5414,6 @@ NA
 </td>
 <td style="text-align:left;">
 129
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -7296,9 +5435,6 @@ NA
 <td style="text-align:left;">
 103
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -7318,9 +5454,6 @@ NA
 </td>
 <td style="text-align:left;">
 139
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -7342,9 +5475,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -7364,9 +5494,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 171
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -7388,9 +5515,6 @@ NA
 <td style="text-align:left;">
 89
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -7411,9 +5535,6 @@ NA
 <td style="text-align:left;">
 163
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -7433,9 +5554,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -7457,9 +5575,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 171
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -7480,9 +5595,6 @@ NA
 <td style="text-align:left;">
 3
 </td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -7502,9 +5614,6 @@ Subregion removed for having a nested makeup or surplus region
 </td>
 <td style="text-align:left;">
 135
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -7526,9 +5635,6 @@ NA
 <td style="text-align:left;">
 37
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -7548,9 +5654,6 @@ NA
 </td>
 <td style="text-align:left;">
 128
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -7572,9 +5675,6 @@ NA
 <td style="text-align:left;">
 59
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -7594,9 +5694,6 @@ NA
 </td>
 <td style="text-align:left;">
 127
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -7618,9 +5715,6 @@ NA
 <td style="text-align:left;">
 135
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -7641,9 +5735,6 @@ NA
 <td style="text-align:left;">
 28
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -7664,9 +5755,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -7686,9 +5774,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -7710,9 +5795,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 141
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -7732,9 +5814,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -7756,9 +5835,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 146
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -7779,9 +5855,6 @@ NA
 <td style="text-align:left;">
 247
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -7801,9 +5874,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -7825,9 +5895,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 156
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -7847,9 +5914,6 @@ NA
 </td>
 <td style="text-align:left;">
 117
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -7871,9 +5935,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -7893,9 +5954,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -7917,9 +5975,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 111
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -7940,9 +5995,6 @@ NA
 <td style="text-align:left;">
 143
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -7962,9 +6014,6 @@ NA
 </td>
 <td style="text-align:left;">
 174
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -7986,9 +6035,6 @@ NA
 <td style="text-align:left;">
 166
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -8009,9 +6055,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -8031,9 +6074,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -8055,9 +6095,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 117
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -8077,9 +6114,6 @@ NA
 </td>
 <td style="text-align:left;">
 112
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -8101,9 +6135,6 @@ NA
 <td style="text-align:left;">
 70
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -8123,9 +6154,6 @@ NA
 </td>
 <td style="text-align:left;">
 56
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -8147,9 +6175,6 @@ NA
 <td style="text-align:left;">
 67
 </td>
-<td style="text-align:left;">
-Subregion removed for overlapping with surplus
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -8170,9 +6195,6 @@ Subregion removed for overlapping with surplus
 <td style="text-align:left;">
 157
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -8192,9 +6214,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -8216,9 +6235,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 134
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -8239,9 +6255,6 @@ NA
 <td style="text-align:left;">
 72
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -8261,9 +6274,6 @@ NA
 </td>
 <td style="text-align:left;">
 61
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -8285,9 +6295,6 @@ NA
 <td style="text-align:left;">
 26
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -8307,9 +6314,6 @@ NA
 </td>
 <td style="text-align:left;">
 41
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -8331,9 +6335,6 @@ NA
 <td style="text-align:left;">
 18
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -8354,9 +6355,6 @@ NA
 <td style="text-align:left;">
 68
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -8376,9 +6374,6 @@ NA
 </td>
 <td style="text-align:left;">
 89
-</td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
 </td>
 </tr>
 <tr>
@@ -8400,9 +6395,6 @@ Subregion removed for having a nested makeup or surplus region
 <td style="text-align:left;">
 84
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -8422,9 +6414,6 @@ NA
 </td>
 <td style="text-align:left;">
 36
-</td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
 </td>
 </tr>
 <tr>
@@ -8446,9 +6435,6 @@ Subregion removed for having a nested makeup or surplus region
 <td style="text-align:left;">
 72
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -8468,9 +6454,6 @@ NA
 </td>
 <td style="text-align:left;">
 89
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -8492,9 +6475,6 @@ NA
 <td style="text-align:left;">
 169
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -8514,9 +6494,6 @@ NA
 </td>
 <td style="text-align:left;">
 182
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -8538,9 +6515,6 @@ NA
 <td style="text-align:left;">
 137
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -8561,9 +6535,6 @@ NA
 <td style="text-align:left;">
 146
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -8583,9 +6554,6 @@ NA
 </td>
 <td style="text-align:left;">
 2
-</td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
 </td>
 </tr>
 <tr>
@@ -8607,9 +6575,6 @@ Subregion removed for having a nested makeup or surplus region
 <td style="text-align:left;">
 61
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -8629,9 +6594,6 @@ NA
 </td>
 <td style="text-align:left;">
 164
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -8653,9 +6615,6 @@ NA
 <td style="text-align:left;">
 106
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -8675,9 +6634,6 @@ NA
 </td>
 <td style="text-align:left;">
 116
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -8699,9 +6655,6 @@ NA
 <td style="text-align:left;">
 135
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -8721,9 +6674,6 @@ NA
 </td>
 <td style="text-align:left;">
 3
-</td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
 </td>
 </tr>
 <tr>
@@ -8745,9 +6695,6 @@ Subregion removed for having a nested makeup or surplus region
 <td style="text-align:left;">
 88
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -8767,9 +6714,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -8791,9 +6735,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 60
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -8813,9 +6754,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -8837,9 +6775,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 163
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -8859,9 +6794,6 @@ NA
 </td>
 <td style="text-align:left;">
 94
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -8883,9 +6815,6 @@ NA
 <td style="text-align:left;">
 139
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -8906,9 +6835,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -8928,9 +6854,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -8952,9 +6875,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 131
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -8974,9 +6894,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -8998,9 +6915,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -9020,9 +6934,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 120
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -9044,9 +6955,6 @@ NA
 <td style="text-align:left;">
 260
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -9067,9 +6975,6 @@ NA
 <td style="text-align:left;">
 134
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -9089,9 +6994,6 @@ NA
 </td>
 <td style="text-align:left;">
 90
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -9113,9 +7015,6 @@ NA
 <td style="text-align:left;">
 64
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -9136,9 +7035,6 @@ NA
 <td style="text-align:left;">
 161
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -9159,9 +7055,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -9181,9 +7074,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -9204,9 +7094,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 146
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -9228,9 +7115,6 @@ NA
 <td style="text-align:left;">
 193
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -9250,9 +7134,6 @@ NA
 </td>
 <td style="text-align:left;">
 129
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -9274,9 +7155,6 @@ NA
 <td style="text-align:left;">
 36
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -9296,9 +7174,6 @@ NA
 </td>
 <td style="text-align:left;">
 29
-</td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
 </td>
 </tr>
 <tr>
@@ -9320,9 +7195,6 @@ Subregion removed for having a nested makeup or surplus region
 <td style="text-align:left;">
 80
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -9342,9 +7214,6 @@ NA
 </td>
 <td style="text-align:left;">
 14
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -9366,9 +7235,6 @@ NA
 <td style="text-align:left;">
 121
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -9388,9 +7254,6 @@ NA
 </td>
 <td style="text-align:left;">
 71
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -9412,9 +7275,6 @@ NA
 <td style="text-align:left;">
 26
 </td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -9434,9 +7294,6 @@ Subregion removed for having a nested makeup or surplus region
 </td>
 <td style="text-align:left;">
 124
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -9458,9 +7315,6 @@ NA
 <td style="text-align:left;">
 74
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -9480,9 +7334,6 @@ NA
 </td>
 <td style="text-align:left;">
 14
-</td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
 </td>
 </tr>
 <tr>
@@ -9504,9 +7355,6 @@ Subregion removed for having a nested makeup or surplus region
 <td style="text-align:left;">
 51
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -9526,9 +7374,6 @@ NA
 </td>
 <td style="text-align:left;">
 54
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -9550,9 +7395,6 @@ NA
 <td style="text-align:left;">
 61
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -9573,9 +7415,6 @@ NA
 <td style="text-align:left;">
 79
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -9595,9 +7434,6 @@ NA
 </td>
 <td style="text-align:left;">
 5
-</td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
 </td>
 </tr>
 <tr>
@@ -9619,9 +7455,6 @@ Subregion removed for having a nested makeup or surplus region
 <td style="text-align:left;">
 45
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -9642,9 +7475,6 @@ NA
 <td style="text-align:left;">
 99
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -9664,9 +7494,6 @@ NA
 </td>
 <td style="text-align:left;">
 49
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -9688,9 +7515,6 @@ NA
 <td style="text-align:left;">
 18
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -9710,9 +7534,6 @@ NA
 </td>
 <td style="text-align:left;">
 44
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -9734,9 +7555,6 @@ NA
 <td style="text-align:left;">
 93
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -9757,9 +7575,6 @@ NA
 <td style="text-align:left;">
 41
 </td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -9779,9 +7594,6 @@ Subregion removed for having a nested makeup or surplus region
 </td>
 <td style="text-align:left;">
 15
-</td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
 </td>
 </tr>
 <tr>
@@ -9803,9 +7615,6 @@ Subregion removed for having a nested makeup or surplus region
 <td style="text-align:left;">
 42
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -9825,9 +7634,6 @@ NA
 </td>
 <td style="text-align:left;">
 15
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -9849,9 +7655,6 @@ NA
 <td style="text-align:left;">
 16
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -9872,9 +7675,6 @@ NA
 <td style="text-align:left;">
 21
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -9894,9 +7694,6 @@ NA
 </td>
 <td style="text-align:left;">
 45
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -9918,9 +7715,6 @@ NA
 <td style="text-align:left;">
 38
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -9940,9 +7734,6 @@ NA
 </td>
 <td style="text-align:left;">
 7
-</td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
 </td>
 </tr>
 <tr>
@@ -9964,9 +7755,6 @@ Subregion removed for having a nested makeup or surplus region
 <td style="text-align:left;">
 22
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -9986,9 +7774,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -10010,9 +7795,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 66
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -10032,9 +7814,6 @@ NA
 </td>
 <td style="text-align:left;">
 70
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -10056,9 +7835,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -10078,9 +7854,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -10102,9 +7875,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 62
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -10124,9 +7894,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -10148,9 +7915,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 71
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -10170,9 +7934,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -10194,9 +7955,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 107
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -10217,9 +7975,6 @@ NA
 <td style="text-align:left;">
 110
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -10239,9 +7994,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -10263,9 +8015,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 83
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -10285,9 +8034,6 @@ NA
 </td>
 <td style="text-align:left;">
 65
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -10309,9 +8055,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -10331,9 +8074,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 59
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -10355,9 +8095,6 @@ NA
 <td style="text-align:left;">
 94
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -10378,9 +8115,6 @@ NA
 <td style="text-align:left;">
 50
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -10400,9 +8134,6 @@ NA
 </td>
 <td style="text-align:left;">
 90
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -10424,9 +8155,6 @@ NA
 <td style="text-align:left;">
 114
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -10447,9 +8175,6 @@ NA
 <td style="text-align:left;">
 21
 </td>
-<td style="text-align:left;">
-Subregion removed for overlapping with surplus
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -10469,9 +8194,6 @@ Subregion removed for overlapping with surplus
 </td>
 <td style="text-align:left;">
 195
-</td>
-<td style="text-align:left;">
-Subregion removed for overlapping with surplus
 </td>
 </tr>
 <tr>
@@ -10493,9 +8215,6 @@ Subregion removed for overlapping with surplus
 <td style="text-align:left;">
 161
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -10515,9 +8234,6 @@ NA
 </td>
 <td style="text-align:left;">
 80
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -10539,9 +8255,6 @@ NA
 <td style="text-align:left;">
 71
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -10561,9 +8274,6 @@ NA
 </td>
 <td style="text-align:left;">
 125
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -10585,9 +8295,6 @@ NA
 <td style="text-align:left;">
 146
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -10607,9 +8314,6 @@ NA
 </td>
 <td style="text-align:left;">
 84
-</td>
-<td style="text-align:left;">
-Subregion removed for overlapping with surplus
 </td>
 </tr>
 <tr>
@@ -10631,9 +8335,6 @@ Subregion removed for overlapping with surplus
 <td style="text-align:left;">
 91
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -10653,9 +8354,6 @@ NA
 </td>
 <td style="text-align:left;">
 131
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -10677,9 +8375,6 @@ NA
 <td style="text-align:left;">
 57
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -10699,9 +8394,6 @@ NA
 </td>
 <td style="text-align:left;">
 197
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -10723,9 +8415,6 @@ NA
 <td style="text-align:left;">
 181
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -10745,9 +8434,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -10769,9 +8455,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 203
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -10791,9 +8474,6 @@ NA
 </td>
 <td style="text-align:left;">
 195
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -10815,9 +8495,6 @@ NA
 <td style="text-align:left;">
 67
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -10837,9 +8514,6 @@ NA
 </td>
 <td style="text-align:left;">
 85
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -10861,9 +8535,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -10884,9 +8555,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 51
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -10906,9 +8574,6 @@ NA
 </td>
 <td style="text-align:left;">
 29
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -10930,9 +8595,6 @@ NA
 <td style="text-align:left;">
 27
 </td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -10952,9 +8614,6 @@ Subregion removed for having a nested makeup or surplus region
 </td>
 <td style="text-align:left;">
 78
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -10976,9 +8635,6 @@ NA
 <td style="text-align:left;">
 82
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -10998,9 +8654,6 @@ NA
 </td>
 <td style="text-align:left;">
 53
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -11022,9 +8675,6 @@ NA
 <td style="text-align:left;">
 86
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -11044,9 +8694,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -11068,9 +8715,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 208
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -11090,9 +8734,6 @@ NA
 </td>
 <td style="text-align:left;">
 2
-</td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
 </td>
 </tr>
 <tr>
@@ -11114,9 +8755,6 @@ Subregion removed for having a nested makeup or surplus region
 <td style="text-align:left;">
 108
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -11136,9 +8774,6 @@ NA
 </td>
 <td style="text-align:left;">
 134
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -11160,9 +8795,6 @@ NA
 <td style="text-align:left;">
 92
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -11183,9 +8815,6 @@ NA
 <td style="text-align:left;">
 11
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -11206,9 +8835,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -11228,9 +8854,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -11252,9 +8875,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 70
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -11275,9 +8895,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -11297,9 +8914,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 139
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -11321,9 +8935,6 @@ NA
 <td style="text-align:left;">
 187
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -11343,9 +8954,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -11367,9 +8975,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 181
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -11389,9 +8994,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -11413,9 +9015,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 49
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -11435,9 +9034,6 @@ NA
 </td>
 <td style="text-align:left;">
 178
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -11459,9 +9055,6 @@ NA
 <td style="text-align:left;">
 22
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -11481,9 +9074,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -11505,9 +9095,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 7
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -11528,9 +9115,6 @@ NA
 <td style="text-align:left;">
 153
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -11550,9 +9134,6 @@ NA
 </td>
 <td style="text-align:left;">
 58
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -11574,9 +9155,6 @@ NA
 <td style="text-align:left;">
 59
 </td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -11596,9 +9174,6 @@ Subregion removed for having a nested makeup or surplus region
 </td>
 <td style="text-align:left;">
 99
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -11620,9 +9195,6 @@ NA
 <td style="text-align:left;">
 139
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -11643,9 +9215,6 @@ NA
 <td style="text-align:left;">
 90
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -11665,9 +9234,6 @@ NA
 </td>
 <td style="text-align:left;">
 72
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -11689,9 +9255,6 @@ NA
 <td style="text-align:left;">
 60
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -11711,9 +9274,6 @@ NA
 </td>
 <td style="text-align:left;">
 43
-</td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
 </td>
 </tr>
 <tr>
@@ -11735,9 +9295,6 @@ Subregion removed for having a nested makeup or surplus region
 <td style="text-align:left;">
 78
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -11757,9 +9314,6 @@ NA
 </td>
 <td style="text-align:left;">
 30
-</td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
 </td>
 </tr>
 <tr>
@@ -11781,9 +9335,6 @@ Subregion removed for having a nested makeup or surplus region
 <td style="text-align:left;">
 42
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -11803,9 +9354,6 @@ NA
 </td>
 <td style="text-align:left;">
 54
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -11827,9 +9375,6 @@ NA
 <td style="text-align:left;">
 99
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -11849,9 +9394,6 @@ NA
 </td>
 <td style="text-align:left;">
 88
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -11873,9 +9415,6 @@ NA
 <td style="text-align:left;">
 17
 </td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -11895,9 +9434,6 @@ Subregion removed for having a nested makeup or surplus region
 </td>
 <td style="text-align:left;">
 72
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -11919,9 +9455,6 @@ NA
 <td style="text-align:left;">
 116
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -11941,9 +9474,6 @@ NA
 </td>
 <td style="text-align:left;">
 62
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -11965,9 +9495,6 @@ NA
 <td style="text-align:left;">
 51
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -11987,9 +9514,6 @@ NA
 </td>
 <td style="text-align:left;">
 58
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -12011,9 +9535,6 @@ NA
 <td style="text-align:left;">
 45
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -12034,9 +9555,6 @@ NA
 <td style="text-align:left;">
 52
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -12056,9 +9574,6 @@ NA
 </td>
 <td style="text-align:left;">
 3
-</td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
 </td>
 </tr>
 <tr>
@@ -12080,9 +9595,6 @@ Subregion removed for having a nested makeup or surplus region
 <td style="text-align:left;">
 66
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -12102,9 +9614,6 @@ NA
 </td>
 <td style="text-align:left;">
 29
-</td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
 </td>
 </tr>
 <tr>
@@ -12126,9 +9635,6 @@ Subregion removed for having a nested makeup or surplus region
 <td style="text-align:left;">
 81
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -12148,9 +9654,6 @@ NA
 </td>
 <td style="text-align:left;">
 230
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -12172,9 +9675,6 @@ NA
 <td style="text-align:left;">
 70
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -12194,9 +9694,6 @@ NA
 </td>
 <td style="text-align:left;">
 96
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -12218,9 +9715,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -12240,9 +9734,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 104
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -12264,9 +9755,6 @@ NA
 <td style="text-align:left;">
 138
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -12286,9 +9774,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -12310,9 +9795,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 104
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -12332,9 +9814,6 @@ NA
 </td>
 <td style="text-align:left;">
 173
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -12356,9 +9835,6 @@ NA
 <td style="text-align:left;">
 89
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -12379,9 +9855,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -12401,9 +9874,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -12425,9 +9895,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 240
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -12447,9 +9914,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -12471,9 +9935,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -12493,9 +9954,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 151
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -12517,9 +9975,6 @@ NA
 <td style="text-align:left;">
 204
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -12539,9 +9994,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -12563,9 +10015,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 160
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -12585,9 +10034,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -12609,9 +10055,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 99
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -12631,9 +10074,6 @@ NA
 </td>
 <td style="text-align:left;">
 97
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -12655,9 +10095,6 @@ NA
 <td style="text-align:left;">
 38
 </td>
-<td style="text-align:left;">
-Subregion removed for overlapping with surplus
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -12677,9 +10114,6 @@ Subregion removed for overlapping with surplus
 </td>
 <td style="text-align:left;">
 75
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -12701,9 +10135,6 @@ NA
 <td style="text-align:left;">
 119
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -12723,9 +10154,6 @@ NA
 </td>
 <td style="text-align:left;">
 114
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -12747,9 +10175,6 @@ NA
 <td style="text-align:left;">
 115
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -12769,9 +10194,6 @@ NA
 </td>
 <td style="text-align:left;">
 134
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -12793,9 +10215,6 @@ NA
 <td style="text-align:left;">
 61
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -12815,9 +10234,6 @@ NA
 </td>
 <td style="text-align:left;">
 97
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -12839,9 +10255,6 @@ NA
 <td style="text-align:left;">
 66
 </td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -12861,9 +10274,6 @@ Subregion removed for having a nested makeup or surplus region
 </td>
 <td style="text-align:left;">
 77
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -12885,9 +10295,6 @@ NA
 <td style="text-align:left;">
 85
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -12908,9 +10315,6 @@ NA
 <td style="text-align:left;">
 70
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -12930,9 +10334,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -12954,9 +10355,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 213
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -12976,9 +10374,6 @@ NA
 </td>
 <td style="text-align:left;">
 52
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -13000,9 +10395,6 @@ NA
 <td style="text-align:left;">
 81
 </td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -13022,9 +10414,6 @@ Subregion removed for having a nested makeup or surplus region
 </td>
 <td style="text-align:left;">
 124
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -13046,9 +10435,6 @@ NA
 <td style="text-align:left;">
 48
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -13068,9 +10454,6 @@ NA
 </td>
 <td style="text-align:left;">
 9
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -13092,9 +10475,6 @@ NA
 <td style="text-align:left;">
 59
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -13114,9 +10494,6 @@ NA
 </td>
 <td style="text-align:left;">
 99
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -13138,9 +10515,6 @@ NA
 <td style="text-align:left;">
 50
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -13161,9 +10535,6 @@ NA
 <td style="text-align:left;">
 56
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -13183,9 +10554,6 @@ NA
 </td>
 <td style="text-align:left;">
 27
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -13207,9 +10575,6 @@ NA
 <td style="text-align:left;">
 41
 </td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -13229,9 +10594,6 @@ Subregion removed for having a nested makeup or surplus region
 </td>
 <td style="text-align:left;">
 99
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -13253,9 +10615,6 @@ NA
 <td style="text-align:left;">
 130
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -13276,9 +10635,6 @@ NA
 <td style="text-align:left;">
 24
 </td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -13298,9 +10654,6 @@ Subregion removed for having a nested makeup or surplus region
 </td>
 <td style="text-align:left;">
 70
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -13322,9 +10675,6 @@ NA
 <td style="text-align:left;">
 64
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -13345,9 +10695,6 @@ NA
 <td style="text-align:left;">
 60
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -13367,9 +10714,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -13391,9 +10735,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 93
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -13413,9 +10754,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -13437,9 +10775,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 114
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -13460,9 +10795,6 @@ NA
 <td style="text-align:left;">
 184
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -13482,9 +10814,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -13506,9 +10835,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 103
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -13529,9 +10855,6 @@ NA
 <td style="text-align:left;">
 94
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -13551,9 +10874,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -13575,9 +10895,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 118
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -13598,9 +10915,6 @@ NA
 <td style="text-align:left;">
 96
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -13620,9 +10934,6 @@ NA
 </td>
 <td style="text-align:left;">
 89
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -13644,9 +10955,6 @@ NA
 <td style="text-align:left;">
 20
 </td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -13667,9 +10975,6 @@ Subregion removed for having a nested makeup or surplus region
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -13689,9 +10994,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -13713,9 +11015,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 27
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -13735,9 +11034,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -13759,9 +11055,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 99
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -13781,9 +11074,6 @@ NA
 </td>
 <td style="text-align:left;">
 109
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -13805,9 +11095,6 @@ NA
 <td style="text-align:left;">
 79
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -13827,9 +11114,6 @@ NA
 </td>
 <td style="text-align:left;">
 141
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -13851,9 +11135,6 @@ NA
 <td style="text-align:left;">
 89
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -13873,9 +11154,6 @@ NA
 </td>
 <td style="text-align:left;">
 65
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -13897,9 +11175,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -13920,9 +11195,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 52
 </td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -13942,9 +11214,6 @@ Subregion removed for having a nested makeup or surplus region
 </td>
 <td style="text-align:left;">
 45
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -13966,9 +11235,6 @@ NA
 <td style="text-align:left;">
 30
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -13989,9 +11255,6 @@ NA
 <td style="text-align:left;">
 70
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -14011,9 +11274,6 @@ NA
 </td>
 <td style="text-align:left;">
 68
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -14035,9 +11295,6 @@ NA
 <td style="text-align:left;">
 103
 </td>
-<td style="text-align:left;">
-Subregion removed for overlapping with surplus
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -14057,9 +11314,6 @@ Subregion removed for overlapping with surplus
 </td>
 <td style="text-align:left;">
 91
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -14081,9 +11335,6 @@ NA
 <td style="text-align:left;">
 25
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -14103,9 +11354,6 @@ NA
 </td>
 <td style="text-align:left;">
 68
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -14127,9 +11375,6 @@ NA
 <td style="text-align:left;">
 132
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -14149,9 +11394,6 @@ NA
 </td>
 <td style="text-align:left;">
 67
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -14173,9 +11415,6 @@ NA
 <td style="text-align:left;">
 95
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -14196,9 +11435,6 @@ NA
 <td style="text-align:left;">
 94
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -14218,9 +11454,6 @@ NA
 </td>
 <td style="text-align:left;">
 156
-</td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
 </td>
 </tr>
 <tr>
@@ -14242,9 +11475,6 @@ Subregion removed for having a nested makeup or surplus region
 <td style="text-align:left;">
 145
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -14264,9 +11494,6 @@ NA
 </td>
 <td style="text-align:left;">
 28
-</td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
 </td>
 </tr>
 <tr>
@@ -14288,9 +11515,6 @@ Subregion removed for having a nested makeup or surplus region
 <td style="text-align:left;">
 104
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -14310,9 +11534,6 @@ NA
 </td>
 <td style="text-align:left;">
 185
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -14334,9 +11555,6 @@ NA
 <td style="text-align:left;">
 156
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -14356,9 +11574,6 @@ NA
 </td>
 <td style="text-align:left;">
 74
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -14380,9 +11595,6 @@ NA
 <td style="text-align:left;">
 45
 </td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -14403,9 +11615,6 @@ Subregion removed for having a nested makeup or surplus region
 <td style="text-align:left;">
 84
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -14425,9 +11634,6 @@ NA
 </td>
 <td style="text-align:left;">
 53
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -14449,9 +11655,6 @@ NA
 <td style="text-align:left;">
 192
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -14471,9 +11674,6 @@ NA
 </td>
 <td style="text-align:left;">
 149
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -14495,9 +11695,6 @@ NA
 <td style="text-align:left;">
 140
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -14518,9 +11715,6 @@ NA
 <td style="text-align:left;">
 85
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -14540,9 +11734,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -14564,9 +11755,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 142
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -14587,9 +11775,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -14609,9 +11794,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -14633,9 +11815,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 248
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -14655,9 +11834,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -14679,9 +11855,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 266
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -14701,9 +11874,6 @@ NA
 </td>
 <td style="text-align:left;">
 208
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -14725,9 +11895,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -14748,9 +11915,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 173
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -14770,9 +11934,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -14794,9 +11955,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 185
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -14816,9 +11974,6 @@ NA
 </td>
 <td style="text-align:left;">
 226
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -14840,9 +11995,6 @@ NA
 <td style="text-align:left;">
 253
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -14862,9 +12014,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -14886,9 +12035,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 258
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -14908,9 +12054,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -14932,9 +12075,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 129
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -14954,9 +12094,6 @@ NA
 </td>
 <td style="text-align:left;">
 133
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -14978,9 +12115,6 @@ NA
 <td style="text-align:left;">
 34
 </td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -15000,9 +12134,6 @@ Subregion removed for having a nested makeup or surplus region
 </td>
 <td style="text-align:left;">
 19
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -15024,9 +12155,6 @@ NA
 <td style="text-align:left;">
 78
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -15047,9 +12175,6 @@ NA
 <td style="text-align:left;">
 109
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -15069,9 +12194,6 @@ NA
 </td>
 <td style="text-align:left;">
 64
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -15093,9 +12215,6 @@ NA
 <td style="text-align:left;">
 67
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -15116,9 +12235,6 @@ NA
 <td style="text-align:left;">
 104
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -15138,9 +12254,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -15162,9 +12275,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 105
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -15184,9 +12294,6 @@ NA
 </td>
 <td style="text-align:left;">
 119
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -15208,9 +12315,6 @@ NA
 <td style="text-align:left;">
 53
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -15231,9 +12335,6 @@ NA
 <td style="text-align:left;">
 55
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -15253,9 +12354,6 @@ NA
 </td>
 <td style="text-align:left;">
 17
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -15277,9 +12375,6 @@ NA
 <td style="text-align:left;">
 42
 </td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -15299,9 +12394,6 @@ Subregion removed for having a nested makeup or surplus region
 </td>
 <td style="text-align:left;">
 41
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -15323,9 +12415,6 @@ NA
 <td style="text-align:left;">
 7
 </td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -15346,9 +12435,6 @@ Subregion removed for having a nested makeup or surplus region
 <td style="text-align:left;">
 30
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -15368,9 +12454,6 @@ NA
 </td>
 <td style="text-align:left;">
 29
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -15392,9 +12475,6 @@ NA
 <td style="text-align:left;">
 64
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -15414,9 +12494,6 @@ NA
 </td>
 <td style="text-align:left;">
 66
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -15438,9 +12515,6 @@ NA
 <td style="text-align:left;">
 29
 </td>
-<td style="text-align:left;">
-Subregion removed for overlapping with surplus
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -15460,9 +12534,6 @@ Subregion removed for overlapping with surplus
 </td>
 <td style="text-align:left;">
 66
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -15484,9 +12555,6 @@ NA
 <td style="text-align:left;">
 59
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -15506,9 +12574,6 @@ NA
 </td>
 <td style="text-align:left;">
 113
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -15530,9 +12595,6 @@ NA
 <td style="text-align:left;">
 88
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -15553,9 +12615,6 @@ NA
 <td style="text-align:left;">
 91
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -15575,9 +12634,6 @@ NA
 </td>
 <td style="text-align:left;">
 32
-</td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
 </td>
 </tr>
 <tr>
@@ -15599,9 +12655,6 @@ Subregion removed for having a nested makeup or surplus region
 <td style="text-align:left;">
 56
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -15621,9 +12674,6 @@ NA
 </td>
 <td style="text-align:left;">
 93
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -15645,9 +12695,6 @@ NA
 <td style="text-align:left;">
 27
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -15667,9 +12714,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -15691,9 +12735,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 69
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -15714,9 +12755,6 @@ NA
 <td style="text-align:left;">
 134
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -15736,9 +12774,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -15760,9 +12795,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 77
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -15783,9 +12815,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -15805,9 +12834,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 32
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -15829,9 +12855,6 @@ NA
 <td style="text-align:left;">
 65
 </td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -15851,9 +12874,6 @@ Subregion removed for having a nested makeup or surplus region
 </td>
 <td style="text-align:left;">
 77
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -15875,9 +12895,6 @@ NA
 <td style="text-align:left;">
 113
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -15897,9 +12914,6 @@ NA
 </td>
 <td style="text-align:left;">
 110
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -15921,9 +12935,6 @@ NA
 <td style="text-align:left;">
 26
 </td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -15943,9 +12954,6 @@ Subregion removed for having a nested makeup or surplus region
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -15967,9 +12975,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 32
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -15990,9 +12995,6 @@ NA
 <td style="text-align:left;">
 146
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -16012,9 +13014,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -16036,9 +13035,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 31
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -16058,9 +13054,6 @@ NA
 </td>
 <td style="text-align:left;">
 91
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -16082,9 +13075,6 @@ NA
 <td style="text-align:left;">
 21
 </td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -16104,9 +13094,6 @@ Subregion removed for having a nested makeup or surplus region
 </td>
 <td style="text-align:left;">
 165
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -16128,9 +13115,6 @@ NA
 <td style="text-align:left;">
 282
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -16150,9 +13134,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -16174,9 +13155,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 285
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -16196,9 +13174,6 @@ NA
 </td>
 <td style="text-align:left;">
 327
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -16220,9 +13195,6 @@ NA
 <td style="text-align:left;">
 143
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -16242,9 +13214,6 @@ NA
 </td>
 <td style="text-align:left;">
 16
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -16266,9 +13235,6 @@ NA
 <td style="text-align:left;">
 36
 </td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -16289,9 +13255,6 @@ Subregion removed for having a nested makeup or surplus region
 <td style="text-align:left;">
 77
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -16311,9 +13274,6 @@ NA
 </td>
 <td style="text-align:left;">
 261
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -16335,9 +13295,6 @@ NA
 <td style="text-align:left;">
 247
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -16357,9 +13314,6 @@ NA
 </td>
 <td style="text-align:left;">
 98
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -16381,9 +13335,6 @@ NA
 <td style="text-align:left;">
 149
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -16403,9 +13354,6 @@ NA
 </td>
 <td style="text-align:left;">
 28
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -16427,9 +13375,6 @@ NA
 <td style="text-align:left;">
 41
 </td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -16449,9 +13394,6 @@ Subregion removed for having a nested makeup or surplus region
 </td>
 <td style="text-align:left;">
 96
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -16473,9 +13415,6 @@ NA
 <td style="text-align:left;">
 90
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -16495,9 +13434,6 @@ NA
 </td>
 <td style="text-align:left;">
 20
-</td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
 </td>
 </tr>
 <tr>
@@ -16519,9 +13455,6 @@ Subregion removed for having a nested makeup or surplus region
 <td style="text-align:left;">
 146
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -16541,9 +13474,6 @@ NA
 </td>
 <td style="text-align:left;">
 108
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -16565,9 +13495,6 @@ NA
 <td style="text-align:left;">
 110
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -16587,9 +13514,6 @@ NA
 </td>
 <td style="text-align:left;">
 139
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -16611,9 +13535,6 @@ NA
 <td style="text-align:left;">
 60
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -16634,9 +13555,6 @@ NA
 <td style="text-align:left;">
 141
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -16656,9 +13574,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -16680,9 +13595,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 107
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -16702,9 +13614,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -16726,9 +13635,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 45
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -16748,9 +13654,6 @@ NA
 </td>
 <td style="text-align:left;">
 116
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -16772,9 +13675,6 @@ NA
 <td style="text-align:left;">
 126
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -16794,9 +13694,6 @@ NA
 </td>
 <td style="text-align:left;">
 175
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -16818,9 +13715,6 @@ NA
 <td style="text-align:left;">
 95
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -16841,9 +13735,6 @@ NA
 <td style="text-align:left;">
 139
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -16864,9 +13755,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -16886,9 +13774,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -16909,9 +13794,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -16933,9 +13815,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 107
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -16955,9 +13834,6 @@ NA
 </td>
 <td style="text-align:left;">
 272
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -16979,9 +13855,6 @@ NA
 <td style="text-align:left;">
 218
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -17001,9 +13874,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -17025,9 +13895,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -17047,9 +13914,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 187
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -17071,9 +13935,6 @@ NA
 <td style="text-align:left;">
 314
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -17093,9 +13954,6 @@ NA
 </td>
 <td style="text-align:left;">
 150
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -17117,9 +13975,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -17140,9 +13995,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 56
 </td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -17162,9 +14014,6 @@ Subregion removed for having a nested makeup or surplus region
 </td>
 <td style="text-align:left;">
 111
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -17186,9 +14035,6 @@ NA
 <td style="text-align:left;">
 240
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -17208,9 +14054,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -17232,9 +14075,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 222
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -17254,9 +14094,6 @@ NA
 </td>
 <td style="text-align:left;">
 76
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -17278,9 +14115,6 @@ NA
 <td style="text-align:left;">
 10
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -17300,9 +14134,6 @@ NA
 </td>
 <td style="text-align:left;">
 18
-</td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
 </td>
 </tr>
 <tr>
@@ -17324,9 +14155,6 @@ Subregion removed for having a nested makeup or surplus region
 <td style="text-align:left;">
 178
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -17346,9 +14174,6 @@ NA
 </td>
 <td style="text-align:left;">
 98
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -17370,9 +14195,6 @@ NA
 <td style="text-align:left;">
 114
 </td>
-<td style="text-align:left;">
-Subregion removed for overlapping with surplus
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -17392,9 +14214,6 @@ Subregion removed for overlapping with surplus
 </td>
 <td style="text-align:left;">
 17
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -17416,9 +14235,6 @@ NA
 <td style="text-align:left;">
 88
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -17439,9 +14255,6 @@ NA
 <td style="text-align:left;">
 86
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -17461,9 +14274,6 @@ NA
 </td>
 <td style="text-align:left;">
 18
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -17485,9 +14295,6 @@ NA
 <td style="text-align:left;">
 121
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -17507,9 +14314,6 @@ NA
 </td>
 <td style="text-align:left;">
 23
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -17531,9 +14335,6 @@ NA
 <td style="text-align:left;">
 141
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -17554,9 +14355,6 @@ NA
 <td style="text-align:left;">
 75
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -17576,9 +14374,6 @@ NA
 </td>
 <td style="text-align:left;">
 75
-</td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
 </td>
 </tr>
 <tr>
@@ -17600,9 +14395,6 @@ Subregion removed for having a nested makeup or surplus region
 <td style="text-align:left;">
 19
 </td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -17623,9 +14415,6 @@ Subregion removed for having a nested makeup or surplus region
 <td style="text-align:left;">
 85
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -17645,9 +14434,6 @@ NA
 </td>
 <td style="text-align:left;">
 93
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -17669,9 +14455,6 @@ NA
 <td style="text-align:left;">
 38
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -17691,9 +14474,6 @@ NA
 </td>
 <td style="text-align:left;">
 102
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -17715,9 +14495,6 @@ NA
 <td style="text-align:left;">
 47
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -17737,9 +14514,6 @@ NA
 </td>
 <td style="text-align:left;">
 18
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -17761,9 +14535,6 @@ NA
 <td style="text-align:left;">
 75
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -17783,9 +14554,6 @@ NA
 </td>
 <td style="text-align:left;">
 41
-</td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
 </td>
 </tr>
 <tr>
@@ -17807,9 +14575,6 @@ Subregion removed for having a nested makeup or surplus region
 <td style="text-align:left;">
 99
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -17830,9 +14595,6 @@ NA
 <td style="text-align:left;">
 81
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -17852,9 +14614,6 @@ NA
 </td>
 <td style="text-align:left;">
 14
-</td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
 </td>
 </tr>
 <tr>
@@ -17876,9 +14635,6 @@ Subregion removed for having a nested makeup or surplus region
 <td style="text-align:left;">
 61
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -17898,9 +14654,6 @@ NA
 </td>
 <td style="text-align:left;">
 108
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -17922,9 +14675,6 @@ NA
 <td style="text-align:left;">
 85
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -17945,9 +14695,6 @@ NA
 <td style="text-align:left;">
 102
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -17967,9 +14714,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -17991,9 +14735,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 137
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -18013,9 +14754,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -18037,9 +14775,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 35
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -18060,9 +14795,6 @@ NA
 <td style="text-align:left;">
 169
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -18082,9 +14814,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -18106,9 +14835,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 160
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -18129,9 +14855,6 @@ NA
 <td style="text-align:left;">
 80
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -18151,9 +14874,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -18175,9 +14895,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 51
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -18197,9 +14914,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -18221,9 +14935,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 123
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -18243,9 +14954,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -18267,9 +14975,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 77
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -18289,9 +14994,6 @@ NA
 </td>
 <td style="text-align:left;">
 148
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -18313,9 +15015,6 @@ NA
 <td style="text-align:left;">
 46
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -18336,9 +15035,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -18358,9 +15054,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 52
-</td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
 </td>
 </tr>
 <tr>
@@ -18382,9 +15075,6 @@ Subregion removed for having a nested makeup or surplus region
 <td style="text-align:left;">
 102
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -18404,9 +15094,6 @@ NA
 </td>
 <td style="text-align:left;">
 206
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -18428,9 +15115,6 @@ NA
 <td style="text-align:left;">
 143
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -18450,9 +15134,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -18474,9 +15155,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 135
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -18496,9 +15174,6 @@ NA
 </td>
 <td style="text-align:left;">
 133
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -18520,9 +15195,6 @@ NA
 <td style="text-align:left;">
 103
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -18542,9 +15214,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -18566,9 +15235,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 43
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -18588,9 +15254,6 @@ NA
 </td>
 <td style="text-align:left;">
 78
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -18612,9 +15275,6 @@ NA
 <td style="text-align:left;">
 72
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -18633,10 +15293,7 @@ NA
 1
 </td>
 <td style="text-align:left;">
-92
-</td>
-<td style="text-align:left;">
-NA
+91
 </td>
 </tr>
 <tr>
@@ -18658,9 +15315,6 @@ NA
 <td style="text-align:left;">
 52
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -18681,9 +15335,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -18703,9 +15354,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 119
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -18727,9 +15375,6 @@ NA
 <td style="text-align:left;">
 122
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -18749,9 +15394,6 @@ NA
 </td>
 <td style="text-align:left;">
 119
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -18773,9 +15415,6 @@ NA
 <td style="text-align:left;">
 92
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -18796,9 +15435,6 @@ NA
 <td style="text-align:left;">
 93
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -18818,9 +15454,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -18842,9 +15475,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 111
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -18864,9 +15494,6 @@ NA
 </td>
 <td style="text-align:left;">
 165
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -18888,9 +15515,6 @@ NA
 <td style="text-align:left;">
 174
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -18910,9 +15534,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -18934,9 +15555,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 80
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -18956,9 +15574,6 @@ NA
 </td>
 <td style="text-align:left;">
 4
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -18980,9 +15595,6 @@ NA
 <td style="text-align:left;">
 82
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -19002,9 +15614,6 @@ NA
 </td>
 <td style="text-align:left;">
 131
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -19026,9 +15635,6 @@ NA
 <td style="text-align:left;">
 150
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -19048,9 +15654,6 @@ NA
 </td>
 <td style="text-align:left;">
 164
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -19072,9 +15675,6 @@ NA
 <td style="text-align:left;">
 28
 </td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -19094,9 +15694,6 @@ Subregion removed for having a nested makeup or surplus region
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -19118,9 +15715,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 128
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -19141,9 +15735,6 @@ NA
 <td style="text-align:left;">
 129
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -19163,9 +15754,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -19187,9 +15775,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 101
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -19209,9 +15794,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -19233,9 +15815,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 98
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -19255,9 +15834,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -19279,9 +15855,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 156
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -19302,9 +15875,6 @@ NA
 <td style="text-align:left;">
 206
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -19324,9 +15894,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -19348,9 +15915,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 168
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -19370,9 +15934,6 @@ NA
 </td>
 <td style="text-align:left;">
 112
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -19394,9 +15955,6 @@ NA
 <td style="text-align:left;">
 137
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -19416,9 +15974,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -19440,9 +15995,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 159
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -19463,9 +16015,6 @@ NA
 <td style="text-align:left;">
 3
 </td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -19485,9 +16034,6 @@ Subregion removed for having a nested makeup or surplus region
 </td>
 <td style="text-align:left;">
 208
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -19509,9 +16055,6 @@ NA
 <td style="text-align:left;">
 227
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -19531,9 +16074,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -19555,9 +16095,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 73
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -19577,9 +16114,6 @@ NA
 </td>
 <td style="text-align:left;">
 92
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -19601,9 +16135,6 @@ NA
 <td style="text-align:left;">
 78
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -19624,9 +16155,6 @@ NA
 <td style="text-align:left;">
 115
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -19646,9 +16174,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -19670,9 +16195,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 36
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -19692,9 +16214,6 @@ NA
 </td>
 <td style="text-align:left;">
 42
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -19716,9 +16235,6 @@ NA
 <td style="text-align:left;">
 37
 </td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -19739,9 +16255,6 @@ Subregion removed for having a nested makeup or surplus region
 <td style="text-align:left;">
 59
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -19761,9 +16274,6 @@ NA
 </td>
 <td style="text-align:left;">
 42
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -19785,9 +16295,6 @@ NA
 <td style="text-align:left;">
 21
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -19807,9 +16314,6 @@ NA
 </td>
 <td style="text-align:left;">
 152
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -19831,9 +16335,6 @@ NA
 <td style="text-align:left;">
 76
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -19854,9 +16355,6 @@ NA
 <td style="text-align:left;">
 94
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -19876,9 +16374,6 @@ NA
 </td>
 <td style="text-align:left;">
 46
-</td>
-<td style="text-align:left;">
-Subregion removed for overlapping with surplus
 </td>
 </tr>
 <tr>
@@ -19900,9 +16395,6 @@ Subregion removed for overlapping with surplus
 <td style="text-align:left;">
 123
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -19922,9 +16414,6 @@ NA
 </td>
 <td style="text-align:left;">
 9
-</td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
 </td>
 </tr>
 <tr>
@@ -19946,9 +16435,6 @@ Subregion removed for having a nested makeup or surplus region
 <td style="text-align:left;">
 91
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -19968,9 +16454,6 @@ NA
 </td>
 <td style="text-align:left;">
 29
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -19992,9 +16475,6 @@ NA
 <td style="text-align:left;">
 53
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -20014,9 +16494,6 @@ NA
 </td>
 <td style="text-align:left;">
 85
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -20038,9 +16515,6 @@ NA
 <td style="text-align:left;">
 37
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -20060,9 +16534,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -20084,9 +16555,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 53
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -20106,9 +16574,6 @@ NA
 </td>
 <td style="text-align:left;">
 54
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -20130,9 +16595,6 @@ NA
 <td style="text-align:left;">
 24
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -20153,9 +16615,6 @@ NA
 <td style="text-align:left;">
 80
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -20175,9 +16634,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -20199,9 +16655,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 9
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -20221,9 +16674,6 @@ NA
 </td>
 <td style="text-align:left;">
 25
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -20245,9 +16695,6 @@ NA
 <td style="text-align:left;">
 144
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -20267,9 +16714,6 @@ NA
 </td>
 <td style="text-align:left;">
 71
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -20291,9 +16735,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -20313,9 +16754,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -20337,9 +16775,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 110
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -20359,9 +16794,6 @@ NA
 </td>
 <td style="text-align:left;">
 190
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -20383,9 +16815,6 @@ NA
 <td style="text-align:left;">
 188
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -20406,9 +16835,6 @@ NA
 <td style="text-align:left;">
 159
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -20429,9 +16855,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -20451,9 +16874,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -20474,9 +16894,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 11
-</td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
 </td>
 </tr>
 <tr>
@@ -20498,9 +16915,6 @@ Subregion removed for having a nested makeup or surplus region
 <td style="text-align:left;">
 46
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -20520,9 +16934,6 @@ NA
 </td>
 <td style="text-align:left;">
 116
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -20544,9 +16955,6 @@ NA
 <td style="text-align:left;">
 114
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -20566,9 +16974,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -20590,9 +16995,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 54
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -20613,9 +17015,6 @@ NA
 <td style="text-align:left;">
 43
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -20635,9 +17034,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -20659,9 +17055,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 90
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -20682,9 +17075,6 @@ NA
 <td style="text-align:left;">
 6
 </td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -20704,9 +17094,6 @@ Subregion removed for having a nested makeup or surplus region
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -20728,9 +17115,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 116
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -20750,9 +17134,6 @@ NA
 </td>
 <td style="text-align:left;">
 120
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -20774,9 +17155,6 @@ NA
 <td style="text-align:left;">
 85
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -20796,9 +17174,6 @@ NA
 </td>
 <td style="text-align:left;">
 64
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -20820,9 +17195,6 @@ NA
 <td style="text-align:left;">
 41
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -20842,9 +17214,6 @@ NA
 </td>
 <td style="text-align:left;">
 27
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -20866,9 +17235,6 @@ NA
 <td style="text-align:left;">
 59
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -20889,9 +17255,6 @@ NA
 <td style="text-align:left;">
 157
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -20911,9 +17274,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -20935,9 +17295,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 127
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -20957,9 +17314,6 @@ NA
 </td>
 <td style="text-align:left;">
 8
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -20981,9 +17335,6 @@ NA
 <td style="text-align:left;">
 86
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -21003,9 +17354,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -21027,9 +17375,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 45
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -21049,9 +17394,6 @@ NA
 </td>
 <td style="text-align:left;">
 79
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -21073,9 +17415,6 @@ NA
 <td style="text-align:left;">
 52
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -21096,9 +17435,6 @@ NA
 <td style="text-align:left;">
 95
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -21118,9 +17454,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -21142,9 +17475,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 86
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -21165,9 +17495,6 @@ NA
 <td style="text-align:left;">
 118
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -21187,9 +17514,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -21211,9 +17535,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 72
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -21233,9 +17554,6 @@ NA
 </td>
 <td style="text-align:left;">
 99
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -21257,9 +17575,6 @@ NA
 <td style="text-align:left;">
 87
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -21279,9 +17594,6 @@ NA
 </td>
 <td style="text-align:left;">
 92
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -21303,9 +17615,6 @@ NA
 <td style="text-align:left;">
 64
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -21325,9 +17634,6 @@ NA
 </td>
 <td style="text-align:left;">
 129
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -21349,9 +17655,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -21371,9 +17674,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 89
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -21395,9 +17695,6 @@ NA
 <td style="text-align:left;">
 225
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -21417,9 +17714,6 @@ NA
 </td>
 <td style="text-align:left;">
 100
-</td>
-<td style="text-align:left;">
-Subregion removed for overlapping with surplus
 </td>
 </tr>
 <tr>
@@ -21441,9 +17735,6 @@ Subregion removed for overlapping with surplus
 <td style="text-align:left;">
 63
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -21464,9 +17755,6 @@ NA
 <td style="text-align:left;">
 73
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -21486,9 +17774,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -21510,9 +17795,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -21532,9 +17814,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -21556,9 +17835,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 66
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -21578,9 +17854,6 @@ NA
 </td>
 <td style="text-align:left;">
 51
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -21602,9 +17875,6 @@ NA
 <td style="text-align:left;">
 55
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -21624,9 +17894,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -21648,9 +17915,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 157
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -21670,9 +17934,6 @@ NA
 </td>
 <td style="text-align:left;">
 184
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -21694,9 +17955,6 @@ NA
 <td style="text-align:left;">
 118
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -21716,9 +17974,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -21740,9 +17995,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 156
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -21762,9 +18014,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -21786,9 +18035,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 102
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -21808,9 +18054,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -21832,9 +18075,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 128
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -21854,9 +18094,6 @@ NA
 </td>
 <td style="text-align:left;">
 182
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -21878,9 +18115,6 @@ NA
 <td style="text-align:left;">
 44
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -21900,9 +18134,6 @@ NA
 </td>
 <td style="text-align:left;">
 37
-</td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
 </td>
 </tr>
 <tr>
@@ -21924,9 +18155,6 @@ Subregion removed for having a nested makeup or surplus region
 <td style="text-align:left;">
 113
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -21946,9 +18174,6 @@ NA
 </td>
 <td style="text-align:left;">
 133
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -21970,9 +18195,6 @@ NA
 <td style="text-align:left;">
 26
 </td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -21992,9 +18214,6 @@ Subregion removed for having a nested makeup or surplus region
 </td>
 <td style="text-align:left;">
 67
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -22016,9 +18235,6 @@ NA
 <td style="text-align:left;">
 68
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -22038,9 +18254,6 @@ NA
 </td>
 <td style="text-align:left;">
 19
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -22062,9 +18275,6 @@ NA
 <td style="text-align:left;">
 99
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -22084,9 +18294,6 @@ NA
 </td>
 <td style="text-align:left;">
 53
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -22108,9 +18315,6 @@ NA
 <td style="text-align:left;">
 19
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -22131,9 +18335,6 @@ NA
 <td style="text-align:left;">
 17
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -22153,9 +18354,6 @@ NA
 </td>
 <td style="text-align:left;">
 61
-</td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
 </td>
 </tr>
 <tr>
@@ -22177,9 +18375,6 @@ Subregion removed for having a nested makeup or surplus region
 <td style="text-align:left;">
 158
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -22199,9 +18394,6 @@ NA
 </td>
 <td style="text-align:left;">
 70
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -22223,9 +18415,6 @@ NA
 <td style="text-align:left;">
 46
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -22245,9 +18434,6 @@ NA
 </td>
 <td style="text-align:left;">
 85
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -22269,9 +18455,6 @@ NA
 <td style="text-align:left;">
 36
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -22291,9 +18474,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -22315,9 +18495,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 152
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -22337,9 +18514,6 @@ NA
 </td>
 <td style="text-align:left;">
 58
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -22361,9 +18535,6 @@ NA
 <td style="text-align:left;">
 54
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -22383,9 +18554,6 @@ NA
 </td>
 <td style="text-align:left;">
 84
-</td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
 </td>
 </tr>
 <tr>
@@ -22407,9 +18575,6 @@ Subregion removed for having a nested makeup or surplus region
 <td style="text-align:left;">
 44
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -22429,9 +18594,6 @@ NA
 </td>
 <td style="text-align:left;">
 134
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -22453,9 +18615,6 @@ NA
 <td style="text-align:left;">
 85
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -22475,9 +18634,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -22499,9 +18655,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 130
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -22522,9 +18675,6 @@ NA
 <td style="text-align:left;">
 94
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -22544,9 +18694,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -22568,9 +18715,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 30
 </td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -22591,9 +18735,6 @@ Subregion removed for having a nested makeup or surplus region
 <td style="text-align:left;">
 90
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -22613,9 +18754,6 @@ NA
 </td>
 <td style="text-align:left;">
 118
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -22637,9 +18775,6 @@ NA
 <td style="text-align:left;">
 134
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -22659,9 +18794,6 @@ NA
 </td>
 <td style="text-align:left;">
 72
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -22683,9 +18815,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -22705,9 +18834,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -22729,9 +18855,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 228
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -22751,9 +18874,6 @@ NA
 </td>
 <td style="text-align:left;">
 118
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -22775,9 +18895,6 @@ NA
 <td style="text-align:left;">
 88
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -22798,9 +18915,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -22820,9 +18934,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -22844,9 +18955,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 255
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -22866,9 +18974,6 @@ NA
 </td>
 <td style="text-align:left;">
 324
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -22890,9 +18995,6 @@ NA
 <td style="text-align:left;">
 118
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -22912,9 +19014,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -22936,9 +19035,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 73
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -22958,9 +19054,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -22982,9 +19075,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 143
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -23004,9 +19094,6 @@ NA
 </td>
 <td style="text-align:left;">
 93
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -23028,9 +19115,6 @@ NA
 <td style="text-align:left;">
 161
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -23050,9 +19134,6 @@ NA
 </td>
 <td style="text-align:left;">
 169
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -23074,9 +19155,6 @@ NA
 <td style="text-align:left;">
 67
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -23096,9 +19174,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
 </td>
 </tr>
 <tr>
@@ -23120,9 +19195,6 @@ Subregion removed for having a nested makeup or surplus region
 <td style="text-align:left;">
 119
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -23142,9 +19214,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -23166,9 +19235,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 107
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -23188,9 +19254,6 @@ NA
 </td>
 <td style="text-align:left;">
 160
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -23212,9 +19275,6 @@ NA
 <td style="text-align:left;">
 116
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -23234,9 +19294,6 @@ NA
 </td>
 <td style="text-align:left;">
 42
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -23258,9 +19315,6 @@ NA
 <td style="text-align:left;">
 57
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -23280,9 +19334,6 @@ NA
 </td>
 <td style="text-align:left;">
 63
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -23304,9 +19355,6 @@ NA
 <td style="text-align:left;">
 75
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -23326,9 +19374,6 @@ NA
 </td>
 <td style="text-align:left;">
 18
-</td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
 </td>
 </tr>
 <tr>
@@ -23350,9 +19395,6 @@ Subregion removed for having a nested makeup or surplus region
 <td style="text-align:left;">
 120
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -23372,9 +19414,6 @@ NA
 </td>
 <td style="text-align:left;">
 170
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -23396,9 +19435,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -23418,9 +19454,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 119
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -23442,9 +19475,6 @@ NA
 <td style="text-align:left;">
 46
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -23464,9 +19494,6 @@ NA
 </td>
 <td style="text-align:left;">
 54
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -23488,9 +19515,6 @@ NA
 <td style="text-align:left;">
 234
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -23510,9 +19534,6 @@ NA
 </td>
 <td style="text-align:left;">
 151
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -23534,9 +19555,6 @@ NA
 <td style="text-align:left;">
 145
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -23556,9 +19574,6 @@ NA
 </td>
 <td style="text-align:left;">
 15
-</td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
 </td>
 </tr>
 <tr>
@@ -23580,9 +19595,6 @@ Subregion removed for having a nested makeup or surplus region
 <td style="text-align:left;">
 194
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -23602,9 +19614,6 @@ NA
 </td>
 <td style="text-align:left;">
 127
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -23626,9 +19635,6 @@ NA
 <td style="text-align:left;">
 239
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -23648,9 +19654,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -23672,9 +19675,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 152
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -23695,9 +19695,6 @@ NA
 <td style="text-align:left;">
 74
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -23717,9 +19714,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -23741,9 +19735,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 102
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -23764,9 +19755,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -23786,9 +19774,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 153
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -23810,9 +19795,6 @@ NA
 <td style="text-align:left;">
 377
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -23833,9 +19815,6 @@ NA
 <td style="text-align:left;">
 348
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -23855,9 +19834,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -23879,9 +19855,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 324
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -23902,9 +19875,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -23924,9 +19894,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -23948,9 +19915,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 113
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -23970,9 +19934,6 @@ NA
 </td>
 <td style="text-align:left;">
 228
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -23994,9 +19955,6 @@ NA
 <td style="text-align:left;">
 108
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -24016,9 +19974,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -24040,9 +19995,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 139
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -24062,9 +20014,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -24086,9 +20035,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 118
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -24108,9 +20054,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -24132,9 +20075,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 176
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -24154,9 +20094,6 @@ NA
 </td>
 <td style="text-align:left;">
 59
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -24178,9 +20115,6 @@ NA
 <td style="text-align:left;">
 96
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -24200,9 +20134,6 @@ NA
 </td>
 <td style="text-align:left;">
 12
-</td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
 </td>
 </tr>
 <tr>
@@ -24224,9 +20155,6 @@ Subregion removed for having a nested makeup or surplus region
 <td style="text-align:left;">
 21
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -24247,9 +20175,6 @@ NA
 <td style="text-align:left;">
 82
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -24269,9 +20194,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -24293,9 +20215,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 52
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -24315,9 +20234,6 @@ NA
 </td>
 <td style="text-align:left;">
 153
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -24339,9 +20255,6 @@ NA
 <td style="text-align:left;">
 171
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -24361,9 +20274,6 @@ NA
 </td>
 <td style="text-align:left;">
 36
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -24385,9 +20295,6 @@ NA
 <td style="text-align:left;">
 65
 </td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -24407,9 +20314,6 @@ Subregion removed for having a nested makeup or surplus region
 </td>
 <td style="text-align:left;">
 229
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -24431,9 +20335,6 @@ NA
 <td style="text-align:left;">
 71
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -24453,9 +20354,6 @@ NA
 </td>
 <td style="text-align:left;">
 139
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -24477,9 +20375,6 @@ NA
 <td style="text-align:left;">
 146
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -24500,9 +20395,6 @@ NA
 <td style="text-align:left;">
 130
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -24522,9 +20414,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
 </td>
 </tr>
 <tr>
@@ -24546,9 +20435,6 @@ Subregion removed for having a nested makeup or surplus region
 <td style="text-align:left;">
 34
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -24568,9 +20454,6 @@ NA
 </td>
 <td style="text-align:left;">
 64
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -24592,9 +20475,6 @@ NA
 <td style="text-align:left;">
 59
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -24614,9 +20494,6 @@ NA
 </td>
 <td style="text-align:left;">
 60
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -24638,9 +20515,6 @@ NA
 <td style="text-align:left;">
 44
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -24660,9 +20534,6 @@ NA
 </td>
 <td style="text-align:left;">
 40
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -24684,9 +20555,6 @@ NA
 <td style="text-align:left;">
 67
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -24706,9 +20574,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -24730,9 +20595,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 140
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -24753,9 +20615,6 @@ NA
 <td style="text-align:left;">
 106
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -24775,9 +20634,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -24799,9 +20655,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 162
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -24822,9 +20675,6 @@ NA
 <td style="text-align:left;">
 125
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -24844,9 +20694,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -24868,9 +20715,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 312
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -24890,9 +20734,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -24914,9 +20755,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 154
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -24936,9 +20774,6 @@ NA
 </td>
 <td style="text-align:left;">
 212
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -24960,9 +20795,6 @@ NA
 <td style="text-align:left;">
 258
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -24982,9 +20814,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -25006,9 +20835,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 217
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -25028,9 +20854,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -25052,9 +20875,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 327
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -25075,9 +20895,6 @@ NA
 <td style="text-align:left;">
 232
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -25097,9 +20914,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -25121,9 +20935,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 187
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -25144,9 +20955,6 @@ NA
 <td style="text-align:left;">
 175
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -25166,9 +20974,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -25190,9 +20995,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 285
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -25212,9 +21014,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -25236,9 +21035,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 311
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -25258,9 +21054,6 @@ NA
 </td>
 <td style="text-align:left;">
 241
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -25282,9 +21075,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -25304,9 +21094,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 162
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -25328,9 +21115,6 @@ NA
 <td style="text-align:left;">
 54
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -25350,9 +21134,6 @@ NA
 </td>
 <td style="text-align:left;">
 48
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -25374,9 +21155,6 @@ NA
 <td style="text-align:left;">
 58
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -25397,9 +21175,6 @@ NA
 <td style="text-align:left;">
 29
 </td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -25419,9 +21194,6 @@ Subregion removed for having a nested makeup or surplus region
 </td>
 <td style="text-align:left;">
 4
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -25443,9 +21215,6 @@ NA
 <td style="text-align:left;">
 87
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -25465,9 +21234,6 @@ NA
 </td>
 <td style="text-align:left;">
 22
-</td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
 </td>
 </tr>
 <tr>
@@ -25489,9 +21255,6 @@ Subregion removed for having a nested makeup or surplus region
 <td style="text-align:left;">
 93
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -25511,9 +21274,6 @@ NA
 </td>
 <td style="text-align:left;">
 35
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -25535,9 +21295,6 @@ NA
 <td style="text-align:left;">
 195
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -25557,9 +21314,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -25581,9 +21335,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 85
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -25603,9 +21354,6 @@ NA
 </td>
 <td style="text-align:left;">
 81
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -25627,9 +21375,6 @@ NA
 <td style="text-align:left;">
 96
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -25650,9 +21395,6 @@ NA
 <td style="text-align:left;">
 112
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -25672,9 +21414,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -25696,9 +21435,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 45
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -25718,9 +21454,6 @@ NA
 </td>
 <td style="text-align:left;">
 55
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -25742,9 +21475,6 @@ NA
 <td style="text-align:left;">
 115
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -25765,9 +21495,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -25787,9 +21514,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 80
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -25811,9 +21535,6 @@ NA
 <td style="text-align:left;">
 76
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -25833,9 +21554,6 @@ NA
 </td>
 <td style="text-align:left;">
 85
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -25857,9 +21575,6 @@ NA
 <td style="text-align:left;">
 41
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -25880,9 +21595,6 @@ NA
 <td style="text-align:left;">
 90
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -25902,9 +21614,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -25926,9 +21635,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 69
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -25948,9 +21654,6 @@ NA
 </td>
 <td style="text-align:left;">
 56
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -25972,9 +21675,6 @@ NA
 <td style="text-align:left;">
 93
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -25995,9 +21695,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -26017,9 +21714,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -26041,9 +21735,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 80
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -26063,9 +21754,6 @@ NA
 </td>
 <td style="text-align:left;">
 64
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -26087,9 +21775,6 @@ NA
 <td style="text-align:left;">
 73
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -26109,9 +21794,6 @@ NA
 </td>
 <td style="text-align:left;">
 79
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -26133,9 +21815,6 @@ NA
 <td style="text-align:left;">
 67
 </td>
-<td style="text-align:left;">
-Subregion removed for overlapping with surplus
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -26155,9 +21834,6 @@ Subregion removed for overlapping with surplus
 </td>
 <td style="text-align:left;">
 115
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -26179,9 +21855,6 @@ NA
 <td style="text-align:left;">
 25
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -26201,9 +21874,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -26225,9 +21895,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 110
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -26247,9 +21914,6 @@ NA
 </td>
 <td style="text-align:left;">
 235
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -26271,9 +21935,6 @@ NA
 <td style="text-align:left;">
 211
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -26294,9 +21955,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -26316,9 +21974,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -26340,9 +21995,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 148
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -26362,9 +22014,6 @@ NA
 </td>
 <td style="text-align:left;">
 139
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -26386,9 +22035,6 @@ NA
 <td style="text-align:left;">
 60
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -26409,9 +22055,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -26431,9 +22074,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -26455,9 +22095,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 126
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -26477,9 +22114,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -26501,9 +22135,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 119
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -26523,9 +22154,6 @@ NA
 </td>
 <td style="text-align:left;">
 94
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -26547,9 +22175,6 @@ NA
 <td style="text-align:left;">
 81
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -26570,9 +22195,6 @@ NA
 <td style="text-align:left;">
 114
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -26592,9 +22214,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -26616,9 +22235,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 190
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -26638,9 +22254,6 @@ NA
 </td>
 <td style="text-align:left;">
 119
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -26662,9 +22275,6 @@ NA
 <td style="text-align:left;">
 187
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -26684,9 +22294,6 @@ NA
 </td>
 <td style="text-align:left;">
 71
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -26708,9 +22315,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -26730,9 +22334,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 80
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -26754,9 +22355,6 @@ NA
 <td style="text-align:left;">
 127
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -26776,9 +22374,6 @@ NA
 </td>
 <td style="text-align:left;">
 150
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -26800,9 +22395,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -26822,9 +22414,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 129
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -26846,9 +22435,6 @@ NA
 <td style="text-align:left;">
 48
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -26868,9 +22454,6 @@ NA
 </td>
 <td style="text-align:left;">
 203
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -26892,9 +22475,6 @@ NA
 <td style="text-align:left;">
 80
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -26914,9 +22494,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -26938,9 +22515,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 129
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -26960,9 +22534,6 @@ NA
 </td>
 <td style="text-align:left;">
 155
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -26984,9 +22555,6 @@ NA
 <td style="text-align:left;">
 296
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -27006,9 +22574,6 @@ NA
 </td>
 <td style="text-align:left;">
 119
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -27030,9 +22595,6 @@ NA
 <td style="text-align:left;">
 298
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -27052,9 +22614,6 @@ NA
 </td>
 <td style="text-align:left;">
 187
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -27076,9 +22635,6 @@ NA
 <td style="text-align:left;">
 294
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -27099,9 +22655,6 @@ NA
 <td style="text-align:left;">
 139
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -27121,9 +22674,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -27145,9 +22695,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 218
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -27167,9 +22714,6 @@ NA
 </td>
 <td style="text-align:left;">
 245
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -27191,9 +22735,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -27213,9 +22754,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -27237,9 +22775,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 282
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -27259,9 +22794,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -27283,9 +22815,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 328
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -27306,9 +22835,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -27328,9 +22854,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 175
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -27352,9 +22875,6 @@ NA
 <td style="text-align:left;">
 341
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -27375,9 +22895,6 @@ NA
 <td style="text-align:left;">
 276
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -27397,9 +22914,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -27421,9 +22935,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 295
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -27443,9 +22954,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -27467,9 +22975,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 312
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -27489,9 +22994,6 @@ NA
 </td>
 <td style="text-align:left;">
 344
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -27513,9 +23015,6 @@ NA
 <td style="text-align:left;">
 293
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -27536,9 +23035,6 @@ NA
 <td style="text-align:left;">
 235
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -27559,9 +23055,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -27581,9 +23074,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -27605,9 +23095,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 76
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -27628,9 +23115,6 @@ NA
 <td style="text-align:left;">
 52
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -27650,9 +23134,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -27674,9 +23155,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 59
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -27696,9 +23174,6 @@ NA
 </td>
 <td style="text-align:left;">
 106
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -27720,9 +23195,6 @@ NA
 <td style="text-align:left;">
 96
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -27743,9 +23215,6 @@ NA
 <td style="text-align:left;">
 22
 </td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -27765,9 +23234,6 @@ Subregion removed for having a nested makeup or surplus region
 </td>
 <td style="text-align:left;">
 87
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -27789,9 +23255,6 @@ NA
 <td style="text-align:left;">
 75
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -27812,9 +23275,6 @@ NA
 <td style="text-align:left;">
 83
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -27834,9 +23294,6 @@ NA
 </td>
 <td style="text-align:left;">
 12
-</td>
-<td style="text-align:left;">
-Subregion removed for overlapping with surplus
 </td>
 </tr>
 <tr>
@@ -27858,9 +23315,6 @@ Subregion removed for overlapping with surplus
 <td style="text-align:left;">
 66
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -27880,9 +23334,6 @@ NA
 </td>
 <td style="text-align:left;">
 48
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -27904,9 +23355,6 @@ NA
 <td style="text-align:left;">
 154
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -27926,9 +23374,6 @@ NA
 </td>
 <td style="text-align:left;">
 87
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -27950,9 +23395,6 @@ NA
 <td style="text-align:left;">
 39
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -27972,9 +23414,6 @@ NA
 </td>
 <td style="text-align:left;">
 70
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -27996,9 +23435,6 @@ NA
 <td style="text-align:left;">
 125
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -28018,9 +23454,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -28042,9 +23475,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 40
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -28064,9 +23494,6 @@ NA
 </td>
 <td style="text-align:left;">
 53
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -28088,9 +23515,6 @@ NA
 <td style="text-align:left;">
 71
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -28110,9 +23534,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -28134,9 +23555,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 27
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -28157,9 +23575,6 @@ NA
 <td style="text-align:left;">
 81
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -28179,9 +23594,6 @@ NA
 </td>
 <td style="text-align:left;">
 98
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -28203,9 +23615,6 @@ NA
 <td style="text-align:left;">
 63
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -28225,9 +23634,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -28249,9 +23655,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 125
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -28271,9 +23674,6 @@ NA
 </td>
 <td style="text-align:left;">
 98
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -28295,9 +23695,6 @@ NA
 <td style="text-align:left;">
 85
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -28317,9 +23714,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -28341,9 +23735,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 58
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -28363,9 +23754,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -28387,9 +23775,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 116
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -28410,9 +23795,6 @@ NA
 <td style="text-align:left;">
 71
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -28432,9 +23814,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -28456,9 +23835,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 93
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -28478,9 +23854,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -28502,9 +23875,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 95
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -28524,9 +23894,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -28548,9 +23915,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 261
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -28571,9 +23935,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -28593,9 +23954,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 198
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -28617,9 +23975,6 @@ NA
 <td style="text-align:left;">
 197
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -28639,9 +23994,6 @@ NA
 </td>
 <td style="text-align:left;">
 151
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -28663,9 +24015,6 @@ NA
 <td style="text-align:left;">
 108
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -28686,9 +24035,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -28708,9 +24054,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -28732,9 +24075,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 162
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -28754,9 +24094,6 @@ NA
 </td>
 <td style="text-align:left;">
 25
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -28778,9 +24115,6 @@ NA
 <td style="text-align:left;">
 35
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -28800,9 +24134,6 @@ NA
 </td>
 <td style="text-align:left;">
 8
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -28824,9 +24155,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -28846,9 +24174,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 76
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -28870,9 +24195,6 @@ NA
 <td style="text-align:left;">
 10
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -28892,9 +24214,6 @@ NA
 </td>
 <td style="text-align:left;">
 49
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -28916,9 +24235,6 @@ NA
 <td style="text-align:left;">
 45
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -28938,9 +24254,6 @@ NA
 </td>
 <td style="text-align:left;">
 20
-</td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
 </td>
 </tr>
 <tr>
@@ -28962,9 +24275,6 @@ Subregion removed for having a nested makeup or surplus region
 <td style="text-align:left;">
 6
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -28985,9 +24295,6 @@ NA
 <td style="text-align:left;">
 65
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -29007,9 +24314,6 @@ NA
 </td>
 <td style="text-align:left;">
 3
-</td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
 </td>
 </tr>
 <tr>
@@ -29031,9 +24335,6 @@ Subregion removed for having a nested makeup or surplus region
 <td style="text-align:left;">
 23
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -29053,9 +24354,6 @@ NA
 </td>
 <td style="text-align:left;">
 59
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -29077,9 +24375,6 @@ NA
 <td style="text-align:left;">
 47
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -29099,9 +24394,6 @@ NA
 </td>
 <td style="text-align:left;">
 16
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -29123,9 +24415,6 @@ NA
 <td style="text-align:left;">
 34
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -29146,9 +24435,6 @@ NA
 <td style="text-align:left;">
 42
 </td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -29168,9 +24454,6 @@ Subregion removed for having a nested makeup or surplus region
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -29192,9 +24475,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 22
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -29214,9 +24494,6 @@ NA
 </td>
 <td style="text-align:left;">
 76
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -29238,9 +24515,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -29260,9 +24534,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 86
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -29284,9 +24555,6 @@ NA
 <td style="text-align:left;">
 50
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -29306,9 +24574,6 @@ NA
 </td>
 <td style="text-align:left;">
 57
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -29330,9 +24595,6 @@ NA
 <td style="text-align:left;">
 130
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -29352,9 +24614,6 @@ NA
 </td>
 <td style="text-align:left;">
 68
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -29376,9 +24635,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -29398,9 +24654,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 91
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -29422,9 +24675,6 @@ NA
 <td style="text-align:left;">
 90
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -29444,9 +24694,6 @@ NA
 </td>
 <td style="text-align:left;">
 93
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -29468,9 +24715,6 @@ NA
 <td style="text-align:left;">
 56
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -29491,9 +24735,6 @@ NA
 <td style="text-align:left;">
 84
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -29514,9 +24755,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -29533,9 +24771,6 @@ NA
 </td>
 <td style="text-align:left;">
 NA
-</td>
-<td style="text-align:left;">
-0
 </td>
 <td style="text-align:left;">
 NA
@@ -29559,9 +24794,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -29583,9 +24815,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 53
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -29606,9 +24835,6 @@ NA
 <td style="text-align:left;">
 50
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -29628,9 +24854,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -29652,9 +24875,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 33
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -29674,9 +24894,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -29698,9 +24915,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 104
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -29720,9 +24934,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -29744,9 +24955,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 23
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -29766,9 +24974,6 @@ NA
 </td>
 <td style="text-align:left;">
 41
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -29790,9 +24995,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -29811,10 +25013,7 @@ Subregion removed for not having any annotations
 1
 </td>
 <td style="text-align:left;">
-111
-</td>
-<td style="text-align:left;">
-NA
+110
 </td>
 </tr>
 <tr>
@@ -29836,9 +25035,6 @@ NA
 <td style="text-align:left;">
 207
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -29858,9 +25054,6 @@ NA
 </td>
 <td style="text-align:left;">
 50
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -29882,9 +25075,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -29904,9 +25094,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 80
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -29928,9 +25115,6 @@ NA
 <td style="text-align:left;">
 35
 </td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -29950,9 +25134,6 @@ Subregion removed for having a nested makeup or surplus region
 </td>
 <td style="text-align:left;">
 11
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -29974,9 +25155,6 @@ NA
 <td style="text-align:left;">
 18
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -29996,9 +25174,6 @@ NA
 </td>
 <td style="text-align:left;">
 15
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -30020,9 +25195,6 @@ NA
 <td style="text-align:left;">
 2
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -30042,9 +25214,6 @@ NA
 </td>
 <td style="text-align:left;">
 22
-</td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
 </td>
 </tr>
 <tr>
@@ -30066,9 +25235,6 @@ Subregion removed for having a nested makeup or surplus region
 <td style="text-align:left;">
 9
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -30088,9 +25254,6 @@ NA
 </td>
 <td style="text-align:left;">
 11
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -30112,9 +25275,6 @@ NA
 <td style="text-align:left;">
 36
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -30134,9 +25294,6 @@ NA
 </td>
 <td style="text-align:left;">
 28
-</td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
 </td>
 </tr>
 <tr>
@@ -30158,9 +25315,6 @@ Subregion removed for having a nested makeup or surplus region
 <td style="text-align:left;">
 24
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -30180,9 +25334,6 @@ NA
 </td>
 <td style="text-align:left;">
 11
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -30204,9 +25355,6 @@ NA
 <td style="text-align:left;">
 25
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -30226,9 +25374,6 @@ NA
 </td>
 <td style="text-align:left;">
 49
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -30250,9 +25395,6 @@ NA
 <td style="text-align:left;">
 23
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -30272,9 +25414,6 @@ NA
 </td>
 <td style="text-align:left;">
 50
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -30296,9 +25435,6 @@ NA
 <td style="text-align:left;">
 30
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -30318,9 +25454,6 @@ NA
 </td>
 <td style="text-align:left;">
 13
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -30342,9 +25475,6 @@ NA
 <td style="text-align:left;">
 43
 </td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -30364,9 +25494,6 @@ Subregion removed for having a nested makeup or surplus region
 </td>
 <td style="text-align:left;">
 63
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -30388,9 +25515,6 @@ NA
 <td style="text-align:left;">
 40
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -30410,9 +25534,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -30434,9 +25555,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 28
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -30457,9 +25575,6 @@ NA
 <td style="text-align:left;">
 100
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -30479,9 +25594,6 @@ NA
 </td>
 <td style="text-align:left;">
 19
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -30503,9 +25615,6 @@ NA
 <td style="text-align:left;">
 50
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -30526,9 +25635,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -30548,9 +25654,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -30572,9 +25675,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 59
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -30594,9 +25694,6 @@ NA
 </td>
 <td style="text-align:left;">
 20
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -30618,9 +25715,6 @@ NA
 <td style="text-align:left;">
 21
 </td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -30640,9 +25734,6 @@ Subregion removed for having a nested makeup or surplus region
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -30664,9 +25755,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 23
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -30686,9 +25774,6 @@ NA
 </td>
 <td style="text-align:left;">
 41
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -30710,9 +25795,6 @@ NA
 <td style="text-align:left;">
 55
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -30732,9 +25814,6 @@ NA
 </td>
 <td style="text-align:left;">
 67
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -30756,9 +25835,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -30778,9 +25854,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -30802,9 +25875,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 57
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -30824,9 +25894,6 @@ NA
 </td>
 <td style="text-align:left;">
 78
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -30848,9 +25915,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -30870,9 +25934,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -30894,9 +25955,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 65
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -30916,9 +25974,6 @@ NA
 </td>
 <td style="text-align:left;">
 48
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -30940,9 +25995,6 @@ NA
 <td style="text-align:left;">
 103
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -30962,9 +26014,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -30986,9 +26035,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 33
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -31008,9 +26054,6 @@ NA
 </td>
 <td style="text-align:left;">
 85
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -31032,9 +26075,6 @@ NA
 <td style="text-align:left;">
 32
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -31054,9 +26094,6 @@ NA
 </td>
 <td style="text-align:left;">
 66
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -31078,9 +26115,6 @@ NA
 <td style="text-align:left;">
 44
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -31101,9 +26135,6 @@ NA
 <td style="text-align:left;">
 10
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -31123,9 +26154,6 @@ NA
 </td>
 <td style="text-align:left;">
 7
-</td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
 </td>
 </tr>
 <tr>
@@ -31147,9 +26175,6 @@ Subregion removed for having a nested makeup or surplus region
 <td style="text-align:left;">
 25
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -31169,9 +26194,6 @@ NA
 </td>
 <td style="text-align:left;">
 9
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -31193,9 +26215,6 @@ NA
 <td style="text-align:left;">
 7
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -31215,9 +26234,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -31239,9 +26255,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 22
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -31261,9 +26274,6 @@ NA
 </td>
 <td style="text-align:left;">
 47
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -31285,9 +26295,6 @@ NA
 <td style="text-align:left;">
 105
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -31307,9 +26314,6 @@ NA
 </td>
 <td style="text-align:left;">
 65
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -31331,9 +26335,6 @@ NA
 <td style="text-align:left;">
 91
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -31353,9 +26354,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -31377,9 +26375,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 86
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -31399,9 +26394,6 @@ NA
 </td>
 <td style="text-align:left;">
 46
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -31423,9 +26415,6 @@ NA
 <td style="text-align:left;">
 85
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -31446,9 +26435,6 @@ NA
 <td style="text-align:left;">
 12
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -31468,9 +26454,6 @@ NA
 </td>
 <td style="text-align:left;">
 26
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -31492,9 +26475,6 @@ NA
 <td style="text-align:left;">
 39
 </td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -31515,9 +26495,6 @@ Subregion removed for having a nested makeup or surplus region
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -31537,9 +26514,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 52
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -31561,9 +26535,6 @@ NA
 <td style="text-align:left;">
 51
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -31583,9 +26554,6 @@ NA
 </td>
 <td style="text-align:left;">
 38
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -31607,9 +26575,6 @@ NA
 <td style="text-align:left;">
 67
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -31629,9 +26594,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -31653,9 +26615,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 20
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -31676,9 +26635,6 @@ NA
 <td style="text-align:left;">
 77
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -31698,9 +26654,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -31722,9 +26675,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 31
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -31745,9 +26695,6 @@ NA
 <td style="text-align:left;">
 53
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -31768,9 +26715,6 @@ NA
 <td style="text-align:left;">
 23
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -31791,9 +26735,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -31813,9 +26754,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -31836,9 +26774,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 57
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -31860,9 +26795,6 @@ NA
 <td style="text-align:left;">
 65
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -31882,9 +26814,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -31906,9 +26835,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 34
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -31928,9 +26854,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -31952,9 +26875,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 140
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -31975,9 +26895,6 @@ NA
 <td style="text-align:left;">
 19
 </td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -31997,9 +26914,6 @@ Subregion removed for having a nested makeup or surplus region
 </td>
 <td style="text-align:left;">
 23
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -32021,9 +26935,6 @@ NA
 <td style="text-align:left;">
 80
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -32044,9 +26955,6 @@ NA
 <td style="text-align:left;">
 29
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -32066,9 +26974,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -32090,9 +26995,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 40
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -32113,9 +27015,6 @@ NA
 <td style="text-align:left;">
 9
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -32134,10 +27033,7 @@ NA
 1
 </td>
 <td style="text-align:left;">
-11
-</td>
-<td style="text-align:left;">
-NA
+8
 </td>
 </tr>
 <tr>
@@ -32159,9 +27055,6 @@ NA
 <td style="text-align:left;">
 1
 </td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -32182,9 +27075,6 @@ Subregion removed for having a nested makeup or surplus region
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -32204,9 +27094,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 36
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -32228,9 +27115,6 @@ NA
 <td style="text-align:left;">
 27
 </td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -32250,9 +27134,6 @@ Subregion removed for having a nested makeup or surplus region
 </td>
 <td style="text-align:left;">
 36
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -32274,9 +27155,6 @@ NA
 <td style="text-align:left;">
 53
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -32296,9 +27174,6 @@ NA
 </td>
 <td style="text-align:left;">
 48
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -32320,9 +27195,6 @@ NA
 <td style="text-align:left;">
 38
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -32343,9 +27215,6 @@ NA
 <td style="text-align:left;">
 1
 </td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -32365,9 +27234,6 @@ Subregion removed for having a nested makeup or surplus region
 </td>
 <td style="text-align:left;">
 4
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -32389,9 +27255,6 @@ NA
 <td style="text-align:left;">
 42
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -32412,9 +27275,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -32434,9 +27294,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -32458,9 +27315,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 75
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -32481,9 +27335,6 @@ NA
 <td style="text-align:left;">
 23
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -32503,9 +27354,6 @@ NA
 </td>
 <td style="text-align:left;">
 25
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -32526,9 +27374,6 @@ NA
 </td>
 <td style="text-align:left;">
 27
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -32550,9 +27395,6 @@ NA
 <td style="text-align:left;">
 40
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -32572,9 +27414,6 @@ NA
 </td>
 <td style="text-align:left;">
 4
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -32596,9 +27435,6 @@ NA
 <td style="text-align:left;">
 6
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -32618,9 +27454,6 @@ NA
 </td>
 <td style="text-align:left;">
 8
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -32642,9 +27475,6 @@ NA
 <td style="text-align:left;">
 9
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -32664,9 +27494,6 @@ NA
 </td>
 <td style="text-align:left;">
 49
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -32688,9 +27515,6 @@ NA
 <td style="text-align:left;">
 20
 </td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -32711,9 +27535,6 @@ Subregion removed for having a nested makeup or surplus region
 <td style="text-align:left;">
 67
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -32733,9 +27554,6 @@ NA
 </td>
 <td style="text-align:left;">
 26
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -32757,9 +27575,6 @@ NA
 <td style="text-align:left;">
 80
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -32779,9 +27594,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -32803,9 +27615,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 90
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -32825,9 +27634,6 @@ NA
 </td>
 <td style="text-align:left;">
 76
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -32849,9 +27655,6 @@ NA
 <td style="text-align:left;">
 66
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -32872,9 +27675,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -32894,9 +27694,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -32918,9 +27715,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 10
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -32941,9 +27735,6 @@ NA
 <td style="text-align:left;">
 5
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -32963,9 +27754,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -32987,9 +27775,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 12
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -33010,9 +27795,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -33032,9 +27814,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -33056,9 +27835,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 71
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -33079,9 +27855,6 @@ NA
 <td style="text-align:left;">
 8
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -33101,9 +27874,6 @@ NA
 </td>
 <td style="text-align:left;">
 34
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -33125,9 +27895,6 @@ NA
 <td style="text-align:left;">
 211
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -33147,9 +27914,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -33171,9 +27935,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 91
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -33194,9 +27955,6 @@ NA
 <td style="text-align:left;">
 36
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -33216,9 +27974,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -33240,9 +27995,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 41
 </td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -33263,9 +28015,6 @@ Subregion removed for having a nested makeup or surplus region
 <td style="text-align:left;">
 38
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -33286,9 +28035,6 @@ NA
 <td style="text-align:left;">
 35
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -33308,9 +28054,6 @@ NA
 </td>
 <td style="text-align:left;">
 35
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -33332,9 +28075,6 @@ NA
 <td style="text-align:left;">
 34
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -33354,9 +28094,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -33378,9 +28115,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 72
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -33400,9 +28134,6 @@ NA
 </td>
 <td style="text-align:left;">
 42
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -33424,9 +28155,6 @@ NA
 <td style="text-align:left;">
 44
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -33446,9 +28174,6 @@ NA
 </td>
 <td style="text-align:left;">
 10
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -33470,9 +28195,6 @@ NA
 <td style="text-align:left;">
 73
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -33492,9 +28214,6 @@ NA
 </td>
 <td style="text-align:left;">
 38
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -33516,9 +28235,6 @@ NA
 <td style="text-align:left;">
 24
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -33539,9 +28255,6 @@ NA
 <td style="text-align:left;">
 68
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -33562,9 +28275,6 @@ NA
 <td style="text-align:left;">
 5
 </td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -33584,9 +28294,6 @@ Subregion removed for having a nested makeup or surplus region
 </td>
 <td style="text-align:left;">
 5
-</td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
 </td>
 </tr>
 <tr>
@@ -33608,9 +28315,6 @@ Subregion removed for having a nested makeup or surplus region
 <td style="text-align:left;">
 31
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -33630,9 +28334,6 @@ NA
 </td>
 <td style="text-align:left;">
 67
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -33654,9 +28355,6 @@ NA
 <td style="text-align:left;">
 69
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -33676,9 +28374,6 @@ NA
 </td>
 <td style="text-align:left;">
 85
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -33700,9 +28395,6 @@ NA
 <td style="text-align:left;">
 48
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -33723,9 +28415,6 @@ NA
 <td style="text-align:left;">
 32
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -33745,9 +28434,6 @@ NA
 </td>
 <td style="text-align:left;">
 10
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -33769,9 +28455,6 @@ NA
 <td style="text-align:left;">
 30
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -33791,9 +28474,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -33815,9 +28495,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 76
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -33837,9 +28514,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -33861,9 +28535,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 68
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -33883,9 +28554,6 @@ NA
 </td>
 <td style="text-align:left;">
 101
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -33907,9 +28575,6 @@ NA
 <td style="text-align:left;">
 77
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -33930,9 +28595,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -33952,9 +28614,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 38
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -33976,9 +28635,6 @@ NA
 <td style="text-align:left;">
 46
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -33999,9 +28655,6 @@ NA
 <td style="text-align:left;">
 73
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -34020,10 +28673,7 @@ NA
 4
 </td>
 <td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
+22
 </td>
 </tr>
 <tr>
@@ -34044,9 +28694,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -34068,9 +28715,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 38
 </td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -34090,9 +28734,6 @@ Subregion removed for having a nested makeup or surplus region
 </td>
 <td style="text-align:left;">
 90
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -34114,9 +28755,6 @@ NA
 <td style="text-align:left;">
 47
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -34136,9 +28774,6 @@ NA
 </td>
 <td style="text-align:left;">
 17
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -34160,9 +28795,6 @@ NA
 <td style="text-align:left;">
 118
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -34183,9 +28815,6 @@ NA
 <td style="text-align:left;">
 95
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -34205,9 +28834,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -34229,9 +28855,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 62
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -34252,9 +28875,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -34274,9 +28894,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -34298,9 +28915,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 57
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -34320,9 +28934,6 @@ NA
 </td>
 <td style="text-align:left;">
 125
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -34344,9 +28955,6 @@ NA
 <td style="text-align:left;">
 90
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -34366,9 +28974,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -34390,9 +28995,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 161
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -34412,9 +29014,6 @@ NA
 </td>
 <td style="text-align:left;">
 96
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -34436,9 +29035,6 @@ NA
 <td style="text-align:left;">
 52
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -34458,9 +29054,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -34482,9 +29075,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 93
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -34504,9 +29094,6 @@ NA
 </td>
 <td style="text-align:left;">
 74
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -34528,9 +29115,6 @@ NA
 <td style="text-align:left;">
 21
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -34550,9 +29134,6 @@ NA
 </td>
 <td style="text-align:left;">
 120
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -34574,9 +29155,6 @@ NA
 <td style="text-align:left;">
 42
 </td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -34596,9 +29174,6 @@ Subregion removed for having a nested makeup or surplus region
 </td>
 <td style="text-align:left;">
 77
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -34620,9 +29195,6 @@ NA
 <td style="text-align:left;">
 111
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -34642,9 +29214,6 @@ NA
 </td>
 <td style="text-align:left;">
 78
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -34666,9 +29235,6 @@ NA
 <td style="text-align:left;">
 33
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -34688,9 +29254,6 @@ NA
 </td>
 <td style="text-align:left;">
 29
-</td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
 </td>
 </tr>
 <tr>
@@ -34712,9 +29275,6 @@ Subregion removed for having a nested makeup or surplus region
 <td style="text-align:left;">
 221
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -34734,9 +29294,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -34758,9 +29315,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 150
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -34780,9 +29334,6 @@ NA
 </td>
 <td style="text-align:left;">
 44
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -34804,9 +29355,6 @@ NA
 <td style="text-align:left;">
 25
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -34826,9 +29374,6 @@ NA
 </td>
 <td style="text-align:left;">
 143
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -34850,9 +29395,6 @@ NA
 <td style="text-align:left;">
 110
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -34872,9 +29414,6 @@ NA
 </td>
 <td style="text-align:left;">
 207
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -34896,9 +29435,6 @@ NA
 <td style="text-align:left;">
 105
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -34919,9 +29455,6 @@ NA
 <td style="text-align:left;">
 131
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -34941,9 +29474,6 @@ NA
 </td>
 <td style="text-align:left;">
 8
-</td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
 </td>
 </tr>
 <tr>
@@ -34965,9 +29495,6 @@ Subregion removed for having a nested makeup or surplus region
 <td style="text-align:left;">
 236
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -34988,9 +29515,6 @@ NA
 <td style="text-align:left;">
 25
 </td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -35010,9 +29534,6 @@ Subregion removed for having a nested makeup or surplus region
 </td>
 <td style="text-align:left;">
 184
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -35034,9 +29555,6 @@ NA
 <td style="text-align:left;">
 179
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -35056,9 +29574,6 @@ NA
 </td>
 <td style="text-align:left;">
 161
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -35080,9 +29595,6 @@ NA
 <td style="text-align:left;">
 593
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -35102,9 +29614,6 @@ NA
 </td>
 <td style="text-align:left;">
 153
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -35126,9 +29635,6 @@ NA
 <td style="text-align:left;">
 212
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -35149,9 +29655,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -35171,9 +29674,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -35194,9 +29694,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -35218,9 +29715,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 173
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -35241,9 +29735,6 @@ NA
 <td style="text-align:left;">
 182
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -35263,9 +29754,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -35287,9 +29775,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 77
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -35310,9 +29795,6 @@ NA
 <td style="text-align:left;">
 48
 </td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -35332,9 +29814,6 @@ Subregion removed for having a nested makeup or surplus region
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -35356,9 +29835,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 205
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -35378,9 +29854,6 @@ NA
 </td>
 <td style="text-align:left;">
 226
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -35402,9 +29875,6 @@ NA
 <td style="text-align:left;">
 125
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -35425,9 +29895,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -35447,9 +29914,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -35471,9 +29935,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 223
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -35493,9 +29954,6 @@ NA
 </td>
 <td style="text-align:left;">
 144
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -35517,9 +29975,6 @@ NA
 <td style="text-align:left;">
 278
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -35540,9 +29995,6 @@ NA
 <td style="text-align:left;">
 115
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -35562,9 +30014,6 @@ NA
 </td>
 <td style="text-align:left;">
 2
-</td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
 </td>
 </tr>
 <tr>
@@ -35586,9 +30035,6 @@ Subregion removed for having a nested makeup or surplus region
 <td style="text-align:left;">
 34
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -35608,9 +30054,6 @@ NA
 </td>
 <td style="text-align:left;">
 169
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -35632,9 +30075,6 @@ NA
 <td style="text-align:left;">
 55
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -35654,9 +30094,6 @@ NA
 </td>
 <td style="text-align:left;">
 91
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -35678,9 +30115,6 @@ NA
 <td style="text-align:left;">
 19
 </td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -35700,9 +30134,6 @@ Subregion removed for having a nested makeup or surplus region
 </td>
 <td style="text-align:left;">
 72
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -35724,9 +30155,6 @@ NA
 <td style="text-align:left;">
 49
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -35747,9 +30175,6 @@ NA
 <td style="text-align:left;">
 65
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -35769,9 +30194,6 @@ NA
 </td>
 <td style="text-align:left;">
 88
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -35793,9 +30215,6 @@ NA
 <td style="text-align:left;">
 104
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -35816,9 +30235,6 @@ NA
 <td style="text-align:left;">
 18
 </td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -35838,9 +30254,6 @@ Subregion removed for having a nested makeup or surplus region
 </td>
 <td style="text-align:left;">
 31
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -35862,9 +30275,6 @@ NA
 <td style="text-align:left;">
 61
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -35885,9 +30295,6 @@ NA
 <td style="text-align:left;">
 44
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -35907,9 +30314,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -35931,9 +30335,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 31
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -35954,9 +30355,6 @@ NA
 <td style="text-align:left;">
 88
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -35976,9 +30374,6 @@ NA
 </td>
 <td style="text-align:left;">
 76
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -36000,9 +30395,6 @@ NA
 <td style="text-align:left;">
 96
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -36022,9 +30414,6 @@ NA
 </td>
 <td style="text-align:left;">
 76
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -36046,9 +30435,6 @@ NA
 <td style="text-align:left;">
 23
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -36068,9 +30454,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -36092,9 +30475,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 162
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -36115,9 +30495,6 @@ NA
 <td style="text-align:left;">
 131
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -36137,9 +30514,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -36161,9 +30535,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 47
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -36183,9 +30554,6 @@ NA
 </td>
 <td style="text-align:left;">
 74
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -36207,9 +30575,6 @@ NA
 <td style="text-align:left;">
 30
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -36230,9 +30595,6 @@ NA
 <td style="text-align:left;">
 63
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -36252,9 +30614,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -36276,9 +30635,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 391
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -36298,9 +30654,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -36322,9 +30675,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 93
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -36344,9 +30694,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -36368,9 +30715,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 148
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -36390,9 +30734,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -36414,9 +30755,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 49
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -36436,9 +30774,6 @@ NA
 </td>
 <td style="text-align:left;">
 84
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -36460,9 +30795,6 @@ NA
 <td style="text-align:left;">
 103
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -36483,9 +30815,6 @@ NA
 <td style="text-align:left;">
 81
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -36506,9 +30835,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -36528,9 +30854,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -36552,9 +30875,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 191
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -36575,9 +30895,6 @@ NA
 <td style="text-align:left;">
 44
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -36597,9 +30914,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -36621,9 +30935,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 54
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -36644,9 +30955,6 @@ NA
 <td style="text-align:left;">
 77
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -36666,9 +30974,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -36690,9 +30995,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 163
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -36713,9 +31015,6 @@ NA
 <td style="text-align:left;">
 193
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -36735,9 +31034,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -36759,9 +31055,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 141
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -36781,9 +31074,6 @@ NA
 </td>
 <td style="text-align:left;">
 173
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -36805,9 +31095,6 @@ NA
 <td style="text-align:left;">
 78
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -36827,9 +31114,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -36851,9 +31135,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 71
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -36873,9 +31154,6 @@ NA
 </td>
 <td style="text-align:left;">
 97
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -36897,9 +31175,6 @@ NA
 <td style="text-align:left;">
 59
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -36919,9 +31194,6 @@ NA
 </td>
 <td style="text-align:left;">
 78
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -36943,9 +31215,6 @@ NA
 <td style="text-align:left;">
 89
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -36965,9 +31234,6 @@ NA
 </td>
 <td style="text-align:left;">
 58
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -36989,9 +31255,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -37011,9 +31274,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 92
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -37035,9 +31295,6 @@ NA
 <td style="text-align:left;">
 154
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -37058,9 +31315,6 @@ NA
 <td style="text-align:left;">
 65
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -37080,9 +31334,6 @@ NA
 </td>
 <td style="text-align:left;">
 110
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -37104,9 +31355,6 @@ NA
 <td style="text-align:left;">
 229
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -37127,9 +31375,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -37149,9 +31394,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 150
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -37173,9 +31415,6 @@ NA
 <td style="text-align:left;">
 184
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -37195,9 +31434,6 @@ NA
 </td>
 <td style="text-align:left;">
 135
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -37219,9 +31455,6 @@ NA
 <td style="text-align:left;">
 71
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -37241,9 +31474,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -37265,9 +31495,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 113
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -37287,9 +31514,6 @@ NA
 </td>
 <td style="text-align:left;">
 145
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -37311,9 +31535,6 @@ NA
 <td style="text-align:left;">
 138
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -37333,9 +31554,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -37357,9 +31575,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 103
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -37379,9 +31594,6 @@ NA
 </td>
 <td style="text-align:left;">
 83
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -37403,9 +31615,6 @@ NA
 <td style="text-align:left;">
 71
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -37426,9 +31635,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -37449,9 +31655,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -37471,9 +31674,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 164
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -37495,9 +31695,6 @@ NA
 <td style="text-align:left;">
 170
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -37517,9 +31714,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -37541,9 +31735,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 144
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -37563,9 +31754,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -37587,9 +31775,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 114
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -37609,9 +31794,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -37633,9 +31815,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 98
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -37655,9 +31834,6 @@ NA
 </td>
 <td style="text-align:left;">
 89
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -37679,9 +31855,6 @@ NA
 <td style="text-align:left;">
 203
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -37701,9 +31874,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -37725,9 +31895,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 206
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -37747,9 +31914,6 @@ NA
 </td>
 <td style="text-align:left;">
 122
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -37771,9 +31935,6 @@ NA
 <td style="text-align:left;">
 131
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -37794,9 +31955,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -37816,9 +31974,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -37840,9 +31995,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 107
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -37862,9 +32014,6 @@ NA
 </td>
 <td style="text-align:left;">
 147
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -37886,9 +32035,6 @@ NA
 <td style="text-align:left;">
 139
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -37908,9 +32054,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -37932,9 +32075,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 194
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -37954,9 +32094,6 @@ NA
 </td>
 <td style="text-align:left;">
 109
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -37978,9 +32115,6 @@ NA
 <td style="text-align:left;">
 81
 </td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -38000,9 +32134,6 @@ Subregion removed for having a nested makeup or surplus region
 </td>
 <td style="text-align:left;">
 68
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -38024,9 +32155,6 @@ NA
 <td style="text-align:left;">
 66
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -38046,9 +32174,6 @@ NA
 </td>
 <td style="text-align:left;">
 94
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -38070,9 +32195,6 @@ NA
 <td style="text-align:left;">
 220
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -38093,9 +32215,6 @@ NA
 <td style="text-align:left;">
 97
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -38115,9 +32234,6 @@ NA
 </td>
 <td style="text-align:left;">
 106
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -38139,9 +32255,6 @@ NA
 <td style="text-align:left;">
 129
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -38161,9 +32274,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -38185,9 +32295,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 13
 </td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -38207,9 +32314,6 @@ Subregion removed for having a nested makeup or surplus region
 </td>
 <td style="text-align:left;">
 96
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -38231,9 +32335,6 @@ NA
 <td style="text-align:left;">
 112
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -38254,9 +32355,6 @@ NA
 <td style="text-align:left;">
 106
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -38276,9 +32374,6 @@ NA
 </td>
 <td style="text-align:left;">
 20
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -38300,9 +32395,6 @@ NA
 <td style="text-align:left;">
 124
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -38322,9 +32414,6 @@ NA
 </td>
 <td style="text-align:left;">
 119
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -38346,9 +32435,6 @@ NA
 <td style="text-align:left;">
 64
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -38368,9 +32454,6 @@ NA
 </td>
 <td style="text-align:left;">
 55
-</td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
 </td>
 </tr>
 <tr>
@@ -38392,9 +32475,6 @@ Subregion removed for having a nested makeup or surplus region
 <td style="text-align:left;">
 193
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -38414,9 +32494,6 @@ NA
 </td>
 <td style="text-align:left;">
 48
-</td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
 </td>
 </tr>
 <tr>
@@ -38438,9 +32515,6 @@ Subregion removed for having a nested makeup or surplus region
 <td style="text-align:left;">
 71
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -38460,9 +32534,6 @@ NA
 </td>
 <td style="text-align:left;">
 60
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -38484,9 +32555,6 @@ NA
 <td style="text-align:left;">
 150
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -38507,9 +32575,6 @@ NA
 <td style="text-align:left;">
 133
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -38529,9 +32594,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -38553,9 +32615,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 266
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -38575,9 +32634,6 @@ NA
 </td>
 <td style="text-align:left;">
 106
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -38599,9 +32655,6 @@ NA
 <td style="text-align:left;">
 137
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -38621,9 +32674,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -38645,9 +32695,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 108
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -38668,9 +32715,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -38689,10 +32733,7 @@ Subregion removed for not having any annotations
 4
 </td>
 <td style="text-align:left;">
-0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
+36
 </td>
 </tr>
 <tr>
@@ -38714,9 +32755,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 95
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -38736,9 +32774,6 @@ NA
 </td>
 <td style="text-align:left;">
 169
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -38760,9 +32795,6 @@ NA
 <td style="text-align:left;">
 252
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -38782,9 +32814,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -38806,9 +32835,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 92
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -38829,9 +32855,6 @@ NA
 <td style="text-align:left;">
 191
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -38852,9 +32875,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -38874,9 +32894,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -38898,9 +32915,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 188
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -38920,9 +32934,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -38944,9 +32955,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 201
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -38967,9 +32975,6 @@ NA
 <td style="text-align:left;">
 233
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -38989,9 +32994,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -39013,9 +33015,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 11
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -39035,9 +33034,6 @@ NA
 </td>
 <td style="text-align:left;">
 3
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -39059,9 +33055,6 @@ NA
 <td style="text-align:left;">
 139
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -39081,9 +33074,6 @@ NA
 </td>
 <td style="text-align:left;">
 79
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -39105,9 +33095,6 @@ NA
 <td style="text-align:left;">
 138
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -39127,9 +33114,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -39151,9 +33135,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 103
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -39173,9 +33154,6 @@ NA
 </td>
 <td style="text-align:left;">
 69
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -39197,9 +33175,6 @@ NA
 <td style="text-align:left;">
 100
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -39219,9 +33194,6 @@ NA
 </td>
 <td style="text-align:left;">
 144
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -39243,9 +33215,6 @@ NA
 <td style="text-align:left;">
 118
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -39265,9 +33234,6 @@ NA
 </td>
 <td style="text-align:left;">
 21
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -39289,9 +33255,6 @@ NA
 <td style="text-align:left;">
 143
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -39311,9 +33274,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -39335,9 +33295,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 64
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -39357,9 +33314,6 @@ NA
 </td>
 <td style="text-align:left;">
 54
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -39381,9 +33335,6 @@ NA
 <td style="text-align:left;">
 65
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -39403,9 +33354,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -39427,9 +33375,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 181
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -39449,9 +33394,6 @@ NA
 </td>
 <td style="text-align:left;">
 59
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -39473,9 +33415,6 @@ NA
 <td style="text-align:left;">
 60
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -39496,9 +33435,6 @@ NA
 <td style="text-align:left;">
 165
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -39518,9 +33454,6 @@ NA
 </td>
 <td style="text-align:left;">
 120
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -39542,9 +33475,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -39565,9 +33495,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 87
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -39587,9 +33514,6 @@ NA
 </td>
 <td style="text-align:left;">
 31
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -39611,9 +33535,6 @@ NA
 <td style="text-align:left;">
 82
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -39634,9 +33555,6 @@ NA
 <td style="text-align:left;">
 120
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -39656,9 +33574,6 @@ NA
 </td>
 <td style="text-align:left;">
 4
-</td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
 </td>
 </tr>
 <tr>
@@ -39680,9 +33595,6 @@ Subregion removed for having a nested makeup or surplus region
 <td style="text-align:left;">
 156
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -39702,9 +33614,6 @@ NA
 </td>
 <td style="text-align:left;">
 100
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -39726,9 +33635,6 @@ NA
 <td style="text-align:left;">
 51
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -39748,9 +33654,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -39772,9 +33675,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 95
 </td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -39794,9 +33694,6 @@ Subregion removed for having a nested makeup or surplus region
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -39818,9 +33715,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 72
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -39840,9 +33734,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -39864,9 +33755,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 18
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -39886,9 +33774,6 @@ NA
 </td>
 <td style="text-align:left;">
 122
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -39910,9 +33795,6 @@ NA
 <td style="text-align:left;">
 84
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -39932,9 +33814,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -39956,9 +33835,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -39978,9 +33854,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 116
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -40002,9 +33875,6 @@ NA
 <td style="text-align:left;">
 161
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -40024,9 +33894,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -40048,9 +33915,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 93
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -40070,9 +33934,6 @@ NA
 </td>
 <td style="text-align:left;">
 147
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -40094,9 +33955,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -40116,9 +33974,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 175
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -40140,9 +33995,6 @@ NA
 <td style="text-align:left;">
 127
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -40162,9 +34014,6 @@ NA
 </td>
 <td style="text-align:left;">
 123
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -40185,9 +34034,6 @@ NA
 </td>
 <td style="text-align:left;">
 123
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -40209,9 +34055,6 @@ NA
 <td style="text-align:left;">
 66
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -40231,9 +34074,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -40255,9 +34095,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 21
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -40277,9 +34114,6 @@ NA
 </td>
 <td style="text-align:left;">
 41
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -40301,9 +34135,6 @@ NA
 <td style="text-align:left;">
 30
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -40323,9 +34154,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -40347,9 +34175,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 54
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -40369,9 +34194,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -40393,9 +34215,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 6
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -40415,9 +34234,6 @@ NA
 </td>
 <td style="text-align:left;">
 85
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -40439,9 +34255,6 @@ NA
 <td style="text-align:left;">
 12
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -40461,9 +34274,6 @@ NA
 </td>
 <td style="text-align:left;">
 5
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -40485,9 +34295,6 @@ NA
 <td style="text-align:left;">
 9
 </td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -40507,9 +34314,6 @@ Subregion removed for having a nested makeup or surplus region
 </td>
 <td style="text-align:left;">
 58
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -40531,9 +34335,6 @@ NA
 <td style="text-align:left;">
 41
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -40554,9 +34355,6 @@ NA
 <td style="text-align:left;">
 72
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -40576,9 +34374,6 @@ NA
 </td>
 <td style="text-align:left;">
 71
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -40600,9 +34395,6 @@ NA
 <td style="text-align:left;">
 73
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -40622,9 +34414,6 @@ NA
 </td>
 <td style="text-align:left;">
 16
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -40646,9 +34435,6 @@ NA
 <td style="text-align:left;">
 35
 </td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -40668,9 +34454,6 @@ Subregion removed for having a nested makeup or surplus region
 </td>
 <td style="text-align:left;">
 104
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -40692,9 +34475,6 @@ NA
 <td style="text-align:left;">
 48
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -40714,9 +34494,6 @@ NA
 </td>
 <td style="text-align:left;">
 33
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -40738,9 +34515,6 @@ NA
 <td style="text-align:left;">
 36
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -40760,9 +34534,6 @@ NA
 </td>
 <td style="text-align:left;">
 20
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -40784,9 +34555,6 @@ NA
 <td style="text-align:left;">
 45
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -40806,9 +34574,6 @@ NA
 </td>
 <td style="text-align:left;">
 71
-</td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
 </td>
 </tr>
 <tr>
@@ -40830,9 +34595,6 @@ Subregion removed for having a nested makeup or surplus region
 <td style="text-align:left;">
 79
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -40852,9 +34614,6 @@ NA
 </td>
 <td style="text-align:left;">
 5
-</td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
 </td>
 </tr>
 <tr>
@@ -40876,9 +34635,6 @@ Subregion removed for having a nested makeup or surplus region
 <td style="text-align:left;">
 7
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -40898,9 +34654,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -40922,9 +34675,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 101
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -40945,9 +34695,6 @@ NA
 <td style="text-align:left;">
 13
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -40967,9 +34714,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -40991,9 +34735,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 78
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -41014,9 +34755,6 @@ NA
 <td style="text-align:left;">
 70
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -41036,9 +34774,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -41060,9 +34795,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 88
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -41083,9 +34815,6 @@ NA
 <td style="text-align:left;">
 86
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -41105,9 +34834,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -41129,9 +34855,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 37
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -41152,9 +34875,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -41174,9 +34894,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -41198,9 +34915,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 91
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -41220,9 +34934,6 @@ NA
 </td>
 <td style="text-align:left;">
 136
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -41244,9 +34955,6 @@ NA
 <td style="text-align:left;">
 80
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -41266,9 +34974,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -41290,9 +34995,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 174
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -41312,9 +35014,6 @@ NA
 </td>
 <td style="text-align:left;">
 83
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -41336,9 +35035,6 @@ NA
 <td style="text-align:left;">
 117
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -41359,9 +35055,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -41381,9 +35074,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 113
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -41405,9 +35095,6 @@ NA
 <td style="text-align:left;">
 233
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -41427,9 +35114,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -41451,9 +35135,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 139
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -41473,9 +35154,6 @@ NA
 </td>
 <td style="text-align:left;">
 191
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -41497,9 +35175,6 @@ NA
 <td style="text-align:left;">
 128
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -41519,9 +35194,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -41543,9 +35215,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 39
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -41566,9 +35235,6 @@ NA
 <td style="text-align:left;">
 94
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -41588,9 +35254,6 @@ NA
 </td>
 <td style="text-align:left;">
 75
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -41612,9 +35275,6 @@ NA
 <td style="text-align:left;">
 147
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -41634,9 +35294,6 @@ NA
 </td>
 <td style="text-align:left;">
 143
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -41658,9 +35315,6 @@ NA
 <td style="text-align:left;">
 91
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -41680,9 +35334,6 @@ NA
 </td>
 <td style="text-align:left;">
 68
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -41704,9 +35355,6 @@ NA
 <td style="text-align:left;">
 88
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -41727,9 +35375,6 @@ NA
 <td style="text-align:left;">
 32
 </td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -41749,9 +35394,6 @@ Subregion removed for having a nested makeup or surplus region
 </td>
 <td style="text-align:left;">
 122
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -41773,9 +35415,6 @@ NA
 <td style="text-align:left;">
 281
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -41795,9 +35434,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -41819,9 +35455,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 114
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -41841,9 +35474,6 @@ NA
 </td>
 <td style="text-align:left;">
 107
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -41865,9 +35495,6 @@ NA
 <td style="text-align:left;">
 176
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -41887,9 +35514,6 @@ NA
 </td>
 <td style="text-align:left;">
 235
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -41911,9 +35535,6 @@ NA
 <td style="text-align:left;">
 207
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -41934,9 +35555,6 @@ NA
 <td style="text-align:left;">
 272
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -41957,9 +35575,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -41979,9 +35594,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -42003,9 +35615,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 177
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -42025,9 +35634,6 @@ NA
 </td>
 <td style="text-align:left;">
 288
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -42049,9 +35655,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -42072,9 +35675,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 165
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -42094,9 +35694,6 @@ NA
 </td>
 <td style="text-align:left;">
 98
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -42118,9 +35715,6 @@ NA
 <td style="text-align:left;">
 159
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -42140,9 +35734,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -42164,9 +35755,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 228
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -42186,9 +35774,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -42210,9 +35795,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 250
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -42232,9 +35814,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -42256,9 +35835,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 187
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -42278,9 +35854,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -42302,9 +35875,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 324
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -42325,9 +35895,6 @@ NA
 <td style="text-align:left;">
 243
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -42347,9 +35914,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -42371,9 +35935,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 288
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -42393,9 +35954,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -42417,9 +35975,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 342
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -42440,9 +35995,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -42462,9 +36014,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 20
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -42486,9 +36035,6 @@ NA
 <td style="text-align:left;">
 58
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -42508,9 +36054,6 @@ NA
 </td>
 <td style="text-align:left;">
 32
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -42532,9 +36075,6 @@ NA
 <td style="text-align:left;">
 4
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -42555,9 +36095,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -42577,9 +36114,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 4
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -42601,9 +36135,6 @@ NA
 <td style="text-align:left;">
 41
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -42623,9 +36154,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -42647,9 +36175,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 17
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -42669,9 +36194,6 @@ NA
 </td>
 <td style="text-align:left;">
 1
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -42693,9 +36215,6 @@ NA
 <td style="text-align:left;">
 30
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -42715,9 +36234,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -42739,9 +36255,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 8
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -42761,9 +36274,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -42785,9 +36295,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 16
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -42807,9 +36314,6 @@ NA
 </td>
 <td style="text-align:left;">
 7
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -42831,9 +36335,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -42853,9 +36354,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 51
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -42877,9 +36375,6 @@ NA
 <td style="text-align:left;">
 13
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -42900,9 +36395,6 @@ NA
 <td style="text-align:left;">
 19
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -42922,9 +36414,6 @@ NA
 </td>
 <td style="text-align:left;">
 2
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -42946,9 +36435,6 @@ NA
 <td style="text-align:left;">
 7
 </td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -42968,9 +36454,6 @@ Subregion removed for having a nested makeup or surplus region
 </td>
 <td style="text-align:left;">
 19
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -42992,9 +36475,6 @@ NA
 <td style="text-align:left;">
 8
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -43014,9 +36494,6 @@ NA
 </td>
 <td style="text-align:left;">
 2
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -43038,9 +36515,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -43060,9 +36534,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -43084,9 +36555,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 35
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -43106,9 +36574,6 @@ NA
 </td>
 <td style="text-align:left;">
 51
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -43130,9 +36595,6 @@ NA
 <td style="text-align:left;">
 4
 </td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -43152,9 +36614,6 @@ Subregion removed for having a nested makeup or surplus region
 </td>
 <td style="text-align:left;">
 3
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -43176,9 +36635,6 @@ NA
 <td style="text-align:left;">
 27
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -43199,9 +36655,6 @@ NA
 <td style="text-align:left;">
 13
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -43222,9 +36675,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -43244,9 +36694,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -43268,9 +36715,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 20
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -43290,9 +36734,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -43314,9 +36755,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 43
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -43336,9 +36774,6 @@ NA
 </td>
 <td style="text-align:left;">
 39
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -43360,9 +36795,6 @@ NA
 <td style="text-align:left;">
 11
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -43382,9 +36814,6 @@ NA
 </td>
 <td style="text-align:left;">
 16
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -43406,9 +36835,6 @@ NA
 <td style="text-align:left;">
 37
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -43429,9 +36855,6 @@ NA
 <td style="text-align:left;">
 3
 </td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -43452,9 +36875,6 @@ Subregion removed for having a nested makeup or surplus region
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -43474,9 +36894,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -43498,9 +36915,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 81
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -43521,9 +36935,6 @@ NA
 <td style="text-align:left;">
 24
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -43543,9 +36954,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -43567,9 +36975,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 14
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -43589,9 +36994,6 @@ NA
 </td>
 <td style="text-align:left;">
 69
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -43613,9 +37015,6 @@ NA
 <td style="text-align:left;">
 28
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -43635,9 +37034,6 @@ NA
 </td>
 <td style="text-align:left;">
 87
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -43659,9 +37055,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -43681,9 +37074,6 @@ Subregion removed for having a nested makeup or surplus region
 </td>
 <td style="text-align:left;">
 3
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -43705,9 +37095,6 @@ NA
 <td style="text-align:left;">
 39
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -43727,9 +37114,6 @@ NA
 </td>
 <td style="text-align:left;">
 49
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -43751,9 +37135,6 @@ NA
 <td style="text-align:left;">
 38
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -43774,9 +37155,6 @@ NA
 <td style="text-align:left;">
 74
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -43796,9 +37174,6 @@ NA
 </td>
 <td style="text-align:left;">
 4
-</td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
 </td>
 </tr>
 <tr>
@@ -43820,9 +37195,6 @@ Subregion removed for having a nested makeup or surplus region
 <td style="text-align:left;">
 116
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -43842,9 +37214,6 @@ NA
 </td>
 <td style="text-align:left;">
 54
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -43866,9 +37235,6 @@ NA
 <td style="text-align:left;">
 132
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -43888,9 +37254,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -43912,9 +37275,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 42
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -43934,9 +37294,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -43958,9 +37315,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 74
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -43980,9 +37334,6 @@ NA
 </td>
 <td style="text-align:left;">
 12
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -44004,9 +37355,6 @@ NA
 <td style="text-align:left;">
 13
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -44026,9 +37374,6 @@ NA
 </td>
 <td style="text-align:left;">
 50
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -44050,9 +37395,6 @@ NA
 <td style="text-align:left;">
 10
 </td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -44072,9 +37414,6 @@ Subregion removed for having a nested makeup or surplus region
 </td>
 <td style="text-align:left;">
 162
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -44096,9 +37435,6 @@ NA
 <td style="text-align:left;">
 98
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -44119,9 +37455,6 @@ NA
 <td style="text-align:left;">
 84
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -44141,9 +37474,6 @@ NA
 </td>
 <td style="text-align:left;">
 78
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -44165,9 +37495,6 @@ NA
 <td style="text-align:left;">
 155
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -44187,9 +37514,6 @@ NA
 </td>
 <td style="text-align:left;">
 14
-</td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
 </td>
 </tr>
 <tr>
@@ -44211,9 +37535,6 @@ Subregion removed for having a nested makeup or surplus region
 <td style="text-align:left;">
 77
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -44233,9 +37554,6 @@ NA
 </td>
 <td style="text-align:left;">
 106
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -44257,9 +37575,6 @@ NA
 <td style="text-align:left;">
 132
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -44280,9 +37595,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -44302,9 +37614,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -44326,9 +37635,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 49
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -44348,9 +37654,6 @@ NA
 </td>
 <td style="text-align:left;">
 84
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -44372,9 +37675,6 @@ NA
 <td style="text-align:left;">
 117
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -44394,9 +37694,6 @@ NA
 </td>
 <td style="text-align:left;">
 34
-</td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
 </td>
 </tr>
 <tr>
@@ -44418,9 +37715,6 @@ Subregion removed for having a nested makeup or surplus region
 <td style="text-align:left;">
 45
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -44440,9 +37734,6 @@ NA
 </td>
 <td style="text-align:left;">
 97
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -44464,9 +37755,6 @@ NA
 <td style="text-align:left;">
 28
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -44486,9 +37774,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -44510,9 +37795,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 43
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -44532,9 +37814,6 @@ NA
 </td>
 <td style="text-align:left;">
 107
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -44556,9 +37835,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -44579,9 +37855,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 36
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -44602,9 +37875,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -44624,9 +37894,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -44648,9 +37915,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 88
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -44670,9 +37934,6 @@ NA
 </td>
 <td style="text-align:left;">
 211
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -44694,9 +37955,6 @@ NA
 <td style="text-align:left;">
 81
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -44716,9 +37974,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -44740,9 +37995,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 93
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -44762,9 +38014,6 @@ NA
 </td>
 <td style="text-align:left;">
 63
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -44786,9 +38035,6 @@ NA
 <td style="text-align:left;">
 87
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -44808,9 +38054,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -44832,9 +38075,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 100
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -44854,9 +38094,6 @@ NA
 </td>
 <td style="text-align:left;">
 56
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -44878,9 +38115,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -44900,9 +38134,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 58
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -44924,9 +38155,6 @@ NA
 <td style="text-align:left;">
 67
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -44946,9 +38174,6 @@ NA
 </td>
 <td style="text-align:left;">
 62
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -44970,9 +38195,6 @@ NA
 <td style="text-align:left;">
 86
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -44992,9 +38214,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -45016,9 +38235,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 68
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -45039,9 +38255,6 @@ NA
 <td style="text-align:left;">
 77
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -45061,9 +38274,6 @@ NA
 </td>
 <td style="text-align:left;">
 28
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -45085,9 +38295,6 @@ NA
 <td style="text-align:left;">
 7
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -45107,9 +38314,6 @@ NA
 </td>
 <td style="text-align:left;">
 36
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -45131,9 +38335,6 @@ NA
 <td style="text-align:left;">
 69
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -45153,9 +38354,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -45177,9 +38375,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 98
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -45199,9 +38394,6 @@ NA
 </td>
 <td style="text-align:left;">
 9
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -45223,9 +38415,6 @@ NA
 <td style="text-align:left;">
 28
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -45245,9 +38434,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -45269,9 +38455,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 102
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -45291,9 +38474,6 @@ NA
 </td>
 <td style="text-align:left;">
 163
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -45315,9 +38495,6 @@ NA
 <td style="text-align:left;">
 71
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -45337,9 +38514,6 @@ NA
 </td>
 <td style="text-align:left;">
 67
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -45361,9 +38535,6 @@ NA
 <td style="text-align:left;">
 103
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -45383,9 +38554,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -45407,9 +38575,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 45
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -45429,9 +38594,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -45453,9 +38615,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 42
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -45476,9 +38635,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -45498,9 +38654,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 30
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -45522,9 +38675,6 @@ NA
 <td style="text-align:left;">
 226
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -45545,9 +38695,6 @@ NA
 <td style="text-align:left;">
 72
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -45567,9 +38714,6 @@ NA
 </td>
 <td style="text-align:left;">
 5
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -45591,9 +38735,6 @@ NA
 <td style="text-align:left;">
 55
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -45613,9 +38754,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -45637,9 +38775,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 45
 </td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -45659,9 +38794,6 @@ Subregion removed for having a nested makeup or surplus region
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -45683,9 +38815,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -45705,9 +38834,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 97
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -45729,9 +38855,6 @@ NA
 <td style="text-align:left;">
 139
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -45751,9 +38874,6 @@ NA
 </td>
 <td style="text-align:left;">
 126
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -45775,9 +38895,6 @@ NA
 <td style="text-align:left;">
 125
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -45797,9 +38914,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -45821,9 +38935,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 57
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -45843,9 +38954,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -45867,9 +38975,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 69
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -45889,9 +38994,6 @@ NA
 </td>
 <td style="text-align:left;">
 36
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -45913,9 +39015,6 @@ NA
 <td style="text-align:left;">
 75
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -45935,9 +39034,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -45959,9 +39055,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 37
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -45981,9 +39074,6 @@ NA
 </td>
 <td style="text-align:left;">
 78
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -46005,9 +39095,6 @@ NA
 <td style="text-align:left;">
 69
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -46028,9 +39115,6 @@ NA
 <td style="text-align:left;">
 51
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -46050,9 +39134,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -46074,9 +39155,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 36
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -46097,9 +39175,6 @@ NA
 <td style="text-align:left;">
 53
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -46119,9 +39194,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -46143,9 +39215,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 45
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -46166,9 +39235,6 @@ NA
 <td style="text-align:left;">
 92
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -46188,9 +39254,6 @@ NA
 </td>
 <td style="text-align:left;">
 40
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -46212,9 +39275,6 @@ NA
 <td style="text-align:left;">
 113
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -46234,9 +39294,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -46258,9 +39315,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 115
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -46280,9 +39334,6 @@ NA
 </td>
 <td style="text-align:left;">
 32
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -46304,9 +39355,6 @@ NA
 <td style="text-align:left;">
 99
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -46326,9 +39374,6 @@ NA
 </td>
 <td style="text-align:left;">
 40
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -46350,9 +39395,6 @@ NA
 <td style="text-align:left;">
 78
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -46372,9 +39414,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -46396,9 +39435,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 59
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -46418,9 +39454,6 @@ NA
 </td>
 <td style="text-align:left;">
 153
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -46442,9 +39475,6 @@ NA
 <td style="text-align:left;">
 68
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -46465,9 +39495,6 @@ NA
 <td style="text-align:left;">
 74
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -46487,9 +39514,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -46511,9 +39535,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 60
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -46534,9 +39555,6 @@ NA
 <td style="text-align:left;">
 22
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -46556,9 +39574,6 @@ NA
 </td>
 <td style="text-align:left;">
 43
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -46580,9 +39595,6 @@ NA
 <td style="text-align:left;">
 83
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -46603,9 +39615,6 @@ NA
 <td style="text-align:left;">
 94
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -46625,9 +39634,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -46649,9 +39655,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 93
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -46671,9 +39674,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -46695,9 +39695,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -46717,9 +39714,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 32
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -46741,9 +39735,6 @@ NA
 <td style="text-align:left;">
 28
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -46764,9 +39755,6 @@ NA
 <td style="text-align:left;">
 93
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -46786,9 +39774,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -46810,9 +39795,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 64
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -46833,9 +39815,6 @@ NA
 <td style="text-align:left;">
 113
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -46855,9 +39834,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -46879,9 +39855,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 41
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -46901,9 +39874,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -46925,9 +39895,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 107
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -46948,9 +39915,6 @@ NA
 <td style="text-align:left;">
 37
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -46970,9 +39934,6 @@ NA
 </td>
 <td style="text-align:left;">
 67
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -46994,9 +39955,6 @@ NA
 <td style="text-align:left;">
 151
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -47016,9 +39974,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -47040,9 +39995,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 70
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -47062,9 +40014,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -47086,9 +40035,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 136
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -47108,9 +40054,6 @@ NA
 </td>
 <td style="text-align:left;">
 103
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -47132,9 +40075,6 @@ NA
 <td style="text-align:left;">
 30
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -47154,9 +40094,6 @@ NA
 </td>
 <td style="text-align:left;">
 32
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -47178,9 +40115,6 @@ NA
 <td style="text-align:left;">
 26
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -47201,9 +40135,6 @@ NA
 <td style="text-align:left;">
 23
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -47224,9 +40155,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -47246,9 +40174,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -47270,9 +40195,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 69
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -47292,9 +40214,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -47316,9 +40235,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 40
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -47339,9 +40255,6 @@ NA
 <td style="text-align:left;">
 65
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -47361,9 +40274,6 @@ NA
 </td>
 <td style="text-align:left;">
 14
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -47385,9 +40295,6 @@ NA
 <td style="text-align:left;">
 77
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -47407,9 +40314,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -47431,9 +40335,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 66
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -47453,9 +40354,6 @@ NA
 </td>
 <td style="text-align:left;">
 80
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -47477,9 +40375,6 @@ NA
 <td style="text-align:left;">
 114
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -47499,9 +40394,6 @@ NA
 </td>
 <td style="text-align:left;">
 67
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -47523,9 +40415,6 @@ NA
 <td style="text-align:left;">
 55
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -47545,9 +40434,6 @@ NA
 </td>
 <td style="text-align:left;">
 36
-</td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
 </td>
 </tr>
 <tr>
@@ -47569,9 +40455,6 @@ Subregion removed for having a nested makeup or surplus region
 <td style="text-align:left;">
 29
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -47591,9 +40474,6 @@ NA
 </td>
 <td style="text-align:left;">
 39
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -47615,9 +40495,6 @@ NA
 <td style="text-align:left;">
 130
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -47638,9 +40515,6 @@ NA
 <td style="text-align:left;">
 111
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -47660,9 +40534,6 @@ NA
 </td>
 <td style="text-align:left;">
 92
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -47684,9 +40555,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -47706,9 +40574,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 78
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -47730,9 +40595,6 @@ NA
 <td style="text-align:left;">
 106
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -47752,9 +40614,6 @@ NA
 </td>
 <td style="text-align:left;">
 92
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -47776,9 +40635,6 @@ NA
 <td style="text-align:left;">
 165
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -47799,9 +40655,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -47821,9 +40674,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -47845,9 +40695,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -47867,9 +40714,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 191
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -47891,9 +40735,6 @@ NA
 <td style="text-align:left;">
 230
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -47913,9 +40754,6 @@ NA
 </td>
 <td style="text-align:left;">
 120
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -47937,9 +40775,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -47960,9 +40795,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -47982,9 +40814,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 103
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -48006,9 +40835,6 @@ NA
 <td style="text-align:left;">
 267
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -48028,9 +40854,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -48052,9 +40875,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 92
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -48075,9 +40895,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -48097,9 +40914,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -48121,9 +40935,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 106
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -48143,9 +40954,6 @@ NA
 </td>
 <td style="text-align:left;">
 121
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -48167,9 +40975,6 @@ NA
 <td style="text-align:left;">
 46
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -48189,9 +40994,6 @@ NA
 </td>
 <td style="text-align:left;">
 37
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -48213,9 +41015,6 @@ NA
 <td style="text-align:left;">
 6
 </td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -48235,9 +41034,6 @@ Subregion removed for having a nested makeup or surplus region
 </td>
 <td style="text-align:left;">
 105
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -48259,9 +41055,6 @@ NA
 <td style="text-align:left;">
 52
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -48281,9 +41074,6 @@ NA
 </td>
 <td style="text-align:left;">
 55
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -48305,9 +41095,6 @@ NA
 <td style="text-align:left;">
 191
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -48327,9 +41114,6 @@ NA
 </td>
 <td style="text-align:left;">
 76
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -48351,9 +41135,6 @@ NA
 <td style="text-align:left;">
 22
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -48374,9 +41155,6 @@ NA
 <td style="text-align:left;">
 24
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -48396,9 +41174,6 @@ NA
 </td>
 <td style="text-align:left;">
 2
-</td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
 </td>
 </tr>
 <tr>
@@ -48420,9 +41195,6 @@ Subregion removed for having a nested makeup or surplus region
 <td style="text-align:left;">
 54
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -48442,9 +41214,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -48466,9 +41235,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 13
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -48489,9 +41255,6 @@ NA
 <td style="text-align:left;">
 2
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -48511,9 +41274,6 @@ NA
 </td>
 <td style="text-align:left;">
 5
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -48535,9 +41295,6 @@ NA
 <td style="text-align:left;">
 54
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -48557,9 +41314,6 @@ NA
 </td>
 <td style="text-align:left;">
 27
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -48581,9 +41335,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -48603,9 +41354,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 53
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -48627,9 +41375,6 @@ NA
 <td style="text-align:left;">
 79
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -48649,9 +41394,6 @@ NA
 </td>
 <td style="text-align:left;">
 82
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -48673,9 +41415,6 @@ NA
 <td style="text-align:left;">
 77
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -48695,9 +41434,6 @@ NA
 </td>
 <td style="text-align:left;">
 44
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -48719,9 +41455,6 @@ NA
 <td style="text-align:left;">
 46
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -48741,9 +41474,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -48765,9 +41495,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 54
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -48787,9 +41514,6 @@ NA
 </td>
 <td style="text-align:left;">
 14
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -48811,9 +41535,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -48833,9 +41554,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 2
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -48857,9 +41575,6 @@ NA
 <td style="text-align:left;">
 43
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -48879,9 +41594,6 @@ NA
 </td>
 <td style="text-align:left;">
 69
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -48903,9 +41615,6 @@ NA
 <td style="text-align:left;">
 45
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -48925,9 +41634,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -48949,9 +41655,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 88
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -48971,9 +41674,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -48995,9 +41695,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 25
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -49017,9 +41714,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -49041,9 +41735,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 54
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -49063,9 +41754,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -49087,9 +41775,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 13
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -49109,9 +41794,6 @@ NA
 </td>
 <td style="text-align:left;">
 26
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -49133,9 +41815,6 @@ NA
 <td style="text-align:left;">
 88
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -49156,9 +41835,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -49178,9 +41854,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -49202,9 +41875,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 137
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -49224,9 +41894,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -49248,9 +41915,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 47
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -49271,9 +41935,6 @@ NA
 <td style="text-align:left;">
 4
 </td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -49293,9 +41954,6 @@ Subregion removed for having a nested makeup or surplus region
 </td>
 <td style="text-align:left;">
 62
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -49317,9 +41975,6 @@ NA
 <td style="text-align:left;">
 68
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -49339,9 +41994,6 @@ NA
 </td>
 <td style="text-align:left;">
 26
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -49363,9 +42015,6 @@ NA
 <td style="text-align:left;">
 81
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -49386,9 +42035,6 @@ NA
 <td style="text-align:left;">
 69
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -49408,9 +42054,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -49432,9 +42075,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 52
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -49454,9 +42094,6 @@ NA
 </td>
 <td style="text-align:left;">
 91
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -49478,9 +42115,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -49501,9 +42135,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 113
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -49523,9 +42154,6 @@ NA
 </td>
 <td style="text-align:left;">
 91
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -49547,9 +42175,6 @@ NA
 <td style="text-align:left;">
 74
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -49569,9 +42194,6 @@ NA
 </td>
 <td style="text-align:left;">
 44
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -49593,9 +42215,6 @@ NA
 <td style="text-align:left;">
 31
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -49616,9 +42235,6 @@ NA
 <td style="text-align:left;">
 14
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -49638,9 +42254,6 @@ NA
 </td>
 <td style="text-align:left;">
 5
-</td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
 </td>
 </tr>
 <tr>
@@ -49662,9 +42275,6 @@ Subregion removed for having a nested makeup or surplus region
 <td style="text-align:left;">
 20
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -49684,9 +42294,6 @@ NA
 </td>
 <td style="text-align:left;">
 2
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -49708,9 +42315,6 @@ NA
 <td style="text-align:left;">
 98
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -49730,9 +42334,6 @@ NA
 </td>
 <td style="text-align:left;">
 69
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -49754,9 +42355,6 @@ NA
 <td style="text-align:left;">
 100
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -49776,9 +42374,6 @@ NA
 </td>
 <td style="text-align:left;">
 1
-</td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
 </td>
 </tr>
 <tr>
@@ -49800,9 +42395,6 @@ Subregion removed for having a nested makeup or surplus region
 <td style="text-align:left;">
 44
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -49822,9 +42414,6 @@ NA
 </td>
 <td style="text-align:left;">
 52
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -49846,9 +42435,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -49868,9 +42454,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 31
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -49892,9 +42475,6 @@ NA
 <td style="text-align:left;">
 46
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -49914,9 +42494,6 @@ NA
 </td>
 <td style="text-align:left;">
 46
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -49938,9 +42515,6 @@ NA
 <td style="text-align:left;">
 39
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -49960,9 +42534,6 @@ NA
 </td>
 <td style="text-align:left;">
 11
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -49984,9 +42555,6 @@ NA
 <td style="text-align:left;">
 26
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -50007,9 +42575,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -50029,9 +42594,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -50053,9 +42615,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 43
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -50075,9 +42634,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -50099,9 +42655,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 70
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -50122,9 +42675,6 @@ NA
 <td style="text-align:left;">
 63
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -50144,9 +42694,6 @@ NA
 </td>
 <td style="text-align:left;">
 4
-</td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
 </td>
 </tr>
 <tr>
@@ -50168,9 +42715,6 @@ Subregion removed for having a nested makeup or surplus region
 <td style="text-align:left;">
 73
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -50190,9 +42734,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -50214,9 +42755,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 7
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -50236,9 +42774,6 @@ NA
 </td>
 <td style="text-align:left;">
 181
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -50260,9 +42795,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -50283,9 +42815,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 13
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -50305,9 +42834,6 @@ NA
 </td>
 <td style="text-align:left;">
 171
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -50329,9 +42855,6 @@ NA
 <td style="text-align:left;">
 63
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -50351,9 +42874,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -50375,9 +42895,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 125
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -50397,9 +42914,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -50421,9 +42935,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 122
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -50443,9 +42954,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -50467,9 +42975,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 99
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -50490,9 +42995,6 @@ NA
 <td style="text-align:left;">
 4
 </td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -50512,9 +43014,6 @@ Subregion removed for having a nested makeup or surplus region
 </td>
 <td style="text-align:left;">
 99
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -50536,9 +43035,6 @@ NA
 <td style="text-align:left;">
 66
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -50558,9 +43054,6 @@ NA
 </td>
 <td style="text-align:left;">
 61
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -50582,9 +43075,6 @@ NA
 <td style="text-align:left;">
 93
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -50604,9 +43094,6 @@ NA
 </td>
 <td style="text-align:left;">
 160
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -50628,9 +43115,6 @@ NA
 <td style="text-align:left;">
 29
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -50650,9 +43134,6 @@ NA
 </td>
 <td style="text-align:left;">
 47
-</td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
 </td>
 </tr>
 <tr>
@@ -50674,9 +43155,6 @@ Subregion removed for having a nested makeup or surplus region
 <td style="text-align:left;">
 104
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -50697,9 +43175,6 @@ NA
 <td style="text-align:left;">
 51
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -50719,9 +43194,6 @@ NA
 </td>
 <td style="text-align:left;">
 24
-</td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
 </td>
 </tr>
 <tr>
@@ -50743,9 +43215,6 @@ Subregion removed for having a nested makeup or surplus region
 <td style="text-align:left;">
 143
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -50765,9 +43234,6 @@ NA
 </td>
 <td style="text-align:left;">
 101
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -50789,9 +43255,6 @@ NA
 <td style="text-align:left;">
 81
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -50812,9 +43275,6 @@ NA
 <td style="text-align:left;">
 257
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -50834,9 +43294,6 @@ NA
 </td>
 <td style="text-align:left;">
 21
-</td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
 </td>
 </tr>
 <tr>
@@ -50858,9 +43315,6 @@ Subregion removed for having a nested makeup or surplus region
 <td style="text-align:left;">
 120
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -50880,9 +43334,6 @@ NA
 </td>
 <td style="text-align:left;">
 152
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -50904,9 +43355,6 @@ NA
 <td style="text-align:left;">
 78
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -50926,9 +43374,6 @@ NA
 </td>
 <td style="text-align:left;">
 115
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -50950,9 +43395,6 @@ NA
 <td style="text-align:left;">
 206
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -50973,9 +43415,6 @@ NA
 <td style="text-align:left;">
 22
 </td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -50995,9 +43434,6 @@ Subregion removed for having a nested makeup or surplus region
 </td>
 <td style="text-align:left;">
 67
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -51019,9 +43455,6 @@ NA
 <td style="text-align:left;">
 110
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -51041,9 +43474,6 @@ NA
 </td>
 <td style="text-align:left;">
 114
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -51065,9 +43495,6 @@ NA
 <td style="text-align:left;">
 180
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -51087,9 +43514,6 @@ NA
 </td>
 <td style="text-align:left;">
 75
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -51111,9 +43535,6 @@ NA
 <td style="text-align:left;">
 213
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -51133,9 +43554,6 @@ NA
 </td>
 <td style="text-align:left;">
 90
-</td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
 </td>
 </tr>
 <tr>
@@ -51157,9 +43575,6 @@ Subregion removed for having a nested makeup or surplus region
 <td style="text-align:left;">
 203
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -51180,9 +43595,6 @@ NA
 <td style="text-align:left;">
 149
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -51202,9 +43614,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -51226,9 +43635,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -51248,9 +43654,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 96
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -51272,9 +43675,6 @@ NA
 <td style="text-align:left;">
 211
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -51295,9 +43695,6 @@ NA
 <td style="text-align:left;">
 108
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -51317,9 +43714,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -51341,9 +43735,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 140
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -51363,9 +43754,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -51387,9 +43775,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 92
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -51409,9 +43794,6 @@ NA
 </td>
 <td style="text-align:left;">
 90
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -51433,9 +43815,6 @@ NA
 <td style="text-align:left;">
 201
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -51455,9 +43834,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -51479,9 +43855,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 122
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -51501,9 +43874,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -51525,9 +43895,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 273
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -51548,9 +43915,6 @@ NA
 <td style="text-align:left;">
 243
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -51570,9 +43934,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -51594,9 +43955,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 164
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -51617,9 +43975,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -51639,9 +43994,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -51663,9 +44015,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 44
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -51685,9 +44034,6 @@ NA
 </td>
 <td style="text-align:left;">
 73
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -51709,9 +44055,6 @@ NA
 <td style="text-align:left;">
 93
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -51731,9 +44074,6 @@ NA
 </td>
 <td style="text-align:left;">
 47
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -51755,9 +44095,6 @@ NA
 <td style="text-align:left;">
 136
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -51777,9 +44114,6 @@ NA
 </td>
 <td style="text-align:left;">
 51
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -51801,9 +44135,6 @@ NA
 <td style="text-align:left;">
 87
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -51823,9 +44154,6 @@ NA
 </td>
 <td style="text-align:left;">
 160
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -51847,9 +44175,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -51869,9 +44194,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 103
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -51893,9 +44215,6 @@ NA
 <td style="text-align:left;">
 208
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -51915,9 +44234,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -51939,9 +44255,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 130
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -51961,9 +44274,6 @@ NA
 </td>
 <td style="text-align:left;">
 67
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -51985,9 +44295,6 @@ NA
 <td style="text-align:left;">
 145
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -52007,9 +44314,6 @@ NA
 </td>
 <td style="text-align:left;">
 96
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -52031,9 +44335,6 @@ NA
 <td style="text-align:left;">
 94
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -52053,9 +44354,6 @@ NA
 </td>
 <td style="text-align:left;">
 85
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -52077,9 +44375,6 @@ NA
 <td style="text-align:left;">
 90
 </td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -52099,9 +44394,6 @@ Subregion removed for having a nested makeup or surplus region
 </td>
 <td style="text-align:left;">
 182
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -52123,9 +44415,6 @@ NA
 <td style="text-align:left;">
 103
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -52146,9 +44435,6 @@ NA
 <td style="text-align:left;">
 4
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -52167,10 +44453,7 @@ NA
 5
 </td>
 <td style="text-align:left;">
-93
-</td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
+101
 </td>
 </tr>
 <tr>
@@ -52192,9 +44475,6 @@ Subregion removed for having a nested makeup or surplus region
 <td style="text-align:left;">
 121
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -52214,9 +44494,6 @@ NA
 </td>
 <td style="text-align:left;">
 173
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -52238,9 +44515,6 @@ NA
 <td style="text-align:left;">
 202
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -52260,9 +44534,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -52284,9 +44555,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 85
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -52306,9 +44574,6 @@ NA
 </td>
 <td style="text-align:left;">
 88
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -52330,9 +44595,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -52352,9 +44614,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -52376,9 +44635,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 153
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -52398,9 +44654,6 @@ NA
 </td>
 <td style="text-align:left;">
 175
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -52422,9 +44675,6 @@ NA
 <td style="text-align:left;">
 232
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -52444,9 +44694,6 @@ NA
 </td>
 <td style="text-align:left;">
 144
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -52468,9 +44715,6 @@ NA
 <td style="text-align:left;">
 241
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -52490,9 +44734,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -52514,9 +44755,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 221
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -52536,9 +44774,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -52560,9 +44795,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 121
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -52583,9 +44815,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -52605,9 +44834,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 198
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -52629,9 +44855,6 @@ NA
 <td style="text-align:left;">
 148
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -52651,9 +44874,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -52675,9 +44895,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 423
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -52697,9 +44914,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -52721,9 +44935,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 250
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -52744,9 +44955,6 @@ NA
 <td style="text-align:left;">
 162
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -52766,9 +44974,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -52790,9 +44995,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 40
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -52812,9 +45014,6 @@ NA
 </td>
 <td style="text-align:left;">
 16
-</td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
 </td>
 </tr>
 <tr>
@@ -52836,9 +45035,6 @@ Subregion removed for having a nested makeup or surplus region
 <td style="text-align:left;">
 57
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -52859,9 +45055,6 @@ NA
 <td style="text-align:left;">
 37
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -52881,9 +45074,6 @@ NA
 </td>
 <td style="text-align:left;">
 2
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -52905,9 +45095,6 @@ NA
 <td style="text-align:left;">
 55
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -52927,9 +45114,6 @@ NA
 </td>
 <td style="text-align:left;">
 52
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -52951,9 +45135,6 @@ NA
 <td style="text-align:left;">
 14
 </td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -52973,9 +45154,6 @@ Subregion removed for having a nested makeup or surplus region
 </td>
 <td style="text-align:left;">
 15
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -52997,9 +45175,6 @@ NA
 <td style="text-align:left;">
 16
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -53020,9 +45195,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -53042,9 +45214,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 38
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -53066,9 +45235,6 @@ NA
 <td style="text-align:left;">
 61
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -53089,9 +45255,6 @@ NA
 <td style="text-align:left;">
 46
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -53111,9 +45274,6 @@ NA
 </td>
 <td style="text-align:left;">
 29
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -53135,9 +45295,6 @@ NA
 <td style="text-align:left;">
 113
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -53157,9 +45314,6 @@ NA
 </td>
 <td style="text-align:left;">
 32
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -53181,9 +45335,6 @@ NA
 <td style="text-align:left;">
 20
 </td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -53203,9 +45354,6 @@ Subregion removed for having a nested makeup or surplus region
 </td>
 <td style="text-align:left;">
 20
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -53227,9 +45375,6 @@ NA
 <td style="text-align:left;">
 41
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -53249,9 +45394,6 @@ NA
 </td>
 <td style="text-align:left;">
 97
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -53273,9 +45415,6 @@ NA
 <td style="text-align:left;">
 36
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -53296,9 +45435,6 @@ NA
 <td style="text-align:left;">
 107
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -53318,9 +45454,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -53342,9 +45475,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 71
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -53364,9 +45494,6 @@ NA
 </td>
 <td style="text-align:left;">
 22
-</td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
 </td>
 </tr>
 <tr>
@@ -53388,9 +45515,6 @@ Subregion removed for having a nested makeup or surplus region
 <td style="text-align:left;">
 198
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -53410,9 +45534,6 @@ NA
 </td>
 <td style="text-align:left;">
 53
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -53434,9 +45555,6 @@ NA
 <td style="text-align:left;">
 51
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -53456,9 +45574,6 @@ NA
 </td>
 <td style="text-align:left;">
 52
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -53480,9 +45595,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -53502,9 +45614,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 56
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -53526,9 +45635,6 @@ NA
 <td style="text-align:left;">
 36
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -53548,9 +45654,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -53572,9 +45675,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 111
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -53594,9 +45694,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -53618,9 +45715,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 62
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -53640,9 +45734,6 @@ NA
 </td>
 <td style="text-align:left;">
 65
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -53664,9 +45755,6 @@ NA
 <td style="text-align:left;">
 171
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -53686,9 +45774,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -53710,9 +45795,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 96
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -53732,9 +45814,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -53756,9 +45835,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 162
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -53778,9 +45854,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -53802,9 +45875,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 132
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -53824,9 +45894,6 @@ NA
 </td>
 <td style="text-align:left;">
 105
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -53848,9 +45915,6 @@ NA
 <td style="text-align:left;">
 151
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -53871,9 +45935,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -53893,9 +45954,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -53917,9 +45975,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 221
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -53939,9 +45994,6 @@ NA
 </td>
 <td style="text-align:left;">
 1
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -53963,9 +46015,6 @@ NA
 <td style="text-align:left;">
 22
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -53986,9 +46035,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -54008,9 +46054,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 10
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -54032,9 +46075,6 @@ NA
 <td style="text-align:left;">
 14
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -54055,9 +46095,6 @@ NA
 <td style="text-align:left;">
 5
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -54077,9 +46114,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -54101,9 +46135,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 24
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -54124,9 +46155,6 @@ NA
 <td style="text-align:left;">
 34
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -54146,9 +46174,6 @@ NA
 </td>
 <td style="text-align:left;">
 5
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -54170,9 +46195,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -54192,9 +46214,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 13
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -54216,9 +46235,6 @@ NA
 <td style="text-align:left;">
 9
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -54238,9 +46254,6 @@ NA
 </td>
 <td style="text-align:left;">
 21
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -54262,9 +46275,6 @@ NA
 <td style="text-align:left;">
 72
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -54284,9 +46294,6 @@ NA
 </td>
 <td style="text-align:left;">
 13
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -54308,9 +46315,6 @@ NA
 <td style="text-align:left;">
 69
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -54330,9 +46334,6 @@ NA
 </td>
 <td style="text-align:left;">
 42
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -54354,9 +46355,6 @@ NA
 <td style="text-align:left;">
 18
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -54376,9 +46374,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -54400,9 +46395,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 115
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -54422,9 +46414,6 @@ NA
 </td>
 <td style="text-align:left;">
 12
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -54446,9 +46435,6 @@ NA
 <td style="text-align:left;">
 14
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -54468,9 +46454,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -54492,9 +46475,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 29
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -54515,9 +46495,6 @@ NA
 <td style="text-align:left;">
 19
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -54537,9 +46514,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -54561,9 +46535,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 70
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -54583,9 +46554,6 @@ NA
 </td>
 <td style="text-align:left;">
 27
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -54607,9 +46575,6 @@ NA
 <td style="text-align:left;">
 123
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -54630,9 +46595,6 @@ NA
 <td style="text-align:left;">
 47
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -54652,9 +46614,6 @@ NA
 </td>
 <td style="text-align:left;">
 27
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -54676,9 +46635,6 @@ NA
 <td style="text-align:left;">
 66
 </td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -54699,9 +46655,6 @@ Subregion removed for having a nested makeup or surplus region
 <td style="text-align:left;">
 20
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -54721,9 +46674,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -54745,9 +46695,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 64
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -54767,9 +46714,6 @@ NA
 </td>
 <td style="text-align:left;">
 56
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -54791,9 +46735,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -54814,9 +46755,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 48
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -54836,9 +46774,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -54860,9 +46795,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 146
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -54882,9 +46814,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -54906,9 +46835,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 220
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -54929,9 +46855,6 @@ NA
 <td style="text-align:left;">
 80
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -54951,9 +46874,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -54975,9 +46895,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 57
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -54997,9 +46914,6 @@ NA
 </td>
 <td style="text-align:left;">
 97
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -55021,9 +46935,6 @@ NA
 <td style="text-align:left;">
 58
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -55044,9 +46955,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -55066,9 +46974,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -55090,9 +46995,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 18
 </td>
-<td style="text-align:left;">
-Subregion removed for overlapping with surplus
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -55112,9 +47014,6 @@ Subregion removed for overlapping with surplus
 </td>
 <td style="text-align:left;">
 2
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -55136,9 +47035,6 @@ NA
 <td style="text-align:left;">
 14
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -55158,9 +47054,6 @@ NA
 </td>
 <td style="text-align:left;">
 48
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -55182,9 +47075,6 @@ NA
 <td style="text-align:left;">
 28
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -55204,9 +47094,6 @@ NA
 </td>
 <td style="text-align:left;">
 29
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -55228,9 +47115,6 @@ NA
 <td style="text-align:left;">
 19
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -55251,9 +47135,6 @@ NA
 <td style="text-align:left;">
 17
 </td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -55273,9 +47154,6 @@ Subregion removed for having a nested makeup or surplus region
 </td>
 <td style="text-align:left;">
 10
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -55297,9 +47175,6 @@ NA
 <td style="text-align:left;">
 23
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -55319,9 +47194,6 @@ NA
 </td>
 <td style="text-align:left;">
 14
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -55343,9 +47215,6 @@ NA
 <td style="text-align:left;">
 21
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -55366,9 +47235,6 @@ NA
 <td style="text-align:left;">
 4
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -55389,9 +47255,6 @@ NA
 <td style="text-align:left;">
 10
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -55408,9 +47271,6 @@ NA
 </td>
 <td style="text-align:left;">
 NA
-</td>
-<td style="text-align:left;">
-0
 </td>
 <td style="text-align:left;">
 NA
@@ -55434,9 +47294,6 @@ NA
 </td>
 <td style="text-align:left;">
 11
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -55458,9 +47315,6 @@ NA
 <td style="text-align:left;">
 20
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -55480,9 +47334,6 @@ NA
 </td>
 <td style="text-align:left;">
 16
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -55504,9 +47355,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -55526,9 +47374,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 22
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -55550,9 +47395,6 @@ NA
 <td style="text-align:left;">
 37
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -55573,9 +47415,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -55595,9 +47434,6 @@ Subregion removed for having a nested makeup or surplus region
 </td>
 <td style="text-align:left;">
 33
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -55619,9 +47455,6 @@ NA
 <td style="text-align:left;">
 24
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -55641,9 +47474,6 @@ NA
 </td>
 <td style="text-align:left;">
 25
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -55665,9 +47495,6 @@ NA
 <td style="text-align:left;">
 47
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -55688,9 +47515,6 @@ NA
 <td style="text-align:left;">
 16
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -55710,9 +47534,6 @@ NA
 </td>
 <td style="text-align:left;">
 42
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -55734,9 +47555,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -55756,9 +47574,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 42
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -55780,9 +47595,6 @@ NA
 <td style="text-align:left;">
 84
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -55802,9 +47614,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -55826,9 +47635,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 20
 </td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -55848,9 +47654,6 @@ Subregion removed for having a nested makeup or surplus region
 </td>
 <td style="text-align:left;">
 50
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -55872,9 +47675,6 @@ NA
 <td style="text-align:left;">
 144
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -55894,9 +47694,6 @@ NA
 </td>
 <td style="text-align:left;">
 34
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -55918,9 +47715,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -55941,9 +47735,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -55963,9 +47754,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 22
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -55987,9 +47775,6 @@ NA
 <td style="text-align:left;">
 43
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -56009,9 +47794,6 @@ NA
 </td>
 <td style="text-align:left;">
 6
-</td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
 </td>
 </tr>
 <tr>
@@ -56033,9 +47815,6 @@ Subregion removed for having a nested makeup or surplus region
 <td style="text-align:left;">
 96
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -56055,9 +47834,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -56079,9 +47855,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 72
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -56102,9 +47875,6 @@ NA
 <td style="text-align:left;">
 27
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -56124,9 +47894,6 @@ NA
 </td>
 <td style="text-align:left;">
 75
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -56148,9 +47915,6 @@ NA
 <td style="text-align:left;">
 62
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -56171,9 +47935,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -56193,9 +47954,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
 </td>
 </tr>
 <tr>
@@ -56217,9 +47975,6 @@ Subregion removed for having a nested makeup or surplus region
 <td style="text-align:left;">
 123
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -56239,9 +47994,6 @@ NA
 </td>
 <td style="text-align:left;">
 26
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -56263,9 +48015,6 @@ NA
 <td style="text-align:left;">
 33
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -56285,9 +48034,6 @@ NA
 </td>
 <td style="text-align:left;">
 10
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -56309,9 +48055,6 @@ NA
 <td style="text-align:left;">
 38
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -56331,9 +48074,6 @@ NA
 </td>
 <td style="text-align:left;">
 47
-</td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
 </td>
 </tr>
 <tr>
@@ -56355,9 +48095,6 @@ Subregion removed for having a nested makeup or surplus region
 <td style="text-align:left;">
 52
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -56377,9 +48114,6 @@ NA
 </td>
 <td style="text-align:left;">
 23
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -56401,9 +48135,6 @@ NA
 <td style="text-align:left;">
 33
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -56424,9 +48155,6 @@ NA
 <td style="text-align:left;">
 0
 </td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -56446,9 +48174,6 @@ Subregion removed for not having any annotations
 </td>
 <td style="text-align:left;">
 25
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -56470,9 +48195,6 @@ NA
 <td style="text-align:left;">
 30
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -56492,9 +48214,6 @@ NA
 </td>
 <td style="text-align:left;">
 21
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -56516,9 +48235,6 @@ NA
 <td style="text-align:left;">
 8
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -56538,9 +48254,6 @@ NA
 </td>
 <td style="text-align:left;">
 1
-</td>
-<td style="text-align:left;">
-Subregion removed for having a nested makeup or surplus region
 </td>
 </tr>
 <tr>
@@ -56562,9 +48275,6 @@ Subregion removed for having a nested makeup or surplus region
 <td style="text-align:left;">
 73
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -56584,9 +48294,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -56608,9 +48315,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 65
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -56630,9 +48334,6 @@ NA
 </td>
 <td style="text-align:left;">
 25
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -56654,9 +48355,6 @@ NA
 <td style="text-align:left;">
 22
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -56676,9 +48374,6 @@ NA
 </td>
 <td style="text-align:left;">
 98
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -56700,9 +48395,6 @@ NA
 <td style="text-align:left;">
 31
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -56722,9 +48414,6 @@ NA
 </td>
 <td style="text-align:left;">
 51
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -56746,9 +48435,6 @@ NA
 <td style="text-align:left;">
 69
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -56768,9 +48454,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -56792,9 +48475,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 48
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -56815,9 +48495,6 @@ NA
 <td style="text-align:left;">
 75
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -56837,9 +48514,6 @@ NA
 </td>
 <td style="text-align:left;">
 98
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -56861,9 +48535,6 @@ NA
 <td style="text-align:left;">
 98
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -56883,9 +48554,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -56907,9 +48575,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 89
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -56929,9 +48594,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -56953,9 +48615,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 32
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -56976,9 +48635,6 @@ NA
 <td style="text-align:left;">
 34
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -56998,9 +48654,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -57022,9 +48675,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 107
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -57045,9 +48695,6 @@ NA
 <td style="text-align:left;">
 89
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -57067,9 +48714,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -57091,9 +48735,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 174
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -57113,9 +48754,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -57137,9 +48775,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 34
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -57159,9 +48794,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -57183,9 +48815,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 169
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -57205,9 +48834,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -57229,9 +48855,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 138
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -57251,9 +48874,6 @@ NA
 </td>
 <td style="text-align:left;">
 287
-</td>
-<td style="text-align:left;">
-NA
 </td>
 </tr>
 <tr>
@@ -57275,9 +48895,6 @@ NA
 <td style="text-align:left;">
 141
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -57297,9 +48914,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 <tr>
@@ -57321,9 +48935,6 @@ Subregion removed for not having any annotations
 <td style="text-align:left;">
 173
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -57344,9 +48955,6 @@ NA
 <td style="text-align:left;">
 42
 </td>
-<td style="text-align:left;">
-NA
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -57366,9 +48974,6 @@ NA
 </td>
 <td style="text-align:left;">
 0
-</td>
-<td style="text-align:left;">
-Subregion removed for not having any annotations
 </td>
 </tr>
 </tbody>
@@ -57402,7 +49007,7 @@ Annotation counts for the entire corpus
 
 ``` r
 counts_by_region <- 
-  read_csv('../output/counts_by_region.csv') %>%
+  read_csv('../old_scripts/pre-Zhenya/output/counts_by_region.csv') %>%
   separate(filename, into = c("subj","month"), sep = "_", extra="drop",remove=F) %>%
   filter(!(month %in% c("06", "07"))) %>%
   mutate(inside = total - outside)
@@ -72836,7 +64441,7 @@ Timeline summary for the entire corpus
 <div>
 
 ``` r
-timeline <- read_csv('../output/timeline_data.csv')
+timeline <- read_csv('../old_scripts/pre-Zhenya/output/timeline_data.csv')
 
 timeline %>%
 knitr::kable(caption = 'Timeline summary for the entire corpus') %>%
