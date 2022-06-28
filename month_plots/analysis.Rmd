@@ -207,8 +207,8 @@ sixseven_summary <-
   listened_time_with_months %>%
   select(headers) %>%
   filter(month %in% c("06","07") & (total_listen_time_hour>12 | total_listen_time_hour<8)) %>%
-  mutate(calculation_of_listen_time_hour = sprintf("= %s - (%s + %s - %s)", end_time_hour, skip_time_hour, silence_time_hour, skip_silence_overlap_hour)) %>% 
-  arrange(total_listen_time_hour)
+  mutate(calculation_of_listen_time_hour = sprintf("= %s - (%s + %s - %s)", end_time_hour, skip_time_hour, silence_time_hour, skip_silence_overlap_hour)) %>%
+  arrange(filename)
 
 write_csv(sixseven_summary, 'sixseven_problems')
 
@@ -278,7 +278,7 @@ eight2thirteen <-
   listened_time_with_months %>% 
   filter(month %in% c("08","09","10","11","12","13") & (total_listen_time_hour>4.25 | total_listen_time_hour<3.75 | num_raw_subregion<5)) %>%
   select(filename, month, ends_with("hour"),  -skip_silence_overlap_hour, contains("raw"), -annotation_counts_raw) %>% 
-  arrange(total_listen_time_hour)
+  arrange(filename)
 
 write_csv(eight2thirteen, 'eight2thirteen_problems')
 
@@ -319,7 +319,7 @@ fourteen2seventeen <-
   listened_time_with_months %>% 
   filter(month %in% c("14","15","16","17") & (total_listen_time_hour>3.25 | total_listen_time_hour<2.75)) %>%
   select(filename, month, ends_with("hour"),  -skip_silence_overlap_hour, contains("raw"), -annotation_counts_raw) %>% 
-  arrange(total_listen_time_hour)
+  arrange(filename)
 
 write_csv(fourteen2seventeen, 'fourteen2seventeen_problems')
 listened_time_with_months %>% 
