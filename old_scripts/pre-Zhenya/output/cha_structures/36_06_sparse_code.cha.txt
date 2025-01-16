@@ -1,9 +1,0 @@
-skip starts   17711210
-skip ends   18173580
-silence starts   18173580
-silence ends   21053660
-silence starts   21257330
-silence ends   27259670
-
-
-

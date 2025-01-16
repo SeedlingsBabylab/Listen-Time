@@ -1,7 +1,0 @@
-silence starts   6939370
-silence ends   13809110
-silence starts   15550880
-silence ends   15850070
-
-
-

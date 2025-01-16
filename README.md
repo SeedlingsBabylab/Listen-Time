@@ -1,8 +1,5 @@
-# Listen time report
+# 🚨 Repository Archived 🚨
 
-## Update listen time stats
+This repository has been archived in favor of the module `blabpy.seedlings.listened_time` in our Python package [`blabpy`](https://github.com/BergelsonLab/blabpy/).
 
-The output is written to `output/Total_Listen_Time_Summary.csv`.
-
-- create and activate a virtual environment based on `requirement.txt`,
-- run `update_listen_time_stats.py`
+Please refer to that module for any relevant functionality or updates.
