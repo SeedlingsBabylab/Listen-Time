@@ -1,6 +1,0 @@
-region_type,starts,ends
-subregion,0,3600000
-subregion,15600000,19200000
-silence,15600000,15646210
-subregion,23100000,26700000
-subregion,32400000,36000000
